@@ -7,25 +7,29 @@ trigger:
 
 steps:
 - task: gitversion/setup@0
+  displayName: 'Install GitVersion'
   inputs:
     versionSpec: '5.x'
     includePrerelease: true
 - task: gitversion/execute@0
+  displayName: 'Execute GitVersion'
   inputs:
     useConfigFile: true
     configFilePath: 'git-version.yml'
 - task: DownloadSecureFile@1
   name: nugetCertificate
-  displayName: 'Download nuget signing certificate'
+  displayName: 'Download Nuget Certificate'
   inputs:
     secureFile: 'nuget-org.pfx'
 
 - task: DotNetCoreCLI@2
+  displayName: Build the project
   inputs:
     command: 'build'
     projects: |
       **/*.csproj
 - task: DotNetCoreCLI@2
+  displayName: Package the project
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
@@ -33,15 +37,17 @@ steps:
     versionEnvVar: 'GitVersion.NuGetVersion'
 
 - task: PowerShell@2
+  displayName: Import certificate to root store
   inputs:
     targetType: 'inline'
     script: Import-PfxCertificate -FilePath "$(nugetCertificate.secureFilePath)" -Password (ConvertTo-SecureString -String '$(certificate-code)' -AsPlainText -Force) -CertStoreLocation Cert:\LocalMachine\Root
   
 - task: DotNetCoreCLI@2
+  displayName: Sign the package
   inputs:
     command: 'custom'
     custom: 'nuget'
-    arguments: 'sign .\**\*.nupkg --certificate-path "$(nugetCertificate.secureFilePath)" --timestamper http://timestamp.digicert.com/ --timestamp-hash-algorithm SHA512 --certificate-password $(certificate-code)'
+    arguments: 'sign **\*.nupkg --certificate-path "$(nugetCertificate.secureFilePath)" --timestamper http://timestamp.digicert.com/ --timestamp-hash-algorithm SHA512 --certificate-password $(certificate-code)'
 
 - task: PublishPipelineArtifact@1
   inputs:
