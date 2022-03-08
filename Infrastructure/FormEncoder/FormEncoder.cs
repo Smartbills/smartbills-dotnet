@@ -1,16 +1,6 @@
-using Smartbills.Client.Services;
-using Smartbills.Infrastructure.FormEncoder;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Web;
 
 namespace Smartbills.Client
 {

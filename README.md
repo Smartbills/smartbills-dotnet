@@ -27,7 +27,7 @@ From within Visual Studio:
 1. Open the Solution Explorer.
 2. Right-click on a project within your solution.
 3. Click on *Manage NuGet Packages...*
-4. Click on the *Browse* tab and search for "Smartbills.NET".
+4. Click on the *Browse* tab and search for "Stripe.net".
 5. Click on the Smartbills.NET package, select the appropriate version in the
    right-tab and click *Install*.
 
@@ -36,5 +36,9 @@ From within Visual Studio:
 For a comprehensive list of examples, check out the [API
 documentation][api-docs].
 
-[api-docs]: https://smartbills.io/docs/api
+
+[api-docs]: https://stripe.com/docs/api?lang=dotnet
+[dotnet-core-cli-tools]: https://docs.microsoft.com/en-us/dotnet/core/tools/
+[nuget-cli]: https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference
+[package-manager-console]: https://docs.microsoft.com/en-us/nuget/tools/package-manager-console
 [smartbills]: https://smartbills.io

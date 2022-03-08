@@ -6,7 +6,7 @@ namespace Smartbills.Client.Entities
 {
     public class SBBank : SmartbillsEntityWithId
     {
-        public SBBank(): base()
+        public SBBank() : base()
         {
         }
 

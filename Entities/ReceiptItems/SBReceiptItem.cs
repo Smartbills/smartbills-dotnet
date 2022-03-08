@@ -1,8 +1,8 @@
 
+using Smartbills.Client.Entities.Taxes;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Smartbills.Client.Entities.Taxes;
 
 namespace Smartbills.Client.Entities
 {

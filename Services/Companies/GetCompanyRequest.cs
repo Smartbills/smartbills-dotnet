@@ -1,5 +1,4 @@
 using System;
-using Smartbills;
 
 namespace Smartbills.Client.Services
 {

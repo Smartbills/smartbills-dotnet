@@ -1,16 +1,13 @@
+using Microsoft.Extensions.Options;
+using Smartbills.Client.Services;
+using Smartbills.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Smartbills.Client.Entities;
-using Smartbills.Client.Services;
-using Smartbills.Infrastructure;
 
 namespace Smartbills.Client
 {
@@ -52,7 +49,7 @@ namespace Smartbills.Client
                 string path,
                 TRequest options,
                 RequestOptions requestOptions = null,
-                HttpContent  httpContent= null,
+                HttpContent httpContent = null,
                 CancellationToken cancellationToken = default)
         {
             var request = new SmartbillsRequest<TRequest>(this, method, path, options, requestOptions, httpContent);

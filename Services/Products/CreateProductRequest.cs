@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Smartbills.Client.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
 using System.Text.Json.Serialization;
-using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Services
 {

@@ -1,5 +1,4 @@
 using Smartbills.Infrastructure;
-using System.Collections.Generic;
 
 namespace Smartbills.Client
 {

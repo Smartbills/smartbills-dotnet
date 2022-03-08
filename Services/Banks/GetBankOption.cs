@@ -1,5 +1,3 @@
-using System;
-using Smartbills;
 using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Services

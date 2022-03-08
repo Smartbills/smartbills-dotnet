@@ -1,7 +1,6 @@
 
 using System;
 using System.Text.Json.Serialization;
-using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Entities
 {

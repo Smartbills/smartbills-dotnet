@@ -1,7 +1,6 @@
-using System;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http;
 
 namespace Smartbills.Client.Entities.Documents
 {

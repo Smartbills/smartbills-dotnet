@@ -1,7 +1,7 @@
+using Smartbills.Client.Entities;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Services
 {
@@ -32,7 +32,7 @@ namespace Smartbills.Client.Services
             return await base.CreateEntityAsync(createRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(Guid parentId, CreateBankTransactionRequest createRequest, RequestOptions requestOptions = null,  CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(Guid parentId, CreateBankTransactionRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.CreateNestedEntityAsync(parentId, createRequest, requestOptions, cancellationToken);
         }

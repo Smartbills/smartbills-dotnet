@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace Smartbills.Infrastructure
 {
@@ -27,7 +23,7 @@ namespace Smartbills.Infrastructure
                     return (T)conv.ConvertFromString(body);
                 }
 
-                catch 
+                catch
                 {
                     return default;
                 }

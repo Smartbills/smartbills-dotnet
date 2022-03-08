@@ -6,9 +6,9 @@ namespace Smartbills.Client.Entities
     public class SmartbillsEntity
     {
     }
-    public class SmartbillsEntityWithId: SmartbillsEntity
+    public class SmartbillsEntityWithId : SmartbillsEntity
     {
         [JsonPropertyName("id")]
-        public Guid Id {get;set;}
+        public Guid Id { get; set; }
     }
 }

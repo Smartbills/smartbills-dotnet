@@ -1,21 +1,20 @@
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 using Smartbills.Client.Entities.Companies;
 using Smartbills.Client.Entities.ReceiptDiscounts;
 using Smartbills.Client.Entities.ReceiptItems;
 using Smartbills.Client.Entities.ReceiptMetadata;
 using Smartbills.Client.Entities.Taxes;
-using Smartbills.Client.Entities.Transactions;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Entities.Receipts
 {
     public class CreateReceiptDTO
     {
         [JsonPropertyName("company_id")]
-        public Guid? CompanyId {get;set;}
+        public Guid? CompanyId { get; set; }
 
         [JsonPropertyName("customer")]
         public CreateCompanyCustomerRequest Customer { get; set; }

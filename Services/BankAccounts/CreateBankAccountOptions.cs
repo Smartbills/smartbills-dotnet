@@ -1,8 +1,5 @@
-using System;
-using System.Text.Json.Serialization;
-using Smartbills;
-using Smartbills.Client.Entities;
 using Smartbills.Services.BankBalances;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Services
 {
@@ -20,7 +17,7 @@ namespace Smartbills.Client.Services
         [JsonPropertyName("official_name")]
         public string OfficialName { get; set; }
         [JsonPropertyName("balance")]
-        public  CreateBankBalanceRequest Balance { get; set; }
+        public CreateBankBalanceRequest Balance { get; set; }
 
     }
 }

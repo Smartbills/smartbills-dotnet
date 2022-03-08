@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Smartbills.Client.Entities;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Services
 {
@@ -22,7 +22,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SmartbillsResponse<Receipt>> CreateAsync(CreateReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, requestOptions,cancellationToken);
+            return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
         public async Task<SmartbillsResponse<Receipt>> GetAsync(Guid id, GetReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

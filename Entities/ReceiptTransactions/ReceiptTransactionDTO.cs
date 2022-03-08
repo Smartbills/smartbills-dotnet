@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using Smartbills.Client.Entities.Transactions.PaymentDetails;
-
-namespace Smartbills.Client.Entities
+﻿namespace Smartbills.Client.Entities
 {
     //public class ReceiptTransactionDTO
     //{

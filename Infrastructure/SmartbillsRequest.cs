@@ -1,13 +1,10 @@
+using Smartbills.Client.Services;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Net.Mime;
 using System.Text;
 using System.Text.Json;
-using Newtonsoft.Json;
-using Smartbills.Client.Services;
-using static Smartbills.Client.UrlHelpers;
 
 namespace Smartbills.Client
 {

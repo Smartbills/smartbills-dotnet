@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Smartbills.Client.Entities;
 
 namespace Smartbills.Client.Services
 {
@@ -19,24 +18,24 @@ namespace Smartbills.Client.Services
         public abstract string NestedPath { get; }
 
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> CreateNestedEntityAsync<TRequest>(Guid parentId, TRequest options, RequestOptions requestOptions=null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> CreateNestedEntityAsync<TRequest>(Guid parentId, TRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Post, ParentUrl(parentId), options, requestOptions,null, cancellationToken);
+            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Post, ParentUrl(parentId), options, requestOptions, null, cancellationToken);
         }
         protected async Task<SmartbillsResponse<TEntityReturned>> GetNestedEntityAsync<TRequest>(Guid parentId, Guid id, TRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Get, RessourceUrl(parentId, id), options, requestOptions,null, cancellationToken);
+            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Get, RessourceUrl(parentId, id), options, requestOptions, null, cancellationToken);
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> UpdateNestedEntityAsync<TRequest>(Guid parentId, Guid id, TRequest options, RequestOptions requestOptions =null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> UpdateNestedEntityAsync<TRequest>(Guid parentId, Guid id, TRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Put, RessourceUrl(parentId, id), options, requestOptions,null, cancellationToken);
+            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Put, RessourceUrl(parentId, id), options, requestOptions, null, cancellationToken);
         }
 
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> DeleteNestedEntityAsync<TRequest>(Guid parentId, Guid id, TRequest options, RequestOptions requestOptions =null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> DeleteNestedEntityAsync<TRequest>(Guid parentId, Guid id, TRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Delete, RessourceUrl(parentId, id), options, requestOptions,null, cancellationToken);
+            return await _client.RequestAsync<TEntityReturned, TRequest>(HttpMethod.Delete, RessourceUrl(parentId, id), options, requestOptions, null, cancellationToken);
         }
         protected virtual string ParentUrl(Guid parentId)
         {

@@ -1,8 +1,5 @@
-using System;
-using System.Text.Json.Serialization;
-using Smartbills;
-using Smartbills.Client.Entities;
 using Smartbills.Services.Banks;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Services
 {

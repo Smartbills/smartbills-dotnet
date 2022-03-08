@@ -1,5 +1,5 @@
-﻿using System.Text.Json.Serialization;
-using Smartbills.Client.Entities.Transactions.CreditCards;
+﻿using Smartbills.Client.Entities.Transactions.CreditCards;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Entities.Transactions.PaymentDetails
 {

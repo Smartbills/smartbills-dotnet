@@ -1,14 +1,9 @@
 ﻿using Smartbills.Client.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Smartbills.Services.BankBalances
 {
-   public class UpdateBankBalanceRequest : BaseRequest
+    public class UpdateBankBalanceRequest : BaseRequest
     {
         [JsonPropertyName("current")]
         public decimal Current { get; set; }
