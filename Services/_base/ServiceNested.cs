@@ -39,12 +39,12 @@ namespace Smartbills.Client.Services
         }
         protected virtual string ParentUrl(Guid parentId)
         {
-            return this.NestedPath.Replace("{PARENT_ID}", parentId.ToString());
+            return  APIVersion + "/" + NestedPath.Replace("{PARENT_ID}", parentId.ToString());
         }
 
         protected virtual string RessourceUrl(Guid parentId, Guid id)
         {
-            return $"{this.ParentUrl(parentId)}/{WebUtility.UrlEncode(id.ToString())}";
+            return $"{ParentUrl(parentId)}/{WebUtility.UrlEncode(id.ToString())}";
         }
     }
 

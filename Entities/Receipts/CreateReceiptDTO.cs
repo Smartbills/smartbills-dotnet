@@ -23,7 +23,7 @@ namespace Smartbills.Client.Entities.Receipts
         //[JsonPropertyName("shipping_address")]
         //public CreateBillingAddressDTO ShippingAddress { get; set; }
         //[JsonPropertyName("items")]
-        public List<CreateReceiptItemDTO> Items { get; set; } = new List<CreateReceiptItemDTO>();
+        public List<CreateReceiptItemRequest> Items { get; set; } = new List<CreateReceiptItemRequest>();
 
         [JsonPropertyName("currency")]
         public string Currency { get; set; }

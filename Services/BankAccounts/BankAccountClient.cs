@@ -16,8 +16,8 @@ namespace Smartbills.Client.Services
     ServiceNested<SBBankAccount>, IBankAccountClient
 
     {
-        public override string BasePath => "v1/bank-accounts";
-        public override string NestedPath => "v1/banks/{PARENT_ID}/accounts";
+        public override string BasePath => "bank-accounts";
+        public override string NestedPath => "banks/{PARENT_ID}/accounts";
 
         public BankAccountClient(ISmartbillsClient client) : base(client) { }
 

@@ -22,9 +22,9 @@ namespace Smartbills.Client.Services
         {
         }
 
-        public override string BasePath => "v1/bank-transactions";
+        public override string BasePath => "bank-transactions";
 
-        public override string NestedPath => "v1/bank-accounts/{PARENT_ID}/transactions";
+        public override string NestedPath => "bank-accounts/{PARENT_ID}/transactions";
 
 
         public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(CreateBankTransactionRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

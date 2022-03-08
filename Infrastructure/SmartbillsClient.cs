@@ -37,10 +37,6 @@ namespace Smartbills.Client
         {
             _client = client;
             _configuration = configuration.Value;
-
-
-
-
         }
 
 

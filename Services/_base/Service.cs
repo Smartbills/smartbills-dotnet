@@ -15,6 +15,7 @@ namespace Smartbills.Client.Services
         {
             _client = client;
         }
+        public virtual string APIVersion => "v1";
         public abstract string BasePath { get; }
 
         protected async Task<SmartbillsResponse<TEntityReturned>> CreateEntityAsync<TRequestRequest>(TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -55,19 +56,15 @@ namespace Smartbills.Client.Services
         }
 
 
+
         public virtual string RessourceUrl(Guid id)
         {
-            return $"{BasePath}/{WebUtility.UrlEncode(id.ToString())}";
+            return $"{APIVersion}/{BasePath}/{WebUtility.UrlEncode(id.ToString())}";
         }
 
         public virtual string RessourceUrl(string id)
         {
-            return $"{BasePath}/{WebUtility.UrlEncode(id)}";
-        }
-
-        public virtual string RessourceUrl(string path, Guid id)
-        {
-            return $"{path}/{WebUtility.UrlEncode(id.ToString())}";
+            return $"{APIVersion}/{BasePath}/{WebUtility.UrlEncode(id)}";
         }
 
         protected async Task<SmartbillsResponse<T>> RequestAsync<T, TRequestRequest>(HttpMethod method, string path, TRequestRequest options, RequestOptions requestOptions, HttpContent content = null, CancellationToken token = default)

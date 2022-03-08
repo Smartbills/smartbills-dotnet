@@ -1,6 +1,6 @@
 namespace Smartbills.Client.Entities.ReceiptItems
 {
-    public class UpdateReceiptItemDTO
+    public class UpdateReceiptItemRequest
     {
     }
 }

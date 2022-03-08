@@ -15,7 +15,7 @@ namespace Smartbills.Client.Services
         ICompanyClient
 
     {
-        public override string BasePath => "v1/companies";
+        public override string BasePath => "companies";
 
         public CompanyClient(ISmartbillsClient client) : base(client) { }
 

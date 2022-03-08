@@ -15,7 +15,7 @@ namespace Smartbills.Client.Services
     Service<Receipt>, IReceiptClient
 
     {
-        public override string BasePath => "v1/receipts";
+        public override string BasePath => "receipts";
 
         public ReceiptClient(ISmartbillsClient client) : base(client) { }
 

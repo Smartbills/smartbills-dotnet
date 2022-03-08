@@ -17,7 +17,7 @@ namespace Smartbills.Client.Services
     Service<SBBankInstitution>, IBankInstitutionClient
 
     {
-        public override string BasePath => "v1/bank-institutions";
+        public override string BasePath => "bank-institutions";
 
         public BankInstitutionClient(ISmartbillsClient client) : base(client) { }
 

@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Entities.ReceiptItems
 {
-    public class CreateReceiptItemDTO
+    public class CreateReceiptItemRequest
     {
 
         [JsonPropertyName("product_id")]

@@ -16,7 +16,7 @@ namespace Smartbills.Client.Services
 
 
     {
-        public override string BasePath => "v1/documents";
+        public override string BasePath => "documents";
 
         public DocumentClient(ISmartbillsClient client) : base(client) { }
 
