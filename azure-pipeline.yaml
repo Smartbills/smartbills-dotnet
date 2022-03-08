@@ -16,12 +16,6 @@ steps:
   inputs:
     useConfigFile: true
     configFilePath: 'git-version.yml'
-- task: DownloadSecureFile@1
-  name: nugetCertificate
-  displayName: 'Download Nuget Certificate'
-  inputs:
-    secureFile: 'nuget-org.pfx'
-
 - task: DotNetCoreCLI@2
   displayName: Build the project
   inputs:
@@ -35,20 +29,6 @@ steps:
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.NuGetVersion'
-
-- task: PowerShell@2
-  displayName: Import certificate to root store
-  inputs:
-    targetType: 'inline'
-    script: Import-PfxCertificate -FilePath "$(nugetCertificate.secureFilePath)" -Password (ConvertTo-SecureString -String '$(certificate-code)' -AsPlainText -Force) -CertStoreLocation Cert:\LocalMachine\Root
-  
-- task: DotNetCoreCLI@2
-  displayName: Sign the package
-  inputs:
-    command: 'custom'
-    custom: 'nuget'
-    arguments: 'sign **\*.nupkg --certificate-path "$(nugetCertificate.secureFilePath)" --timestamper http://timestamp.digicert.com/ --timestamp-hash-algorithm SHA512 --certificate-password $(certificate-code)'
-
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
