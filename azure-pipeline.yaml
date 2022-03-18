@@ -26,7 +26,7 @@ steps:
   displayName: Package the project
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/Smartbills.NET.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.NuGetVersion'
 - task: PublishPipelineArtifact@1
