@@ -23,7 +23,6 @@
             "@semantic-release/exec",
             {
                 "prepareCmd": "set PACKAGE_VERSION=${nextRelease.version}",
-                "publishCmd": "publish-package"
             }
         ]
 
