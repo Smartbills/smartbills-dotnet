@@ -22,7 +22,6 @@
         [
             "semantic-release-ado",
             {
-                "varName": "SEMANTIC_VERSION",
                 "setOnlyOnRelease": true
             }
         ],
