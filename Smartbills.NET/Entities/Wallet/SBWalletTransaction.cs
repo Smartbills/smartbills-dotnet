@@ -1,0 +1,25 @@
+﻿using Newtonsoft.Json;
+using System;
+
+namespace Smartbills.Client.Entities.Wallet
+{
+    public class SBWalletTransaction
+    {
+        [JsonProperty("id")]
+        public Guid Id { get; set; }
+        [JsonProperty("date")]
+        public DateTimeOffset Date { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
+        [JsonProperty("subtitle")]
+        public string Subtitle { get; set; }
+        [JsonProperty("total")]
+
+        public decimal Total { get; set; }
+        //[JsonProperty("type")]
+        //public SBWalletTransactionType Type { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+}
