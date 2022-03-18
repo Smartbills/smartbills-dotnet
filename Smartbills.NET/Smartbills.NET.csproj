@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.81</Version>
+    <Version>0.0.0.1</Version>
     <Description>Smartbills Client for .NET Core</Description>
     <PackageId>Smartbills.NET</PackageId>
     <Authors>Sébastien Labine</Authors>

@@ -85,6 +85,7 @@ namespace Smartbills.Client
         private HttpRequestMessage BuildRequestMessage<TRequest>(SmartbillsRequest<TRequest> request)
         {
             var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
+
             requestMessage.Content = request.Content;
             return requestMessage;
         }

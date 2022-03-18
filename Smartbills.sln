@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartbills.Client", "Smartbills.Client.csproj", "{266335A3-222D-47E2-9CC9-1B69129C3FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartbills.NET", "Smartbills.NET\Smartbills.NET.csproj", "{449CEBD9-53B5-41C1-9C21-43BE5E6BF0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartbills.NET.IntegrationTests", "..\Smartbills.NET.UnitTests\Smartbills.NET.IntegrationTests.csproj", "{9C3285A0-359E-478D-BD0A-1A2496BCDD53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{266335A3-222D-47E2-9CC9-1B69129C3FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{266335A3-222D-47E2-9CC9-1B69129C3FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{266335A3-222D-47E2-9CC9-1B69129C3FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{266335A3-222D-47E2-9CC9-1B69129C3FBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449CEBD9-53B5-41C1-9C21-43BE5E6BF0A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449CEBD9-53B5-41C1-9C21-43BE5E6BF0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449CEBD9-53B5-41C1-9C21-43BE5E6BF0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449CEBD9-53B5-41C1-9C21-43BE5E6BF0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3285A0-359E-478D-BD0A-1A2496BCDD53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3285A0-359E-478D-BD0A-1A2496BCDD53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3285A0-359E-478D-BD0A-1A2496BCDD53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3285A0-359E-478D-BD0A-1A2496BCDD53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

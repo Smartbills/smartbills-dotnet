@@ -2,6 +2,6 @@
 {
     public class SmartbillsServicesConfig
     {
-        public const string Path = "Smartbills.Services";
+        public const string Path = "Smartbills";
     }
 }
