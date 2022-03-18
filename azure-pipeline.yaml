@@ -6,30 +6,29 @@ trigger:
     - '*'
 
 steps:
-- task: gitversion/setup@0
-  displayName: 'Install GitVersion'
-  inputs:
-    versionSpec: '5.x'
-    includePrerelease: true
-- task: gitversion/execute@0
-  displayName: 'Execute GitVersion'
-  inputs:
-    useConfigFile: true
-    configFilePath: 'git-version.yml'
-- task: DotNetCoreCLI@2
-  displayName: Build the project
-  inputs:
-    command: 'build'
-    projects: |
-      **/*.csproj
-- task: DotNetCoreCLI@2
-  displayName: Package the project
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/Smartbills.NET.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'GitVersion.NuGetVersion'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'pipeline'
+  - task: PowerShell@2
+    inputs:
+      targetType: 'inline'
+      script: |
+        npx -p semantic-release 
+        -p @semantic-release/git
+        -p semantic-release-ado
+        -p @semantic-release/release-notes-generator
+        semantic-release
+  - task: DotNetCoreCLI@2
+    displayName: Build the project
+    inputs:
+      command: 'build'
+      projects: |
+        **/*.csproj
+  - task: DotNetCoreCLI@2
+    displayName: Package the project
+    inputs:
+      command: 'pack'
+      packagesToPack: '**/Smartbills.NET.csproj'
+      versioningScheme: 'byEnvVar'
+      versionEnvVar: 'SEMANTIC_VERSION'
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Pipeline.Workspace)'
+      publishLocation: 'pipeline'
