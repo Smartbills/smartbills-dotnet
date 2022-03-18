@@ -20,12 +20,20 @@
             }
         ],
         [
-            "@semantic-release/exec",
+            "semantic-release-ado",
             {
-                "prepareCmd": "set PACKAGE_VERSION=${nextRelease.version}",
-                "publishCmd": "publish-package"
+                "varName": "SEMANTIC_VERSION",
+                "setOnlyOnRelease": true
+            }
+        ],
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "CHANGELOG.md"
+                ],
+                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ]
-
     ]
 }
