@@ -6,7 +6,6 @@ namespace Smartbills.Client
 {
     public static class StartupExtensions
     {
-
         public static SmartbillsBuilder AddSmartbills(this IServiceCollection services, SmartbillsConfiguration configuration = null)
         {
             var builder = new SmartbillsBuilder(services, configuration ?? new SmartbillsConfiguration());
