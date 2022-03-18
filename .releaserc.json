@@ -1,0 +1,31 @@
+{
+    "branches": [
+        "master",
+        {
+            "name": "dev",
+            "channel": "beta",
+            "prerelease": true
+        },
+        {
+            "name": "next",
+            "channel": "next"
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        [
+            "@semantic-release/release-notes-generator",
+            {
+                "changelogFile": "CHANGELOG.md"
+            }
+        ],
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "set PACKAGE_VERSION=${nextRelease.version}",
+                "publishCmd": "publish-package"
+            }
+        ]
+
+    ]
+}
