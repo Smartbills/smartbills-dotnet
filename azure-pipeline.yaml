@@ -19,12 +19,6 @@ steps:
       targetType: "inline"
       script: |
         semantic-release
-
-  - powershell: |
-      echo "##vso[task.setvariable variable=versionNumber;isOutput=true]$(nextRelease)"
-      
-  - script: echo $(nextRelease)
-    displayName: 'Show next version'
   
   - task: DotNetCoreCLI@2
     displayName: Build the project
@@ -33,6 +27,7 @@ steps:
       projects: |
         **/*.csproj
   - task: DotNetCoreCLI@2
+    condition: ne(variables['nextRelease'], '')
     displayName: Package the project
     inputs:
       command: "pack"
