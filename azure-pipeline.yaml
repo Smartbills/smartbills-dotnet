@@ -18,6 +18,9 @@ steps:
       targetType: "inline"
       script: |
         semantic-release
+  - script: echo $(nextRelease)
+    displayName: 'Show next version'
+  
   - task: DotNetCoreCLI@2
     displayName: Build the project
     inputs:
