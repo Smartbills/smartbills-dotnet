@@ -1,35 +1,39 @@
-pool: 
+pool:
   vmImage: windows-2022
 trigger:
   branches:
     include:
-    - '*'
+      - "*"
 
 steps:
-- task: gitversion/setup@0
-  displayName: 'Install GitVersion'
-  inputs:
-    versionSpec: '5.x'
-    includePrerelease: true
-- task: gitversion/execute@0
-  displayName: 'Execute GitVersion'
-  inputs:
-    useConfigFile: true
-    configFilePath: 'git-version.yml'
-- task: DotNetCoreCLI@2
-  displayName: Build the project
-  inputs:
-    command: 'build'
-    projects: |
-      **/*.csproj
-- task: DotNetCoreCLI@2
-  displayName: Package the project
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/Smartbills.NET.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'GitVersion.NuGetVersion'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'pipeline'
+  - task: PowerShell@2
+    displayName: "Install semantic-release"
+    inputs:
+      targetType: "inline"
+      script: |
+        npm install -g semantic-release @semantic-release/git semantic-release-ado @semantic-release/release-notes-generator
+  - task: PowerShell@2
+    displayName: "Upgrade version"
+    inputs:
+      targetType: "inline"
+      script: |
+        semantic-release
+  
+  - task: DotNetCoreCLI@2
+    displayName: Build the project
+    inputs:
+      command: "build"
+      projects: |
+        **/*.csproj
+  - task: DotNetCoreCLI@2
+    condition: ne(variables['nextRelease'], '')
+    displayName: Package the project
+    inputs:
+      command: "pack"
+      packagesToPack: "**/Smartbills.NET.csproj"
+      versioningScheme: "byEnvVar"
+      versionEnvVar: "nextRelease"
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: "$(Pipeline.Workspace)"
+      publishLocation: "pipeline"
