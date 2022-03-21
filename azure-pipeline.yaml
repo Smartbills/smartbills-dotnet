@@ -18,6 +18,7 @@ steps:
       targetType: "inline"
       script: |
         semantic-release
+  
   - task: DotNetCoreCLI@2
     displayName: Build the project
     inputs:
@@ -25,6 +26,7 @@ steps:
       projects: |
         **/*.csproj
   - task: DotNetCoreCLI@2
+    condition: ne(variables['nextRelease'], '')
     displayName: Package the project
     inputs:
       command: "pack"
