@@ -19,7 +19,13 @@
                 "changelogFile": "CHANGELOG.md"
             }
         ],
-        "semantic-release-ado",
+        [
+            "semantic-release-ado",
+            {
+                "varName": "nextRelease",
+                "setOnlyOnRelease": false
+            }
+        ],
         [
             "@semantic-release/git",
             {
