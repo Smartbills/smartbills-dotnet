@@ -4,7 +4,8 @@ trigger:
   branches:
     include:
       - "*"
-
+variables:
+  GH_TOKEN: $(GITHUB_TOKEN)
 steps:
   - task: PowerShell@2
     displayName: "Install semantic-release"
@@ -18,7 +19,8 @@ steps:
       targetType: "inline"
       script: |
         semantic-release
-  
+    env:
+      GH_TOKEN: $(GH_TOKEN)
   - task: DotNetCoreCLI@2
     displayName: Build the project
     inputs:
