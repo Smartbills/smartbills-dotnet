@@ -4,8 +4,7 @@ trigger:
   branches:
     include:
       - "*"
-variables:
-  nextRelease: unknown
+
 steps:
   - task: PowerShell@2
     displayName: "Install semantic-release"
