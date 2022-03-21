@@ -19,6 +19,11 @@ steps:
       targetType: "inline"
       script: |
         semantic-release
+
+  - powershell: |
+      echo "##vso[task.setvariable variable=versionNumber;isOutput=true]$(nextRelease)"
+      name: setOutputVar
+      
   - script: echo $(nextRelease)
     displayName: 'Show next version'
   
