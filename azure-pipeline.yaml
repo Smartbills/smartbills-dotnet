@@ -22,7 +22,6 @@ steps:
 
   - powershell: |
       echo "##vso[task.setvariable variable=versionNumber;isOutput=true]$(nextRelease)"
-      name: setOutputVar
       
   - script: echo $(nextRelease)
     displayName: 'Show next version'
