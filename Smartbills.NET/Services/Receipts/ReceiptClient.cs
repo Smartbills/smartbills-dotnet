@@ -7,7 +7,9 @@ namespace Smartbills.Client.Services
 {
 
     public interface IReceiptClient : ICreateable<Receipt, CreateReceiptRequest>,
-    IRetrievable<Receipt, GetReceiptRequest>
+    IRetrievable<Receipt, GetReceiptRequest>,
+        IUpdateable<Receipt, UpdateReceiptRequest>,
+        IDeleteable<Receipt, DeleteReceiptRequest>
     {
 
     }
@@ -27,6 +29,15 @@ namespace Smartbills.Client.Services
         public async Task<SmartbillsResponse<Receipt>> GetAsync(Guid id, GetReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
+        }
+        public async Task<SmartbillsResponse<Receipt>> DeleteAsync(Guid id, DeleteReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return await base.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+        }
+
+        public async Task<SmartbillsResponse<Receipt>> UpdateAsync(Guid id, UpdateReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
         }
     }
 }

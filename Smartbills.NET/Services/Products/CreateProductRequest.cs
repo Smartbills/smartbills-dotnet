@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.Client.Services
 {
-    public class CreateProductRequest
+    public class CreateProductRequest : BaseRequest
     {
         [Required]
         [MaxLength(255)]
