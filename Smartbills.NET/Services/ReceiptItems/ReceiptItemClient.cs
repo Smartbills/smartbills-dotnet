@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services.ReceiptItems
+namespace Smartbills.Client.Services
 {
     public interface IReceiptItemClient : 
         INestedRetrievable<SBReceiptItem, GetReceiptItemRequest>,

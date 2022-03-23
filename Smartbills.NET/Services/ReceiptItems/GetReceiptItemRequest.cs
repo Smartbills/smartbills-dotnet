@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services.ReceiptItems
+namespace Smartbills.Client.Services
 {
     public class GetReceiptItemRequest
     {

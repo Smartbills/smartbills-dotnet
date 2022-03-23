@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
-{
-    public class DeleteReceiptItemRequest: BaseRequest
+namespace Smartbills.Client.Services { 
+    public class UpdateCompanyRequest: BaseRequest
     {
     }
 }

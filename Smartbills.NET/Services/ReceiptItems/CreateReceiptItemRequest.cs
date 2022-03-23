@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.ReceiptItems
+namespace Smartbills.Client.Entities
 {
     public class CreateReceiptItemRequest
     {

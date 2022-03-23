@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Companies
+namespace Smartbills.Client.Services
 {
     public class CreateCompanyRequest
     {
