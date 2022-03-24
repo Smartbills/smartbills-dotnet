@@ -1,11 +1,10 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.ReceiptMetadata
+namespace Smartbills.Client.Services
 {
-    public class CreateReceiptMetadataDTO
+    public class CreateReceiptMetadataRequest
     {
         [JsonPropertyName("landing_site")]
-
         public string LandingSite { get; set; }
         [JsonPropertyName("customer_locale")]
         public string CustomerLocale { get; set; }
@@ -24,6 +23,6 @@ namespace Smartbills.Client.Entities.ReceiptMetadata
         [JsonPropertyName("url")]
         public string Url { get; set; }
         [JsonPropertyName("browser_metadata")]
-        public CreateBrowserMetadataDTO BrowserMetadata { get; set; }
+        public CreateBrowserMetadataRequest BrowserMetadata { get; set; }
     }
 }

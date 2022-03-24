@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.ReceiptMetadata
+namespace Smartbills.Client.Entities
 {
-    public class BrowserMetadataDTO
+    public class SBBrowserMetadata
     {
         [JsonPropertyName("accept_language")]
         public string AcceptLanguage { get; set; }

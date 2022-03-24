@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.Client.Services
 {
-    public class CreateProductVariantDTO
+    public class CreateProductVariantRequest
     {
 
         [JsonPropertyName("initial_price")]

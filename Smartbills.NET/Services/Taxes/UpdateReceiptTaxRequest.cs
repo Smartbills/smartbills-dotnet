@@ -2,7 +2,7 @@
 
 namespace Smartbills.Client.Services
 {
-    public class CreateReceiptTaxRequest
+    public class UpdateReceiptTaxRequest
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

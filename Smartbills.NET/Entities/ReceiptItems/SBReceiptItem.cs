@@ -13,12 +13,12 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("product_id")]
         public Guid? ProductId { get; set; }
         [JsonPropertyName("product")]
-        public virtual SBProduct Product { get; set; }
+        public  SBProduct Product { get; set; }
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
 
         [JsonPropertyName("variant")]
-        public virtual SBProductVariant Variant { get; set; }
+        public  SBProductVariant Variant { get; set; }
 
         [JsonPropertyName("variant_id")]
         public Guid? VariantId { get; set; }

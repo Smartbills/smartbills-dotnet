@@ -1,6 +1,5 @@
 ﻿using Smartbills.Client;
 using Smartbills.Client.Entities;
-using Smartbills.Client.Entities.ReceiptItems;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

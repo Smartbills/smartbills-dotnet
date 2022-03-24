@@ -1,4 +1,3 @@
-using Smartbills.Client.Entities.ReceiptMetadata;
 using Smartbills.Client.Entities.Taxes;
 using System;
 using System.Collections.Generic;
@@ -54,7 +53,7 @@ namespace Smartbills.Client.Entities
         public Guid? StoreId { get; set; }
 
         [JsonPropertyName("receipt_metadata")]
-        public ReceiptMetadataDTO ReceiptMetadata { get; set; }
+        public SBReceiptMetadata ReceiptMetadata { get; set; }
 
         [JsonPropertyName("total_weight")]
         public decimal TotalWeight { get; set; }

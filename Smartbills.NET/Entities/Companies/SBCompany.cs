@@ -24,7 +24,7 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("hq_phone_number")]
         public string HQPhoneNumber { get; set; }
         [JsonPropertyName("hq_address")]
-        public virtual SBAddress HQAddress { get; set; }
+        public  SBAddress HQAddress { get; set; }
         [JsonPropertyName("description")]
         public string Description { get; set; }
         [JsonPropertyName("name")]

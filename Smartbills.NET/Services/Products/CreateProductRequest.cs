@@ -34,7 +34,7 @@ namespace Smartbills.Client.Services
 
         [JsonPropertyName("variants")]
 
-        public virtual List<CreateProductVariantDTO> Variants { get; set; } = new List<CreateProductVariantDTO>();
+        public  List<CreateProductVariantRequest> Variants { get; set; } = new List<CreateProductVariantRequest>();
 
         //[JsonPropertyName("options")]
         //public virtual List<CreateProductOptionDTO> Request { get; set; } = new List<CreateProductOptionDTO>();
