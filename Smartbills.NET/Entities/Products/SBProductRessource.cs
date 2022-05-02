@@ -10,6 +10,6 @@ namespace Smartbills.NET.Entities
     public class SBProductRessource
     {
         [JsonPropertyName("product_id")]
-        public Guid ProductId { get; set; }
+        public long ProductId { get; set; }
     }
 }

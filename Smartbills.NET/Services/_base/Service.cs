@@ -23,18 +23,18 @@ namespace Smartbills.Client.Services
             return await _client.RequestAsync<TEntityReturned, TRequestRequest>(HttpMethod.Post, BasePath, options, requestOptions, null, cancellationToken);
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> GetEntityAsync<TRequestRequest>(Guid id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> GetEntityAsync<TRequestRequest>(long id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await _client.RequestAsync<TEntityReturned, TRequestRequest>(HttpMethod.Get, RessourceUrl(id), options, requestOptions, null, cancellationToken);
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> UpdateEntityAsync<TRequestRequest>(Guid id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> UpdateEntityAsync<TRequestRequest>(long id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await _client.RequestAsync<TEntityReturned, TRequestRequest>(HttpMethod.Put, RessourceUrl(id), options, requestOptions, null, cancellationToken);
         }
 
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> DeleteEntityAsync<TRequestRequest>(Guid id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        protected async Task<SmartbillsResponse<TEntityReturned>> DeleteEntityAsync<TRequestRequest>(long id, TRequestRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await _client.RequestAsync<TEntityReturned, TRequestRequest>(HttpMethod.Delete, RessourceUrl(id), options, requestOptions, null, cancellationToken);
         }
@@ -57,7 +57,7 @@ namespace Smartbills.Client.Services
 
 
 
-        public virtual string RessourceUrl(Guid id)
+        public virtual string RessourceUrl(long id)
         {
             return $"{APIVersion}/{BasePath}/{WebUtility.UrlEncode(id.ToString())}";
         }

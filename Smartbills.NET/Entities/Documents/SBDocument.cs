@@ -7,7 +7,7 @@ namespace Smartbills.Client.Entities
     {
 
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [JsonPropertyName("name")]
         public string Name { get; set; }
@@ -23,6 +23,6 @@ namespace Smartbills.Client.Entities
         public DateTimeOffset UpdatedAt { get; set; }
 
         [JsonPropertyName("user_id")]
-        public Guid? UserId { get; set; }
+        public long? UserId { get; set; }
     }
 }

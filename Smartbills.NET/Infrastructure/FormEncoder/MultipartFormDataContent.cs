@@ -14,7 +14,7 @@ namespace Smartbills.Infrastructure.FormEncoder
         /// </summary>
         /// <param name="nameValueCollection">The collection of name/value tuples to encode.</param>
         public MultipartFormDataContent(IEnumerable<KeyValuePair<string, object>> nameValueCollection)
-            : this(nameValueCollection, Guid.NewGuid().ToString())
+            : this(nameValueCollection, new long().ToString())
         {
         }
 

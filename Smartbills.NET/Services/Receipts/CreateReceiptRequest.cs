@@ -12,7 +12,7 @@ namespace Smartbills.Client.Services
     public class CreateReceiptRequest: BaseRequest
     {
         [JsonPropertyName("company_id")]
-        public Guid? CompanyId { get; set; }
+        public long? CompanyId { get; set; }
 
         [JsonPropertyName("customer")]
         public CreateCompanyCustomerRequest Customer { get; set; }
@@ -78,7 +78,7 @@ namespace Smartbills.Client.Services
         public CreateReceiptMetadataRequest ReceiptMetadata { get; set; }
         [JsonPropertyName("store_id")]
 
-        public Guid? StoreId { get; set; }
+        public long? StoreId { get; set; }
 
         //[JsonPropertyName("transactions")]
 

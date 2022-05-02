@@ -10,7 +10,7 @@ namespace Smartbills.Client.Entities.Receipts
         [JsonPropertyName("company_name")]
         public string CompanyName { get; set; }
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [JsonPropertyName("date")]
         public DateTimeOffset Date { get; set; }
         [JsonPropertyName("total")]

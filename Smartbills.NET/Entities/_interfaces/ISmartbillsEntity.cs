@@ -4,6 +4,6 @@ namespace Smartbills.Client.Entities
 {
     public interface ISmartbillsEntity
     {
-        Guid Id { get; set; }
+        long Id { get; set; }
     }
 }

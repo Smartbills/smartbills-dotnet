@@ -6,7 +6,7 @@ namespace Smartbills.Client.Entities.Wallet
     public class SBWalletTransaction
     {
         [JsonProperty("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [JsonProperty("date")]
         public DateTimeOffset Date { get; set; }
         [JsonProperty("title")]

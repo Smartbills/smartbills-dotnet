@@ -8,7 +8,7 @@ namespace Smartbills.Client.Entities
     {
 
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [JsonPropertyName("initial_price")]
         public decimal? InitialPrice { get; set; }
         [JsonPropertyName("price")]

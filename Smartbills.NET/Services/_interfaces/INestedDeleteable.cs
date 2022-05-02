@@ -7,6 +7,6 @@ namespace Smartbills.Client.Services
     public interface INestedDeleteable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> DeleteAsync(Guid parentId, Guid id, TRequest request, RequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TEntity>> DeleteAsync(long parentId, long id, TRequest request, RequestOptions options = null, CancellationToken cancellationToken = default);
     }
 }

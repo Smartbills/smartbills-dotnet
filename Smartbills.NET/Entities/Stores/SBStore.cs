@@ -8,7 +8,7 @@ namespace Smartbills.Client.Entities.Stores
     {
 
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         //[JsonPropertyName("address")]
         //public AddressDTO Address { get; set; }

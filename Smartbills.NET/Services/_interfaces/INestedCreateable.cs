@@ -7,6 +7,6 @@ namespace Smartbills.Client.Services
     public interface INestedCreateable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> CreateAsync(Guid parentId, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TEntity>> CreateAsync(long parentId, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
     }
 }

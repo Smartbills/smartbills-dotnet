@@ -32,17 +32,17 @@ namespace Smartbills.Client.Services.Store
             return await base.CreateEntityAsync(createRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> DeleteAsync(Guid id, DeleteStoreRequest deleteRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBStore>> DeleteAsync(long id, DeleteStoreRequest deleteRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.DeleteEntityAsync(id, deleteRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> GetAsync(Guid id, GetStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBStore>> GetAsync(long id, GetStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityAsync(id, request, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> UpdateAsync(Guid id, UpdateStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBStore>> UpdateAsync(long id, UpdateStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync(id, request, requestOptions, cancellationToken);
         }

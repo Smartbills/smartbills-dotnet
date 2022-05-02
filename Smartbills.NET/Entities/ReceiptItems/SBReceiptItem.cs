@@ -9,9 +9,9 @@ namespace Smartbills.Client.Entities
     public class SBReceiptItem
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [JsonPropertyName("product_id")]
-        public Guid? ProductId { get; set; }
+        public long? ProductId { get; set; }
         [JsonPropertyName("product")]
         public  SBProduct Product { get; set; }
         [JsonPropertyName("price")]
@@ -21,7 +21,7 @@ namespace Smartbills.Client.Entities
         public  SBProductVariant Variant { get; set; }
 
         [JsonPropertyName("variant_id")]
-        public Guid? VariantId { get; set; }
+        public long? VariantId { get; set; }
         [JsonPropertyName("quantity")]
         public decimal Quantity { get; set; }
         [JsonPropertyName("sub_total")]

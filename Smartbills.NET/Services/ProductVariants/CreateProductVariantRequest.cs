@@ -22,7 +22,7 @@ namespace Smartbills.Client.Services
         [JsonPropertyName("position")]
         public string Name { get; set; }
         [JsonPropertyName("image_id")]
-        public Guid? ImageId { get; set; }
+        public long? ImageId { get; set; }
         [JsonPropertyName("barcode")]
         public string Barcode { get; set; }
         [JsonPropertyName("sku")]

@@ -32,32 +32,32 @@ namespace Smartbills.Client.Services
             return await base.CreateEntityAsync(createRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(Guid parentId, CreateBankTransactionRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(long parentId, CreateBankTransactionRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.CreateNestedEntityAsync(parentId, createRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> GetAsync(Guid id, GetBankTransactionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> GetAsync(long id, GetBankTransactionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> GetAsync(Guid parentId, Guid id, GetBankTransactionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> GetAsync(long parentId, long id, GetBankTransactionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> UpdateAsync(Guid id, UpdateBankTransactionRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> UpdateAsync(long id, UpdateBankTransactionRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync(id, updateRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> UpdateAsync(Guid parentId, Guid id, UpdateBankTransactionRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> UpdateAsync(long parentId, long id, UpdateBankTransactionRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateNestedEntityAsync(parentId, id, updateRequest, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankTransaction>> DeleteAsync(Guid id, DeleteBankTransactionRequest deleteRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> DeleteAsync(long id, DeleteBankTransactionRequest deleteRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.DeleteEntityAsync(id, deleteRequest, requestOptions, cancellationToken);
         }

@@ -3,7 +3,7 @@
     //public class ReceiptTransactionDTO
     //{
     //    [JsonPropertyName("id")]
-    //    public Guid Id { get; set; }
+    //    public long Id { get; set; }
     //    [JsonPropertyName("amount")]
 
     //    public decimal Amount { get; set; }

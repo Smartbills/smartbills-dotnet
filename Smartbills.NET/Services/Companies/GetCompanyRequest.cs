@@ -4,6 +4,6 @@ namespace Smartbills.Client.Services
 {
     public class GetCompanyRequest : BaseRequest
     {
-        public Guid CompanyId { get; set; }
+        public long CompanyId { get; set; }
     }
 }

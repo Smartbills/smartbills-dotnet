@@ -6,7 +6,7 @@ namespace Smartbills.Client.Entities
     public class CreateDocumentReceiptDTO
     {
         [JsonPropertyName("company_id")]
-        public Guid? CompanyId { get; set; }
+        public long? CompanyId { get; set; }
 
         //[JsonPropertyName("items")]
         //public List<CreateReceiptItemDTO> Items { get; set; } = new List<CreateReceiptItemDTO>();
@@ -44,7 +44,7 @@ namespace Smartbills.Client.Entities
 
         [JsonPropertyName("store_id")]
 
-        public Guid? StoreId { get; set; }
+        public long? StoreId { get; set; }
 
         //[JsonPropertyName("barcode")]
         //public CreateBarcodeDTO Barcode { get; set; }

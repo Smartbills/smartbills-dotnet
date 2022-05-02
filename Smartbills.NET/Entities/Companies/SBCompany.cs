@@ -6,7 +6,7 @@ namespace Smartbills.Client.Entities
     public class SBCompany
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         [JsonPropertyName("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
         [JsonPropertyName("slug")]

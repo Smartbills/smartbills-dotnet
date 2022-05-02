@@ -5,7 +5,7 @@ namespace Smartbills.Client.Entities
 {
     public interface ISmartbillsEntityWithId
     {
-        Guid Id { get;set; }
+        long Id { get;set; }
     }
     public class SmartbillsEntity
     {
@@ -13,6 +13,6 @@ namespace Smartbills.Client.Entities
     public class SmartbillsEntityWithId : SmartbillsEntity, ISmartbillsEntityWithId
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
     }
 }
