@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.Client.Services
 {
-    public class CreateProductVariantDTO
+    public class CreateProductVariantRequest
     {
 
         [JsonPropertyName("initial_price")]
@@ -22,7 +22,7 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("position")]
         public string Name { get; set; }
         [JsonPropertyName("image_id")]
-        public Guid? ImageId { get; set; }
+        public long? ImageId { get; set; }
         [JsonPropertyName("barcode")]
         public string Barcode { get; set; }
         [JsonPropertyName("sku")]

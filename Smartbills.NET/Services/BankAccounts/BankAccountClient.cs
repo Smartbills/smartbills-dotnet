@@ -21,17 +21,17 @@ namespace Smartbills.Client.Services
 
         public BankAccountClient(ISmartbillsClient client) : base(client) { }
 
-        public async Task<SmartbillsResponse<SBBankAccount>> GetAsync(Guid parentId, Guid id, GetBankAccountRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankAccount>> GetAsync(long parentId, long id, GetBankAccountRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankAccount>> UpdateAsync(Guid parentId, Guid id, UpdateBankAccountRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankAccount>> UpdateAsync(long parentId, long id, UpdateBankAccountRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankAccount>> CreateAsync(Guid parentId, CreateBankAccountRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankAccount>> CreateAsync(long parentId, CreateBankAccountRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.CreateNestedEntityAsync(parentId, createRequest, requestOptions, cancellationToken);
         }

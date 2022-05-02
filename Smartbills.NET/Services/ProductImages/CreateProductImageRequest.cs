@@ -6,9 +6,9 @@ namespace Smartbills.Client.Services
 {
     public class CreateProductImageRequest
     {
-        public List<Guid> ProductVariantIds { get; set; } = new List<Guid>();
+        public List<long> ProductVariantIds { get; set; } = new List<long>();
         [JsonPropertyName("product_id")]
-        public Guid? ProductId { get; set; }
+        public long? ProductId { get; set; }
         [JsonPropertyName("src")]
         public string Src { get; set; }
     }

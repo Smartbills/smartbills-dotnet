@@ -18,7 +18,7 @@ namespace Smartbills.NET.UnitTests
         public async Task SHOULD_NOT_FIND_BANK_INSTITUTION()
         {
             // Act
-            var response = await _bankInstitutionClient.GetAsync(Guid.Empty, new  GetBankInstitutionRequest());
+            var response = await _bankInstitutionClient.GetAsync(new long(), new  GetBankInstitutionRequest());
             Assert.False(response.IsSuccessStatusCode);
             Assert.Equal(System.Net.HttpStatusCode.NotFound,response.StatusCode);
 

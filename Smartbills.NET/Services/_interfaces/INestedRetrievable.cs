@@ -7,6 +7,6 @@ namespace Smartbills.Client.Services
     public interface INestedRetrievable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> GetAsync(Guid parentId, Guid id, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TEntity>> GetAsync(long parentId, long id, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
     }
 }

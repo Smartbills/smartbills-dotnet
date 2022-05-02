@@ -9,6 +9,6 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("total")]
         public decimal Total { get; set; }
         [JsonPropertyName("user_id")]
-        public Guid UserId { get; set; }
+        public long UserId { get; set; }
     }
 }

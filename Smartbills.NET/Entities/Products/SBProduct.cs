@@ -8,10 +8,10 @@ namespace Smartbills.Client.Entities
     public class SBProduct
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [JsonPropertyName("company_id")]
-        public Guid? CompanyId { get; set; }
+        public long? CompanyId { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("slug")]

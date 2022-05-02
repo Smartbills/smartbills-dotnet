@@ -1,8 +1,8 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.ReceiptMetadata
+namespace Smartbills.Client.Entities
 {
-    public class ReceiptMetadataDTO
+    public class SBReceiptMetadata
     {
         [JsonPropertyName("landing_site")]
 
@@ -24,6 +24,6 @@ namespace Smartbills.Client.Entities.ReceiptMetadata
         [JsonPropertyName("url")]
         public string Url { get; set; }
         [JsonPropertyName("browser_metadata")]
-        public BrowserMetadataDTO BrowserMetadata { get; set; }
+        public SBBrowserMetadata BrowserMetadata { get; set; }
     }
 }

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Smartbills.Client.Services
 {
     public interface ICompanyClient :
-    IRetrievable<SBCompany, GetReceiptRequest>
+    IRetrievable<SBCompany, GetReceiptRequest>,
+    ICreateable<SBCompany, CreateCompanyRequest>,
+    IUpdateable<SBCompany, UpdateCompanyRequest>
     {
     }
     public class CompanyClient :
@@ -23,10 +25,20 @@ namespace Smartbills.Client.Services
         {
             return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
-        public async Task<SmartbillsResponse<SBCompany>> GetAsync(Guid id, GetReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBCompany>> GetAsync(long id, GetReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
 
             return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
+        }
+
+        public async Task<SmartbillsResponse<SBCompany>> CreateAsync(CreateCompanyRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync(request, options, cancellationToken);
+        }
+
+        public async Task<SmartbillsResponse<SBCompany>> UpdateAsync(long id, UpdateCompanyRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync(id, request, options, cancellationToken);
         }
     }
 }

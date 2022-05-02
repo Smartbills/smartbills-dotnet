@@ -25,12 +25,12 @@ namespace Smartbills.Client.Services
         {
             return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
         }
-        public async Task<SmartbillsResponse<SBDocument>> GetAsync(Guid id, GetDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> GetAsync(long id, GetDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBDocument>> DeleteAsync(Guid id, DeleteDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> DeleteAsync(long id, DeleteDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return await base.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }

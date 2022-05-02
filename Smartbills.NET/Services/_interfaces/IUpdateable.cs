@@ -7,6 +7,6 @@ namespace Smartbills.Client.Services
     public interface IUpdateable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> UpdateAsync(Guid id, TRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TEntity>> UpdateAsync(long id, TRequest request, RequestOptions options = null, CancellationToken cancellationToken = default);
     }
 }

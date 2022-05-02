@@ -24,7 +24,7 @@
     //    [JsonPropertyName("message")]
     //    public string Message { get; set; }
     //    [JsonPropertyName("transaction_id")]
-    //    public Guid ParentTransactionId { get; set; }
+    //    public long ParentTransactionId { get; set; }
     //    [JsonPropertyName("status")]
     //    public string Status { get; set; }
     //    [JsonPropertyName("payment_detail")]

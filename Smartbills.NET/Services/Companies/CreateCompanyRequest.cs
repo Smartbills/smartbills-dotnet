@@ -1,6 +1,7 @@
+using Smartbills.Client.Entities;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Companies
+namespace Smartbills.Client.Services
 {
     public class CreateCompanyRequest
     {
@@ -19,7 +20,7 @@ namespace Smartbills.Client.Entities.Companies
         [JsonPropertyName("hq_phone_number")]
         public string HQPhoneNumber { get; set; }
         [JsonPropertyName("hq_address")]
-        public virtual SBAddress HQAddress { get; set; }
+        public CreateAddressRequest HQAddress { get; set; }
         [JsonPropertyName("description")]
         public string Description { get; set; }
         [JsonPropertyName("name")]

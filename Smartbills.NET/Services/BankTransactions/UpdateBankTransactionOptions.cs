@@ -31,8 +31,8 @@ namespace Smartbills.Client.Services
         [JsonPropertyName("store_number")]
         public string StoreNumber { get; set; }
         [JsonPropertyName("bank_account_id")]
-        public Guid BankAccountId { get; set; }
+        public long BankAccountId { get; set; }
         [JsonPropertyName("receipt_id")]
-        public Guid? ReceiptId { get; set; }
+        public long? ReceiptId { get; set; }
     }
 }

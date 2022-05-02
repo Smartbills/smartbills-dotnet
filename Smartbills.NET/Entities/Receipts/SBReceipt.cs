@@ -1,4 +1,3 @@
-using Smartbills.Client.Entities.ReceiptMetadata;
 using Smartbills.Client.Entities.Taxes;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace Smartbills.Client.Entities
     public class SBReceipt
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public long Id { get; set; }
 
         [JsonPropertyName("company")]
         public SBCompany Company { get; set; }
@@ -51,10 +50,10 @@ namespace Smartbills.Client.Entities
         //public List<SBReceiptTransactionVM> Transactions { get; set; }
 
         [JsonPropertyName("store_id")]
-        public Guid? StoreId { get; set; }
+        public long? StoreId { get; set; }
 
         [JsonPropertyName("receipt_metadata")]
-        public ReceiptMetadataDTO ReceiptMetadata { get; set; }
+        public SBReceiptMetadata ReceiptMetadata { get; set; }
 
         [JsonPropertyName("total_weight")]
         public decimal TotalWeight { get; set; }

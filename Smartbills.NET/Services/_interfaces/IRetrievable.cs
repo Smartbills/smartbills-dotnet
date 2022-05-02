@@ -7,6 +7,6 @@ namespace Smartbills.Client.Services
     public interface IRetrievable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> GetAsync(Guid id, TRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TEntity>> GetAsync(long id, TRequest request, RequestOptions options = null, CancellationToken cancellationToken = default);
     }
 }
