@@ -49,13 +49,13 @@ namespace Smartbills.Client
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.SaveTokens = true;
             });
+            _services.AddAccessTokenManagement();
             return this;
         }
 
         private SmartbillsBuilder AddServices()
         {
             _services.AddOptions();
-            _services.AddAccessTokenManagement();
             _services.AddTransient<IBankClient, BankClient>();
             _services.AddTransient<IBankAccountClient, BankAccountClient>();
             _services.AddTransient<IBankTransactionClient, BankTransactionClient>();
