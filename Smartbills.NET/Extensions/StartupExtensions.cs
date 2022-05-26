@@ -13,7 +13,6 @@ namespace Smartbills.Client
         }
     }
 
-
     public class SmartbillsBuilder
     {
         private readonly IServiceCollection _services;
