@@ -8,14 +8,13 @@ using Xunit;
 
 namespace Smartbills.NET.UnitTests
 {
-    public class BankClientTest : ServerFixture
+    public class BankInstitutionClientTest : ServerFixture
     {
 
         private readonly BankInstitutionClient _bankInstitutionClient;
-        public BankClientTest()
+        public BankInstitutionClientTest()
         {
             var smartbillsClient = new SmartbillsClient("test");
-            _bankInstitutionClient = new BankInstitutionClient(smartbillsClient);
         }
         [Fact]
         public async Task SHOULD_NOT_FIND_BANK_INSTITUTION()

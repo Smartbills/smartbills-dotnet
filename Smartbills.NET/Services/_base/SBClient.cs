@@ -11,7 +11,7 @@ namespace Smarbtills.NET.Services
     public interface ISmartbillsClient { }
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
-        internal readonly RestClient Client;
+        public readonly RestClient Client;
         public SmartbillsClient(IOptions<SBClientConfiguration> configuration)
         {
             var restClientOptions = new RestClientOptions(configuration.Value.Url);
