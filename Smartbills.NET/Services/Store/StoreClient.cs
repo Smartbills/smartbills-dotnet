@@ -1,4 +1,4 @@
-﻿using RestSharp;
+using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using Smartbills.Client.Entities.Stores;
