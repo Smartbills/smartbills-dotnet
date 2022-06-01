@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface INestedCreateable<TEntity, TRequest>
-
+    public interface INestedCreateable<TEntity, TRequest> where TRequest : class
     {
-        Task<SmartbillsResponse<TEntity>> CreateAsync(long parentId, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<TEntity> CreateAsync(long parentId, string path, TRequest data = null, CancellationToken cancellationToken = default);
     }
 }

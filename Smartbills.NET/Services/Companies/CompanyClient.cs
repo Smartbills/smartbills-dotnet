@@ -1,4 +1,6 @@
 
+using RestSharp;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using System;
 using System.Threading;
@@ -8,8 +10,8 @@ namespace Smartbills.Client.Services
 {
     public interface ICompanyClient :
     IRetrievable<SBCompany, GetReceiptRequest>,
-    ICreateable<SBCompany, CreateCompanyRequest>,
-    IUpdateable<SBCompany, UpdateCompanyRequest>
+    ICreatable<SBCompany, CreateCompanyRequest>,
+    IUpdatable<SBCompany, UpdateCompanyRequest>
     {
     }
     public class CompanyClient :
@@ -19,16 +21,26 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "companies";
 
-        public CompanyClient(ISmartbillsClient client) : base(client) { }
+        public CompanyClient(SmartbillsClient client) : base(client) { }
 
-        public async Task<SmartbillsResponse<SBCompany>> CreateAsync(CreateReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBCompany> CreateAsync(CreateReceiptRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(data, cancellationToken);
         }
-        public async Task<SmartbillsResponse<SBCompany>> GetAsync(long id, GetReceiptRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBCompany> GetAsync(long id, GetReceiptRequest data = null, CancellationToken cancellationToken = default)
         {
 
-            return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return await base.GetEntityAsync(id, data, cancellationToken);
+        }
+
+        public async Task<SBCompany> CreateAsync(CreateCompanyRequest request, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync(request, cancellationToken);
+        }
+
+        public async Task<SBCompany> UpdateAsync(long id, UpdateCompanyRequest request, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync(id, request, cancellationToken);
         }
 
         public async Task<SmartbillsResponse<SBCompany>> CreateAsync(CreateCompanyRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)

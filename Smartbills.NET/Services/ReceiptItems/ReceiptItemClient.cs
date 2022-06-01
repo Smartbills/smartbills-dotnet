@@ -1,4 +1,6 @@
-﻿using Smartbills.Client;
+using RestSharp;
+using Smarbtills.NET.Services;
+using Smartbills.Client;
 using Smartbills.Client.Entities;
 using System;
 using System.Threading;
@@ -6,41 +8,40 @@ using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface IReceiptItemClient : 
-        INestedRetrievable<SBReceiptItem, GetReceiptItemRequest>,
-        INestedDeleteable<SBReceiptItem, DeleteReceiptItemRequest>,
-        INestedUpdateble<SBReceiptItem, UpdateReceiptItemRequest>,
-        INestedCreateable<SBReceiptItem, CreateReceiptItemRequest>
-        { }
-    public class ReceiptItemClient : ServiceNested<SBReceiptItem>, IReceiptItemClient
+    public interface IReceiptItemClient :
+        IRetrievable<SBReceiptItem, GetReceiptItemRequest>,
+        IDeletable<SBReceiptItem, DeleteReceiptItemRequest>,
+        IUpdatable<SBReceiptItem, UpdateReceiptItemRequest>,
+        ICreatable<SBReceiptItem, CreateReceiptItemRequest>
+    { }
+    public class ReceiptItemClient : Service<SBReceiptItem>, IReceiptItemClient
     {
-        public ReceiptItemClient(ISmartbillsClient client) : base(client)
+        public ReceiptItemClient(SmartbillsClient client) : base(client)
         {
         }
 
         public override string BasePath => "receipt-items";
 
-        public override string NestedPath => "receipts/${PARENT_ID}/items";
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> CreateAsync(long parentId, CreateReceiptItemRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await base.CreateNestedEntityAsync(parentId, createRequest, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(createRequest, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> DeleteAsync(long parentId, long id, DeleteReceiptItemRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteNestedEntityAsync(parentId, id, request, options, cancellationToken);
+            return await base.DeleteEntityAsync(id, cancellationToken);
 
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> GetAsync(long parentId, long id, GetReceiptItemRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> GetAsync(long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetNestedEntityAsync(parentId, id, request, options, cancellationToken);
+            return await base.GetEntityAsync(id, request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> UpdateAsync(long parentId, long id, UpdateReceiptItemRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateNestedEntityAsync(parentId, id, createRequest, requestOptions, cancellationToken);
+            return await base.UpdateEntityAsync(id, createRequest, cancellationToken);
         }
     }
 }
