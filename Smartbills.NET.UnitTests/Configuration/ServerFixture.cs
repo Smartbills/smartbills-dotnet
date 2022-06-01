@@ -11,8 +11,6 @@ namespace Smartbills.NET.IntegrationTests.Configuration
 {
     public class ServerFixture : IDisposable
     {
-        public ISmartbillsClient Client { get; private set; }
-
         public ServerFixture()
         {
         }

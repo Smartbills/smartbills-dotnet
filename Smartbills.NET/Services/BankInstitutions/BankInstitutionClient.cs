@@ -1,39 +1,37 @@
 
+using RestSharp;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
     public interface IBankInstitutionClient :
-    IRetrievable<SBBankInstitution, GetBankInstitutionRequest>,
-        ICreateable<SBBankInstitution, CreateBankInstitutionRequest>,
-        IUpdateable<SBBankInstitution, UpdateBankInstitutionRequest>
-
+        IRetrievable<SBBankInstitution, GetBankInstitutionRequest>,
+        ICreatable<SBBankInstitution, CreateBankInstitutionRequest>,
+        IUpdatable<SBBankInstitution, UpdateBankInstitutionRequest>
     {
     }
-    public class BankInstitutionClient :
-    Service<SBBankInstitution>, IBankInstitutionClient
-
+    public class BankInstitutionClient : Service<SBBankInstitution>, IBankInstitutionClient
     {
         public override string BasePath => "bank-institutions";
 
-        public BankInstitutionClient(ISmartbillsClient client) : base(client) { }
+        public BankInstitutionClient(SmartbillsClient client) : base(client) { }
 
-        public async Task<SmartbillsResponse<SBBankInstitution>> GetAsync(long id, GetBankInstitutionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return await base.GetEntityAsync(id, request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankInstitution>> CreateAsync(CreateBankInstitutionRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(options, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBBankInstitution>> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, updateRequest, requestOptions, cancellationToken);
+            return await base.UpdateEntityAsync(id, updateRequest, cancellationToken);
         }
     }
 }

@@ -1,4 +1,6 @@
 
+using RestSharp;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using System;
 using System.Threading;
@@ -14,25 +16,24 @@ namespace Smartbills.Client.Services
         Service<SBDocument>,
         IDocumentClient
 
-
     {
         public override string BasePath => "documents";
 
-        public DocumentClient(ISmartbillsClient client) : base(client) { }
+        public DocumentClient(SmartbillsClient client) : base(client) { }
 
 
-        public async Task<SmartbillsResponse<SBDocument>> CreateAsync(CreateDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBDocument> CreateAsync(CreateDocumentRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(data, cancellationToken);
         }
-        public async Task<SmartbillsResponse<SBDocument>> GetAsync(long id, GetDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBDocument> GetAsync(long id, GetDocumentRequest data = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return await base.GetEntityAsync(id, data, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBDocument>> DeleteAsync(long id, DeleteDocumentRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBDocument> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+            return await base.DeleteEntityAsync(id, cancellationToken);
         }
     }
 }

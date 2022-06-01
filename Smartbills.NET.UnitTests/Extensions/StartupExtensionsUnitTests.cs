@@ -19,19 +19,20 @@ namespace Smartbills.NET.IntegrationTests.Extensions
         public void SHOULD_INJECT_SERVICES()
         {
             var serviceCollection = new ServiceCollection();
-            SmartbillsBuilder builder = new(serviceCollection, new SmartbillsConfiguration { } );
-            List<Type> services = new() { 
+            serviceCollection.AddSmartbills();
+            List<Type> services = new() {
                 typeof(IBankAccountClient),
                 typeof(IBankInstitutionClient),
-                typeof(IBankClient), 
-                typeof(IBankTransactionClient), 
-                typeof(ICompanyClient), 
-                typeof(ICompanyClient), 
+                typeof(IBankClient),
+                typeof(IBankTransactionClient),
+                typeof(ICompanyClient),
+                typeof(ICompanyClient),
                 typeof(IReceiptClient)
             };
             var provider = serviceCollection.BuildServiceProvider();
-            foreach (var injectedService in services) { 
-            var service = provider.GetService(injectedService);
+            foreach (var injectedService in services)
+            {
+                var service = provider.GetService(injectedService);
                 Assert.NotNull(service);
 
             }

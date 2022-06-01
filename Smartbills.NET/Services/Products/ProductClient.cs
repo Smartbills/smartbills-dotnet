@@ -1,48 +1,44 @@
-﻿using Smartbills.Client;
+using RestSharp;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using Smartbills.Client.Entities.Products;
-using Smartbills.Client.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services.Products
 {
-    public interface IProductClient : ICreateable<SBProduct, CreateProductRequest>,
-        IUpdateable<SBProduct, UpdateProductRequest>,
-        IDeleteable<SBProduct, DeleteProductRequest>,
+    public interface IProductClient : ICreatable<SBProduct, CreateProductRequest>,
+        IUpdatable<SBProduct, UpdateProductRequest>,
+        IDeletable<SBProduct, DeleteProductRequest>,
         IRetrievable<SBProduct, GetProductRequest>
     { }
 
     public class ProductClient : Service<SBProduct>, IProductClient
     {
-        public ProductClient(ISmartbillsClient client) : base(client)
+        public ProductClient(SmartbillsClient client) : base(client)
         {
         }
 
         public override string BasePath => "products";
 
-        public async Task<SmartbillsResponse<SBProduct>> CreateAsync(CreateProductRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> CreateAsync(CreateProductRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(request, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBProduct>> DeleteAsync(long id, DeleteProductRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, request, requestOptions, cancellationToken);
+            return await base.DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBProduct>> GetAsync(long id, GetProductRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> GetAsync(long id, GetProductRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id,request, requestOptions, cancellationToken);
+            return await base.GetEntityAsync(id, request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBProduct>> UpdateAsync(long id, UpdateProductRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> UpdateAsync(long id, UpdateProductRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, request, requestOptions, cancellationToken);
+            return await base.UpdateEntityAsync(id, request, cancellationToken);
         }
     }
 }

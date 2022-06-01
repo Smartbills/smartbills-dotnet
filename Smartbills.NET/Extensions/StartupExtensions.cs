@@ -1,76 +1,34 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Services;
 using System;
 namespace Smartbills.Client
 {
-    public static class StartupExtensions
+    public static class Extensions
     {
-        public static SmartbillsBuilder AddSmartbills(this IServiceCollection services, SmartbillsConfiguration configuration = null)
+        public static void AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
         {
-            var builder = new SmartbillsBuilder(services, configuration ?? new SmartbillsConfiguration());
-            return builder;
+            services.Configure(options);
+            services.AddSingleton<ISmartbillsClient>();
+            services.AddTransient<IBankClient, BankClient>();
+            services.AddTransient<IBankAccountClient, BankAccountClient>();
+            services.AddTransient<IBankTransactionClient, BankTransactionClient>();
+            services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
+            services.AddTransient<ICompanyClient, CompanyClient>();
+            services.AddTransient<IReceiptClient, ReceiptClient>();
+            services.AddTransient<IDocumentClient, DocumentClient>();
         }
     }
 
-
-    public class SmartbillsBuilder
-    {
-        private readonly IServiceCollection _services;
-        private readonly SmartbillsConfiguration _configuration;
-
-        public SmartbillsBuilder(IServiceCollection services, SmartbillsConfiguration configuration)
-        {
-            _services = services;
-            _configuration = configuration;
-            AddServices();
-            _services.AddHttpClient<ISmartbillsClient, SmartbillsClient>(c =>
-            {
-                c.BaseAddress = new Uri(_configuration.Url);
-            });
-        }
-        public SmartbillsBuilder AddCredentials(SmartbillsCrendentials crendentials)
-        {
-            _services.AddAuthentication(options =>
-            {
-                options.DefaultChallengeScheme = "smartbills";
-            }).AddOpenIdConnect("smartbills", options =>
-            {
-                options.Authority = crendentials.Authority;
-                options.ClientId = crendentials.ClientId;
-                options.ClientSecret = crendentials.ClientSecret;
-                options.ResponseType = "client_credentials";
-                options.Scope.Clear();
-
-                foreach (var scope in crendentials.Scopes)
-                {
-                    options.Scope.Add(scope);
-                }
-                options.GetClaimsFromUserInfoEndpoint = true;
-                options.SaveTokens = true;
-            });
-            _services.AddAccessTokenManagement();
-            return this;
-        }
-
-        private SmartbillsBuilder AddServices()
-        {
-            _services.AddOptions();
-            _services.AddTransient<IBankClient, BankClient>();
-            _services.AddTransient<IBankAccountClient, BankAccountClient>();
-            _services.AddTransient<IBankTransactionClient, BankTransactionClient>();
-            _services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
-            _services.AddTransient<ICompanyClient, CompanyClient>();
-            _services.AddTransient<IReceiptClient, ReceiptClient>();
-            _services.AddTransient<IDocumentClient, DocumentClient>();
-            return this;
-        }
-    }
-
-    public class SmartbillsCrendentials
+    public class SBClientConfiguration
     {
         public string Url { get; set; } = "https://api.smartbills.io/";
-        public string Authority { get; set; } = "https://auth.smartbills.io/";
+        public SBClientCredential Credential { get; set; } = new();
+    }
+
+    public class SBClientCredential
+    {
+        public string Authority { get; set; } = "https://api.smartbills.io/auth";
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
         public string[] Scopes { get; set; }

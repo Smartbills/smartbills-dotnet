@@ -1,50 +1,46 @@
-﻿using Smartbills.Client;
+using RestSharp;
+using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using Smartbills.Client.Entities.Stores;
-using Smartbills.Client.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services.Store
 {
-    public interface IStoreClient : ICreateable<SBStore, CreateStoreRequest>,
-        IUpdateable<SBStore, UpdateStoreRequest>,
-        IDeleteable<SBStore, DeleteStoreRequest>,
+    public interface IStoreClient : ICreatable<SBStore, CreateStoreRequest>,
+        IUpdatable<SBStore, UpdateStoreRequest>,
+        IDeletable<SBStore, DeleteStoreRequest>,
         IRetrievable<SBStore, GetStoreRequest>
     {
 
     }
     internal class StoreClient : Service<SBStore>, IStoreClient
     {
-        public StoreClient(ISmartbillsClient client) : base(client)
+        public StoreClient(SmartbillsClient client) : base(client)
         {
         }
 
         public override string APIVersion => base.APIVersion;
         public override string BasePath => "stores";
 
-        public async Task<SmartbillsResponse<SBStore>> CreateAsync(CreateStoreRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBStore> CreateAsync(CreateStoreRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(createRequest, requestOptions, cancellationToken);
+            return await base.CreateEntityAsync(createRequest, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> DeleteAsync(long id, DeleteStoreRequest deleteRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBStore> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, deleteRequest, requestOptions, cancellationToken);
+            return await base.DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> GetAsync(long id, GetStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBStore> GetAsync(long id, GetStoreRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, requestOptions, cancellationToken);
+            return await base.GetEntityAsync(id, request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBStore>> UpdateAsync(long id, UpdateStoreRequest request, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public async Task<SBStore> UpdateAsync(long id, UpdateStoreRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, request, requestOptions, cancellationToken);
+            return await base.UpdateEntityAsync(id, request, cancellationToken);
         }
     }
 }

@@ -1,12 +1,10 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface IRetrievable<TEntity, TRequest>
-
+    public interface IRetrievable<TEntity, TRequest> where TRequest : class
     {
-        Task<SmartbillsResponse<TEntity>> GetAsync(long id, TRequest request, RequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<TEntity> GetAsync(long id, TRequest request = null, CancellationToken cancellationToken = default);
     }
 }
