@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 namespace Smartbills.Client.Services
 {
     public interface ISingletonRetrievable<TEntity, TRequest>
-
     {
-        Task<SmartbillsResponse<TEntity>> GetAsync(TRequest options, CancellationToken cancellationToken = default);
+        Task<TEntity> GetAsync(TRequest options, CancellationToken cancellationToken = default);
     }
 }

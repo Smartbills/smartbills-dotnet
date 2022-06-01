@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface IDeleteable<TEntity, TRequest>
+    public interface IDeletable<TEntity, TRequest>
 
     {
-        Task<SmartbillsResponse<TEntity>> DeleteAsync(long id, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<TEntity> DeleteAsync(long id,  CancellationToken cancellationToken = default);
     }
 }

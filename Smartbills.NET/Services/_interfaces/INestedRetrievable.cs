@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface INestedRetrievable<TEntity, TRequest>
+    public interface INestedRetrievable<TEntity, TRequest> where TRequest : class
 
     {
-        Task<SmartbillsResponse<TEntity>> GetAsync(long parentId, long id, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<TEntity> GetAsync(long parentId, long id, TRequest request, CancellationToken cancellationToken = default);
     }
 }

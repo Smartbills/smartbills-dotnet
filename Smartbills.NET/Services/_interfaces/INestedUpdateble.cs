@@ -4,9 +4,8 @@ using System.Threading.Tasks;
 
 namespace Smartbills.Client.Services
 {
-    public interface INestedUpdateble<TEntity, TRequest>
-
+    public interface INestedUpdateble<TEntity, TRequest> where TRequest : class
     {
-        Task<SmartbillsResponse<TEntity>> UpdateAsync(long parentId, long id, TRequest createRequest, RequestOptions requestOptions = null, CancellationToken cancellationToken = default);
+        Task<TEntity> UpdateAsync(long parentId, long id, TRequest data, CancellationToken cancellationToken = default);
     }
 }
