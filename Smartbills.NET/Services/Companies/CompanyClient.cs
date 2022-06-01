@@ -42,15 +42,5 @@ namespace Smartbills.Client.Services
         {
             return await base.UpdateEntityAsync(id, request, cancellationToken);
         }
-
-        public async Task<SmartbillsResponse<SBCompany>> CreateAsync(CreateCompanyRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
-        {
-            return await base.CreateEntityAsync(request, options, cancellationToken);
-        }
-
-        public async Task<SmartbillsResponse<SBCompany>> UpdateAsync(long id, UpdateCompanyRequest request, RequestOptions options = null, CancellationToken cancellationToken = default)
-        {
-            return await base.UpdateEntityAsync(id, request, options, cancellationToken);
-        }
     }
 }
