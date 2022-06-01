@@ -10,8 +10,8 @@ namespace Smartbills.Client.Services
 
     public abstract class Service<TEntityReturned>
     {
-        protected readonly ISmartbillsClient _client;
-        public Service(ISmartbillsClient client)
+        public readonly SmartbillsClient _smartbills;
+        public Service(SmartbillsClient smartbills)
         {
             _client = client;
         }

@@ -19,7 +19,9 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "banks";
 
-        public BankClient(ISmartbillsClient client) : base(client) { }
+
+        public BankClient(SmartbillsClient client) : base(client) {
+        }
 
         public async Task<SmartbillsResponse<SBBank>> CreateAsync(CreateBankRequest options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
