@@ -30,7 +30,7 @@ namespace Smartbills.Client.Services
         }
         public async Task<Receipt> GetAsync(long id, GetReceiptRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
         public async Task<Receipt> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
@@ -55,7 +55,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBReceiptItem> GetAsync(long parentId, long id, GetReceiptItemRequest data = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetChildAsync<GetReceiptItemRequest, SBReceiptItem>(parentId, this.ReceiptItemPath, id, data, cancellationToken);
+            return await base.GetChildByIdAsync<GetReceiptItemRequest, SBReceiptItem>(parentId, this.ReceiptItemPath, id, data, cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateAsync(long parentId, long id, UpdateReceiptItemRequest data, CancellationToken cancellationToken = default)

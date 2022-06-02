@@ -25,9 +25,14 @@ namespace Smartbills.Client.Services
             return await _smartbills.Client.PostJsonAsync<TRequest, TEntityReturned>(this.VersionnedPath(), data, cancellationToken);
         }
 
-        protected async Task<TEntityReturned> GetEntityAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
         {
             return await _smartbills.Client.GetJsonAsync<TEntityReturned>(this.RessourceUrl(id), data, cancellationToken);
+        }
+
+        protected async Task<TEntityReturned> GetEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken = default)
+        {
+            return await _smartbills.Client.GetJsonAsync<TEntityReturned>(this.VersionnedPath(), data, cancellationToken);
         }
 
         protected async Task<TEntityReturned> UpdateEntityAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
@@ -45,29 +50,38 @@ namespace Smartbills.Client.Services
 
         protected async Task<TChildReturned> CreateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class
         {
-            return await _smartbills.Client.PostJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(parentId, path), data, cancellationToken);
+            return await _smartbills.Client.PostJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(path, parentId), data, cancellationToken);
         }
-        protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
+        protected async Task<TChildReturned> GetChildByIdAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
         {
-            return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(parentId, path, id), options, cancellationToken);
+            return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId, id), options, cancellationToken);
+        }
+
+        protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path,  TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
+        {
+            return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId), options, cancellationToken);
         }
 
         protected async Task<TChildReturned> UpdateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class
         {
-            return await _smartbills.Client.PutJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(parentId, path, id), data, cancellationToken);
+            return await _smartbills.Client.PutJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(path, parentId, id), data, cancellationToken);
         }
 
 
         protected async Task<TChildReturned> DeleteChildAsync<TChildReturned>(long parentId, string path, long id, CancellationToken cancellationToken = default)
         {
-            RestRequest request = new RestRequest(this.NestedPath(parentId, path, id), Method.Delete);
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId, id), Method.Delete);
             return await _smartbills.Client.DeleteAsync<TChildReturned>(request, cancellationToken);
         }
 
 
-        public string NestedPath(long parentId, string path, long? id = null)
+        public string NestedPath(string path, long? parentId = null, long? id = null)
         {
-            var basePath = $"{this.VersionnedPath}/{parentId}/{path}";
+            var basePath = path;
+            if(parentId is not null)
+            {
+                basePath = $"{parentId}/{path}";
+            }
             if (id is not null)
             {
                 return $"{basePath}/{id}";

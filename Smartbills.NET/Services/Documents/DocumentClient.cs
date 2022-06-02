@@ -28,7 +28,7 @@ namespace Smartbills.Client.Services
         }
         public async Task<SBDocument> GetAsync(long id, GetDocumentRequest data = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id, data, cancellationToken);
         }
 
         public async Task<SBDocument> DeleteAsync(long id, CancellationToken cancellationToken = default)

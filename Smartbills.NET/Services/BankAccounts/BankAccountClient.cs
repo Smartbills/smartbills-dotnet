@@ -25,7 +25,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBBankAccount> GetAsync(long id, GetBankAccountRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id, data, cancellationToken);
         }
 
         public async Task<SBBankAccount> UpdateAsync(long id, UpdateBankAccountRequest data, CancellationToken cancellationToken = default)
@@ -40,7 +40,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBBankTransaction> GetTransactionsAsync(long parentId, long id, GetBankTransactionRequest options = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetChildAsync<GetBankTransactionRequest, SBBankTransaction>(parentId, this.TransactionsPath, id, options, cancellationToken);
+            return await base.GetChildByIdAsync<GetBankTransactionRequest, SBBankTransaction>(parentId, this.TransactionsPath, id, options, cancellationToken);
         }
 
         public async Task<SBBankTransaction> CreateTransactionsAsync(long parentId, CreateBankTransactionRequest data, CancellationToken cancellationToken = default)

@@ -29,7 +29,7 @@ namespace Smartbills.Client.Services
         }
         public async Task<SBProductImage> GetAsync(long id, GetProductImageRequest options = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, options, cancellationToken);
+            return await base.GetEntityByIdAsync(id, options, cancellationToken);
         }
         public async Task<SBProductImage> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {

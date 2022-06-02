@@ -21,7 +21,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
 
         public async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)

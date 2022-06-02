@@ -9,7 +9,7 @@ namespace Smartbills.Client
         public static void AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
         {
             services.Configure(options);
-            services.AddSingleton<ISmartbillsClient>();
+            services.AddSingleton<ISmartbillsClient, SmartbillsClient>();
             services.AddTransient<IBankClient, BankClient>();
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();

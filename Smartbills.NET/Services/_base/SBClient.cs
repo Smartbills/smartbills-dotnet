@@ -8,7 +8,8 @@ using Smartbills.Client;
 using static System.Net.Mime.MediaTypeNames;
 namespace Smarbtills.NET.Services
 {
-    public interface ISmartbillsClient { }
+    public interface ISmartbillsClient {
+    }
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
         public readonly RestClient Client;
@@ -17,9 +18,9 @@ namespace Smarbtills.NET.Services
             var restClientOptions = new RestClientOptions(configuration.Value.Url);
 
             Client = new RestClient(restClientOptions)
-            {
-                Authenticator = new SmartbillsAuthenticator(configuration.Value.Credential)
-            };
+                {
+                    Authenticator = new SmartbillsAuthenticator(configuration.Value.Credential)
+                };
         }
 
         public SmartbillsClient(string accessToken, string url = "https://api.smartbills.io/")
@@ -36,7 +37,6 @@ namespace Smarbtills.NET.Services
             Client.Dispose();
         }
     }
-
 }
 
 

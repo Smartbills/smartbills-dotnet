@@ -36,7 +36,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBReceiptItem> GetAsync(long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)

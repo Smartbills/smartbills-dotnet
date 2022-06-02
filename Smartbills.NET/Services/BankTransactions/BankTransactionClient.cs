@@ -33,7 +33,7 @@ namespace Smartbills.Client.Services
 
         public async Task<SBBankTransaction> GetAsync(long id, GetBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
 
 

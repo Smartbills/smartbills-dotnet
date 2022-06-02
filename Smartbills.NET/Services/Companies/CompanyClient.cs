@@ -30,7 +30,7 @@ namespace Smartbills.Client.Services
         public async Task<SBCompany> GetAsync(long id, GetReceiptRequest data = null, CancellationToken cancellationToken = default)
         {
 
-            return await base.GetEntityAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id, data, cancellationToken);
         }
 
         public async Task<SBCompany> CreateAsync(CreateCompanyRequest request, CancellationToken cancellationToken = default)

@@ -35,7 +35,7 @@ namespace Smartbills.Client.Services.Store
 
         public async Task<SBStore> GetAsync(long id, GetStoreRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
 
         public async Task<SBStore> UpdateAsync(long id, UpdateStoreRequest request, CancellationToken cancellationToken = default)
