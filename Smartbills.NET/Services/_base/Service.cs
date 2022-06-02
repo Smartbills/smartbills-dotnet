@@ -14,7 +14,7 @@ namespace Smartbills.Client.Services
 
     public abstract class Service<TEntityReturned>
     {
-        private readonly ISBBaseClient _smartbills;
+        public readonly ISBBaseClient _smartbills;
         public Service(ISBBaseClient smartbills)
         {
             _smartbills = smartbills;
