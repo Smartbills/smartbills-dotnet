@@ -94,18 +94,18 @@ namespace Smartbills.Client.Services
 
         public string VersionnedPath()
         {
-            return $"{APIVersion}/{BasePath}";
+            return $"{this.APIVersion}/{BasePath}";
         }
 
 
         public virtual string RessourceUrl(long id)
         {
-            return $"{this.VersionnedPath}/{WebUtility.UrlEncode(id.ToString())}";
+            return $"{this.VersionnedPath()}/{WebUtility.UrlEncode(id.ToString())}";
         }
 
         public virtual string RessourceUrl(string id)
         {
-            return $"{this.VersionnedPath}/{WebUtility.UrlEncode(id)}";
+            return $"{this.VersionnedPath()}/{WebUtility.UrlEncode(id)}";
         }
     }
 
