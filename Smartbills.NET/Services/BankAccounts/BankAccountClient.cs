@@ -1,4 +1,5 @@
 
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -21,7 +22,7 @@ namespace Smartbills.Client.Services
         private string TransactionsPath => "accounts";
 
 
-        public BankAccountClient(SmartbillsClient client) : base(client) { }
+        public BankAccountClient(ISmartbillsClient client) : base(client) { }
 
         public async Task<SBBankAccount> GetAsync(long id, GetBankAccountRequest data, CancellationToken cancellationToken = default)
         {

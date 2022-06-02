@@ -1,4 +1,5 @@
 
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -17,7 +18,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "bank-institutions";
 
-        public BankInstitutionClient(SmartbillsClient client) : base(client) { }
+        public BankInstitutionClient(ISmartbillsClient client) : base(client) { }
 
         public async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
         {

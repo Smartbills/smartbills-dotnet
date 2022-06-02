@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -18,7 +19,7 @@ namespace Smartbills.Client.Services
     { }
     public class BankTransactionClient : Service<SBBankTransaction>, IBankTransactionClient
     {
-        public BankTransactionClient(SmartbillsClient client) : base(client)
+        public BankTransactionClient(ISmartbillsClient client) : base(client)
         {
         }
 

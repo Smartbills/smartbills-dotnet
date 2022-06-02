@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -16,7 +17,7 @@ namespace Smartbills.Client.Services.Store
     }
     internal class StoreClient : Service<SBStore>, IStoreClient
     {
-        public StoreClient(SmartbillsClient client) : base(client)
+        public StoreClient(ISmartbillsClient client) : base(client)
         {
         }
 

@@ -4,16 +4,18 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
+using Smartbills.NET.Services;
 
 namespace Smartbills.Client.Services
 {
 
     public abstract class Service<TEntityReturned>
     {
-        public readonly SmartbillsClient _smartbills;
-        public Service(SmartbillsClient smartbills)
+        private readonly ISBBaseClient _smartbills;
+        public Service(ISBBaseClient smartbills)
         {
             _smartbills = smartbills;
         }

@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client;
@@ -16,7 +17,7 @@ namespace Smartbills.Client.Services
     { }
     public class ReceiptItemClient : Service<SBReceiptItem>, IReceiptItemClient
     {
-        public ReceiptItemClient(SmartbillsClient client) : base(client)
+        public ReceiptItemClient(ISmartbillsClient client) : base(client)
         {
         }
 

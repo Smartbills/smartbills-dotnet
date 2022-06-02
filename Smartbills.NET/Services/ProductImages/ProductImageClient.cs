@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -20,7 +21,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "product/{PARENT_ID}/images";
 
-        public ProductImageClient(SmartbillsClient client) : base(client) { }
+        public ProductImageClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<SBProductImage> CreateAsync(CreateProductImageRequest options, CancellationToken cancellationToken = default)

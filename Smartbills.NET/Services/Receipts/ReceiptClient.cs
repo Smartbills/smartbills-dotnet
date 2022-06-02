@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Microsoft.Extensions.Options;
+using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
 using System;
@@ -21,7 +22,7 @@ namespace Smartbills.Client.Services
         public override string BasePath => "receipts";
         private string ReceiptItemPath = "items";
 
-        public ReceiptClient(SmartbillsClient client) : base(client) { }
+        public ReceiptClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<Receipt> CreateAsync(CreateReceiptRequest options, CancellationToken cancellationToken = default)

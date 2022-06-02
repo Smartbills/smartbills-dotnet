@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -15,7 +16,7 @@ namespace Smartbills.Client.Services.Products
 
     public class ProductClient : Service<SBProduct>, IProductClient
     {
-        public ProductClient(SmartbillsClient client) : base(client)
+        public ProductClient(ISmartbillsClient client) : base(client)
         {
         }
 

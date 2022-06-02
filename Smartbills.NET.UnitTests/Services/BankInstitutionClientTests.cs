@@ -14,7 +14,6 @@ namespace Smartbills.NET.UnitTests
         private readonly BankInstitutionClient _bankInstitutionClient;
         public BankInstitutionClientTest()
         {
-            var smartbillsClient = new SmartbillsClient("test");
         }
         [Fact]
         public async Task SHOULD_NOT_FIND_BANK_INSTITUTION()

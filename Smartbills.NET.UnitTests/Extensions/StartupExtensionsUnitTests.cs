@@ -19,7 +19,7 @@ namespace Smartbills.NET.IntegrationTests.Extensions
         public void SHOULD_INJECT_SERVICES()
         {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSmartbills();
+            serviceCollection.AddSmartbills(options => options.Url = "https://test.com");
             List<Type> services = new() {
                 typeof(IBankAccountClient),
                 typeof(IBankInstitutionClient),

@@ -1,4 +1,5 @@
 
+using Microsoft.Extensions.Options;
 using RestSharp;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Entities;
@@ -19,7 +20,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "documents";
 
-        public DocumentClient(SmartbillsClient client) : base(client) { }
+        public DocumentClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<SBDocument> CreateAsync(CreateDocumentRequest data, CancellationToken cancellationToken = default)
