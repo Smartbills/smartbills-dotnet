@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using RestSharp;
-using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+﻿using Smarbtills.NET.Services;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
 
     public interface IReceiptClient : ICreatable<Receipt, CreateReceiptRequest>,
@@ -20,9 +17,9 @@ namespace Smartbills.Client.Services
 
     {
         public override string BasePath => "receipts";
-        private string ReceiptItemPath = "items";
+        private readonly string ReceiptItemPath = "items";
 
-        public ReceiptClient(ISmartbillsClient client) : base(client) { }
+        public ReceiptClient(ISBClient client) : base(client) { }
 
 
         public async Task<Receipt> CreateAsync(CreateReceiptRequest options, CancellationToken cancellationToken = default)

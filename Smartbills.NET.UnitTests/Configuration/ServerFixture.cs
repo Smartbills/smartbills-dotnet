@@ -1,11 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using Smartbills.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Smartbills.NET.IntegrationTests.Configuration
 {
@@ -14,7 +7,7 @@ namespace Smartbills.NET.IntegrationTests.Configuration
 
         public ServerFixture()
         {
-            
+
         }
 
         public void Dispose()

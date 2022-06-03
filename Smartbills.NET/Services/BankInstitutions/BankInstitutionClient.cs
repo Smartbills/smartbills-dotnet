@@ -1,12 +1,9 @@
-
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IBankInstitutionClient :
         IRetrievable<SBBankInstitution, GetBankInstitutionRequest>,
@@ -18,7 +15,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "bank-institutions";
 
-        public BankInstitutionClient(ISmartbillsClient client) : base(client) { }
+        public BankInstitutionClient(ISBClient client) : base(client) { }
 
         public async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
         {

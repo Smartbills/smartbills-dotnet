@@ -1,6 +1,4 @@
-using System;
-
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public interface ISmartbillsEntity
     {

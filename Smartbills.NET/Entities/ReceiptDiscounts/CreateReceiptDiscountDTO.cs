@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.ReceiptDiscounts
+namespace Smartbills.NET.Entities.ReceiptDiscounts
 {
     public class CreateReceiptDiscountDTO
     {

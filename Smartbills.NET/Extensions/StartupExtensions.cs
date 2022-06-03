@@ -1,28 +1,42 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Services;
+using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services;
 using System;
-namespace Smartbills.Client
+namespace Smartbills.NET
 {
-    public static class Extensions
+
+    public class SmartbillsBuilder
     {
-        public static void AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
+        private readonly IServiceCollection _services;
+        public SmartbillsBuilder(IServiceCollection services, Action<SBClientConfiguration> options = null)
         {
-            if (options is null)
+            _services = services;
+            if (options == null)
             {
-                services.Configure<SBClientConfiguration>(config =>
-                {
-                    config = new SBClientConfiguration();
-                });
+                _services.Configure<SBClientConfiguration>(config => config = new SBClientConfiguration());
             }
             else
             {
-                services.Configure(options);
+                _services.Configure(options);
             }
+        }
+
+        public SmartbillsBuilder AddCredentials(Action<SBClientCredential> credentials)
+        {
+            _services.Configure(credentials);
+            return this;
+        }
+
+    }
+    public static class Extensions
+    {
+
+        public static SmartbillsBuilder AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
+        {
+            var builder = new SmartbillsBuilder(services, options);
             services.AddSingleton<ISBBaseClient, SBBaseClient>();
-            services.AddSingleton<ISmartbillsClient, SmartbillsClient>();
+            services.AddSingleton<ISBClient, SBClient>();
             services.AddTransient<IBankClient, BankClient>();
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();
@@ -30,15 +44,10 @@ namespace Smartbills.Client
             services.AddTransient<ICompanyClient, CompanyClient>();
             services.AddTransient<IReceiptClient, ReceiptClient>();
             services.AddTransient<IDocumentClient, DocumentClient>();
+            return builder;
         }
     }
 
-    public class SBClientConfiguration : ISBClientBaseConfiguration
-    {
-        public const string Path = "Smartbills";
-        public string Url { get; set; } = "https://api.smartbills.io/";
-        public SBClientCredential Credential { get; set; } = new SBClientCredential();
-    }
 
     public class SBClientCredential
     {

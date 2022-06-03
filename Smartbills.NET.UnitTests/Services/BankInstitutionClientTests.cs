@@ -1,8 +1,5 @@
-using Microsoft.AspNetCore.TestHost;
-using Smarbtills.NET.Services;
-using Smartbills.Client.Services;
 using Smartbills.NET.IntegrationTests.Configuration;
-using System;
+using Smartbills.NET.Services;
 using System.Threading.Tasks;
 using Xunit;
 

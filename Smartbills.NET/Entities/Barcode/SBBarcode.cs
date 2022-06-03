@@ -1,4 +1,4 @@
-﻿namespace Smartbills.Client.Entities
+﻿namespace Smartbills.NET.Entities
 {
     public class SBBarcode
     {

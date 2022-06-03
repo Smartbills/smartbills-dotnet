@@ -1,13 +1,9 @@
-
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IBankAccountClient :
     IRetrievable<SBBankAccount, GetBankAccountRequest>,
@@ -22,7 +18,7 @@ namespace Smartbills.Client.Services
         private string TransactionsPath => "accounts";
 
 
-        public BankAccountClient(ISmartbillsClient client) : base(client) { }
+        public BankAccountClient(ISBClient client) : base(client) { }
 
         public async Task<SBBankAccount> GetAsync(long id, GetBankAccountRequest data, CancellationToken cancellationToken = default)
         {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Companies
+namespace Smartbills.NET.Entities.Companies
 {
     public class CreateCompanyCustomerRequest
     {

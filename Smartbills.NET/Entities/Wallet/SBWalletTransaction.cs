@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Smartbills.Client.Entities.Wallet
+namespace Smartbills.NET.Entities.Wallet
 {
     public class SBWalletTransaction
     {

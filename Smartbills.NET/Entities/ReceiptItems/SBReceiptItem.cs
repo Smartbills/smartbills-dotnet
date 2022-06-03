@@ -1,10 +1,9 @@
 
-using Smartbills.Client.Entities.Taxes;
-using System;
+using Smartbills.NET.Entities.Taxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public class SBReceiptItem
     {
@@ -13,12 +12,12 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("product_id")]
         public long? ProductId { get; set; }
         [JsonPropertyName("product")]
-        public  SBProduct Product { get; set; }
+        public SBProduct Product { get; set; }
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
 
         [JsonPropertyName("variant")]
-        public  SBProductVariant Variant { get; set; }
+        public SBProductVariant Variant { get; set; }
 
         [JsonPropertyName("variant_id")]
         public long? VariantId { get; set; }

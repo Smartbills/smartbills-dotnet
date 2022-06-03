@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Stores
+namespace Smartbills.NET.Entities.Stores
 {
     public class SBStore
     {

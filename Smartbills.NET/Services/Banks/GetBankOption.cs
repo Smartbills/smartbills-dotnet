@@ -1,6 +1,6 @@
-using Smartbills.Client.Entities;
+using Smartbills.NET.Entities;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public class GetBankRequest : BaseRequest
     {

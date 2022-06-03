@@ -1,13 +1,6 @@
-﻿using Smartbills.Client.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Smartbills.Client.Services.Products
+﻿namespace Smartbills.NET.Services.Products
 {
-    public class GetProductRequest: BaseRequest
+    public class GetProductRequest : BaseRequest
     {
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public class SBCompany
     {
@@ -24,7 +24,7 @@ namespace Smartbills.Client.Entities
         [JsonPropertyName("hq_phone_number")]
         public string HQPhoneNumber { get; set; }
         [JsonPropertyName("hq_address")]
-        public  SBAddress HQAddress { get; set; }
+        public SBAddress HQAddress { get; set; }
         [JsonPropertyName("description")]
         public string Description { get; set; }
         [JsonPropertyName("name")]

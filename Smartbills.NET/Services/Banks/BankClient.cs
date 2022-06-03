@@ -1,13 +1,9 @@
-
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IBankClient :
     ICreatable<SBBank, CreateBankRequest>,
@@ -22,7 +18,8 @@ namespace Smartbills.Client.Services
         private readonly string AccountsPath = "accounts";
 
 
-        public BankClient(ISmartbillsClient client) : base(client) {
+        public BankClient(ISBClient client) : base(client)
+        {
         }
 
         public async Task<SBBank> CreateAsync(CreateBankRequest data, CancellationToken cancellationToken = default)

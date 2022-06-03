@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public class CreateBankInstitutionRequest : BaseRequest
     {

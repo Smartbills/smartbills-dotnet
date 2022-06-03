@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Receipts
+namespace Smartbills.NET.Entities.Receipts
 {
     public class ReceiptListItemDTO
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public enum SBBarcodeType
     {

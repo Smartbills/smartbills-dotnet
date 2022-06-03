@@ -1,13 +1,9 @@
-
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IDocumentClient :
        IRetrievable<SBDocument, GetDocumentRequest>
@@ -20,7 +16,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "documents";
 
-        public DocumentClient(ISmartbillsClient client) : base(client) { }
+        public DocumentClient(ISBClient client) : base(client) { }
 
 
         public async Task<SBDocument> CreateAsync(CreateDocumentRequest data, CancellationToken cancellationToken = default)

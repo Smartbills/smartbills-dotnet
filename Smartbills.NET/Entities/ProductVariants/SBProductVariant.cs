@@ -2,7 +2,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public class SBProductVariant
     {

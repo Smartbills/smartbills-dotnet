@@ -1,12 +1,10 @@
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using Smartbills.Client.Entities.Stores;
+using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Stores;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services.Store
+namespace Smartbills.NET.Services.Store
 {
     public interface IStoreClient : ICreatable<SBStore, CreateStoreRequest>,
         IUpdatable<SBStore, UpdateStoreRequest>,
@@ -17,7 +15,7 @@ namespace Smartbills.Client.Services.Store
     }
     internal class StoreClient : Service<SBStore>, IStoreClient
     {
-        public StoreClient(ISmartbillsClient client) : base(client)
+        public StoreClient(ISBClient client) : base(client)
         {
         }
 

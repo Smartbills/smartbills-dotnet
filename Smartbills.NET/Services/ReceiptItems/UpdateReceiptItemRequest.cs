@@ -1,9 +1,7 @@
-using Smartbills.Client.Services;
-using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public class UpdateReceiptItemRequest
     {

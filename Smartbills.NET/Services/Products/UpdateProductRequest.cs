@@ -1,10 +1,10 @@
-﻿using Smartbills.Client.Services;
+﻿using Smartbills.NET.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Products
+namespace Smartbills.NET.Entities.Products
 {
     public class UpdateProductRequest : BaseRequest
     {

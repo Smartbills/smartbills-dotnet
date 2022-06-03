@@ -1,12 +1,8 @@
-﻿using Smartbills.Client.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using Smartbills.NET.Services;
 
-namespace Smartbills.Client.Entities.Products
+namespace Smartbills.NET.Entities.Products
 {
-    public class DeleteProductRequest: BaseRequest
+    public class DeleteProductRequest : BaseRequest
     {
     }
 }

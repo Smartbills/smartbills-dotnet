@@ -1,11 +1,10 @@
-using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public interface ISmartbillsEntityWithId
     {
-        long Id { get;set; }
+        long Id { get; set; }
     }
     public class SmartbillsEntity
     {

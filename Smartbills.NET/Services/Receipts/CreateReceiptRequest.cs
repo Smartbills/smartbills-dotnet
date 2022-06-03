@@ -1,15 +1,14 @@
 
-using Smartbills.Client.Entities.Companies;
-using Smartbills.Client.Entities.ReceiptDiscounts;
-using Smartbills.Client.Entities.Taxes;
+using Smartbills.NET.Entities.Companies;
+using Smartbills.NET.Entities.ReceiptDiscounts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
-    public class CreateReceiptRequest: BaseRequest
+    public class CreateReceiptRequest : BaseRequest
     {
         [JsonPropertyName("company_id")]
         public long? CompanyId { get; set; }

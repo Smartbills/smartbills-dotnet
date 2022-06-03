@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Settings
+namespace Smartbills.NET.Entities.Settings
 {
     public class UserNotificationSettingDTO
     {

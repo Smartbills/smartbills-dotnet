@@ -1,12 +1,10 @@
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using Smartbills.Client.Entities.Products;
+using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Products;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services.Products
+namespace Smartbills.NET.Services.Products
 {
     public interface IProductClient : ICreatable<SBProduct, CreateProductRequest>,
         IUpdatable<SBProduct, UpdateProductRequest>,
@@ -16,7 +14,7 @@ namespace Smartbills.Client.Services.Products
 
     public class ProductClient : Service<SBProduct>, IProductClient
     {
-        public ProductClient(ISmartbillsClient client) : base(client)
+        public ProductClient(ISBClient client) : base(client)
         {
         }
 

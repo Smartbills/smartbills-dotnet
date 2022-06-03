@@ -1,13 +1,9 @@
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IReceiptItemClient :
         IRetrievable<SBReceiptItem, GetReceiptItemRequest>,
@@ -17,7 +13,7 @@ namespace Smartbills.Client.Services
     { }
     public class ReceiptItemClient : Service<SBReceiptItem>, IReceiptItemClient
     {
-        public ReceiptItemClient(ISmartbillsClient client) : base(client)
+        public ReceiptItemClient(ISBClient client) : base(client)
         {
         }
 

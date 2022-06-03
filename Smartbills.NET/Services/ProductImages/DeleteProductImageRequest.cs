@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Smartbills.Client.Services
+﻿namespace Smartbills.NET.Services
 {
-    public class DeleteProductImageRequest:BaseRequest
+    public class DeleteProductImageRequest : BaseRequest
     {
     }
 }

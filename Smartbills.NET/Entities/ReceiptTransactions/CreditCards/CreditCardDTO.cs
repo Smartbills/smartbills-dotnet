@@ -2,7 +2,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Transactions.CreditCards
+namespace Smartbills.NET.Entities.Transactions.CreditCards
 {
     public class CreditCardDTO
     {

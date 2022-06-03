@@ -1,9 +1,9 @@
-using Smartbills.Client.Entities.Taxes;
+using Smartbills.NET.Entities.Taxes;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     public class SBReceipt
     {

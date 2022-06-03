@@ -1,10 +1,9 @@
-﻿using Smartbills.Client.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public class CreateProductRequest : BaseRequest
     {
@@ -34,7 +33,7 @@ namespace Smartbills.Client.Services
 
         [JsonPropertyName("variants")]
 
-        public  List<CreateProductVariantRequest> Variants { get; set; } = new List<CreateProductVariantRequest>();
+        public List<CreateProductVariantRequest> Variants { get; set; } = new List<CreateProductVariantRequest>();
 
         //[JsonPropertyName("options")]
         //public virtual List<CreateProductOptionDTO> Request { get; set; } = new List<CreateProductOptionDTO>();

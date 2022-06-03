@@ -1,16 +1,10 @@
-﻿using Smartbills.Client.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Products
 {
-    public interface IProductEntity: ISmartbillsEntityWithId
-    { 
-        
+    public interface IProductEntity : ISmartbillsEntityWithId
+    {
+
     }
     public class SBProductEntityBase : IProductEntity
     {

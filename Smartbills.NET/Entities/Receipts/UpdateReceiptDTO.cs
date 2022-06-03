@@ -1,5 +1,5 @@
 
-namespace Smartbills.Client.Entities.Receipts
+namespace Smartbills.NET.Entities.Receipts
 {
     public class UpdateReceiptDTO
     {

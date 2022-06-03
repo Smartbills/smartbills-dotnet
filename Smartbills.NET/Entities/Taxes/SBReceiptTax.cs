@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Taxes
+namespace Smartbills.NET.Entities.Taxes
 {
     public class SBReceiptTax
     {

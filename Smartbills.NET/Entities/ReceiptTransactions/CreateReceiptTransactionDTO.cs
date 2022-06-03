@@ -1,4 +1,4 @@
-﻿namespace Smartbills.Client.Entities.Transactions
+﻿namespace Smartbills.NET.Entities.Transactions
 {
     //public class CreateReceiptTransactionDTO
     //{

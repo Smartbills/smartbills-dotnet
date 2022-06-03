@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities
+namespace Smartbills.NET.Entities
 {
     /// <summary>
     /// Class representing the GPS coordinates of an <seealso cref="SBAddress">address</seealso>.

@@ -1,13 +1,9 @@
-
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface ICompanyClient :
     IRetrievable<SBCompany, GetReceiptRequest>,
@@ -22,7 +18,7 @@ namespace Smartbills.Client.Services
     {
         public override string BasePath => "companies";
 
-        public CompanyClient(ISmartbillsClient client) : base(client) { }
+        public CompanyClient(ISBClient client) : base(client) { }
 
         public async Task<SBCompany> CreateAsync(CreateReceiptRequest data, CancellationToken cancellationToken = default)
         {

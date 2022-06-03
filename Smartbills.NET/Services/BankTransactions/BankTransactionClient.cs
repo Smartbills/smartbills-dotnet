@@ -1,12 +1,9 @@
-using Microsoft.Extensions.Options;
-using RestSharp;
 using Smarbtills.NET.Services;
-using Smartbills.Client.Entities;
-using System;
+using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public interface IBankTransactionClient :
     ICreatable<SBBankTransaction, CreateBankTransactionRequest>,
@@ -19,7 +16,7 @@ namespace Smartbills.Client.Services
     { }
     public class BankTransactionClient : Service<SBBankTransaction>, IBankTransactionClient
     {
-        public BankTransactionClient(ISmartbillsClient client) : base(client)
+        public BankTransactionClient(ISBClient client) : base(client)
         {
         }
 

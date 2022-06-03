@@ -1,6 +1,4 @@
-using System;
-
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
     public class GetCompanyRequest : BaseRequest
     {

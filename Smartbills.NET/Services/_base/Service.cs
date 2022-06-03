@@ -1,15 +1,9 @@
-
-using System;
+using RestSharp;
 using System.Net;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using RestSharp;
-using Smarbtills.NET.Services;
-using Smartbills.NET.Services;
 
-namespace Smartbills.Client.Services
+namespace Smartbills.NET.Services
 {
 
     public abstract class Service<TEntityReturned>
@@ -59,7 +53,7 @@ namespace Smartbills.Client.Services
             return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId, id), options, cancellationToken);
         }
 
-        protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path,  TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
+        protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
         {
             return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId), options, cancellationToken);
         }
@@ -80,7 +74,7 @@ namespace Smartbills.Client.Services
         public string NestedPath(string path, long? parentId = null, long? id = null)
         {
             var basePath = path;
-            if(parentId is not null)
+            if (parentId is not null)
             {
                 basePath = $"{parentId}/{path}";
             }

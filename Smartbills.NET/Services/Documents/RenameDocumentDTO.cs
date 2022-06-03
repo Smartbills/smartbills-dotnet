@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Client.Entities.Documents
+namespace Smartbills.NET.Entities.Documents
 {
     public class RenameDocumentDTO
     {

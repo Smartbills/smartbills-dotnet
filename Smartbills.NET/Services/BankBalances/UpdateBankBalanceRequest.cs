@@ -1,4 +1,4 @@
-﻿using Smartbills.Client.Services;
+﻿using Smartbills.NET.Services;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.Services.BankBalances
