@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using Smarbtills.NET.Services;
 using Smartbills.Client;
 using Smartbills.Client.Services;
 using System;
@@ -15,7 +16,16 @@ namespace Smartbills.NET.IntegrationTests.Extensions
     {
 
         [Fact]
+        public void SHOULD_REGISTER_CONFIGURATION_WITHOUT_OVERWRITE()
+        {
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSmartbills();
+            var provider = serviceCollection.BuildServiceProvider();
+            var smartbills = provider.GetService<ISmartbillsClient>();
+           
+        }
 
+            [Fact]
         public void SHOULD_INJECT_SERVICES()
         {
             var serviceCollection = new ServiceCollection();

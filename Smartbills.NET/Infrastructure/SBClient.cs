@@ -14,7 +14,7 @@ namespace Smarbtills.NET.Services
     }
     public class SmartbillsClient : SBBaseClient, ISmartbillsClient
     {
-        public SmartbillsClient(IOptions<SBClientConfiguration> configuration) : base(configuration)
+        public SmartbillsClient(IOptions<SBClientConfiguration> configuration, IOptions<SBClientCredential> credentials) : base(configuration, credentials)
         {
         }
 

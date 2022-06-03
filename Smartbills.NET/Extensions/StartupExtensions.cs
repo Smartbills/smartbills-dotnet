@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Smarbtills.NET.Services;
 using Smartbills.Client.Services;
 using Smartbills.NET.Services;
@@ -9,7 +10,17 @@ namespace Smartbills.Client
     {
         public static void AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
         {
-            services.Configure(options);
+            if (options is null)
+            {
+                services.Configure<SBClientConfiguration>(config =>
+                {
+                    config = new SBClientConfiguration();
+                });
+            }
+            else
+            {
+                services.Configure(options);
+            }
             services.AddSingleton<ISBBaseClient, SBBaseClient>();
             services.AddSingleton<ISmartbillsClient, SmartbillsClient>();
             services.AddTransient<IBankClient, BankClient>();
@@ -22,14 +33,16 @@ namespace Smartbills.Client
         }
     }
 
-    public class SBClientConfiguration: ISBClientBaseConfiguration
+    public class SBClientConfiguration : ISBClientBaseConfiguration
     {
+        public const string Path = "Smartbills";
         public string Url { get; set; } = "https://api.smartbills.io/";
-        public SBClientCredential Credential { get; set; } = new();
+        public SBClientCredential Credential { get; set; } = new SBClientCredential();
     }
 
     public class SBClientCredential
     {
+        public const string Path = "Smartbills";
         public string Authority { get; set; } = "https://api.smartbills.io/auth";
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }
