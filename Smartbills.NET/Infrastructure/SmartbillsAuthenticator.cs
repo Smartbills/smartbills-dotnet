@@ -7,8 +7,8 @@ namespace Smartbills.NET
 {
     public class SmartbillsAuthenticator : AuthenticatorBase
     {
-        private readonly SBClientCredential _credentials;
-        public SmartbillsAuthenticator(SBClientCredential credential) : base("")
+        private readonly SBClientCredentials _credentials;
+        public SmartbillsAuthenticator(SBClientCredentials credential) : base("")
         {
             _credentials = credential;
         }

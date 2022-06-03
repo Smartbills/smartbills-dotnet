@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using RestSharp;
 using RestSharp.Authenticators;
+using Smartbills.NET.Infrastructure;
 using System;
 
 namespace Smartbills.NET.Services
@@ -12,7 +13,7 @@ namespace Smartbills.NET.Services
     public class SBBaseClient : ISBBaseClient, IDisposable
     {
         public RestClient Client { get; set; }
-        public SBBaseClient(IOptions<ISBClientBaseConfiguration> configuration, IOptions<SBClientCredential> credentials)
+        public SBBaseClient(IOptions<ISBClientBaseConfiguration> configuration, IOptions<SBClientCredentials> credentials)
         {
 
             Client = new RestClient(configuration.Value.Url)

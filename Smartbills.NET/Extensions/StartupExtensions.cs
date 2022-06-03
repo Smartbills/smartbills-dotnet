@@ -22,7 +22,7 @@ namespace Smartbills.NET
             }
         }
 
-        public SmartbillsBuilder AddCredentials(Action<SBClientCredential> credentials)
+        public SmartbillsBuilder AddCredentials(Action<SBClientCredentials> credentials)
         {
             _services.Configure(credentials);
             return this;
@@ -46,16 +46,5 @@ namespace Smartbills.NET
             services.AddTransient<IDocumentClient, DocumentClient>();
             return builder;
         }
-    }
-
-
-    public class SBClientCredential
-    {
-        public const string Path = "Smartbills";
-        public string Authority { get; set; } = "https://api.smartbills.io/auth";
-        public string ClientId { get; set; }
-        public string ClientSecret { get; set; }
-        public string[] Scopes { get; set; }
-        public string[] Claims { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Smarbtills.NET.Services
     }
     public class SBClient : SBBaseClient, ISBClient
     {
-        public SBClient(IOptions<SBClientConfiguration> configuration, IOptions<SBClientCredential> credentials) : base(configuration, credentials)
+        public SBClient(IOptions<SBClientConfiguration> configuration, IOptions<SBClientCredentials> credentials) : base(configuration, credentials)
         {
         }
     }

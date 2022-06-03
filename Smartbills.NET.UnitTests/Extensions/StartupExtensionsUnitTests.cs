@@ -28,7 +28,7 @@ namespace Smartbills.NET.IntegrationTests.Extensions
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSmartbills(options => options.Url = "test").AddCredentials(options => options.ClientId = clientId);
             var provider = serviceCollection.BuildServiceProvider();
-            var configuration = provider.GetService<IOptions<SBClientCredential>>();
+            var configuration = provider.GetService<IOptions<SBClientCredentials>>();
             Assert.Equal(clientId, configuration?.Value.ClientId);
         }
 
