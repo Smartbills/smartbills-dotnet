@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Services
 {
-    public class GetProductImageRequest : BaseRequest
+    public record GetProductImageRequest : BaseRequest
     {
     }
 }

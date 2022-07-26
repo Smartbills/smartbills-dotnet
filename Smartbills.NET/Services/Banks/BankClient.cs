@@ -7,7 +7,7 @@ namespace Smartbills.NET.Services
 {
     public interface IBankClient :
     ICreatable<SBBank, CreateBankRequest>,
-    IRetrievable<SBBank, GetBankRequest>,
+    IRetrievable<SBBank>,
     IUpdatable<SBBank, UpdateBankRequest>,
     IDeletable<SBBank, DeleteBankRequest>
     {
@@ -20,7 +20,6 @@ namespace Smartbills.NET.Services
         public override string BasePath => "banks";
         private readonly string AccountsPath = "accounts";
 
-        protected BankClient(): base() { }
         public BankClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
@@ -41,9 +40,9 @@ namespace Smartbills.NET.Services
         {
             return await base.CreateEntityAsync(data, cancellationToken);
         }
-        public virtual async Task<SBBank> GetAsync(long id, GetBankRequest data = null, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBank> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
         public virtual async Task<SBBank> UpdateAsync(long id, UpdateBankRequest data, CancellationToken cancellationToken = default)
         {

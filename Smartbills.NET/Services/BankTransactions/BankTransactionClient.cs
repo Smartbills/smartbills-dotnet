@@ -7,7 +7,7 @@ namespace Smartbills.NET.Services
     public interface IBankTransactionClient :
     ICreatable<SBBankTransaction, CreateBankTransactionRequest>,
     IUpdatable<SBBankTransaction, UpdateBankTransactionRequest>,
-    IRetrievable<SBBankTransaction, GetBankTransactionRequest>,
+    IRetrievable<SBBankTransaction>,
 
 
     IDeletable<SBBankTransaction, DeleteBankTransactionRequest>
@@ -28,9 +28,9 @@ namespace Smartbills.NET.Services
         }
 
 
-        public async Task<SBBankTransaction> GetAsync(long id, GetBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
 
 

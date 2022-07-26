@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services
 {
-    public class CreateReceiptRequest : BaseRequest
+    public record CreateReceiptRequest : BaseRequest
     {
         [JsonPropertyName("company_id")]
         public long? CompanyId { get; set; }

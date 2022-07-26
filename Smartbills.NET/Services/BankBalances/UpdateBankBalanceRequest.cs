@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.Services.BankBalances
 {
-    public class UpdateBankBalanceRequest : BaseRequest
+    public record UpdateBankBalanceRequest : BaseRequest
     {
         [JsonPropertyName("current")]
         public decimal Current { get; set; }

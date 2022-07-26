@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Services
 {
-    public class UpdateBankRequest : BaseRequest
+    public record UpdateBankRequest : BaseRequest
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Entities.Products
 {
-    public class DeleteProductRequest : BaseRequest
+    public record DeleteProductRequest : BaseRequest
     {
     }
 }

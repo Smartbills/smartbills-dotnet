@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Location
 {
-    public class UpdateLocationRequest : BaseRequest
+    public record UpdateLocationRequest : BaseRequest
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

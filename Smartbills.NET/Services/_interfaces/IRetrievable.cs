@@ -3,8 +3,13 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services
 {
-    public interface IRetrievable<TEntity, TRequest> where TRequest : class
+    public interface IRetrievable<TEntity>
     {
-        Task<TEntity> GetAsync(long id, TRequest request = null, CancellationToken cancellationToken = default);
+        Task<TEntity> GetByIdAsync(long id, CancellationToken cancellationToken = default);
+    }
+
+    public interface IRetrievable<TEntity, TRequest>
+    {
+        Task<TEntity> GetByIdAsync(long id, TRequest request, CancellationToken cancellationToken = default);
     }
 }

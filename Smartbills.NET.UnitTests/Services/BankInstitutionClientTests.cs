@@ -22,8 +22,8 @@ namespace Smartbills.NET.UnitTests
         public async Task SHOULD_FIND_BANK_INSTITUTION()
         {
             var bank = new SBBankInstitution();
-            _bankInstitutionClient.Setup(x => x.GetAsync(It.IsAny<long>(), It.IsAny<GetBankInstitutionRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
-            var response = await _bankInstitutionClient.Object.GetAsync(new long(), new GetBankInstitutionRequest(), default);
+            _bankInstitutionClient.Setup(x => x.GetByIdAsync(It.IsAny<long>(),  It.IsAny<CancellationToken>())).ReturnsAsync(bank);
+            var response = await _bankInstitutionClient.Object.GetByIdAsync(new long(), default);
             Assert.Equal(bank, response);
         }
     }

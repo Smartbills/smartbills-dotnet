@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services
 {
     public interface IReceiptItemClient :
-        IRetrievable<SBReceiptItem, GetReceiptItemRequest>,
+        IRetrievable<SBReceiptItem>,
         IDeletable<SBReceiptItem, DeleteReceiptItemRequest>,
         IUpdatable<SBReceiptItem, UpdateReceiptItemRequest>,
         ICreatable<SBReceiptItem, CreateReceiptItemRequest>
@@ -30,9 +30,9 @@ namespace Smartbills.NET.Services
 
         }
 
-        public async Task<SBReceiptItem> GetAsync(long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)

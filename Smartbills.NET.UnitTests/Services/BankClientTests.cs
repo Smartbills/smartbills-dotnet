@@ -30,7 +30,7 @@ namespace Smartbills.NET.UnitTests
 
             _smartbillsClient.Setup(x => x.Client.GetJsonAsync<SBBank>(It.IsAny<string>(), It.IsAny<GetBankRequest>(), default)).ReturnsAsync(bank);
             //_bankClient.Setup(x => x.GetAsync(It.IsAny<long>(), It.IsAny<GetBankRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
-            var response = await _bankClient.Object.GetAsync(new long(), new GetBankRequest(), default);
+            var response = await _bankClient.Object.GetByIdAsync(new long(),  default);
 
             Assert.Equal(bank, response);
         }

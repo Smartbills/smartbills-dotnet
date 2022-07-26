@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Products
 {
-    public class UpdateProductRequest : BaseRequest
+    public record UpdateProductRequest : BaseRequest
     {
 
         [Required]

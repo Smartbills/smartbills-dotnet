@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services
 {
-    public class CreateBankAccountRequest : BaseRequest
+    public record CreateBankAccountRequest : BaseRequest
     {
 
         [JsonPropertyName("type")]

@@ -1,6 +1,6 @@
 ﻿namespace Smartbills.NET.Services
 {
-    public class DeleteProductImageRequest : BaseRequest
+    public record DeleteProductImageRequest : BaseRequest
     {
     }
 }

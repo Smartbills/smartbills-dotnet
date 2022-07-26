@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services
 {
-    public class UpdateBankTransactionRequest : BaseRequest
+    public record UpdateBankTransactionRequest : BaseRequest
     {
         [JsonPropertyName("amount")]
         public decimal Amount { get; set; }

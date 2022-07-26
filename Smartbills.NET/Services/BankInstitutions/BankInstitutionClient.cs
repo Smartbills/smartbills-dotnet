@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services
 {
     public interface IBankInstitutionClient :
-        IRetrievable<SBBankInstitution, GetBankInstitutionRequest>,
+        IRetrievable<SBBankInstitution>,
         ICreatable<SBBankInstitution, CreateBankInstitutionRequest>,
         IUpdatable<SBBankInstitution, UpdateBankInstitutionRequest>
     {
@@ -32,9 +32,9 @@ namespace Smartbills.NET.Services
         {
         }
 
-        public virtual async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
 
         public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)

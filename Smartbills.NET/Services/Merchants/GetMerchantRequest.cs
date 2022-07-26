@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Services
 {
-    public class GetCompanyRequest : BaseRequest
+    public record GetMerchantRequest : BaseRequest
     {
         public long CompanyId { get; set; }
     }

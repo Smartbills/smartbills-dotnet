@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services
 {
-    public class CreateCompanyRequest
+    public class CreateMerchantRequest
     {
         [JsonPropertyName("slug")]
         public string Slug { get; set; }

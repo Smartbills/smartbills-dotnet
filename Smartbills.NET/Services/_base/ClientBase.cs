@@ -7,41 +7,6 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services
 {
 
-    public interface IClientBase<TEntityReturned>
-    {
-        Task<TEntityReturned> CreateEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken = default) where TRequest : class;
-     
-
-        Task<TEntityReturned> GetEntityByIdAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default);
-
-
-        Task<TEntityReturned> GetEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken = default);
-
-
-
-         Task<TEntityReturned> UpdateEntityAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
-         where TRequest : class;
-
-
-        Task<TEntityReturned> DeleteEntityAsync(long id, CancellationToken cancellationToken = default);
-
-
-        Task<TChildReturned> CreateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class;
-        
-         Task<TChildReturned> GetChildByIdAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class;
-   
-
-         Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class;
-       
-
-         Task<TChildReturned> UpdateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class;
-      
-
-
-         Task<TChildReturned> DeleteChildAsync<TChildReturned>(long parentId, string path, long id, CancellationToken cancellationToken = default);
-       
-
-    }
     public abstract class ClientBase<TEntityReturned>
     {
         public readonly ISmartbillsClient _smartbills;
@@ -50,8 +15,6 @@ namespace Smartbills.NET.Services
             _smartbills = smartbills;
         }
 
-        internal ClientBase() { 
-        }
         public ClientBase(SBClientCredentials credentials)
         {
             _smartbills = new SmartbillsClient(credentials);
@@ -66,60 +29,93 @@ namespace Smartbills.NET.Services
             _smartbills = new SmartbillsClient(apiKey, apiSecret, url);
         }
 
-        public virtual string APIVersion => "v1";
+        public  string APIVersion => "v1";
         public abstract string BasePath { get; }
 
-        protected virtual async Task<TEntityReturned> CreateEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TEntityReturned> CreateEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken  = default) where TRequest : class
         {
-            return await _smartbills.Client.PostJsonAsync<TRequest, TEntityReturned>(this.VersionnedPath(), data, cancellationToken);
+            var request = new RestRequest(this.VersionnedPath()).AddJsonBody(data);
+            return await _smartbills.Client.PostAsync<TEntityReturned>(request,  cancellationToken);
         }
 
-        protected virtual  async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
+        protected  async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default) where TRequest: class
         {
-            return await _smartbills.Client.GetJsonAsync<TEntityReturned>(this.RessourceUrl(id), data, cancellationToken);
+            var request = new RestRequest(this.RessourceUrl(id)).AddObject(data);
+            return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
-        protected virtual  async Task<TEntityReturned> GetEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> GetEntityByIdAsync(long id,  CancellationToken cancellationToken = default) 
         {
-            return await _smartbills.Client.GetJsonAsync<TEntityReturned>(this.VersionnedPath(), data, cancellationToken);
+            var request = new RestRequest(this.RessourceUrl(id));
+            return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
-        protected virtual  async Task<TEntityReturned> UpdateEntityAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> GetEntityAsync<TRequest>(TRequest data, CancellationToken cancellationToken  = default) where TRequest: class
+        {
+            var request = new RestRequest(this.VersionnedPath()).AddObject(data);
+            return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
+        }
+
+        protected async Task<TEntityReturned> GetEntityAsync(CancellationToken cancellationToken = default)
+        {
+            var request = new RestRequest(this.VersionnedPath());
+            return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
+        }
+
+        protected  async Task<TEntityReturned> UpdateEntityAsync<TRequest>(long id, TRequest data, CancellationToken cancellationToken  = default)
          where TRequest : class
         {
-            return await _smartbills.Client.PutJsonAsync<TRequest, TEntityReturned>(this.RessourceUrl(id), data, cancellationToken);
+            var request = new RestRequest(this.RessourceUrl(id)).AddJsonBody(data);
+            return await _smartbills.Client.PutAsync<TEntityReturned>(request, cancellationToken);
         }
 
-        protected virtual  async Task<TEntityReturned> DeleteEntityAsync(long id, CancellationToken cancellationToken = default)
+        protected  async Task<TEntityReturned> DeleteEntityAsync(long id, CancellationToken cancellationToken  = default)
         {
-            var request = new RestRequest(this.RessourceUrl(id), Method.Delete);
+            var request = new RestRequest(this.RessourceUrl(id));
             return await _smartbills.Client.DeleteAsync<TEntityReturned>(request, cancellationToken);
         }
 
 
-        protected virtual  async Task<TChildReturned> CreateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class
+        protected  async Task<TChildReturned> CreateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest data, CancellationToken cancellationToken  = default) where TChildRequest : class
         {
-            return await _smartbills.Client.PostJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(path, parentId), data, cancellationToken);
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId)).AddJsonBody(data);
+            return await _smartbills.Client.PostAsync<TChildReturned>(request, cancellationToken);
         }
-        protected virtual  async Task<TChildReturned> GetChildByIdAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
+        protected  async Task<TChildReturned> GetChildByIdAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest options = null, CancellationToken cancellationToken  = default) where TChildRequest : class
         {
-            return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId, id), options, cancellationToken);
-        }
-
-        protected virtual  async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
-        {
-            return await _smartbills.Client.GetJsonAsync<TChildReturned>(this.NestedPath(path, parentId), options, cancellationToken);
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId, id)).AddObject(options);
+            return await _smartbills.Client.GetAsync<TChildReturned>(request, cancellationToken);
         }
 
-        protected virtual  async Task<TChildReturned> UpdateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest data, CancellationToken cancellationToken = default) where TChildRequest : class
+        protected async Task<TChildReturned> GetChildByIdAsync<TChildReturned>(long parentId, string path, long id,  CancellationToken cancellationToken = default) 
         {
-            return await _smartbills.Client.PutJsonAsync<TChildRequest, TChildReturned>(this.NestedPath(path, parentId, id), data, cancellationToken);
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId, id));
+            return await _smartbills.Client.GetAsync<TChildReturned>(request, cancellationToken);
         }
 
 
-        protected virtual  async Task<TChildReturned> DeleteChildAsync<TChildReturned>(long parentId, string path, long id, CancellationToken cancellationToken = default)
+        protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest options = null, CancellationToken cancellationToken  = default) where TChildRequest : class
         {
-            RestRequest request = new RestRequest(this.NestedPath(path, parentId, id), Method.Delete);
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId)).AddObject(options);
+            return await _smartbills.Client.PostAsync< TChildReturned>(request, cancellationToken);
+        }
+
+        protected async Task<TChildReturned> GetChildAsync<TChildReturned>(long parentId, string path,  CancellationToken cancellationToken = default) 
+        {
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId));
+            return await _smartbills.Client.PostAsync<TChildReturned>(request, cancellationToken);
+        }
+
+        protected  async Task<TChildReturned> UpdateChildAsync<TChildRequest, TChildReturned>(long parentId, string path, long id, TChildRequest data, CancellationToken cancellationToken  = default) where TChildRequest : class
+        {
+            RestRequest request = new RestRequest(this.NestedPath(path, parentId, id)).AddJsonBody(data);
+            return await _smartbills.Client.PutAsync<TChildReturned>(request, cancellationToken);
+        }
+
+
+        protected  async Task<TChildReturned> DeleteChildAsync<TChildReturned>(long parentId, string path, long id, CancellationToken cancellationToken  = default)
+        {
+            RestRequest request = new(this.NestedPath(path, parentId, id));
             return await _smartbills.Client.DeleteAsync<TChildReturned>(request, cancellationToken);
         }
 
@@ -145,12 +141,12 @@ namespace Smartbills.NET.Services
         }
 
 
-        public virtual string RessourceUrl(long id)
+        public string RessourceUrl(long id)
         {
             return $"{this.VersionnedPath()}/{WebUtility.UrlEncode(id.ToString())}";
         }
 
-        public virtual string RessourceUrl(string id)
+        public string RessourceUrl(string id)
         {
             return $"{this.VersionnedPath()}/{WebUtility.UrlEncode(id)}";
         }

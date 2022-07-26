@@ -14,12 +14,6 @@ namespace Smartbills.NET.Services
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
         public RestClient Client { get; set; }
-
-
-        public SmartbillsClient()
-        {
-        }
-
         public SmartbillsClient(SBClientCredentials credentials, string url = "https://api.smartbills.io/"):base()
         {
             Client = CreateClient(url, new SmartbillsAuthenticator(credentials));
@@ -36,13 +30,15 @@ namespace Smartbills.NET.Services
             Client = CreateClient(url, new ApiKeyAuthenticator(apiKey, apiSecret));
         }
 
-
         private RestClient CreateClient(string url, IAuthenticator authenticator) {
 
             var version = typeof(SmartbillsClient).GetTypeInfo().Assembly.GetName().Version;
             RestClientOptions restClientOptions = new(url)
             {
-                UserAgent = "Smartbills.NET /" + version
+                ThrowOnAnyError = true,
+                ThrowOnDeserializationError = true,
+                FailOnDeserializationError = true,
+                UserAgent = "Smartbills.NET v" + version,
             };
 
             return new RestClient(restClientOptions)

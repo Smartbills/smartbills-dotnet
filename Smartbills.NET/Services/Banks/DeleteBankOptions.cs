@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Services
 {
-    public class DeleteBankRequest : BaseRequest
+    public record DeleteBankRequest : BaseRequest
     {
     }
 }

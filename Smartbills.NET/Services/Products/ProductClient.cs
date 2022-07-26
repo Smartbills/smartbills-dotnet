@@ -8,7 +8,7 @@ namespace Smartbills.NET.Services.Products
     public interface IProductClient : ICreatable<SBProduct, CreateProductRequest>,
         IUpdatable<SBProduct, UpdateProductRequest>,
         IDeletable<SBProduct, DeleteProductRequest>,
-        IRetrievable<SBProduct, GetProductRequest>
+        IRetrievable<SBProduct>
     { }
 
     public class ProductClient : ClientBase<SBProduct>, IProductClient
@@ -29,9 +29,9 @@ namespace Smartbills.NET.Services.Products
             return await base.DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<SBProduct> GetAsync(long id, GetProductRequest request = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, request, cancellationToken);
+            return await base.GetEntityByIdAsync(id, cancellationToken);
         }
 
         public async Task<SBProduct> UpdateAsync(long id, UpdateProductRequest request, CancellationToken cancellationToken = default)

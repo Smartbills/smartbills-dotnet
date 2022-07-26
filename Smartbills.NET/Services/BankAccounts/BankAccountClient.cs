@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services
 {
     public interface IBankAccountClient :
-    IRetrievable<SBBankAccount, GetBankAccountRequest>,
+    IRetrievable<SBBankAccount>,
     IUpdatable<SBBankAccount, UpdateBankAccountRequest>,
     ICreatable<SBBankAccount, CreateBankAccountRequest>
     {
@@ -19,9 +19,9 @@ namespace Smartbills.NET.Services
 
         public BankAccountClient(ISmartbillsClient client) : base(client) { }
 
-        public async Task<SBBankAccount> GetAsync(long id, GetBankAccountRequest data, CancellationToken cancellationToken = default)
+        public async Task<SBBankAccount> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
 
         public async Task<SBBankAccount> UpdateAsync(long id, UpdateBankAccountRequest data, CancellationToken cancellationToken = default)

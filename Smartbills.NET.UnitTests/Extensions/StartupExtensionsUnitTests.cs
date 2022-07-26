@@ -54,8 +54,8 @@ namespace Smartbills.NET.UnitTests.Extensions
                 typeof(IBankInstitutionClient),
                 typeof(IBankClient),
                 typeof(IBankTransactionClient),
-                typeof(ICompanyClient),
-                typeof(ICompanyClient),
+                typeof(IMerchantClient),
+                typeof(IMerchantClient),
                 typeof(IReceiptClient)
             };
             var provider = serviceCollection.BuildServiceProvider();

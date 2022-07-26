@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Services
 {
-    public class GetDocumentRequest : BaseRequest
+    public record GetDocumentRequest : BaseRequest
     {
     }
 }

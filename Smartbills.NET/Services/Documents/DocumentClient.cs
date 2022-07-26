@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services
 {
     public interface IDocumentClient :
-       IRetrievable<SBDocument, GetDocumentRequest>
+       IRetrievable<SBDocument>
     {
     }
     public class DocumentClient :
@@ -22,9 +22,9 @@ namespace Smartbills.NET.Services
         {
             return await base.CreateEntityAsync(data, cancellationToken);
         }
-        public async Task<SBDocument> GetAsync(long id, GetDocumentRequest data = null, CancellationToken cancellationToken = default)
+        public async Task<SBDocument> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, data, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
 
         public async Task<SBDocument> DeleteAsync(long id, CancellationToken cancellationToken = default)

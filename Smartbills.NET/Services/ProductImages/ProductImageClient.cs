@@ -6,7 +6,7 @@ namespace Smartbills.NET.Services
 {
 
     public interface IProductImageClient : ICreatable<SBProductImage, CreateProductImageRequest>,
-        IRetrievable<SBProductImage, GetProductImageRequest>,
+        IRetrievable<SBProductImage>,
         IUpdatable<SBProductImage, UpdateProductImageRequest>,
         IDeletable<SBProductImage, DeleteProductImageRequest>
     {
@@ -25,9 +25,9 @@ namespace Smartbills.NET.Services
         {
             return await base.CreateEntityAsync(options, cancellationToken);
         }
-        public async Task<SBProductImage> GetAsync(long id, GetProductImageRequest options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProductImage> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, options, cancellationToken);
+            return await base.GetEntityByIdAsync(id,  cancellationToken);
         }
         public async Task<SBProductImage> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {

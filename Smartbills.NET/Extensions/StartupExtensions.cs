@@ -39,7 +39,7 @@ namespace Smartbills.NET
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
-            services.AddTransient<ICompanyClient, CompanyClient>();
+            services.AddTransient<IMerchantClient, MerchantClient>();
             services.AddTransient<IReceiptClient, ReceiptClient>();
             services.AddTransient<IDocumentClient, DocumentClient>();
             return builder;

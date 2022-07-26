@@ -1,6 +1,7 @@
 using RestSharp;
 using RestSharp.Authenticators;
 using Smartbills.NET.Infrastructure;
+using System;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET
@@ -8,6 +9,8 @@ namespace Smartbills.NET
     public class SmartbillsAuthenticator : AuthenticatorBase
     {
         private readonly SBClientCredentials _credentials;
+
+        private DateTimeOffset ExpirationDate { get; set; } = DateTimeOffset.Now;
         public SmartbillsAuthenticator(SBClientCredentials credential) : base("")
         {
             _credentials = credential;
@@ -15,7 +18,8 @@ namespace Smartbills.NET
 
         protected override async ValueTask<Parameter> GetAuthenticationParameter(string accessToken)
         {
-            var token = string.IsNullOrEmpty(Token) ? await GetToken() : Token;
+            var token = (string.IsNullOrEmpty(Token)  || DateTimeOffset.Now > ExpirationDate) ? await GetToken() : Token;
+          
             return new HeaderParameter(KnownHeaders.Authorization, token);
         }
 
@@ -29,6 +33,8 @@ namespace Smartbills.NET
 
             var request = new RestRequest("connect/token").AddParameter("scope", string.Join(" ", _credentials.Scopes)).AddParameter("grant_type", "client_credentials");
             var response = await client.PostAsync<SBToken>(request);
+            Token = response.AccessToken;
+            ExpirationDate = DateTimeOffset.Now.AddSeconds(response.ExpiresIn);
             return response.AccessToken;
         }
     }

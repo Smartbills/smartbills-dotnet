@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services
 {
-    public class CreateBankRequest : BaseRequest
+    public record CreateBankRequest : BaseRequest
     {
         [JsonPropertyName("institution_id")]
         public long InstitutionId { get; set; }
