@@ -1,36 +1,33 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities.Companies
+namespace Smartbills.NET.Entities
 {
-    public class CreateCompanyCustomerRequest
+    public class SBCustomer
     {
-
-        [MaxLength(255)]
+        [JsonPropertyName("id")]
+        public long Id { get; set; }
         [JsonPropertyName("first_name")]
         public string FirstName { get; set; }
-        [MaxLength(255)]
         [JsonPropertyName("last_name")]
         public string LastName { get; set; }
-        [EmailAddress]
         [JsonPropertyName("email")]
-
         public string Email { get; set; }
-        [JsonPropertyName("tax_exempt")]
-        public bool TaxExempt { get; set; }
+        [JsonPropertyName("phone")]
+
+        public string Phone { get; set; }
         [JsonPropertyName("tags")]
+
         public List<string> Tags { get; set; }
-        [MaxLength(3)]
-        [Required]
         [JsonPropertyName("currency")]
         public string Currency { get; set; }
         [JsonPropertyName("accepts_marketing")]
         public bool AcceptsMarketing { get; set; }
+        [JsonPropertyName("created_at")]
+        public DateTimeOffset CreatedAt { get; set; }
 
-        [JsonPropertyName("phone")]
-        [DataType(DataType.PhoneNumber)]
-        public string Phone { get; set; }
-
+        [JsonPropertyName("updated_at")]
+        public DateTimeOffset UpdatedAt { get; set; }
     }
 }

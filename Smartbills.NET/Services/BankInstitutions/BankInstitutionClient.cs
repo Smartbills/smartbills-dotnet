@@ -1,5 +1,5 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
+using Smartbills.NET.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,23 +11,38 @@ namespace Smartbills.NET.Services
         IUpdatable<SBBankInstitution, UpdateBankInstitutionRequest>
     {
     }
-    public class BankInstitutionClient : Service<SBBankInstitution>, IBankInstitutionClient
+    public class BankInstitutionClient : ClientBase<SBBankInstitution>, IBankInstitutionClient
     {
         public override string BasePath => "bank-institutions";
 
-        public BankInstitutionClient(ISBClient client) : base(client) { }
+        public BankInstitutionClient(ISmartbillsClient smartbills) : base(smartbills)
+        {
+        }
 
-        public async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
+
+        public BankInstitutionClient(SBClientCredentials credentials) : base(credentials)
+        {
+        }
+
+        public BankInstitutionClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        {
+        }
+
+        public BankInstitutionClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        {
+        }
+
+        public virtual async Task<SBBankInstitution> GetAsync(long id, GetBankInstitutionRequest request = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityByIdAsync(id, request, cancellationToken);
         }
 
-        public async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)
         {
             return await base.CreateEntityAsync(options, cancellationToken);
         }
 
-        public async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync(id, updateRequest, cancellationToken);
         }

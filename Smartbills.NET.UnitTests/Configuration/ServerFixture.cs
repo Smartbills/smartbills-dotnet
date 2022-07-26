@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Smartbills.NET.IntegrationTests.Configuration
+namespace Smartbills.NET.UnitTests.Configuration
 {
     public class ServerFixture : IDisposable
     {

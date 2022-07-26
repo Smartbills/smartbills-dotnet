@@ -1,5 +1,4 @@
-﻿using Smarbtills.NET.Services;
-using Smartbills.NET.Entities;
+﻿using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,13 +12,13 @@ namespace Smartbills.NET.Services
     {
 
     }
-    public class ReceiptClient : Service<Receipt>, IReceiptClient
+    public class ReceiptClient : ClientBase<Receipt>, IReceiptClient
 
     {
         public override string BasePath => "receipts";
         private readonly string ReceiptItemPath = "items";
 
-        public ReceiptClient(ISBClient client) : base(client) { }
+        public ReceiptClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<Receipt> CreateAsync(CreateReceiptRequest options, CancellationToken cancellationToken = default)

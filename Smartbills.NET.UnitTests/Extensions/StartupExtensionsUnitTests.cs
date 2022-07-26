@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Smartbills.NET.IntegrationTests.Extensions
+namespace Smartbills.NET.UnitTests.Extensions
 {
     public class StartupExtensionsUnitTests
     {

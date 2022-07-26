@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,9 +10,9 @@ namespace Smartbills.NET.Services
         IUpdatable<SBReceiptItem, UpdateReceiptItemRequest>,
         ICreatable<SBReceiptItem, CreateReceiptItemRequest>
     { }
-    public class ReceiptItemClient : Service<SBReceiptItem>, IReceiptItemClient
+    public class ReceiptItemClient : ClientBase<SBReceiptItem>, IReceiptItemClient
     {
-        public ReceiptItemClient(ISBClient client) : base(client)
+        public ReceiptItemClient(ISmartbillsClient client) : base(client)
         {
         }
 

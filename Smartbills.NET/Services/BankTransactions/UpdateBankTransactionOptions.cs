@@ -29,7 +29,7 @@ namespace Smartbills.NET.Services
         [JsonPropertyName("account_owner")]
         public string AccountOwner { get; set; }
         [JsonPropertyName("store_number")]
-        public string StoreNumber { get; set; }
+        public string LocationNumber { get; set; }
         [JsonPropertyName("bank_account_id")]
         public long BankAccountId { get; set; }
         [JsonPropertyName("receipt_id")]

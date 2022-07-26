@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,12 +13,12 @@ namespace Smartbills.NET.Services
 
     }
     public class ProductImageClient :
-    Service<SBProductImage>, IProductImageClient
+    ClientBase<SBProductImage>, IProductImageClient
 
     {
         public override string BasePath => "product/{PARENT_ID}/images";
 
-        public ProductImageClient(ISBClient client) : base(client) { }
+        public ProductImageClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<SBProductImage> CreateAsync(CreateProductImageRequest options, CancellationToken cancellationToken = default)

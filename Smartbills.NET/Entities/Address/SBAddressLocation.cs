@@ -6,9 +6,9 @@ namespace Smartbills.NET.Entities
     /// <summary>
     /// Class representing the GPS coordinates of an <seealso cref="SBAddress">address</seealso>.
     /// </summary>
-    public class SBLocation : SmartbillsEntityWithId
+    public class SBAddressLocation : SmartbillsEntityWithId
     {
-        public SBLocation() { }
+        public SBAddressLocation() { }
         /// <summary>
         /// <value>
         /// The longitude of the location.

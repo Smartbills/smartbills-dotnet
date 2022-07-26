@@ -14,7 +14,7 @@ namespace Smartbills.NET.Services
         public long? CompanyId { get; set; }
 
         [JsonPropertyName("customer")]
-        public CreateCompanyCustomerRequest Customer { get; set; }
+        public CreateCustomerRequest Customer { get; set; }
         [JsonPropertyName("billing_address")]
         //public CreateBillingAddressDTO BillingAddress { get; set; }
         //[JsonPropertyName("shipping_address")]
@@ -77,7 +77,7 @@ namespace Smartbills.NET.Services
         public CreateReceiptMetadataRequest ReceiptMetadata { get; set; }
         [JsonPropertyName("store_id")]
 
-        public long? StoreId { get; set; }
+        public long? LocationId { get; set; }
 
         //[JsonPropertyName("transactions")]
 

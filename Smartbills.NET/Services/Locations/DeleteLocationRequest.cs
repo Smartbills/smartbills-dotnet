@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities
 {
-    public class CreateStoreRequest
+    public class DeleteLocationRequest
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

@@ -30,7 +30,7 @@ namespace Smartbills.NET.Entities
 
 
         [JsonPropertyName("location")]
-        public SBLocation Location { get; set; }
+        public SBAddressLocation Location { get; set; }
 
         [JsonPropertyName("google_place_id")]
         public string GooglePlaceId { get; set; }

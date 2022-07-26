@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,9 +13,9 @@ namespace Smartbills.NET.Services
     IDeletable<SBBankTransaction, DeleteBankTransactionRequest>
 
     { }
-    public class BankTransactionClient : Service<SBBankTransaction>, IBankTransactionClient
+    public class BankTransactionClient : ClientBase<SBBankTransaction>, IBankTransactionClient
     {
-        public BankTransactionClient(ISBClient client) : base(client)
+        public BankTransactionClient(ISmartbillsClient client) : base(client)
         {
         }
 

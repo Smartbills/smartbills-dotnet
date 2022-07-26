@@ -5,6 +5,7 @@ namespace Smartbills.NET.Services
 {
     public class CreateProductImageRequest
     {
+        [JsonPropertyName("product_variant_ids")]
         public List<long> ProductVariantIds { get; set; } = new List<long>();
         [JsonPropertyName("product_id")]
         public long? ProductId { get; set; }

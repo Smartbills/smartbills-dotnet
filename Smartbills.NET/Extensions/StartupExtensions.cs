@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Smarbtills.NET.Services;
 using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services;
 using System;
@@ -35,8 +34,7 @@ namespace Smartbills.NET
         public static SmartbillsBuilder AddSmartbills(this IServiceCollection services, Action<SBClientConfiguration> options = null)
         {
             var builder = new SmartbillsBuilder(services, options);
-            services.AddSingleton<ISBBaseClient, SBBaseClient>();
-            services.AddSingleton<ISBClient, SBClient>();
+            services.AddSingleton<ISmartbillsClient, SmartbillsClient>();
             services.AddTransient<IBankClient, BankClient>();
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();

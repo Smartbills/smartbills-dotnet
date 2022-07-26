@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services.Store
+namespace Smartbills.NET.Services.Location
 {
-    public class UpdateStoreRequest : BaseRequest
+    public class UpdateLocationRequest : BaseRequest
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

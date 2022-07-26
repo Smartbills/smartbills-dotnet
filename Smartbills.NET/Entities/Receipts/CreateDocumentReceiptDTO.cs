@@ -44,7 +44,7 @@ namespace Smartbills.NET.Entities
 
         [JsonPropertyName("store_id")]
 
-        public long? StoreId { get; set; }
+        public long? LocationId { get; set; }
 
         //[JsonPropertyName("barcode")]
         //public CreateBarcodeDTO Barcode { get; set; }

@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,13 +9,13 @@ namespace Smartbills.NET.Services
     {
     }
     public class DocumentClient :
-        Service<SBDocument>,
+        ClientBase<SBDocument>,
         IDocumentClient
 
     {
         public override string BasePath => "documents";
 
-        public DocumentClient(ISBClient client) : base(client) { }
+        public DocumentClient(ISmartbillsClient client) : base(client) { }
 
 
         public async Task<SBDocument> CreateAsync(CreateDocumentRequest data, CancellationToken cancellationToken = default)

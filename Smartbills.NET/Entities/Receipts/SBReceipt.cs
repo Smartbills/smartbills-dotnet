@@ -11,7 +11,7 @@ namespace Smartbills.NET.Entities
         public long Id { get; set; }
 
         [JsonPropertyName("company")]
-        public SBCompany Company { get; set; }
+        public SBMerchant Company { get; set; }
 
         [JsonPropertyName("items")]
 
@@ -50,7 +50,7 @@ namespace Smartbills.NET.Entities
         //public List<SBReceiptTransactionVM> Transactions { get; set; }
 
         [JsonPropertyName("store_id")]
-        public long? StoreId { get; set; }
+        public long? LocationId { get; set; }
 
         [JsonPropertyName("receipt_metadata")]
         public SBReceiptMetadata ReceiptMetadata { get; set; }

@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Smartbills.NET.Constants;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities.Stores
+namespace Smartbills.NET.Entities.Locations
 {
-    public class SBStore
+    public class SBLocation
     {
-
-        [JsonPropertyName("id")]
-        public long Id { get; set; }
-
-        //[JsonPropertyName("address")]
-        //public AddressDTO Address { get; set; }
+        [JsonPropertyName("address")]
+        public SBAddress Address { get; set; }
 
         [JsonPropertyName("updated_at")]
 
@@ -26,5 +23,8 @@ namespace Smartbills.NET.Entities.Stores
         [JsonPropertyName("phone_number")]
         [Phone]
         public string PhoneNumber { get; set; }
+
+        [JsonPropertyName(CommonProperties.MERCHANT_ID)]
+        public long? MerchantId { get; set; }
     }
 }

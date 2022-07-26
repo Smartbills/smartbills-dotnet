@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Products;
 using System.Threading;
@@ -12,9 +11,9 @@ namespace Smartbills.NET.Services.Products
         IRetrievable<SBProduct, GetProductRequest>
     { }
 
-    public class ProductClient : Service<SBProduct>, IProductClient
+    public class ProductClient : ClientBase<SBProduct>, IProductClient
     {
-        public ProductClient(ISBClient client) : base(client)
+        public ProductClient(ISmartbillsClient client) : base(client)
         {
         }
 

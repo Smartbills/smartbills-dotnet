@@ -1,4 +1,3 @@
-using Smarbtills.NET.Services;
 using Smartbills.NET.Entities;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,14 +10,14 @@ namespace Smartbills.NET.Services
     ICreatable<SBBankAccount, CreateBankAccountRequest>
     {
     }
-    public class BankAccountClient : Service<SBBankAccount>, IBankAccountClient
+    public class BankAccountClient : ClientBase<SBBankAccount>, IBankAccountClient
 
     {
         public override string BasePath => "bank-accounts";
         private string TransactionsPath => "accounts";
 
 
-        public BankAccountClient(ISBClient client) : base(client) { }
+        public BankAccountClient(ISmartbillsClient client) : base(client) { }
 
         public async Task<SBBankAccount> GetAsync(long id, GetBankAccountRequest data, CancellationToken cancellationToken = default)
         {

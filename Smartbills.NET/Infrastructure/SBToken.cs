@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Infrastructure
 {
-    public class SBToken
+    public record SBToken
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
