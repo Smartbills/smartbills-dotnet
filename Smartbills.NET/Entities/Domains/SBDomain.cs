@@ -10,11 +10,11 @@ namespace Smartbills.NET.Entities.Domains
 {
     public class SBDomain: ISmartbillsEntity
     {
-        [JsonPropertyName(CommonProperties.ID)]
+        [JsonPropertyName(CommonProperties.Id)]
         public long Id { get; set; }
         [JsonPropertyName("domain")]
         public string Domain { get; set; }
-        [JsonPropertyName(CommonProperties.CREATED_AT)]
+        [JsonPropertyName(CommonProperties.CreatedAt)]
         public string CreatedAt { get; set; }
         [JsonPropertyName("validated_at")]
         public string ValidatedAt { get; set; }

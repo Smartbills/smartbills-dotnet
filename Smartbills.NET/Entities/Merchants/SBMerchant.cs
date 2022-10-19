@@ -9,25 +9,28 @@ namespace Smartbills.NET.Entities
 {
     public class SBMerchant: ISmartbillsEntity
     {
-        [JsonPropertyName(CommonProperties.ID)]
+        [JsonPropertyName(CommonProperties.Id)]
         public long Id { get; set; }
-        [JsonPropertyName(CommonProperties.CREATED_AT)]
+        [JsonPropertyName(CommonProperties.CreatedAt)]
         public DateTimeOffset CreatedAt { get; set; }
-        [JsonPropertyName(CommonProperties.UPDATED_AT)]
+        [JsonPropertyName(CommonProperties.UpdatedAt)]
         public DateTimeOffset UpdatedAt { get; set; }
-        [JsonPropertyName(MerchantPropeties.SLUG)]
+        [JsonPropertyName(MerchantPropeties.Slug)]
         public string Slug { get; set; }
-        [JsonPropertyName(MerchantPropeties.DOMAINS)]
+        [JsonPropertyName(MerchantPropeties.Domains)]
         public List<SBDomain> Domain { get; set; }
-        [JsonPropertyName(MerchantPropeties.LOGO)]
+        [JsonPropertyName(MerchantPropeties.Logo)]
         public string Logo { get; set; }
-        [JsonPropertyName(MerchantPropeties.CUSTOMER_EMAIL)]
+        [JsonPropertyName(MerchantPropeties.CustomerEmail)]
         public string CustomerEmail { get; set; }
-        [JsonPropertyName(MerchantPropeties.PHONE_NUMBER)]
+        [JsonPropertyName(MerchantPropeties.PhoneNumber)]
         public string PhoneNumber { get; set; }
-        [JsonPropertyName(MerchantPropeties.ADDRESS)]
+        [JsonPropertyName(MerchantPropeties.Address)]
         public SBAddress Address { get; set; }
-        [JsonPropertyName(MerchantPropeties.NAME)]
+        [JsonPropertyName(MerchantPropeties.Name)]
         public string Name { get; set; }
+
+        [JsonPropertyName(MerchantPropeties.Name)]
+        public string Locale { get; set; }
     }
 }

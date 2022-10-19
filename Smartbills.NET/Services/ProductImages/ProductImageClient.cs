@@ -8,7 +8,7 @@ namespace Smartbills.NET.Services
     public interface IProductImageClient : ICreatable<SBProductImage, CreateProductImageRequest>,
         IRetrievable<SBProductImage>,
         IUpdatable<SBProductImage, UpdateProductImageRequest>,
-        IDeletable<SBProductImage, DeleteProductImageRequest>
+        IDeletable<SBProductImage>
     {
 
     }

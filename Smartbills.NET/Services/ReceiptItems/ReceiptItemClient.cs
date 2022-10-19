@@ -6,7 +6,7 @@ namespace Smartbills.NET.Services
 {
     public interface IReceiptItemClient :
         IRetrievable<SBReceiptItem>,
-        IDeletable<SBReceiptItem, DeleteReceiptItemRequest>,
+        IDeletable<SBReceiptItem>,
         IUpdatable<SBReceiptItem, UpdateReceiptItemRequest>,
         ICreatable<SBReceiptItem, CreateReceiptItemRequest>
     { }

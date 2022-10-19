@@ -7,7 +7,7 @@ namespace Smartbills.NET.Services.Location
 {
     public interface ILocationClient : ICreatable<SBLocation, CreateLocationRequest>,
         IUpdatable<SBLocation, UpdateLocationRequest>,
-        IDeletable<SBLocation, DeleteLocationRequest>,
+        IDeletable<SBLocation>,
         IRetrievable<SBLocation>
     {
 

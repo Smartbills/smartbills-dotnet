@@ -8,12 +8,12 @@ namespace Smartbills.NET.Constants.Merchants
 {
     public record MerchantPropeties
     {
-        public const string NAME ="name";
-        public const string ADDRESS = "address";
-        public const string PHONE_NUMBER = "phone_number";
-        public const string SLUG = "slug";
-        public const string DOMAINS = "domains";
-        public const string LOGO = "logo";
-        public const string CUSTOMER_EMAIL = "customer_email";
+        public const string Name ="name";
+        public const string Address = "address";
+        public const string PhoneNumber = "phone_number";
+        public const string Slug = "slug";
+        public const string Domains = "domains";
+        public const string Logo = "logo";
+        public const string CustomerEmail = "customer_email";
     }
 }

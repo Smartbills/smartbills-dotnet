@@ -9,7 +9,7 @@ namespace Smartbills.NET.Services
     ICreatable<SBBank, CreateBankRequest>,
     IRetrievable<SBBank>,
     IUpdatable<SBBank, UpdateBankRequest>,
-    IDeletable<SBBank, DeleteBankRequest>
+    IDeletable<SBBank>
     {
         Task<SBBankAccount> GetAccountAsync(long parentId, long id, GetBankAccountRequest request, CancellationToken cancellationToken = default);
         Task<SBBankAccount> UpdateAccountAsync(long parentId, long id, UpdateBankAccountRequest data, CancellationToken cancellationToken = default);

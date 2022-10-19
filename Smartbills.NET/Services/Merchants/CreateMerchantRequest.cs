@@ -24,5 +24,7 @@ namespace Smartbills.NET.Services
         public string Description { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
+        [JsonPropertyName("currency")]
+        public string Currency { get; set; }
     }
 }

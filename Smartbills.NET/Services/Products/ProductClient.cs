@@ -7,7 +7,7 @@ namespace Smartbills.NET.Services.Products
 {
     public interface IProductClient : ICreatable<SBProduct, CreateProductRequest>,
         IUpdatable<SBProduct, UpdateProductRequest>,
-        IDeletable<SBProduct, DeleteProductRequest>,
+        IDeletable<SBProduct>,
         IRetrievable<SBProduct>
     { }
 

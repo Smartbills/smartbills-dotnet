@@ -21,10 +21,9 @@ namespace Smartbills.NET.Entities.Locations
         public bool Active { get; set; } = true;
 
         [JsonPropertyName("phone_number")]
-        [Phone]
         public string PhoneNumber { get; set; }
 
-        [JsonPropertyName(CommonProperties.MERCHANT_ID)]
+        [JsonPropertyName(CommonProperties.MerchantId)]
         public long? MerchantId { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Smartbills.NET.Services
     IRetrievable<SBBankTransaction>,
 
 
-    IDeletable<SBBankTransaction, DeleteBankTransactionRequest>
+    IDeletable<SBBankTransaction>
 
     { }
     public class BankTransactionClient : ClientBase<SBBankTransaction>, IBankTransactionClient
