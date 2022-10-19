@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ReceiptDiscounts
 {
-    public class CreateReceiptDiscountDTO
+    public class CreateReceiptDiscountRequest
     {
 
         [JsonPropertyName("code")]

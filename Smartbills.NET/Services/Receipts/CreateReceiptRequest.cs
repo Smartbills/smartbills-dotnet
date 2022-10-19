@@ -1,6 +1,8 @@
 
 using Smartbills.NET.Entities.Companies;
 using Smartbills.NET.Entities.ReceiptDiscounts;
+using Smartbills.NET.Services.Addresses;
+using Smartbills.NET.Services.ReceiptFees;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,11 +17,15 @@ namespace Smartbills.NET.Services
 
         [JsonPropertyName("customer")]
         public CreateCustomerRequest Customer { get; set; }
+
+        [JsonPropertyName("customer_id")]
+        public CreateCustomerRequest CustomerId { get; set; }
+
         [JsonPropertyName("billing_address")]
-        //public CreateBillingAddressDTO BillingAddress { get; set; }
-        //[JsonPropertyName("shipping_address")]
-        //public CreateBillingAddressDTO ShippingAddress { get; set; }
-        //[JsonPropertyName("items")]
+        public CreateBillingAddressRequest BillingAddress { get; set; }
+        [JsonPropertyName("shipping_address")]
+        public CreateBillingAddressRequest ShippingAddress { get; set; }
+        [JsonPropertyName("items")]
         public List<CreateReceiptItemRequest> Items { get; set; } = new List<CreateReceiptItemRequest>();
 
         [JsonPropertyName("currency")]
@@ -37,7 +43,12 @@ namespace Smartbills.NET.Services
         [JsonPropertyName("payment_status")]
         public string PaymentStatus { get; set; }
         [JsonPropertyName("discount_codes")]
-        public List<CreateReceiptDiscountDTO> DiscountCodes { get; set; }
+        public List<CreateReceiptDiscountRequest> DiscountCodes { get; set; }
+
+        [JsonPropertyName("fees")]
+        public List<CreateReceiptFeeRequest> Fees { get; set; } = new List<CreateReceiptFeeRequest>();
+
+
 
         [JsonPropertyName("total_discounts")]
         public decimal TotalDiscounts { get; set; }
@@ -63,7 +74,15 @@ namespace Smartbills.NET.Services
         public decimal TotalWeight { get; set; }
         [JsonPropertyName("total_taxes")]
 
+   
+
+
+
         public decimal TotalTaxes { get; set; }
+
+        [JsonPropertyName("total_fees")]
+        public decimal TotalFees { get; set; }
+
         [JsonPropertyName("total")]
 
         public decimal Total { get; set; }
