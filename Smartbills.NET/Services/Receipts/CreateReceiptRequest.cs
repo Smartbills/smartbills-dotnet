@@ -10,8 +10,8 @@ namespace Smartbills.NET.Services
 {
     public record CreateReceiptRequest : BaseRequest
     {
-        [JsonPropertyName("company_id")]
-        public long? CompanyId { get; set; }
+        [JsonPropertyName("merchant_id")]
+        public long? MerchantId { get; set; }
 
         [JsonPropertyName("customer")]
         public CreateCustomerRequest Customer { get; set; }

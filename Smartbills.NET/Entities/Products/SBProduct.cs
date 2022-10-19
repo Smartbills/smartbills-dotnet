@@ -10,8 +10,8 @@ namespace Smartbills.NET.Entities
         [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonPropertyName("company_id")]
-        public long? CompanyId { get; set; }
+        [JsonPropertyName("merchant_id")]
+        public long? MerchantId { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("slug")]

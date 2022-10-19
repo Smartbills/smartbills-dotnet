@@ -5,8 +5,8 @@ namespace Smartbills.NET.Entities
 {
     public class CreateDocumentReceiptDTO
     {
-        [JsonPropertyName("company_id")]
-        public long? CompanyId { get; set; }
+        [JsonPropertyName("merchant_id")]
+        public long? MerchantId { get; set; }
 
         //[JsonPropertyName("items")]
         //public List<CreateReceiptItemDTO> Items { get; set; } = new List<CreateReceiptItemDTO>();
