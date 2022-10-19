@@ -1,8 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.ProductImages;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.ProductImages
 {
 
     public interface IProductImageClient : ICreatable<SBProductImage, CreateProductImageRequest>,
@@ -23,20 +26,20 @@ namespace Smartbills.NET.Services
 
         public async Task<SBProductImage> CreateAsync(CreateProductImageRequest options, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, cancellationToken);
+            return await CreateEntityAsync(options, cancellationToken);
         }
-        public async Task<SBProductImage> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
+        public async Task<SBProductImage> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id,  cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
         public async Task<SBProductImage> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync(id, cancellationToken);
         }
 
         public async Task<SBProductImage> UpdateAsync(long id, UpdateProductImageRequest options, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, options, cancellationToken);
+            return await UpdateEntityAsync(id, options, cancellationToken);
         }
     }
 }

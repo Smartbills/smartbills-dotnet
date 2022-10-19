@@ -1,4 +1,4 @@
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Banks
 {
     public enum SBBankState
     {

@@ -1,9 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.BankInstitutions
 {
     public interface IBankInstitutionClient :
         IRetrievable<SBBankInstitution>,
@@ -32,19 +34,19 @@ namespace Smartbills.NET.Services
         {
         }
 
-        public virtual async Task<SBBankInstitution> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id,  cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
         public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(options, cancellationToken);
+            return await CreateEntityAsync(options, cancellationToken);
         }
 
         public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, updateRequest, cancellationToken);
+            return await UpdateEntityAsync(id, updateRequest, cancellationToken);
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities._interfaces
 {
     public interface ISmartbillsEntity
     {

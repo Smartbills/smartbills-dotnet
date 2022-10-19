@@ -1,7 +1,7 @@
-﻿using Smartbills.NET.Services;
+﻿using Smartbills.NET.Services._base;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.Services.Banks
+namespace Smartbills.NET.Services.Banks
 {
     public record UpdateBankBalanceRequest : BaseRequest
     {

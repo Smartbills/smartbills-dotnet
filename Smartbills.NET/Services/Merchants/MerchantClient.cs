@@ -1,9 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Merchants;
 using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants
 {
     public interface IMerchantClient :
     IRetrievable<SBMerchant>,
@@ -36,17 +38,17 @@ namespace Smartbills.NET.Services
 
         public async Task<SBMerchant> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
         public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(request, cancellationToken);
+            return await CreateEntityAsync(request, cancellationToken);
         }
 
         public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, request, cancellationToken);
+            return await UpdateEntityAsync(id, request, cancellationToken);
         }
     }
 }

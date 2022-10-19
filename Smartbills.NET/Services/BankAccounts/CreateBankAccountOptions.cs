@@ -1,7 +1,8 @@
-using Smartbills.Services.BankBalances;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services.BankBalances;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.BankAccounts
 {
     public record CreateBankAccountRequest : BaseRequest
     {

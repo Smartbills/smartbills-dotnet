@@ -2,8 +2,9 @@
 using Newtonsoft.Json;
 using RestSharp;
 using Smartbills.NET.Entities;
-using Smartbills.NET.IntegrationTests;
+using Smartbills.NET.Entities.Merchants;
 using Smartbills.NET.Services;
+using Smartbills.NET.Services.Merchants;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -11,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Smartbills.NET.IntegrationTests
+namespace Smartbills.NET.IntegrationTests.Services
 {
 
     [Collection("ClientFixture")]
@@ -39,7 +40,7 @@ namespace Smartbills.NET.IntegrationTests
         public async Task SHOULD_GET_MERCHANT_BY_ID()
         {
             var merchant = new SBMerchant();
-            var response = await _merchantClient.GetByIdAsync(new long(),default);
+            var response = await _merchantClient.GetByIdAsync(new long(), default);
             Assert.Equal(merchant, response);
         }
 

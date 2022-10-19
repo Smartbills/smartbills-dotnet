@@ -1,8 +1,8 @@
-
+using Smartbills.NET.Entities.ProductImages;
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.ProductVariants
 {
     public class SBProductVariant
     {

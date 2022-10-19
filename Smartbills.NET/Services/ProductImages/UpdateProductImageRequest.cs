@@ -1,5 +1,4 @@
-﻿
-namespace Smartbills.NET.Services
+﻿namespace Smartbills.NET.Services.ProductImages
 {
     public class UpdateProductImageRequest
     {

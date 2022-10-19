@@ -1,9 +1,10 @@
-
+using Smartbills.NET.Entities.Products;
+using Smartbills.NET.Entities.ProductVariants;
 using Smartbills.NET.Entities.Taxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.ReceiptItems
 {
     public class SBReceiptItem
     {

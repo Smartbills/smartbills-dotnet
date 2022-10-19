@@ -1,8 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Documents;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Documents
 {
     public interface IDocumentClient :
        IRetrievable<SBDocument>
@@ -20,16 +23,16 @@ namespace Smartbills.NET.Services
 
         public async Task<SBDocument> CreateAsync(CreateDocumentRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(data, cancellationToken);
+            return await CreateEntityAsync(data, cancellationToken);
         }
         public async Task<SBDocument> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id,  cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
         public async Task<SBDocument> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync(id, cancellationToken);
         }
     }
 }

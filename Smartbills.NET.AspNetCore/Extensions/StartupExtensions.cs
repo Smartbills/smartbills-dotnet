@@ -1,9 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services;
+using Smartbills.NET.Services.BankAccounts;
+using Smartbills.NET.Services.BankInstitutions;
+using Smartbills.NET.Services.Banks;
+using Smartbills.NET.Services.BankTransactions;
+using Smartbills.NET.Services.Documents;
+using Smartbills.NET.Services.Merchants;
+using Smartbills.NET.Services.Receipts;
 using System;
-namespace Smartbills.NET
+namespace Smartbills.NET.AspNetCore.Extensions
 {
 
     public class SmartbillsBuilder
@@ -27,7 +33,7 @@ namespace Smartbills.NET
             }
             else
             {
-                _services.Configure<SBClientConfiguration>(options);
+                _services.Configure(options);
             }
         }
 

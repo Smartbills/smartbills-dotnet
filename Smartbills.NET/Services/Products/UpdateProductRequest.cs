@@ -1,22 +1,18 @@
-﻿using Smartbills.NET.Services;
+﻿using Smartbills.NET.Services._base;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities.Products
+namespace Smartbills.NET.Services.Products
 {
     public record UpdateProductRequest : BaseRequest
     {
 
-        [Required]
-        [MaxLength(255)]
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("vendor")]
         public string Vendor { get; set; }
         [JsonPropertyName("category")]
-        [MaxLength(255)]
         public string Category { get; set; }
         [JsonPropertyName("tags")]
         public List<string> Tags { get; set; }

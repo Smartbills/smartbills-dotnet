@@ -1,6 +1,4 @@
-﻿using Smartbills.NET.Services;
-
-namespace Smartbills.NET.Infrastructure
+﻿namespace Smartbills.NET.Infrastructure
 {
     public class SBClientConfiguration : ISmartbillsClientBaseConfiguration
     {

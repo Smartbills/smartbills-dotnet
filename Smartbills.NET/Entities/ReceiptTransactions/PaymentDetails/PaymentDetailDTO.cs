@@ -1,7 +1,7 @@
-﻿using Smartbills.NET.Entities.Transactions.CreditCards;
+﻿using Smartbills.NET.Entities.ReceiptTransactions.CreditCards;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities.Transactions.PaymentDetails
+namespace Smartbills.NET.Entities.ReceiptTransactions.PaymentDetails
 {
     public class PaymentDetailDTO
     {

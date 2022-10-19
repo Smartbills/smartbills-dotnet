@@ -1,9 +1,14 @@
+using Smartbills.NET.Entities.Barcode;
+using Smartbills.NET.Entities.Documents;
+using Smartbills.NET.Entities.Merchants;
+using Smartbills.NET.Entities.ReceiptItems;
+using Smartbills.NET.Entities.ReceiptMetadata;
 using Smartbills.NET.Entities.Taxes;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Receipts
 {
     public class SBReceipt
     {

@@ -1,6 +1,8 @@
-﻿using System.Text.Json.Serialization;
+﻿using Smartbills.NET.Services._base;
+using Smartbills.NET.Services.Addresses;
+using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants
 {
     public record UpdateMerchantRequest : BaseRequest
     {

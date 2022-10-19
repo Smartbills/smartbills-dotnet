@@ -24,7 +24,7 @@ namespace Smartbills.NET.Infrastructure
         {
             request.AddHeader("X-API-KEY", _apiKey);
             request.AddHeader("X-API-SECRET", _apiSecret);
-            return ValueTask.CompletedTask;
+            return new ValueTask();
         }
     }
 }

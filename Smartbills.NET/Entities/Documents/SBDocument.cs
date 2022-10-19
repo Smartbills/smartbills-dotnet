@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Documents
 {
     public class SBDocument
     {

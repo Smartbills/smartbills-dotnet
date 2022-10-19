@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.ProductImages
 {
     public class SBProductImage
     {

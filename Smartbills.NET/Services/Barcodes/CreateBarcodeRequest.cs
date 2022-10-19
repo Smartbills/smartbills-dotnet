@@ -1,6 +1,7 @@
-﻿using Smartbills.NET.Entities;
+﻿using Smartbills.NET.Entities.Barcode;
+using Smartbills.NET.Services._base;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Barcodes
 {
     public record CreateBarcodeRequest : BaseRequest
     {

@@ -2,15 +2,15 @@
 using Newtonsoft.Json;
 using RestSharp;
 using Smartbills.NET.Entities;
-using Smartbills.NET.IntegrationTests;
-using Smartbills.NET.Services;
+using Smartbills.NET.Entities.Banks;
+using Smartbills.NET.Services.Banks;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Smartbills.NET.IntegrationTests
+namespace Smartbills.NET.IntegrationTests.Services
 {
 
     [Collection("ClientFixture")]
@@ -28,7 +28,7 @@ namespace Smartbills.NET.IntegrationTests
         public async Task SHOULD_FIND_BANK()
         {
             var bank = new SBBank();
-            var response = await _bankClient.GetByIdAsync(new long(),  default);
+            var response = await _bankClient.GetByIdAsync(new long(), default);
             Assert.Equal(bank, response);
         }
 
@@ -36,7 +36,7 @@ namespace Smartbills.NET.IntegrationTests
         public async Task SHOULD_R()
         {
             var bank = new SBBank();
-            var response = await _bankClient.GetByIdAsync(new long(),  default);
+            var response = await _bankClient.GetByIdAsync(new long(), default);
             Assert.Equal(bank, response);
         }
     }

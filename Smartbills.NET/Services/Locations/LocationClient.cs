@@ -1,9 +1,11 @@
-using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Locations;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Location
+namespace Smartbills.NET.Services.Locations
 {
     public interface ILocationClient : ICreatable<SBLocation, CreateLocationRequest>,
         IUpdatable<SBLocation, UpdateLocationRequest>,
@@ -14,7 +16,21 @@ namespace Smartbills.NET.Services.Location
     }
     public class LocationClient : ClientBase<SBLocation>, ILocationClient
     {
+
         public LocationClient(ISmartbillsClient client) : base(client)
+        {
+
+        }
+
+        public LocationClient(SBClientCredentials credentials) : base(credentials)
+        {
+        }
+
+        public LocationClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        {
+        }
+
+        public LocationClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
         {
         }
 
@@ -22,22 +38,22 @@ namespace Smartbills.NET.Services.Location
 
         public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, CancellationToken cancellationToken)
         {
-            return await base.CreateEntityAsync(createRequest, cancellationToken);
+            return await CreateEntityAsync(createRequest, cancellationToken);
         }
 
         public async Task<SBLocation> DeleteAsync(long id, CancellationToken cancellationToken)
         {
-            return await base.DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<SBLocation> GetByIdAsync(long id,  CancellationToken cancellationToken)
+        public async Task<SBLocation> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
-            return await base.GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
         public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
         {
-            return await base.UpdateEntityAsync(id, request, cancellationToken);
+            return await UpdateEntityAsync(id, request, cancellationToken);
         }
     }
 }

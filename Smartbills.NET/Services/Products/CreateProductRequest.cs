@@ -1,24 +1,21 @@
-﻿using System;
+﻿using Smartbills.NET.Services._base;
+using Smartbills.NET.Services.ProductImages;
+using Smartbills.NET.Services.ProductVariants;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Products
 {
     public record CreateProductRequest : BaseRequest
     {
-        [Required]
-        [MaxLength(255)]
         [JsonPropertyName("name")]
         public string Name { get; set; }
-        [MaxLength(255)]
         [JsonPropertyName("slug")]
         public string Slug { get; set; }
-        [MaxLength(255)]
         [JsonPropertyName("vendor")]
         public string Vendor { get; set; }
         [JsonPropertyName("category")]
-        [MaxLength(255)]
         public string Category { get; set; }
         [JsonPropertyName("tags")]
         public List<string> Tags { get; set; }

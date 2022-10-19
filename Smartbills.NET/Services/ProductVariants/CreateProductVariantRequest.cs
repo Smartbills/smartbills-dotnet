@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.ProductVariants
 {
     public class CreateProductVariantRequest
     {

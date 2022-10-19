@@ -1,14 +1,16 @@
-
-using Smartbills.NET.Entities.Companies;
 using Smartbills.NET.Entities.ReceiptDiscounts;
+using Smartbills.NET.Services._base;
 using Smartbills.NET.Services.Addresses;
+using Smartbills.NET.Services.Customers;
 using Smartbills.NET.Services.ReceiptFees;
+using Smartbills.NET.Services.ReceiptItems;
+using Smartbills.NET.Services.ReceiptMetadata;
+using Smartbills.NET.Services.Taxes;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Receipts
 {
     public record CreateReceiptRequest : BaseRequest
     {
@@ -36,7 +38,6 @@ namespace Smartbills.NET.Services
 
         [JsonPropertyName("cancelled_at")]
         public DateTimeOffset? CancelledAt { get; set; }
-        [MaxLength(255)]
 
         [JsonPropertyName("cancel_reason")]
         public string CancelReason { get; set; }
@@ -74,7 +75,7 @@ namespace Smartbills.NET.Services
         public decimal TotalWeight { get; set; }
         [JsonPropertyName("total_taxes")]
 
-   
+
 
 
 

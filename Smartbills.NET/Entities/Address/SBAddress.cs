@@ -1,7 +1,8 @@
+using Smartbills.NET.Entities._base;
 using System;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Address
 {
     public class SBAddress : SmartbillsEntityWithId
     {

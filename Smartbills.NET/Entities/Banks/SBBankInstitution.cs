@@ -1,6 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using Smartbills.NET.Entities._base;
+using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Banks
 {
     public class SBBankInstitution : SmartbillsEntityWithId
     {

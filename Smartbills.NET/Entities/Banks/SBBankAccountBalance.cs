@@ -1,4 +1,6 @@
-namespace Smartbills.NET.Entities
+using Smartbills.NET.Entities._base;
+
+namespace Smartbills.NET.Entities.Banks
 {
     public class SBBankAccountBalance : SmartbillsEntityWithId
     {

@@ -1,12 +1,13 @@
 using Moq;
 using Smartbills.NET.Entities;
 using Smartbills.NET.UnitTests.Configuration;
-using Smartbills.NET.Services;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using Smartbills.NET.Services.BankInstitutions;
+using Smartbills.NET.Entities.Banks;
 
-namespace Smartbills.NET.UnitTests
+namespace Smartbills.NET.UnitTests.Services
 {
     public class BankInstitutionClientTest : ServerFixture
     {
@@ -22,7 +23,7 @@ namespace Smartbills.NET.UnitTests
         public async Task SHOULD_FIND_BANK_INSTITUTION()
         {
             var bank = new SBBankInstitution();
-            _bankInstitutionClient.Setup(x => x.GetByIdAsync(It.IsAny<long>(),  It.IsAny<CancellationToken>())).ReturnsAsync(bank);
+            _bankInstitutionClient.Setup(x => x.GetByIdAsync(It.IsAny<long>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
             var response = await _bankInstitutionClient.Object.GetByIdAsync(new long(), default);
             Assert.Equal(bank, response);
         }

@@ -1,7 +1,8 @@
+using Smartbills.NET.Services.Taxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.ReceiptItems
 {
     public class CreateReceiptItemRequest
     {

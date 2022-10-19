@@ -1,8 +1,6 @@
-﻿
+﻿using System.Text.Json.Serialization;
 
-using System.Text.Json.Serialization;
-
-namespace Smartbills.NET.Entities.Transactions.CreditCards
+namespace Smartbills.NET.Entities.ReceiptTransactions.CreditCards
 {
     public class CreditCardDTO
     {

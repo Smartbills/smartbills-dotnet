@@ -1,6 +1,6 @@
 ﻿using Smartbills.NET.Constants;
+using Smartbills.NET.Entities.Address;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Locations

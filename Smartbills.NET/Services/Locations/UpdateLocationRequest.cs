@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Smartbills.NET.Services._base;
+using Smartbills.NET.Services.Addresses;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services.Location
+namespace Smartbills.NET.Services.Locations
 {
     public record UpdateLocationRequest : BaseRequest
     {

@@ -1,5 +1,7 @@
-using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Products;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 

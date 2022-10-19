@@ -1,6 +1,6 @@
 ﻿using Smartbills.NET.Entities.Products;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.ProductOption
 {
     public class SBProductOption : SBProductEntityBase
     {

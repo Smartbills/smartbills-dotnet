@@ -1,6 +1,7 @@
+using Smartbills.NET.Entities.Receipts;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Documents
 {
     public class OCRDocumentDTO : SBDocument
     {

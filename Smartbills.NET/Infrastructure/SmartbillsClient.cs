@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Options;
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Authenticators;
-using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.Location;
 using System;
 using System.Reflection;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Infrastructure
 {
     public interface ISmartbillsClient
     {

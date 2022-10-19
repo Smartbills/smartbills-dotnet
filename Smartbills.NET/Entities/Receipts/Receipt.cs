@@ -1,6 +1,7 @@
+using Smartbills.NET.Entities._base;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Receipts
 {
     public class Receipt : SmartbillsEntityWithId
     {

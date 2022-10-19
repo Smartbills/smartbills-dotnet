@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.ReceiptMetadata
 {
     public class SBReceiptMetadata
     {

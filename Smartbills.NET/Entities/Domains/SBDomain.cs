@@ -1,4 +1,5 @@
 ﻿using Smartbills.NET.Constants;
+using Smartbills.NET.Entities._interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,8 +1,7 @@
-﻿using Smartbills.NET.Services;
-using System.ComponentModel.DataAnnotations;
+﻿using Smartbills.NET.Services.Addresses;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Services.Locations
 {
     public class CreateLocationRequest
     {

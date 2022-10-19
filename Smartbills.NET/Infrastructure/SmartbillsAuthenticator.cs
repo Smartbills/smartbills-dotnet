@@ -1,10 +1,9 @@
 using RestSharp;
 using RestSharp.Authenticators;
-using Smartbills.NET.Infrastructure;
 using System;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET
+namespace Smartbills.NET.Infrastructure
 {
     public class SmartbillsAuthenticator : AuthenticatorBase
     {
@@ -18,8 +17,8 @@ namespace Smartbills.NET
 
         protected override async ValueTask<Parameter> GetAuthenticationParameter(string accessToken)
         {
-            var token = (string.IsNullOrEmpty(Token)  || DateTimeOffset.Now > ExpirationDate) ? await GetToken() : Token;
-          
+            var token = string.IsNullOrEmpty(Token) || DateTimeOffset.Now > ExpirationDate ? await GetToken() : Token;
+
             return new HeaderParameter(KnownHeaders.Authorization, token);
         }
 

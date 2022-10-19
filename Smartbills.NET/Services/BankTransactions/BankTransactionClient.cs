@@ -1,8 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Banks;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.BankTransactions
 {
     public interface IBankTransactionClient :
     ICreatable<SBBankTransaction, CreateBankTransactionRequest>,
@@ -24,26 +27,26 @@ namespace Smartbills.NET.Services
 
         public async Task<SBBankTransaction> CreateAsync(CreateBankTransactionRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(data, cancellationToken);
+            return await CreateEntityAsync(data, cancellationToken);
         }
 
 
-        public async Task<SBBankTransaction> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id,  cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
 
         public async Task<SBBankTransaction> UpdateAsync(long id, UpdateBankTransactionRequest data, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, data, cancellationToken);
+            return await UpdateEntityAsync(id, data, cancellationToken);
         }
 
 
 
         public async Task<SBBankTransaction> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync(id, cancellationToken);
         }
     }
 }

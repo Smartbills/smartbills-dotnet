@@ -1,9 +1,10 @@
-
+using Smartbills.NET.Entities.ProductImages;
+using Smartbills.NET.Entities.ProductVariants;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Products
 {
     public class SBProduct
     {

@@ -1,13 +1,15 @@
 using Smartbills.NET.Constants;
 using Smartbills.NET.Constants.Merchants;
+using Smartbills.NET.Entities._interfaces;
+using Smartbills.NET.Entities.Address;
 using Smartbills.NET.Entities.Domains;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities
+namespace Smartbills.NET.Entities.Merchants
 {
-    public class SBMerchant: ISmartbillsEntity
+    public class SBMerchant : ISmartbillsEntity
     {
         [JsonPropertyName(CommonProperties.Id)]
         public long Id { get; set; }

@@ -1,8 +1,11 @@
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.ReceiptItems;
+using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services._base;
+using Smartbills.NET.Services._interfaces;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.ReceiptItems
 {
     public interface IReceiptItemClient :
         IRetrievable<SBReceiptItem>,
@@ -21,23 +24,23 @@ namespace Smartbills.NET.Services
 
         public async Task<SBReceiptItem> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync(createRequest, cancellationToken);
+            return await CreateEntityAsync(createRequest, cancellationToken);
         }
 
         public async Task<SBReceiptItem> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync(id, cancellationToken);
 
         }
 
-        public async Task<SBReceiptItem> GetByIdAsync(long id,  CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityByIdAsync(id,  cancellationToken);
+            return await GetEntityByIdAsync(id, cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync(id, createRequest, cancellationToken);
+            return await UpdateEntityAsync(id, createRequest, cancellationToken);
         }
     }
 }
