@@ -1,6 +1,4 @@
-﻿using Smartbills.NET.Services._base;
-
-namespace Smartbills.NET.Services.Products
+﻿namespace Smartbills.NET.Services.Products
 {
     public record GetProductRequest : BaseRequest
     {

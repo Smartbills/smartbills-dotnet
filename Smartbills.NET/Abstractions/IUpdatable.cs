@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services._interfaces
+namespace Smartbills.NET.Abstractions
 {
     public interface IUpdatable<TEntity, TRequest> where TRequest : class
     {

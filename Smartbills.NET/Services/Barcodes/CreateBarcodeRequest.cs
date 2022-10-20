@@ -1,5 +1,4 @@
 ﻿using Smartbills.NET.Entities.Barcode;
-using Smartbills.NET.Services._base;
 
 namespace Smartbills.NET.Services.Barcodes
 {

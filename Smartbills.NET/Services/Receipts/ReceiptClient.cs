@@ -1,8 +1,7 @@
-﻿using Smartbills.NET.Entities.ReceiptItems;
+﻿using Smartbills.NET.Abstractions;
+using Smartbills.NET.Entities.ReceiptItems;
 using Smartbills.NET.Entities.Receipts;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services._base;
-using Smartbills.NET.Services._interfaces;
 using Smartbills.NET.Services.ReceiptItems;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-namespace Smartbills.NET.Services._base
+namespace Smartbills.NET.Services
 {
     public record BaseRequest
     {

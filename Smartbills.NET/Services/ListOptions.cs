@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Services._base
+namespace Smartbills.NET.Services
 {
     public class ListRequest
     {

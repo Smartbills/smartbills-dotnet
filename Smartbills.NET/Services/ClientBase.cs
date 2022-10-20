@@ -4,7 +4,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services._base
+namespace Smartbills.NET.Services
 {
 
     public abstract class ClientBase<TEntityReturned>

@@ -1,7 +1,6 @@
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services._base;
-using Smartbills.NET.Services._interfaces;
 using Smartbills.NET.Services.BankTransactions;
 using System.Threading;
 using System.Threading.Tasks;

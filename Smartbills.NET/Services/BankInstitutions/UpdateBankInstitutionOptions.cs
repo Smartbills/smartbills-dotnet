@@ -1,4 +1,3 @@
-using Smartbills.NET.Services._base;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.BankInstitutions

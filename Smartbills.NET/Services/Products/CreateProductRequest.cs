@@ -1,5 +1,4 @@
-﻿using Smartbills.NET.Services._base;
-using Smartbills.NET.Services.ProductImages;
+﻿using Smartbills.NET.Services.ProductImages;
 using Smartbills.NET.Services.ProductVariants;
 using System;
 using System.Collections.Generic;
