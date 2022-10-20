@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Customers
 {
-    public class CreateCustomerRequest
+    public class UpdateCustomerRequest
     {
 
         [JsonPropertyName("first_name")]
@@ -30,6 +32,5 @@ namespace Smartbills.NET.Services.Customers
 
         [JsonPropertyName("company")]
         public string Company { get; set; }
-
     }
 }

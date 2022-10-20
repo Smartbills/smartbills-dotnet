@@ -5,7 +5,9 @@ using Smartbills.NET.Services.BankAccounts;
 using Smartbills.NET.Services.BankInstitutions;
 using Smartbills.NET.Services.Banks;
 using Smartbills.NET.Services.BankTransactions;
+using Smartbills.NET.Services.Customers;
 using Smartbills.NET.Services.Documents;
+using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
 using Smartbills.NET.Services.Receipts;
 using System;
@@ -24,6 +26,8 @@ namespace Smartbills.NET.AspNetCore.Extensions
             _services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             _services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
             _services.AddTransient<IMerchantClient, MerchantClient>();
+            _services.AddTransient<ILocationClient, LocationClient>();
+            _services.AddTransient<ICustomerClient, CustomerClient>();
             _services.AddTransient<IReceiptClient, ReceiptClient>();
             _services.AddTransient<IDocumentClient, DocumentClient>();
 
