@@ -29,8 +29,10 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
+    configuration: 'Release'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.NuGetVersion'
+    verbosityPack: 'Diagnostic'
 
 - task: PowerShell@2
   inputs:
