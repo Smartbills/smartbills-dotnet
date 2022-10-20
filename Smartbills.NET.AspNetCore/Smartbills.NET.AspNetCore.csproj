@@ -4,7 +4,17 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <Version>0.0.0.1</Version>
+	  <Description>Smartbills Client for .NET Core</Description>
+	  <PackageId>$(AssemblyName)</PackageId>
+	  <Authors>Sébastien Labine</Authors>
+	  <Company>Smartbills Technologies Inc.</Company>
+	  <Copyright>Smartbills Technologies Inc.</Copyright>
+	  <PackageProjectUrl>https://docs.smartbills.io</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/smartbills/smartbills-dotnet</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +24,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Smartbills.NET\Smartbills.NET.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
   </ItemGroup>
 
 </Project>

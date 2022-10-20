@@ -5,7 +5,7 @@
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>0.0.0.1</Version>
     <Description>Smartbills Client for .NET Core</Description>
-    <PackageId>Smartbills.NET</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <Authors>Sébastien Labine</Authors>
     <Company>Smartbills Technologies Inc.</Company>
     <Copyright>Smartbills Technologies Inc.</Copyright>
