@@ -31,10 +31,10 @@ steps:
     condition: ne(variables['nextRelease'], '')
     displayName: Package the project
     inputs:
-      command: "pack"
-      packagesToPack: "**/Smartbills.NET.csproj"
-      versioningScheme: "byEnvVar"
-      versionEnvVar: "nextRelease"
+      command: 'pack'
+      packagesToPack: '**/*.csproj'
+      versioningScheme: 'byEnvVar'
+      versionEnvVar: 'nextRelease'
   - task: PublishPipelineArtifact@1
     inputs:
       targetPath: "$(Pipeline.Workspace)"
