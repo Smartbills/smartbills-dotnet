@@ -1,4 +1,5 @@
 ﻿using Smartbills.NET.Abstractions;
+using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Customers;
 using Smartbills.NET.Infrastructure;
 using System;
@@ -9,14 +10,15 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Customers
 {
-    public interface ICustomerClient : ICreatable<SBCustomer, CreateCustomerRequest>,
-    IRetrievable<SBCustomer>,
-    IUpdatable<SBCustomer, UpdateCustomerRequest>,
-    IDeletable<SBCustomer>
+    public interface ICustomerClient : INestedCreateable<CreateCustomerRequest, SBCustomer>,
+    INestedRetrievable<SBCustomer>,
+    INestedUpdatable<UpdateCustomerRequest, SBCustomer>,
+    INestedDeletable<SBCustomer>,
+        INestedListable<ListCustomersRequest, PaginatedResponse<SBCustomer>>
     {
 
     }
-    public class CustomerClient: ClientBase<SBCustomer>
+    public class CustomerClient: ClientBase<SBCustomer>, ICustomerClient
     {
         public CustomerClient(ISmartbillsClient client) : base(client)
         {
@@ -43,6 +45,11 @@ namespace Smartbills.NET.Services.Customers
         public async Task<SBCustomer> UpdateAsync(long merchantId, long id, UpdateCustomerRequest request, CancellationToken cancellationToken = default)
         {
             return await base.UpdateChildAsync<UpdateCustomerRequest, SBCustomer>(merchantId, CustomersPath, id,request, cancellationToken);
+        }
+
+        public async Task<PaginatedResponse<SBCustomer>> ListAsync(long merchantId, ListCustomersRequest request, CancellationToken cancellationToken = default)
+        {
+            return await base.GetChildAsync<ListCustomersRequest, PaginatedResponse<SBCustomer>>(merchantId, CustomersPath, request, cancellationToken);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ProductVariants
 {
-    public class SBProductVariant
+    public record SBProductVariant
     {
 
         [JsonPropertyName("id")]

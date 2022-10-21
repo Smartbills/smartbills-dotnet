@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Settings
 {
-    public class UserNotificationSettingDTO
+    public record UserNotificationSettingDTO
     {
         [JsonPropertyName("push_new_bank_transaction")]
         public bool PushNewBankTransaction { get; set; } = true;

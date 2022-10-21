@@ -1,4 +1,3 @@
-using Smartbills.NET.Entities._base;
 using System;
 using System.Text.Json.Serialization;
 
@@ -7,9 +6,9 @@ namespace Smartbills.NET.Entities.Address
     /// <summary>
     /// Class representing the GPS coordinates of an <seealso cref="SBAddress">address</seealso>.
     /// </summary>
-    public class SBAddressLocation : SmartbillsEntityWithId
+    public record SBCoordinate : SmartbillsEntityWithId
     {
-        public SBAddressLocation() { }
+        public SBCoordinate() { }
         /// <summary>
         /// <value>
         /// The longitude of the location.

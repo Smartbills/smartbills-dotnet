@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Abstractions
 {
-    public interface INestedCreateable<TEntity, TRequest> where TRequest : class
+    public interface INestedCreateable<TRequest, TResposne> where TRequest : class
     {
-        Task<TEntity> CreateAsync(long parentId, string path, TRequest data = null, CancellationToken cancellationToken = default);
+        Task<TResposne> CreateAsync(long parentId, TRequest data = null, CancellationToken cancellationToken = default);
     }
 }

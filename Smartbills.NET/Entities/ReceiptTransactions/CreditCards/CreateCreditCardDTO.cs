@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Entities.ReceiptTransactions.CreditCards
 {
-    public class CreateCreditCardDTO
+    public record CreateCreditCardDTO
     {
 
         public string Bin { get; set; }

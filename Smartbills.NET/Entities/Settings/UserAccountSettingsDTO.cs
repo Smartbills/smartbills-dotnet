@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Settings
 {
-    public class UserAccountSettingDTO
+    public record UserAccountSettingDTO
     {
         [JsonPropertyName("display_language")]
         public string DisplayLanguage { get; set; }

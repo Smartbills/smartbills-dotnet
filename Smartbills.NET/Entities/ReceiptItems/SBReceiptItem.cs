@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ReceiptItems
 {
-    public class SBReceiptItem
+    public record SBReceiptItem
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

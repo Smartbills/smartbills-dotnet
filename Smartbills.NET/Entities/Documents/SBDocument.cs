@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Documents
 {
-    public class SBDocument
+    public record SBDocument
     {
 
         [JsonPropertyName("id")]

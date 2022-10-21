@@ -1,6 +1,6 @@
 ﻿namespace Smartbills.NET.Entities.Barcode
 {
-    public class SBBarcode
+    public record SBBarcode
     {
         public SBBarcodeType Type { get; set; }
         public string Text { get; set; }

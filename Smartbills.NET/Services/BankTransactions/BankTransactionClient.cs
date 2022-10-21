@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.BankTransactions
 {
     public interface IBankTransactionClient :
-    ICreatable<SBBankTransaction, CreateBankTransactionRequest>,
-    IUpdatable<SBBankTransaction, UpdateBankTransactionRequest>,
+    ICreatable<CreateBankTransactionRequest, SBBankTransaction>,
+    IUpdatable<UpdateBankTransactionRequest, SBBankTransaction>,
     IRetrievable<SBBankTransaction>,
 
 

@@ -1,5 +1,4 @@
-﻿using Smartbills.NET.Entities._base;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Products
 {
@@ -7,7 +6,7 @@ namespace Smartbills.NET.Entities.Products
     {
 
     }
-    public class SBProductEntityBase : IProductEntity
+    public record SBProductEntityBase : IProductEntity
     {
         [JsonPropertyName("product_id")]
         public long ProductId { get; set; }

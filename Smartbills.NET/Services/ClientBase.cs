@@ -97,7 +97,7 @@ namespace Smartbills.NET.Services
         protected async Task<TChildReturned> GetChildAsync<TChildRequest, TChildReturned>(long parentId, string path, TChildRequest options = null, CancellationToken cancellationToken = default) where TChildRequest : class
         {
             RestRequest request = new RestRequest(NestedPath(path, parentId)).AddObject(options);
-            return await _smartbills.Client.PostAsync<TChildReturned>(request, cancellationToken);
+            return await _smartbills.Client.GetAsync<TChildReturned>(request, cancellationToken);
         }
 
         protected async Task<TChildReturned> GetChildAsync<TChildReturned>(long parentId, string path, CancellationToken cancellationToken = default)

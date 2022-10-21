@@ -1,15 +1,15 @@
 using System.Text.Json.Serialization;
 
-namespace Smartbills.NET.Entities._base
+namespace Smartbills.NET.Entities
 {
     public interface ISmartbillsEntityWithId
     {
         long Id { get; set; }
     }
-    public class SmartbillsEntity
+    public record SmartbillsEntity
     {
     }
-    public class SmartbillsEntityWithId : SmartbillsEntity, ISmartbillsEntityWithId
+    public record SmartbillsEntityWithId : SmartbillsEntity, ISmartbillsEntityWithId
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

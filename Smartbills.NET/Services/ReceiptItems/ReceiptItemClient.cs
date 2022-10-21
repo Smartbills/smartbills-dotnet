@@ -9,8 +9,8 @@ namespace Smartbills.NET.Services.ReceiptItems
     public interface IReceiptItemClient :
         IRetrievable<SBReceiptItem>,
         IDeletable<SBReceiptItem>,
-        IUpdatable<SBReceiptItem, UpdateReceiptItemRequest>,
-        ICreatable<SBReceiptItem, CreateReceiptItemRequest>
+        IUpdatable<UpdateReceiptItemRequest,SBReceiptItem>,
+        ICreatable<CreateReceiptItemRequest,SBReceiptItem>
     { }
     public class ReceiptItemClient : ClientBase<SBReceiptItem>, IReceiptItemClient
     {

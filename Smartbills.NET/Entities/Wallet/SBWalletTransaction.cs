@@ -3,7 +3,7 @@ using System;
 
 namespace Smartbills.NET.Entities.Wallet
 {
-    public class SBWalletTransaction
+    public record SBWalletTransaction
     {
         [JsonProperty("id")]
         public long Id { get; set; }

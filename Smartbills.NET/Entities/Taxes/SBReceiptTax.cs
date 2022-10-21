@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Entities.Taxes
 {
-    public class SBReceiptTax
+    public record SBReceiptTax
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

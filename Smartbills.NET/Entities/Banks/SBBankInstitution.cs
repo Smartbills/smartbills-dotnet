@@ -1,9 +1,8 @@
-﻿using Smartbills.NET.Entities._base;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Banks
 {
-    public class SBBankInstitution : SmartbillsEntityWithId
+    public record SBBankInstitution : SmartbillsEntityWithId
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }

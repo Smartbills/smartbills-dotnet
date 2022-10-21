@@ -8,8 +8,8 @@ namespace Smartbills.NET.Services.Merchants
 {
     public interface IMerchantClient :
     IRetrievable<SBMerchant>,
-    ICreatable<SBMerchant, CreateMerchantRequest>,
-    IUpdatable<SBMerchant, UpdateMerchantRequest>
+    ICreatable<CreateMerchantRequest,SBMerchant>,
+    IUpdatable<UpdateMerchantRequest, SBMerchant>
     {
     }
     public class MerchantClient :

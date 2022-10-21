@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public class ReceiptListItemDTO
+    public record ReceiptListItemDTO
     {
         [JsonPropertyName("logo")]
         public string Logo { get; set; }

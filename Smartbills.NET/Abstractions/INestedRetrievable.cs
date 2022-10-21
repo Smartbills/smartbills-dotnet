@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Abstractions
 {
-    public interface INestedRetrievable<TEntity, TRequest> where TRequest : class
+    public interface INestedRetrievable<TEntity>
 
     {
-        Task<TEntity> GetAsync(long parentId, long id, TRequest request, CancellationToken cancellationToken = default);
+        Task<TEntity> GetByIdAsync(long parentId, long id, CancellationToken cancellationToken = default);
     }
 }

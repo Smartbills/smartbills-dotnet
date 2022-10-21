@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.ProductImages
 {
 
-    public interface IProductImageClient : ICreatable<SBProductImage, CreateProductImageRequest>,
+    public interface IProductImageClient : ICreatable<CreateProductImageRequest,SBProductImage>,
         IRetrievable<SBProductImage>,
-        IUpdatable<SBProductImage, UpdateProductImageRequest>,
+        IUpdatable<UpdateProductImageRequest, SBProductImage>,
         IDeletable<SBProductImage>
     {
 
@@ -40,5 +40,6 @@ namespace Smartbills.NET.Services.ProductImages
         {
             return await UpdateEntityAsync(id, options, cancellationToken);
         }
+
     }
 }

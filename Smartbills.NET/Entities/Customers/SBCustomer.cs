@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Customers
 {
-    public class SBCustomer
+    public record SBCustomer
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

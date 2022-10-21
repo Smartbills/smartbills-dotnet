@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public class CreateDocumentReceiptDTO
+    public record CreateDocumentReceiptDTO
     {
         [JsonPropertyName("merchant_id")]
         public long? MerchantId { get; set; }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Documents
 {
-    public class OCRDocumentDTO : SBDocument
+    public record OCRDocumentDTO : SBDocument
     {
 
         [JsonPropertyName("ocr_receipt")]

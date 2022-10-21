@@ -1,6 +1,6 @@
 ﻿namespace Smartbills.NET.Entities.ReceiptTransactions
 {
-    //public class CreateReceiptTransactionDTO
+    //public record CreateReceiptTransactionDTO
     //{
     //    [Required]
     //    [JsonPropertyName("amount")]

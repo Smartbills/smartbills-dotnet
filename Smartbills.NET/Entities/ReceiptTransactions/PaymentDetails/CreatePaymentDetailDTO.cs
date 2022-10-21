@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ReceiptTransactions.PaymentDetails
 {
-    public class CreatePaymentDetailDTO
+    public record CreatePaymentDetailDTO
     {
         [JsonPropertyName("avs_result_code")]
         public string AvsResultCode { get; set; }

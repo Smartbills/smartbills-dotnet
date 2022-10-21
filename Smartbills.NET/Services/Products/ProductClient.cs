@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Products
 {
-    public interface IProductClient : ICreatable<SBProduct, CreateProductRequest>,
-        IUpdatable<SBProduct, UpdateProductRequest>,
+    public interface IProductClient : ICreatable<CreateProductRequest, SBProduct>,
+        IUpdatable<UpdateProductRequest,SBProduct>,
         IDeletable<SBProduct>,
         IRetrievable<SBProduct>
     { }

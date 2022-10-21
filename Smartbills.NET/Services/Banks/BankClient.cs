@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Banks
 {
     public interface IBankClient :
-    ICreatable<SBBank, CreateBankRequest>,
+    ICreatable<CreateBankRequest,SBBank>,
     IRetrievable<SBBank>,
-    IUpdatable<SBBank, UpdateBankRequest>,
+    IUpdatable<UpdateBankRequest,SBBank>,
     IDeletable<SBBank>
     {
         Task<SBBankAccount> GetAccountAsync(long parentId, long id, GetBankAccountRequest request, CancellationToken cancellationToken = default);

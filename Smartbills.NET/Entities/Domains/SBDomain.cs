@@ -1,5 +1,5 @@
-﻿using Smartbills.NET.Constants;
-using Smartbills.NET.Entities._interfaces;
+﻿using Smartbills.NET.Abstractions;
+using Smartbills.NET.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Entities.Domains
 {
-    public class SBDomain: ISmartbillsEntity
+    public record SBDomain : ISmartbillsEntity
     {
         [JsonPropertyName(CommonProperties.Id)]
         public long Id { get; set; }

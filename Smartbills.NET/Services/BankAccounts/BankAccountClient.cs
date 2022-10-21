@@ -9,8 +9,8 @@ namespace Smartbills.NET.Services.BankAccounts
 {
     public interface IBankAccountClient :
     IRetrievable<SBBankAccount>,
-    IUpdatable<SBBankAccount, UpdateBankAccountRequest>,
-    ICreatable<SBBankAccount, CreateBankAccountRequest>
+    IUpdatable<UpdateBankAccountRequest,SBBankAccount >,
+    ICreatable<CreateBankAccountRequest,SBBankAccount>
     {
     }
     public class BankAccountClient : ClientBase<SBBankAccount>, IBankAccountClient

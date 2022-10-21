@@ -1,11 +1,10 @@
-﻿using Smartbills.NET.Entities._base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Banks
 {
-    public class SBBank : SmartbillsEntityWithId
+    public record SBBank : SmartbillsEntityWithId
     {
         public SBBank() : base()
         {

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ProductImages
 {
-    public class SBProductImage
+    public record SBProductImage
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

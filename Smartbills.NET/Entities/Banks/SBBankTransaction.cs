@@ -1,11 +1,10 @@
-using Smartbills.NET.Entities._base;
 using System;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Banks
 {
 
-    public class SBBankTransaction : SmartbillsEntityWithId
+    public record SBBankTransaction : SmartbillsEntityWithId
     {
 
         [JsonPropertyName("amount")]

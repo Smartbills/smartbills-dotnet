@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Receipts
 {
 
-    public interface IReceiptClient : ICreatable<Receipt, CreateReceiptRequest>,
+    public interface IReceiptClient :
+        ICreatable<CreateReceiptRequest, Receipt>,
         IRetrievable<Receipt>,
-        IUpdatable<Receipt, UpdateReceiptRequest>,
-        IDeletable<Receipt>
+        IUpdatable<UpdateReceiptRequest, Receipt>,
+        IDeletable<Receipt>,
+        IListable<ListReceiptsRequest, Receipt>
     {
 
     }
@@ -62,6 +64,11 @@ namespace Smartbills.NET.Services.Receipts
         public async Task<SBReceiptItem> UpdateAsync(long parentId, long id, UpdateReceiptItemRequest data, CancellationToken cancellationToken = default)
         {
             return await UpdateChildAsync<UpdateReceiptItemRequest, SBReceiptItem>(parentId, ReceiptItemPath, id, data, cancellationToken);
+        }
+
+        public async Task<Receipt> ListAsync(ListReceiptsRequest request, CancellationToken cancellationToken = default)
+        {
+            return await ListAsync(request, cancellationToken);
         }
     }
 }

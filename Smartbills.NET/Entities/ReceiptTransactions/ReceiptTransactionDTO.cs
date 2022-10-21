@@ -1,6 +1,6 @@
 ﻿namespace Smartbills.NET.Entities.ReceiptTransactions
 {
-    //public class ReceiptTransactionDTO
+    //public record ReceiptTransactionDTO
     //{
     //    [JsonPropertyName("id")]
     //    public long Id { get; set; }

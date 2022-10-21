@@ -1,10 +1,9 @@
-using Smartbills.NET.Entities._base;
 using System;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Address
 {
-    public class SBAddress : SmartbillsEntityWithId
+    public record SBAddress : SmartbillsEntityWithId
     {
         [JsonPropertyName("line_1")]
         public string Line1 { get; set; }
@@ -31,7 +30,7 @@ namespace Smartbills.NET.Entities.Address
 
 
         [JsonPropertyName("location")]
-        public SBAddressLocation Location { get; set; }
+        public SBCoordinate Location { get; set; }
 
         [JsonPropertyName("google_place_id")]
         public string GooglePlaceId { get; set; }

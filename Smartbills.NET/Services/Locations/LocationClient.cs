@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Locations
 {
-    public interface ILocationClient : ICreatable<SBLocation, CreateLocationRequest>,
-        IUpdatable<SBLocation, UpdateLocationRequest>,
+    public interface ILocationClient : ICreatable<CreateLocationRequest, SBLocation>,
+        IUpdatable<UpdateLocationRequest, SBLocation>,
         IDeletable<SBLocation>,
-        IRetrievable<SBLocation>
+        IRetrievable<SBLocation>,
+        IListable<ListRequest, SBLocation>
     {
 
     }
@@ -48,6 +49,11 @@ namespace Smartbills.NET.Services.Locations
         public async Task<SBLocation> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             return await GetEntityByIdAsync(id, cancellationToken);
+        }
+
+        public async Task<SBLocation> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
+        {
+            return await GetEntityAsync(request, cancellationToken);
         }
 
         public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
