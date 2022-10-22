@@ -125,6 +125,8 @@ namespace Smartbills.NET.Services
             var basePath = path;
             if (parentId is not null)
             {
+
+                //versionned path? 
                 basePath = $"{parentId}/{path}";
             }
             if (id is not null)

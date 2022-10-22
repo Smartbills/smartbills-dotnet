@@ -10,15 +10,15 @@ namespace Smartbills.NET.Services.Receipts
 {
 
     public interface IReceiptClient :
-        ICreatable<CreateReceiptRequest, Receipt>,
-        IRetrievable<Receipt>,
-        IUpdatable<UpdateReceiptRequest, Receipt>,
-        IDeletable<Receipt>,
-        IListable<ListReceiptsRequest, Receipt>
+        ICreatable<CreateReceiptRequest, SBReceipt>,
+        IRetrievable<SBReceipt>,
+        IUpdatable<UpdateReceiptRequest, SBReceipt>,
+        IDeletable<SBReceipt>,
+        IListable<ListReceiptsRequest, SBReceipt>
     {
 
     }
-    public class ReceiptClient : ClientBase<Receipt>, IReceiptClient
+    public class ReceiptClient : ClientBase<SBReceipt>, IReceiptClient
 
     {
         public override string BasePath => "receipts";
@@ -27,20 +27,20 @@ namespace Smartbills.NET.Services.Receipts
         public ReceiptClient(ISmartbillsClient client) : base(client) { }
 
 
-        public async Task<Receipt> CreateAsync(CreateReceiptRequest options, CancellationToken cancellationToken = default)
+        public async Task<SBReceipt> CreateAsync(CreateReceiptRequest options, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync(options, cancellationToken);
         }
-        public async Task<Receipt> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBReceipt> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync(id, cancellationToken);
         }
-        public async Task<Receipt> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBReceipt> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<Receipt> UpdateAsync(long id, UpdateReceiptRequest options, CancellationToken cancellationToken = default)
+        public async Task<SBReceipt> UpdateAsync(long id, UpdateReceiptRequest options, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync(id, options, cancellationToken);
         }
@@ -66,7 +66,7 @@ namespace Smartbills.NET.Services.Receipts
             return await UpdateChildAsync<UpdateReceiptItemRequest, SBReceiptItem>(parentId, ReceiptItemPath, id, data, cancellationToken);
         }
 
-        public async Task<Receipt> ListAsync(ListReceiptsRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBReceipt> ListAsync(ListReceiptsRequest request, CancellationToken cancellationToken = default)
         {
             return await ListAsync(request, cancellationToken);
         }
