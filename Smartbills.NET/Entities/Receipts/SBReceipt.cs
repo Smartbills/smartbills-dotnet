@@ -10,11 +10,8 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public class SBReceipt
+    public record SBReceipt: SmartbillsEntityWithId
     {
-        [JsonPropertyName("id")]
-        public long Id { get; set; }
-
         [JsonPropertyName("company")]
         public SBMerchant Company { get; set; }
 
