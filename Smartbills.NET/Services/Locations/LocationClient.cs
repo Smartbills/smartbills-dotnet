@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Locations
 {
-    public interface ILocationClient : 
+    public interface ILocationClient : IMerchantClientBase,
         ICreatable<CreateLocationRequest, SBLocation>,
         IUpdatable<UpdateLocationRequest, SBLocation>,
         IDeletable<SBLocation>,
@@ -24,18 +24,18 @@ namespace Smartbills.NET.Services.Locations
 
         }
 
-        public LocationClient(SBClientCredentials credentials) : base(credentials)
+ 
+        public LocationClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
         {
         }
 
-        public LocationClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public LocationClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
         }
 
-        public LocationClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public LocationClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
         {
         }
-
 
         public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, CancellationToken cancellationToken)
         {

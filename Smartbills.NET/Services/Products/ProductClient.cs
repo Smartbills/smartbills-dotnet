@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Products
 {
-    public interface IProductClient : ICreatable<CreateProductRequest, SBProduct>,
+    public interface IProductClient :IMerchantClientBase, ICreatable<CreateProductRequest, SBProduct>,
         IUpdatable<UpdateProductRequest,SBProduct>,
         IDeletable<SBProduct>,
         IRetrievable<SBProduct>
@@ -17,19 +17,17 @@ namespace Smartbills.NET.Services.Products
         public ProductClient(ISmartbillsClient client) : base(client)
         {
         }
-
-        public ProductClient(SBClientCredentials credentials) : base(credentials)
+        public ProductClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
         {
         }
 
-        public ProductClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public ProductClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
         }
 
-        public ProductClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public ProductClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
         {
         }
-
 
         public async Task<SBProduct> CreateAsync( CreateProductRequest request, CancellationToken cancellationToken = default)
         {

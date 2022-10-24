@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.ProductImages
 {
 
-    public interface IProductImageClient : INestedCreatable<CreateProductImageRequest,SBProductImage>,
+    public interface IProductImageClient : IMerchantClientBase, 
+        INestedCreatable<CreateProductImageRequest,SBProductImage>,
         INestedRetrievable<SBProductImage>,
         INestedUpdatable<UpdateProductImageRequest, SBProductImage>,
         INestedDeletable<SBProductImage>
@@ -18,18 +19,19 @@ namespace Smartbills.NET.Services.ProductImages
     MerchantClientBase<SBProductImage>, IProductImageClient
 
     {
-
-        public ProductImageClient(ISmartbillsClient client) : base(client) { }
-
-        public ProductImageClient(SBClientCredentials credentials) : base(credentials)
+        public ProductImageClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
 
-        public ProductImageClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public ProductImageClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
         {
         }
 
-        public ProductImageClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public ProductImageClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        {
+        }
+
+        public ProductImageClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
         {
         }
 

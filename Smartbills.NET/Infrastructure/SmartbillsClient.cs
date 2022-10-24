@@ -8,7 +8,7 @@ namespace Smartbills.NET.Infrastructure
     public interface ISmartbillsClient
     {
         public RestClient Client { get; set; }
-        void SetMerchantId(string merchantId);
+        void SetMerchantId(long? merchantId);
     }
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
@@ -59,11 +59,11 @@ namespace Smartbills.NET.Infrastructure
             };
         }
 
-        public void SetMerchantId(string merchantId)
+        public void SetMerchantId(long? merchantId)
         {
-            if (merchantId is not null)
+            if (merchantId.HasValue)
             {
-                Client.AddDefaultHeader("x-tenant-id", merchantId);
+                Client.AddDefaultHeader("x-tenant-id", merchantId.Value.ToString());
             }
         }
 

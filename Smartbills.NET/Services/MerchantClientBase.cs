@@ -5,25 +5,35 @@ using System.Text;
 
 namespace Smartbills.NET.Services
 {
-    public class MerchantClientBase<T> : ClientBase<T>
+
+    public interface IMerchantClientBase
+    {
+        void SetMerchantId(long? merchantId);
+    }
+    public class MerchantClientBase<T> :  ClientBase<T>, IMerchantClientBase
     {
         public MerchantClientBase(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
 
-        public MerchantClientBase(SBClientCredentials credentials) : base(credentials)
+        public MerchantClientBase(long merchantId, SBClientCredentials credentials) : base(credentials)
         {
+            SetMerchantId(merchantId);
+
         }
 
-        public MerchantClientBase(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public MerchantClientBase(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
         {
+            SetMerchantId(merchantId);
         }
 
-        public MerchantClientBase(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public MerchantClientBase(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
         {
+            SetMerchantId(merchantId);
         }
 
-        public void  SetMerchantId(string merchantId) {
+        public void SetMerchantId(long? merchantId)
+        {
             base._smartbills.SetMerchantId(merchantId);
 
         }

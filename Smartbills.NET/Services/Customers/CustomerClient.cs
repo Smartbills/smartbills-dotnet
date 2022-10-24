@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Customers
 {
-    public interface ICustomerClient : ICreatable<CreateCustomerRequest, SBCustomer>,
+    public interface ICustomerClient : IMerchantClientBase,
+        
+        ICreatable<CreateCustomerRequest, SBCustomer>,
     IRetrievable<SBCustomer>,
     IUpdatable<UpdateCustomerRequest, SBCustomer>,
     IDeletable<SBCustomer>,
@@ -18,6 +20,18 @@ namespace Smartbills.NET.Services.Customers
     public class CustomerClient: MerchantClientBase<SBCustomer>, ICustomerClient
     {
         public CustomerClient(ISmartbillsClient client) : base(client)
+        {
+        }
+
+        public CustomerClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
+        {
+        }
+
+        public CustomerClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        {
+        }
+
+        public CustomerClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
         {
         }
 
