@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.ProductImages
 {
 
-    public interface IProductImageClient : ICreatable<CreateProductImageRequest,SBProductImage>,
-        IRetrievable<SBProductImage>,
-        IUpdatable<UpdateProductImageRequest, SBProductImage>,
-        IDeletable<SBProductImage>
+    public interface IProductImageClient : INestedCreatable<CreateProductImageRequest,SBProductImage>,
+        INestedRetrievable<SBProductImage>,
+        INestedUpdatable<UpdateProductImageRequest, SBProductImage>,
+        INestedDeletable<SBProductImage>
     {
 
     }
@@ -18,27 +18,38 @@ namespace Smartbills.NET.Services.ProductImages
     ClientBase<SBProductImage>, IProductImageClient
 
     {
-        public override string BasePath => "product/{PARENT_ID}/images";
 
         public ProductImageClient(ISmartbillsClient client) : base(client) { }
 
-
-        public async Task<SBProductImage> CreateAsync(CreateProductImageRequest options, CancellationToken cancellationToken = default)
+        public ProductImageClient(SBClientCredentials credentials) : base(credentials)
         {
-            return await CreateEntityAsync(options, cancellationToken);
-        }
-        public async Task<SBProductImage> GetByIdAsync(long id, CancellationToken cancellationToken = default)
-        {
-            return await GetEntityByIdAsync(id, cancellationToken);
-        }
-        public async Task<SBProductImage> DeleteAsync(long id, CancellationToken cancellationToken = default)
-        {
-            return await DeleteEntityAsync(id, cancellationToken);
         }
 
-        public async Task<SBProductImage> UpdateAsync(long id, UpdateProductImageRequest options, CancellationToken cancellationToken = default)
+        public ProductImageClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
         {
-            return await UpdateEntityAsync(id, options, cancellationToken);
+        }
+
+        public ProductImageClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        {
+        }
+
+        public async Task<SBProductImage> CreateAsync(long id, CreateProductImageRequest request, CancellationToken cancellationToken = default)
+        {
+            return await CreateEntityAsync($"/v1/products/{id}/images", request, cancellationToken);
+        }
+        public async Task<SBProductImage> GetByIdAsync(long id, long imageId, CancellationToken cancellationToken = default)
+        {
+      
+            return await GetEntityByIdAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
+        }
+        public async Task<SBProductImage> DeleteAsync(long id, long imageId, CancellationToken cancellationToken = default)
+        {
+            return await DeleteEntityAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
+        }
+
+        public async Task<SBProductImage> UpdateAsync(long id,long imageId, UpdateProductImageRequest request, CancellationToken cancellationToken = default)
+        {
+            return await UpdateEntityAsync($"/v1/products/{id}/images/{imageId}", request, cancellationToken);
         }
 
     }

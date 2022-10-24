@@ -2,19 +2,16 @@
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Customers;
 using Smartbills.NET.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Customers
 {
-    public interface ICustomerClient : INestedCreateable<CreateCustomerRequest, SBCustomer>,
-    INestedRetrievable<SBCustomer>,
-    INestedUpdatable<UpdateCustomerRequest, SBCustomer>,
-    INestedDeletable<SBCustomer>,
-        INestedListable<ListCustomersRequest, PaginatedResponse<SBCustomer>>
+    public interface ICustomerClient : ICreatable<CreateCustomerRequest, SBCustomer>,
+    IRetrievable<SBCustomer>,
+    IUpdatable<UpdateCustomerRequest, SBCustomer>,
+    IDeletable<SBCustomer>,
+        IListable<ListCustomersRequest, PaginatedResponse<SBCustomer>>
     {
 
     }
@@ -24,32 +21,29 @@ namespace Smartbills.NET.Services.Customers
         {
         }
 
-        public override string BasePath => "merchants";
-        private string CustomersPath => "customers";
-
-        public async Task<SBCustomer> CreateAsync(long merchantId, CreateCustomerRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> CreateAsync(CreateCustomerRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.CreateChildAsync<CreateCustomerRequest,SBCustomer>(merchantId, CustomersPath, request, cancellationToken);
+            return await base.CreateEntityAsync<CreateCustomerRequest,SBCustomer>($"/v1/customers", request, cancellationToken);
         }
 
-        public async Task<SBCustomer> DeleteAsync(long merchantId, long id, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteChildAsync<SBCustomer>(merchantId, CustomersPath, id, cancellationToken);
+            return await base.DeleteEntityAsync($"/v1/customers/{id}", cancellationToken);
         }
 
-        public async Task<SBCustomer> GetByIdAsync(long merchantId, long id, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await base.GetChildByIdAsync<SBCustomer>(merchantId, CustomersPath, id, cancellationToken);
+            return await base.GetEntityByIdAsync($"/v1/customers/{id}", cancellationToken);
         }
 
-        public async Task<SBCustomer> UpdateAsync(long merchantId, long id, UpdateCustomerRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> UpdateAsync(long id, UpdateCustomerRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateChildAsync<UpdateCustomerRequest, SBCustomer>(merchantId, CustomersPath, id,request, cancellationToken);
+            return await base.UpdateEntityAsync($"/v1/customers/{id}",request, cancellationToken);
         }
 
-        public async Task<PaginatedResponse<SBCustomer>> ListAsync(long merchantId, ListCustomersRequest request, CancellationToken cancellationToken = default)
+        public async Task<PaginatedResponse<SBCustomer>> ListAsync(ListCustomersRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.GetChildAsync<ListCustomersRequest, PaginatedResponse<SBCustomer>>(merchantId, CustomersPath, request, cancellationToken);
+            return await base.GetEntityAsync<ListCustomersRequest, PaginatedResponse<SBCustomer>>("/v1/customers", request, cancellationToken);
         }
     }
 }

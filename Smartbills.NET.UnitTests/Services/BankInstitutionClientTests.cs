@@ -16,8 +16,6 @@ namespace Smartbills.NET.UnitTests.Services
         public BankInstitutionClientTest()
         {
             _bankInstitutionClient = new Mock<BankInstitutionClient>();
-            _bankInstitutionClient.Setup(x => x.BasePath).Returns("banks-institutions");
-            _bankInstitutionClient.Setup(x => x.APIVersion).Returns("v1");
         }
         [Fact]
         public async Task SHOULD_FIND_BANK_INSTITUTION()

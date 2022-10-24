@@ -18,28 +18,25 @@ namespace Smartbills.NET.Services.ReceiptItems
         {
         }
 
-        public override string BasePath => "receipt-items";
-
-
         public async Task<SBReceiptItem> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync(createRequest, cancellationToken);
+            return await CreateEntityAsync("/v1/receipts-items",createRequest, cancellationToken);
         }
 
         public async Task<SBReceiptItem> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync(id, cancellationToken);
+            return await DeleteEntityAsync($"/v1/receipts-items/{id}", cancellationToken);
 
         }
 
         public async Task<SBReceiptItem> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/receipts-items/{id}", cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync(id, createRequest, cancellationToken);
+            return await UpdateEntityAsync($"/v1/receipts-items/{id}", createRequest, cancellationToken);
         }
     }
 }

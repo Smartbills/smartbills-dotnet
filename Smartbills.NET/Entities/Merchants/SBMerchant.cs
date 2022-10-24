@@ -32,7 +32,7 @@ namespace Smartbills.NET.Entities.Merchants
         [JsonPropertyName(MerchantPropeties.Name)]
         public string Name { get; set; }
 
-        [JsonPropertyName(MerchantPropeties.Name)]
+        [JsonPropertyName(MerchantPropeties.Locale)]
         public string Locale { get; set; }
     }
 }

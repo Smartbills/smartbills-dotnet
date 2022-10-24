@@ -12,43 +12,43 @@ namespace Smartbills.NET.Services.BankAccounts
     IUpdatable<UpdateBankAccountRequest,SBBankAccount >,
     ICreatable<CreateBankAccountRequest,SBBankAccount>
     {
+        Task<SBBankTransaction> GetTransactionsAsync(long id, GetBankTransactionRequest request = null, CancellationToken cancellationToken = default);
+        Task<SBBankTransaction> CreateTransactionsAsync(long id, CreateBankTransactionRequest request, CancellationToken cancellationToken = default);
+        Task<SBBankTransaction> UpdateTransactionsAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default);
+
     }
     public class BankAccountClient : ClientBase<SBBankAccount>, IBankAccountClient
 
     {
-        public override string BasePath => "bank-accounts";
-        private string TransactionsPath => "accounts";
-
-
         public BankAccountClient(ISmartbillsClient client) : base(client) { }
 
         public async Task<SBBankAccount> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/bank-accounts/{id}", cancellationToken);
         }
 
-        public async Task<SBBankAccount> UpdateAsync(long id, UpdateBankAccountRequest data, CancellationToken cancellationToken = default)
+        public async Task<SBBankAccount> UpdateAsync(long id, UpdateBankAccountRequest request, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync(id, data, cancellationToken);
+            return await UpdateEntityAsync($"/v1/bank-accounts/{id}", request, cancellationToken);
         }
 
         public async Task<SBBankAccount> CreateAsync(CreateBankAccountRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync(createRequest, cancellationToken);
+            return await CreateEntityAsync("/v1/bank-accounts",createRequest, cancellationToken);
         }
 
-        public async Task<SBBankTransaction> GetTransactionsAsync(long parentId, long id, GetBankTransactionRequest options = null, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> GetTransactionsAsync( long id, GetBankTransactionRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await GetChildByIdAsync<GetBankTransactionRequest, SBBankTransaction>(parentId, TransactionsPath, id, options, cancellationToken);
+            return await GetEntityByIdAsync<GetBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }
 
-        public async Task<SBBankTransaction> CreateTransactionsAsync(long parentId, CreateBankTransactionRequest data, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> CreateTransactionsAsync(long id, CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateChildAsync<CreateBankTransactionRequest, SBBankTransaction>(parentId, TransactionsPath, data, cancellationToken);
+            return await CreateEntityAsync<CreateBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }
-        public async Task<SBBankTransaction> UpdateTransactionsAsync(long parentId, long id, UpdateBankTransactionRequest data, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> UpdateTransactionsAsync( long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
-            return await UpdateChildAsync<UpdateBankTransactionRequest, SBBankTransaction>(parentId, TransactionsPath, id, data, cancellationToken);
+            return await UpdateEntityAsync<UpdateBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }
 
     }

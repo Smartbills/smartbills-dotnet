@@ -15,5 +15,6 @@ namespace Smartbills.NET.Constants.Merchants
         public const string Domains = "domains";
         public const string Logo = "logo";
         public const string CustomerEmail = "customer_email";
+        public const string Locale= "locale";
     }
 }

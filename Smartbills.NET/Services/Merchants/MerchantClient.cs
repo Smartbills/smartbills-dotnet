@@ -9,7 +9,8 @@ namespace Smartbills.NET.Services.Merchants
     public interface IMerchantClient :
     IRetrievable<SBMerchant>,
     ICreatable<CreateMerchantRequest,SBMerchant>,
-    IUpdatable<UpdateMerchantRequest, SBMerchant>
+    IUpdatable<UpdateMerchantRequest, SBMerchant>,
+    IDeletable<SBMerchant>
     {
     }
     public class MerchantClient :
@@ -17,8 +18,6 @@ namespace Smartbills.NET.Services.Merchants
         IMerchantClient
 
     {
-        public override string BasePath => "merchants";
-
         public MerchantClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
@@ -37,17 +36,22 @@ namespace Smartbills.NET.Services.Merchants
 
         public async Task<SBMerchant> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/merchants/{id}", cancellationToken);
         }
 
         public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync(request, cancellationToken);
+            return await CreateEntityAsync($"/v1/merchants",request, cancellationToken);
         }
 
         public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync(id, request, cancellationToken);
+            return await UpdateEntityAsync($"/v1/merchants/${id}", request, cancellationToken);
+        }
+
+        public async Task<SBMerchant> DeleteAsync(long id,  CancellationToken cancellationToken = default)
+        {
+            return await DeleteEntityAsync($"/v1/merchants/${id}", cancellationToken);
         }
     }
 }

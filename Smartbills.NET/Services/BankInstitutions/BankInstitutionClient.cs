@@ -14,8 +14,6 @@ namespace Smartbills.NET.Services.BankInstitutions
     }
     public class BankInstitutionClient : ClientBase<SBBankInstitution>, IBankInstitutionClient
     {
-        public override string BasePath => "bank-institutions";
-
         public BankInstitutionClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
@@ -35,17 +33,17 @@ namespace Smartbills.NET.Services.BankInstitutions
 
         public virtual async Task<SBBankInstitution> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync(id, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/bank-institutions/{id}", cancellationToken);
         }
 
-        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest options, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync(options, cancellationToken);
+            return await CreateEntityAsync($"/v1/bank-institutions", request, cancellationToken);
         }
 
         public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync(id, updateRequest, cancellationToken);
+            return await UpdateEntityAsync($"/v1/bank-institutions/{id}", updateRequest, cancellationToken);
         }
     }
 }
