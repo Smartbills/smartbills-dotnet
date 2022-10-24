@@ -15,7 +15,7 @@ namespace Smartbills.NET.Services.Customers
     {
 
     }
-    public class CustomerClient: ClientBase<SBCustomer>, ICustomerClient
+    public class CustomerClient: MerchantClientBase<SBCustomer>, ICustomerClient
     {
         public CustomerClient(ISmartbillsClient client) : base(client)
         {

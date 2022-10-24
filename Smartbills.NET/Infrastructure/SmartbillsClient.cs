@@ -8,10 +8,14 @@ namespace Smartbills.NET.Infrastructure
     public interface ISmartbillsClient
     {
         public RestClient Client { get; set; }
+        void SetMerchantId(string merchantId);
     }
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
         public RestClient Client { get; set; }
+        public string MerchantId { get; set; }
+        public string UserId { get; set; }
+
 
         public SmartbillsClient(string url = "https://api.smartbills.io/") : base()
         {
@@ -53,6 +57,14 @@ namespace Smartbills.NET.Infrastructure
             {
                 Authenticator = authenticator,
             };
+        }
+
+        public void SetMerchantId(string merchantId)
+        {
+            if (merchantId is not null)
+            {
+                Client.AddDefaultHeader("x-tenant-id", merchantId);
+            }
         }
 
         public void Dispose()

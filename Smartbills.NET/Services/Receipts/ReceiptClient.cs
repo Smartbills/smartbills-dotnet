@@ -23,7 +23,7 @@ namespace Smartbills.NET.Services.Receipts
         Task<SBReceiptItem> GetReceiptItemAsync(long parentId, long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default);
 
     }
-    public class ReceiptClient : ClientBase<SBReceipt>, IReceiptClient
+    public class ReceiptClient : MerchantClientBase<SBReceipt>, IReceiptClient
 
     {
         public ReceiptClient(ISmartbillsClient client) : base(client) { }

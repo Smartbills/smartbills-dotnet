@@ -15,7 +15,7 @@ namespace Smartbills.NET.Services.ProductImages
 
     }
     public class ProductImageClient :
-    ClientBase<SBProductImage>, IProductImageClient
+    MerchantClientBase<SBProductImage>, IProductImageClient
 
     {
 

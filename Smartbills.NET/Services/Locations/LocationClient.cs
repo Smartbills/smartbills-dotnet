@@ -16,7 +16,7 @@ namespace Smartbills.NET.Services.Locations
     {
 
     }
-    public class LocationClient : ClientBase<SBLocation>, ILocationClient
+    public class LocationClient : MerchantClientBase<SBLocation>, ILocationClient
     {
 
         public LocationClient(ISmartbillsClient client) : base(client)

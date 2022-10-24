@@ -11,7 +11,7 @@ namespace Smartbills.NET.Services
 
     public abstract class ClientBase<TEntityReturned>
     {
-        public readonly ISmartbillsClient _smartbills;
+        internal readonly ISmartbillsClient _smartbills;
         public ClientBase(ISmartbillsClient smartbills)
         {
             _smartbills = smartbills;

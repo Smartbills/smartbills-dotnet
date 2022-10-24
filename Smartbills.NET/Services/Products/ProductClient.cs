@@ -12,7 +12,7 @@ namespace Smartbills.NET.Services.Products
         IRetrievable<SBProduct>
     { }
 
-    public class ProductClient : ClientBase<SBProduct>, IProductClient
+    public class ProductClient : MerchantClientBase<SBProduct>, IProductClient
     {
         public ProductClient(ISmartbillsClient client) : base(client)
         {
