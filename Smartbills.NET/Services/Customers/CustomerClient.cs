@@ -23,15 +23,16 @@ namespace Smartbills.NET.Services.Customers
         {
         }
 
-        public CustomerClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
-        {
-        }
 
         public CustomerClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
         }
 
         public CustomerClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
+        {
+        }
+
+        public CustomerClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
         {
         }
 

@@ -17,9 +17,9 @@ namespace Smartbills.NET.Services
             _smartbills = smartbills;
         }
 
-        public ClientBase(SBClientCredentials credentials)
+        public ClientBase(SBClientCredentials credentials,string url = "https://api.smartbills.io")
         {
-            _smartbills = new SmartbillsClient(credentials);
+            _smartbills = new SmartbillsClient(credentials, url);
         }
         public ClientBase(string accessToken, string url = "https://api.smartbills.io")
         {

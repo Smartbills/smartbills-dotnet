@@ -16,10 +16,9 @@ namespace Smartbills.NET.Services
         {
         }
 
-        public MerchantClientBase(long merchantId, SBClientCredentials credentials) : base(credentials)
+        public MerchantClientBase(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(credentials, url)
         {
             SetMerchantId(merchantId);
-
         }
 
         public MerchantClientBase(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)

@@ -28,6 +28,19 @@ namespace Smartbills.NET.Services.Receipts
     {
         public ReceiptClient(ISmartbillsClient client) : base(client) { }
 
+
+        public ReceiptClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
+        {
+        }
+
+        public ReceiptClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        {
+        }
+
+        public ReceiptClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
+        {
+        }
+
         public async Task<SBReceipt> CreateAsync(CreateReceiptRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync("/v1/receipts",request, cancellationToken);

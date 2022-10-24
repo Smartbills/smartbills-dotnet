@@ -62,7 +62,7 @@ namespace Smartbills.NET.Infrastructure
 
         public void SetMerchantId(long? merchantId)
         {
-            MerchantId = MerchantId;
+            MerchantId = merchantId;
         }
 
         public void Dispose()

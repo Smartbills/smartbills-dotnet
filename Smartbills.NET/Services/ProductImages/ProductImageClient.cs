@@ -23,10 +23,10 @@ namespace Smartbills.NET.Services.ProductImages
         {
         }
 
-        public ProductImageClient(long merchantId, SBClientCredentials credentials) : base(merchantId, credentials)
+
+        public ProductImageClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
         }
-
         public ProductImageClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
         }
