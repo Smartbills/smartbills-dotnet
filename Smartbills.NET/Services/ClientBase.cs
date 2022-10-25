@@ -35,35 +35,35 @@ namespace Smartbills.NET.Services
         protected async Task<TEntityReturned> CreateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.PostAsync<TEntityReturned>(request, cancellationToken);
         }
 
         protected async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
         protected async Task<TEntityReturned> GetEntityByIdAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
         protected async Task<TEntityReturned> GetEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
         protected async Task<TEntityReturned> GetEntityAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
@@ -71,14 +71,14 @@ namespace Smartbills.NET.Services
          where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.PutAsync<TEntityReturned>(request, cancellationToken);
         }
 
         protected async Task<TEntityReturned> DeleteEntityAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.DeleteAsync<TEntityReturned>(request, cancellationToken);
         }
 
@@ -86,35 +86,35 @@ namespace Smartbills.NET.Services
         protected async Task<TResponse> CreateEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.PostAsync<TResponse>(request, cancellationToken);
         }
 
         protected async Task<TResponse> GetEntityByIdAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TResponse>(request, cancellationToken);
         }
 
         protected async Task<TResponse> GetEntityByIdAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TResponse>(request, cancellationToken);
         }
 
         protected async Task<TResponse> GetEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TResponse>(request, cancellationToken);
         }
 
         protected async Task<TResponse> GetEntityAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.GetAsync<TResponse>(request, cancellationToken);
         }
 
@@ -122,14 +122,14 @@ namespace Smartbills.NET.Services
          where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.PutAsync<TResponse>(request, cancellationToken);
         }
 
         protected async Task<TResponse> DeleteEntityAsync<TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
-            request = PrepareRequest(request);
+            PrepareRequest(request);
             return await _smartbills.Client.DeleteAsync<TResponse>(request, cancellationToken);
         }
 
@@ -138,7 +138,7 @@ namespace Smartbills.NET.Services
 
             if (_smartbills.MerchantId.HasValue)
             {
-                request = request.AddOrUpdateHeader("x-tenant-id", _smartbills.MerchantId.ToString());
+                 request.AddOrUpdateHeader("x-tenant-id", _smartbills.MerchantId.ToString());
             }
             return request;
         }

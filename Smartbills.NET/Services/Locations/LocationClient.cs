@@ -46,12 +46,12 @@ namespace Smartbills.NET.Services.Locations
 
         public async Task<SBLocation> DeleteAsync(long id, CancellationToken cancellationToken)
         {
-            return await DeleteEntityAsync($"/v1/locations/${id}", cancellationToken);
+            return await DeleteEntityAsync($"/v1/locations/{id}", cancellationToken);
         }
 
         public async Task<SBLocation> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
-            return await GetEntityByIdAsync($"/v1/locations/${id}", cancellationToken);
+            return await GetEntityByIdAsync($"/v1/locations/{id}", cancellationToken);
         }
 
         public async Task<List<SBLocation>> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
@@ -61,7 +61,7 @@ namespace Smartbills.NET.Services.Locations
 
         public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
         {
-            return await UpdateEntityAsync($"/v1/locations/${id}", request, cancellationToken);
+            return await UpdateEntityAsync($"/v1/locations/{id}", request, cancellationToken);
         }
     }
 }
