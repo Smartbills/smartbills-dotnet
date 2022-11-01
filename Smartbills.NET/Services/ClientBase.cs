@@ -1,8 +1,11 @@
 using RestSharp;
+using Smartbills.NET.Entities;
 using Smartbills.NET.Infrastructure;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -17,7 +20,7 @@ namespace Smartbills.NET.Services
             _smartbills = smartbills;
         }
 
-        public ClientBase(SBClientCredentials credentials,string url = "https://api.smartbills.io")
+        public ClientBase(SBClientCredentials credentials, string url = "https://api.smartbills.io")
         {
             _smartbills = new SmartbillsClient(credentials, url);
         }
@@ -34,9 +37,10 @@ namespace Smartbills.NET.Services
 
         protected async Task<TEntityReturned> CreateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
-            var request = new RestRequest(path).AddJsonBody(data);
+            var request = new RestRequest(path, Method.Post).AddJsonBody(data);
             PrepareRequest(request);
             return await _smartbills.Client.PostAsync<TEntityReturned>(request, cancellationToken);
+
         }
 
         protected async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
@@ -53,14 +57,21 @@ namespace Smartbills.NET.Services
             return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
         }
 
-        protected async Task<TEntityReturned> GetEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<List<TEntityReturned>> ListEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
-            return await _smartbills.Client.GetAsync<TEntityReturned>(request, cancellationToken);
-        }
+            return await _smartbills.Client.GetAsync<List<TEntityReturned>>(request, cancellationToken);
 
-        protected async Task<TEntityReturned> GetEntityAsync(string path, CancellationToken cancellationToken = default)
+        }
+            protected async Task<PaginatedResponse<TEntityReturned>> PaginateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+            {
+                var request = new RestRequest(path).AddObject(data);
+                PrepareRequest(request);
+                return await _smartbills.Client.GetAsync<PaginatedResponse<TEntityReturned>>(request, cancellationToken);
+            }
+
+            protected async Task<TEntityReturned> GetEntityAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
@@ -134,13 +145,12 @@ namespace Smartbills.NET.Services
         }
 
 
-        private RestRequest PrepareRequest(RestRequest request) {
-
+        internal void PrepareRequest(RestRequest request)
+        {
             if (_smartbills.MerchantId.HasValue)
             {
-                 request.AddOrUpdateHeader("x-tenant-id", _smartbills.MerchantId.ToString());
+                request.AddOrUpdateHeader("x-tenant-id", _smartbills.MerchantId.ToString());
             }
-            return request;
         }
     }
 }

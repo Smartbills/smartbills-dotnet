@@ -1,0 +1,15 @@
+﻿using Smartbills.NET.Services;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Smartbills.NET.Abstractions
+{
+    public interface IPageable<TRequest, TResponse> where TRequest: PaginationRequestBase
+    {
+        Task<TResponse> PaginateAsync(long id, TRequest request, CancellationToken cancellationToken = default);
+
+    }
+}

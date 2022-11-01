@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Receipts
 {
 
-    public interface IReceiptClient :
+    public interface IReceiptClient : IMerchantClientBase,
         ICreatable<CreateReceiptRequest, SBReceipt>,
         IRetrievable<SBReceipt>,
         IUpdatable<UpdateReceiptRequest, SBReceipt>,
@@ -31,6 +31,7 @@ namespace Smartbills.NET.Services.Receipts
 
         public ReceiptClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
         {
+
         }
 
         public ReceiptClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)

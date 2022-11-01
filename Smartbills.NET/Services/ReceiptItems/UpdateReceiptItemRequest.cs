@@ -33,7 +33,7 @@ namespace Smartbills.NET.Services.ReceiptItems
         [JsonPropertyName("sub_total")]
         public decimal SubTotal { get; set; }
         // public List<SBDuties> Duties { get; set; }
-        public List<UpdateReceiptTaxRequest> Taxes { get; set; } = new List<UpdateReceiptTaxRequest> { };
+        public List<UpdateReceiptItemTaxRequest> Taxes { get; set; } = new List<UpdateReceiptItemTaxRequest> { };
 
         [JsonPropertyName("taxable")]
         public bool Taxable { get; set; }

@@ -16,7 +16,7 @@ namespace Smartbills.NET.Entities.Merchants
         [JsonPropertyName(CommonProperties.CreatedAt)]
         public DateTimeOffset CreatedAt { get; set; }
         [JsonPropertyName(CommonProperties.UpdatedAt)]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
         [JsonPropertyName(MerchantPropeties.Slug)]
         public string Slug { get; set; }
         [JsonPropertyName(MerchantPropeties.Domains)]

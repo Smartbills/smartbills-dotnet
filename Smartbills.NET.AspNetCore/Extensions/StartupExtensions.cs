@@ -6,12 +6,15 @@ using Smartbills.NET.Services.BankInstitutions;
 using Smartbills.NET.Services.Banks;
 using Smartbills.NET.Services.BankTransactions;
 using Smartbills.NET.Services.Customers;
+using Smartbills.NET.Services.Discounts;
 using Smartbills.NET.Services.Documents;
 using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
 using Smartbills.NET.Services.ProductImages;
 using Smartbills.NET.Services.Products;
+using Smartbills.NET.Services.ProductVariants;
 using Smartbills.NET.Services.Receipts;
+using Smartbills.NET.Services.Taxes;
 using System;
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -27,7 +30,6 @@ namespace Smartbills.NET.AspNetCore.Extensions
             _services.AddTransient<IBankAccountClient, BankAccountClient>();
             _services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             _services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
-
             _services.AddTransient<IDocumentClient, DocumentClient>();
 
 
@@ -37,7 +39,10 @@ namespace Smartbills.NET.AspNetCore.Extensions
             _services.AddTransient<IReceiptClient, ReceiptClient>();
             _services.AddTransient<IProductClient, ProductClient>();
             _services.AddTransient<IProductImageClient, ProductImageClient>();
+            _services.AddTransient<IProductVariantClient, ProductVariantClient>();
 
+            _services.AddTransient<IDiscountClient, DiscountClient>();
+            _services.AddTransient<ITaxClient, TaxClient>();
 
 
 

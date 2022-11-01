@@ -21,7 +21,7 @@ namespace Smartbills.NET.Entities.ProductVariants
         public decimal Weight { get; set; }
 
         [JsonPropertyName("updated_at")]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
         [JsonPropertyName("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
         [JsonPropertyName("taxable")]

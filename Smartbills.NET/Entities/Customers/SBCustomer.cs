@@ -28,6 +28,6 @@ namespace Smartbills.NET.Entities.Customers
         public DateTimeOffset CreatedAt { get; set; }
 
         [JsonPropertyName("updated_at")]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace Smartbills.NET.Services.Documents
 
 
         [JsonPropertyName("updated_at")]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
 
         [JsonPropertyName("user_id")]
         public long? UserId { get; set; }

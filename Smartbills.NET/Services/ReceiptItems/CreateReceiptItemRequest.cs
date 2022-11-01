@@ -1,3 +1,4 @@
+using Smartbills.NET.Services.Discounts;
 using Smartbills.NET.Services.Taxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -34,7 +35,10 @@ namespace Smartbills.NET.Services.ReceiptItems
         [JsonPropertyName("sub_total")]
         public decimal SubTotal { get; set; }
         // public List<SBDuties> Duties { get; set; }
-        public List<CreateReceiptTaxRequest> Taxes { get; set; } = new List<CreateReceiptTaxRequest> { };
+        public List<CreateReceiptItemTaxRequest> Taxes { get; set; } = new List<CreateReceiptItemTaxRequest> { };
+
+        public List<CreateReceiptItemDiscountRequest> Discounts { get; set; } = new List<CreateReceiptItemDiscountRequest> { };
+
 
         [JsonPropertyName("taxable")]
         public bool Taxable { get; set; }

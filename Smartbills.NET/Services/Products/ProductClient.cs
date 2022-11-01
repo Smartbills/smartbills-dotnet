@@ -1,4 +1,5 @@
 using Smartbills.NET.Abstractions;
+using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Products;
 using Smartbills.NET.Infrastructure;
 using System.Threading;
@@ -9,7 +10,9 @@ namespace Smartbills.NET.Services.Products
     public interface IProductClient :IMerchantClientBase, ICreatable<CreateProductRequest, SBProduct>,
         IUpdatable<UpdateProductRequest,SBProduct>,
         IDeletable<SBProduct>,
-        IRetrievable<SBProduct>
+        IRetrievable<SBProduct>,
+        IPageable<GetProductRequest, PaginatedResponse<SBProduct>>
+
     { }
 
     public class ProductClient : MerchantClientBase<SBProduct>, IProductClient
@@ -45,11 +48,10 @@ namespace Smartbills.NET.Services.Products
             return await base.GetEntityByIdAsync($"/v1/products/{id}", cancellationToken);
         }
 
-        public async Task<SBProduct> GetAsync(long id, GetProductRequest request, CancellationToken cancellationToken = default)
+        public async Task<PaginatedResponse<SBProduct>> PaginateAsync(long id, GetProductRequest request,   CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync($"/v1/products/{id}", request, cancellationToken);
+            return await base.PaginateEntityAsync($"/v1/products/{id}", request, cancellationToken);
         }
-
 
         public async Task<SBProduct> UpdateAsync( long id, UpdateProductRequest request, CancellationToken cancellationToken = default)
         {

@@ -18,7 +18,7 @@ namespace Smartbills.NET.Entities.Banks
         public SBBankState State { get; set; } = SBBankState.NOT_STARTED;
 
         [JsonPropertyName("updated_at")]
-        public DateTimeOffset UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
 
         [JsonPropertyName("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
