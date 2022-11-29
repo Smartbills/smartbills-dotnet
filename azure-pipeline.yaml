@@ -1,4 +1,5 @@
 pool:
+  name: Self-Hosted
   vmImage: windows-2022
 trigger:
   branches:
