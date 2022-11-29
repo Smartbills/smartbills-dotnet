@@ -1,14 +1,8 @@
 using Moq;
-using Moq.Protected;
-using Newtonsoft.Json;
-using RestSharp;
-using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services.BankAccounts;
 using Smartbills.NET.Services.Banks;
-using System.Collections.Generic;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -24,18 +18,6 @@ namespace Smartbills.NET.UnitTests.Services
             _smartbillsClient = new Mock<ISmartbillsClient>();
             _bankClient = new Mock<BankClient>(_smartbillsClient.Object) { CallBase = true };
 
-        }
-        [Fact]
-        public async Task SHOULD_FIND_BANK()
-        {
-            var bank = new SBBank();
-
-
-            _smartbillsClient.Setup(x => x.Client.GetJsonAsync<SBBank>(It.IsAny<string>(), It.IsAny<GetBankRequest>(), default)).ReturnsAsync(bank);
-            //_bankClient.Setup(x => x.GetAsync(It.IsAny<long>(), It.IsAny<GetBankRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
-            var response = await _bankClient.Object.GetByIdAsync(new long(), default);
-
-            Assert.Equal(bank, response);
         }
 
         [Fact]

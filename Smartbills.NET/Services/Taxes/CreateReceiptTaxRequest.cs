@@ -4,6 +4,8 @@ namespace Smartbills.NET.Services.Taxes
 {
     public class CreateReceiptTaxRequest
     {
+        [JsonPropertyName("tax_id")]
+        public long? TaxId { get; set; }
         [JsonPropertyName("name")]
         public string Name { get; set; }
 
@@ -13,7 +15,5 @@ namespace Smartbills.NET.Services.Taxes
         [JsonPropertyName("total")]
         public decimal Total { get; set; }
 
-        [JsonPropertyName("tin")]
-        public string TIN { get; set; }
     }
 }

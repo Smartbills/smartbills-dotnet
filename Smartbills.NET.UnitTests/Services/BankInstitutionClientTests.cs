@@ -1,11 +1,10 @@
 using Moq;
-using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Banks;
+using Smartbills.NET.Services.BankInstitutions;
 using Smartbills.NET.UnitTests.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
-using Smartbills.NET.Services.BankInstitutions;
-using Smartbills.NET.Entities.Banks;
 
 namespace Smartbills.NET.UnitTests.Services
 {

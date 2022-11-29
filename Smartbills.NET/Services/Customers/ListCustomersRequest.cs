@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Smartbills.NET.Services.Customers
+﻿namespace Smartbills.NET.Services.Customers
 {
-    public record ListCustomersRequest: ListRequest
+    public record ListCustomersRequest : ListRequest
     {
     }
 }

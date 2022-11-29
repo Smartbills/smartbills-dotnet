@@ -1,6 +1,6 @@
 using Smartbills.NET.Entities.Products;
 using Smartbills.NET.Entities.ProductVariants;
-using Smartbills.NET.Entities.Taxes;
+using Smartbills.NET.Entities.ReceiptItemTaxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
@@ -29,7 +29,7 @@ namespace Smartbills.NET.Entities.ReceiptItems
         [JsonPropertyName("total_discount")]
         public decimal TotalDiscount { get; set; }
         [JsonPropertyName("taxes")]
-        public List<SBReceiptTax> Taxes { get; set; }
+        public List<SBReceiptItemTax> Taxes { get; set; }
         [JsonPropertyName("total_taxes")]
         public decimal TotalTaxes { get; set; }
         [JsonPropertyName("total_duties")]

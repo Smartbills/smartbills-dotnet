@@ -1,13 +1,5 @@
-﻿
-using Newtonsoft.Json;
-using RestSharp;
-using Smartbills.NET.Entities;
-using Smartbills.NET.Entities.Locations;
-using Smartbills.NET.Services;
+﻿using Smartbills.NET.Entities.Locations;
 using Smartbills.NET.Services.Locations;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 

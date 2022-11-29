@@ -9,18 +9,22 @@ namespace Smartbills.NET.Services.BankAccounts
 {
     public interface IBankAccountClient :
     IRetrievable<SBBankAccount>,
-    IUpdatable<UpdateBankAccountRequest,SBBankAccount >,
-    ICreatable<CreateBankAccountRequest,SBBankAccount>
+    IUpdatable<UpdateBankAccountRequest, SBBankAccount>,
+    ICreatable<CreateBankAccountRequest, SBBankAccount>
     {
         Task<SBBankTransaction> GetTransactionsAsync(long id, GetBankTransactionRequest request = null, CancellationToken cancellationToken = default);
         Task<SBBankTransaction> CreateTransactionsAsync(long id, CreateBankTransactionRequest request, CancellationToken cancellationToken = default);
         Task<SBBankTransaction> UpdateTransactionsAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default);
 
     }
-    public class BankAccountClient : ClientBase<SBBankAccount>, IBankAccountClient
+    public class BankAccountClient : UserClientBase<SBBankAccount>, IBankAccountClient
 
     {
         public BankAccountClient(ISmartbillsClient client) : base(client) { }
+
+        public BankAccountClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        {
+        }
 
         public async Task<SBBankAccount> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
@@ -34,19 +38,19 @@ namespace Smartbills.NET.Services.BankAccounts
 
         public async Task<SBBankAccount> CreateAsync(CreateBankAccountRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync("/v1/bank-accounts",createRequest, cancellationToken);
+            return await CreateEntityAsync("/v1/bank-accounts", createRequest, cancellationToken);
         }
 
-        public async Task<SBBankTransaction> GetTransactionsAsync( long id, GetBankTransactionRequest request = null, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> GetTransactionsAsync(long id, GetBankTransactionRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync<GetBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
+            return await GetEntityAsync<GetBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }
 
         public async Task<SBBankTransaction> CreateTransactionsAsync(long id, CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync<CreateBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }
-        public async Task<SBBankTransaction> UpdateTransactionsAsync( long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> UpdateTransactionsAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync<UpdateBankTransactionRequest, SBBankTransaction>($"/v1/bank-accounts/{id}/transactions", request, cancellationToken);
         }

@@ -9,8 +9,8 @@ namespace Smartbills.NET.Services.ReceiptItems
     public interface IReceiptItemClient :
         IRetrievable<SBReceiptItem>,
         IDeletable<SBReceiptItem>,
-        IUpdatable<UpdateReceiptItemRequest,SBReceiptItem>,
-        ICreatable<CreateReceiptItemRequest,SBReceiptItem>
+        IUpdatable<UpdateReceiptItemRequest, SBReceiptItem>,
+        ICreatable<CreateReceiptItemRequest, SBReceiptItem>
     { }
     public class ReceiptItemClient : ClientBase<SBReceiptItem>, IReceiptItemClient
     {
@@ -20,7 +20,7 @@ namespace Smartbills.NET.Services.ReceiptItems
 
         public async Task<SBReceiptItem> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync("/v1/receipts-items",createRequest, cancellationToken);
+            return await CreateEntityAsync("/v1/receipts-items", createRequest, cancellationToken);
         }
 
         public async Task<SBReceiptItem> DeleteAsync(long id, CancellationToken cancellationToken = default)

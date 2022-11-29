@@ -1,9 +1,5 @@
 ﻿using RestSharp;
 using RestSharp.Authenticators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Infrastructure
@@ -13,7 +9,7 @@ namespace Smartbills.NET.Infrastructure
 
         private readonly string _apiKey;
         private readonly string _apiSecret;
-        public ApiKeyAuthenticator(string apiKey, string apiSecret) 
+        public ApiKeyAuthenticator(string apiKey, string apiSecret)
         {
             _apiKey = apiKey;
             _apiSecret = apiSecret;

@@ -1,11 +1,11 @@
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Services.BankBalances;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.BankAccounts
 {
-    public record CreateBankAccountRequest : BaseRequest
+    public record UpdateBankAccountRequest : BaseRequest, IPlaidEntity
     {
-
         [JsonPropertyName("type")]
         public string Type { get; set; }
         [JsonPropertyName("sub_type")]
@@ -17,7 +17,8 @@ namespace Smartbills.NET.Services.BankAccounts
         [JsonPropertyName("official_name")]
         public string OfficialName { get; set; }
         [JsonPropertyName("balance")]
-        public CreateBankBalanceRequest Balance { get; set; }
-
+        public UpdateBankBalanceRequest Balance { get; set; }
+        [JsonPropertyName("plaid_id")]
+        public string PlaidId { get; set; }
     }
 }

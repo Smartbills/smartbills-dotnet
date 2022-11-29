@@ -10,7 +10,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public record SBReceipt: SmartbillsEntityWithId
+    public record SBReceipt : SmartbillsEntityWithId
     {
         [JsonPropertyName("company")]
         public SBMerchant Company { get; set; }
@@ -51,7 +51,7 @@ namespace Smartbills.NET.Entities.Receipts
         public bool TaxesIncluded { get; set; }
         //public List<SBReceiptTransactionVM> Transactions { get; set; }
 
-        [JsonPropertyName("store_id")]
+        [JsonPropertyName("location_id")]
         public long? LocationId { get; set; }
 
         [JsonPropertyName("receipt_metadata")]

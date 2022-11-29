@@ -1,15 +1,12 @@
 ﻿using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Taxes;
 using Smartbills.NET.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Taxes
 {
-    public interface ITaxClient: IMerchantClientBase, ICreatable<CreateTaxRequest, SBTax>, IUpdatable<UpdateTaxRequest, SBTax>, IDeletable<SBTax>, IRetrievable<SBTax> { }
+    public interface ITaxClient : IMerchantClientBase, ICreatable<CreateTaxRequest, SBTax>, IUpdatable<UpdateTaxRequest, SBTax>, IDeletable<SBTax>, IRetrievable<SBTax> { }
     public class TaxClient : MerchantClientBase<SBTax>, ITaxClient
     {
         public TaxClient(ISmartbillsClient smartbills) : base(smartbills)

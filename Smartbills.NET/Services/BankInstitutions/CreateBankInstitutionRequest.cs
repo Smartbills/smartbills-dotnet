@@ -1,8 +1,9 @@
+using Smartbills.NET.Abstractions;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.BankInstitutions
 {
-    public record UpdateBankInstitutionRequest : BaseRequest
+    public record CreateBankInstitutionRequest : BaseRequest, IPlaidEntity
     {
         [JsonPropertyName("name")]
         public string Name { get; set; }
@@ -18,5 +19,9 @@ namespace Smartbills.NET.Services.BankInstitutions
         public string Url { get; set; }
         [JsonPropertyName("primary_color")]
         public string PrimaryColor { get; set; }
+
+        [JsonPropertyName("plaid_id")]
+        public string PlaidId { get; set; }
+
     }
 }

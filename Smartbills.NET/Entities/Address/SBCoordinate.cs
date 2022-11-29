@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Address
@@ -6,7 +5,7 @@ namespace Smartbills.NET.Entities.Address
     /// <summary>
     /// Class representing the GPS coordinates of an <seealso cref="SBAddress">address</seealso>.
     /// </summary>
-    public record SBCoordinate : SmartbillsEntityWithId
+    public record SBCoordinate
     {
         public SBCoordinate() { }
         /// <summary>
@@ -24,7 +23,6 @@ namespace Smartbills.NET.Entities.Address
         /// </summary>
         [JsonPropertyName("latitude")]
         public double Latitude { get; set; } = 0;
-        public DateTimeOffset? ExpiresAt { get; set; }
 
     }
 }

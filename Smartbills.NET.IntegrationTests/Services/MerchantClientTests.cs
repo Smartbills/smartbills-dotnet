@@ -1,14 +1,6 @@
-
-using Newtonsoft.Json;
-using RestSharp;
-using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Merchants;
-using Smartbills.NET.Services;
 using Smartbills.NET.Services.Merchants;
 using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 

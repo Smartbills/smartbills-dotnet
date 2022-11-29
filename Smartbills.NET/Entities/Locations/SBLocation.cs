@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Locations
 {
-    public record SBLocation: SmartbillsEntityWithId
+    public record SBLocation : SmartbillsEntityWithId
     {
         [JsonPropertyName("address")]
         public SBAddress Address { get; set; }

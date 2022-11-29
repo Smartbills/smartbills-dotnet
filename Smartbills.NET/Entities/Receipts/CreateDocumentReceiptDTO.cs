@@ -38,11 +38,11 @@ namespace Smartbills.NET.Entities.Receipts
 
         public decimal Total { get; set; }
 
-        [JsonPropertyName("subtotal")]
+        [JsonPropertyName("sub_total")]
 
         public decimal SubTotal { get; set; }
 
-        [JsonPropertyName("store_id")]
+        [JsonPropertyName("location_id")]
 
         public long? LocationId { get; set; }
 

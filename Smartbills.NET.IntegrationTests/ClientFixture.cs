@@ -1,10 +1,5 @@
 ﻿using Smartbills.NET.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
 
 namespace Smartbills.NET.IntegrationTests
 {
@@ -23,5 +18,5 @@ namespace Smartbills.NET.IntegrationTests
         }
     }
 
-   
+
 }

@@ -1,17 +1,25 @@
+using Smartbills.NET.Entities.Discounts;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ReceiptDiscounts
 {
     public record CreateReceiptDiscountRequest
     {
+        [JsonPropertyName("discount_id")]
+        public long? DiscountId { get; set; }
 
-        [JsonPropertyName("code")]
-        public string Code { get; set; }
         [JsonPropertyName("amount")]
 
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("percentage")]
+        public decimal? Percentage { get; set; }
 
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        public SBDiscountType Type { get; set; }
+
     }
 }

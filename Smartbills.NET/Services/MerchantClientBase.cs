@@ -1,7 +1,4 @@
 ﻿using Smartbills.NET.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Smartbills.NET.Services
 {
@@ -10,7 +7,7 @@ namespace Smartbills.NET.Services
     {
         void SetMerchantId(long? merchantId);
     }
-    public class MerchantClientBase<T> :  ClientBase<T>, IMerchantClientBase
+    public class MerchantClientBase<T> : ClientBase<T>, IMerchantClientBase
     {
         public MerchantClientBase(ISmartbillsClient smartbills) : base(smartbills)
         {
@@ -33,7 +30,7 @@ namespace Smartbills.NET.Services
 
         public void SetMerchantId(long? merchantId)
         {
-            base._smartbills.SetMerchantId(merchantId);
+            base._smartbillsClient.SetMerchantId(merchantId);
 
         }
     }

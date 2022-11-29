@@ -19,7 +19,7 @@ namespace Smartbills.NET.Infrastructure
         {
             var token = string.IsNullOrEmpty(Token) || DateTimeOffset.Now > ExpirationDate ? await GetToken() : Token;
 
-            return new HeaderParameter(KnownHeaders.Authorization, "Bearer "+ token);
+            return new HeaderParameter(KnownHeaders.Authorization, "Bearer " + token);
         }
 
         public async Task<string> GetToken()

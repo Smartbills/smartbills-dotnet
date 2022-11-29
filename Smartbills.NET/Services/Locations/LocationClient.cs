@@ -24,8 +24,8 @@ namespace Smartbills.NET.Services.Locations
 
         }
 
- 
-    
+
+
 
         public LocationClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
         {
@@ -56,7 +56,7 @@ namespace Smartbills.NET.Services.Locations
 
         public async Task<List<SBLocation>> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
         {
-            return await GetEntityAsync<ListRequest,List<SBLocation>>($"/v1/locations/", request, cancellationToken);
+            return await GetEntityAsync<ListRequest, List<SBLocation>>($"/v1/locations/", request, cancellationToken);
         }
 
         public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)

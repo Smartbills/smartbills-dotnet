@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.ProductImages
 {
 
-    public interface IProductImageClient : IMerchantClientBase, 
-        INestedCreatable<CreateProductImageRequest,SBProductImage>,
+    public interface IProductImageClient : IMerchantClientBase,
+        INestedCreatable<CreateProductImageRequest, SBProductImage>,
         INestedRetrievable<SBProductImage>,
         INestedUpdatable<UpdateProductImageRequest, SBProductImage>,
         INestedDeletable<SBProductImage>
@@ -38,7 +38,7 @@ namespace Smartbills.NET.Services.ProductImages
         }
         public async Task<SBProductImage> GetByIdAsync(long id, long imageId, CancellationToken cancellationToken = default)
         {
-      
+
             return await GetEntityByIdAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
         }
         public async Task<SBProductImage> DeleteAsync(long id, long imageId, CancellationToken cancellationToken = default)
@@ -46,7 +46,7 @@ namespace Smartbills.NET.Services.ProductImages
             return await DeleteEntityAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
         }
 
-        public async Task<SBProductImage> UpdateAsync(long id,long imageId, UpdateProductImageRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBProductImage> UpdateAsync(long id, long imageId, UpdateProductImageRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/products/{id}/images/{imageId}", request, cancellationToken);
         }

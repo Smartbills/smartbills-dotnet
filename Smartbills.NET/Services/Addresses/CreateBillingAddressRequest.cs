@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Addresses
 {
-    public  class CreateBillingAddressRequest
+    public class CreateBillingAddressRequest
     {
 
         [JsonPropertyName("first_name")]
@@ -15,6 +10,9 @@ namespace Smartbills.NET.Services.Addresses
 
         [JsonPropertyName("last_name")]
         public string LastName { get; set; }
+
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
 
         [JsonPropertyName("address")]
         public CreateAddressRequest Address { get; set; } = new CreateAddressRequest();

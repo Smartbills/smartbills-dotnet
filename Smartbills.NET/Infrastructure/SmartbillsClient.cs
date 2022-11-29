@@ -1,7 +1,9 @@
 ﻿using RestSharp;
 using RestSharp.Authenticators;
+using RestSharp.Serializers.Json;
 using System;
 using System.Reflection;
+using System.Text.Json;
 
 namespace Smartbills.NET.Infrastructure
 {
@@ -10,12 +12,18 @@ namespace Smartbills.NET.Infrastructure
         public RestClient Client { get; set; }
         void SetMerchantId(long? merchantId);
         long? MerchantId { get; set; }
+
+        string AccessToken { get; set; }
+
+
+        void SetAccessToken(string accessToken);
+
     }
     public class SmartbillsClient : ISmartbillsClient, IDisposable
     {
         public RestClient Client { get; set; }
         public long? MerchantId { get; set; }
-        public string UserId { get; set; }
+        public string AccessToken { get; set; }
 
 
         public SmartbillsClient(string url = "https://api.smartbills.io/") : base()
@@ -30,8 +38,8 @@ namespace Smartbills.NET.Infrastructure
 
         public SmartbillsClient(string accessToken, string url = "https://api.smartbills.io/") : base()
         {
+            AccessToken = accessToken;
             Client = CreateClient(url, new JwtAuthenticator(accessToken));
-
         }
 
 
@@ -54,15 +62,27 @@ namespace Smartbills.NET.Infrastructure
             };
 
 
-            return new RestClient(restClientOptions)
+            var client = new RestClient(restClientOptions)
             {
                 Authenticator = authenticator,
+
             };
+            client.UseSystemTextJson(new JsonSerializerOptions
+            {
+            });
+
+            return client;
         }
 
         public void SetMerchantId(long? merchantId)
         {
             MerchantId = merchantId;
+
+
+        }
+        public void SetAccessToken(string accessToken)
+        {
+            AccessToken = accessToken;
         }
 
         public void Dispose()

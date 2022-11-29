@@ -15,79 +15,93 @@ using Smartbills.NET.Services.Products;
 using Smartbills.NET.Services.ProductVariants;
 using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Taxes;
-using System;
 namespace Smartbills.NET.AspNetCore.Extensions
 {
 
-    public class SmartbillsBuilder
+
+    public interface ISmartbillsBuilder
     {
-        private readonly IServiceCollection _services;
+        public IServiceCollection Services { get; }
+    }
+    public class SmartbillsBuilder : ISmartbillsBuilder
+    {
+        public IServiceCollection Services { get; }
 
-        public SmartbillsBuilder(IServiceCollection services, Action<SBClientConfiguration> options = null)
+        public SmartbillsBuilder(IServiceCollection services)
         {
-            _services = services;
-            _services.AddTransient<IBankClient, BankClient>();
-            _services.AddTransient<IBankAccountClient, BankAccountClient>();
-            _services.AddTransient<IBankTransactionClient, BankTransactionClient>();
-            _services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
-            _services.AddTransient<IDocumentClient, DocumentClient>();
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            Services = services;
+        }
+    }
+    public static class Extensions
+    {
+        public static ISmartbillsBuilder AddSmartbillsClient(this IServiceCollection services, Action<SBClientConfiguration> options = null)
+        {
+
+            if (services == null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+            services.AddTransient<IBankClient, BankClient>();
+            services.AddTransient<IBankAccountClient, BankAccountClient>();
+            services.AddTransient<IBankTransactionClient, BankTransactionClient>();
+            services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
+            services.AddTransient<IDocumentClient, DocumentClient>();
 
 
-            _services.AddTransient<IMerchantClient, MerchantClient>();
-            _services.AddTransient<ILocationClient, LocationClient>();
-            _services.AddTransient<ICustomerClient, CustomerClient>();
-            _services.AddTransient<IReceiptClient, ReceiptClient>();
-            _services.AddTransient<IProductClient, ProductClient>();
-            _services.AddTransient<IProductImageClient, ProductImageClient>();
-            _services.AddTransient<IProductVariantClient, ProductVariantClient>();
+            services.AddTransient<IMerchantClient, MerchantClient>();
+            services.AddTransient<ILocationClient, LocationClient>();
+            services.AddTransient<ICustomerClient, CustomerClient>();
+            services.AddTransient<IReceiptClient, ReceiptClient>();
+            services.AddTransient<IProductClient, ProductClient>();
+            services.AddTransient<IProductImageClient, ProductImageClient>();
+            services.AddTransient<IProductVariantClient, ProductVariantClient>();
 
-            _services.AddTransient<IDiscountClient, DiscountClient>();
-            _services.AddTransient<ITaxClient, TaxClient>();
+            services.AddTransient<IDiscountClient, DiscountClient>();
+            services.AddTransient<ITaxClient, TaxClient>();
 
 
 
             if (options == null)
             {
-                _services.Configure<SBClientConfiguration>(config => config = new SBClientConfiguration());
+                services.Configure<SBClientConfiguration>(config => config = new SBClientConfiguration());
             }
             else
             {
-                _services.Configure(options);
+                services.Configure(options);
             }
+
+            return new SmartbillsBuilder(services);
         }
 
-        public void AddCredentials(Action<SBClientCredentials> options)
+        public static ISmartbillsBuilder AddAPIKey(this ISmartbillsBuilder builder, Action<SBApiKeyCredentials> options)
+        {
+            SBApiKeyCredentials credentials = new();
+            builder.Services.Configure(options);
+            options.Invoke(credentials);
+            builder.Services.AddSingleton<ISmartbillsClient>(sp =>
+            {
+                var config = sp.GetRequiredService<IOptions<SBClientConfiguration>>();
+                return new SmartbillsClient(credentials.ApiSecret, credentials.ApiKey, config.Value.Url);
+            });
+            return builder;
+        }
+
+        public static ISmartbillsBuilder AddCredentials(this ISmartbillsBuilder builder, Action<SBClientCredentials> options)
         {
             SBClientCredentials credentials = new();
-            _services.Configure(options);
+            builder.Services.Configure(options);
             options.Invoke(credentials);
-            _services.AddSingleton<ISmartbillsClient>(sp =>
+            builder.Services.AddSingleton<ISmartbillsClient>(sp =>
             {
                 var config = sp.GetRequiredService<IOptions<SBClientConfiguration>>();
                 return new SmartbillsClient(credentials, config.Value.Url);
             }
             );
-        }
-
-        public void AddAPIKey(Action<SBApiKeyCredentials> options)
-        {
-            SBApiKeyCredentials credentials = new();
-            _services.Configure(options);
-            options.Invoke(credentials);
-            _services.AddSingleton<ISmartbillsClient>(sp =>
-            {
-                var config = sp.GetRequiredService<IOptions<SBClientConfiguration>>();
-                return new SmartbillsClient(credentials.ApiSecret, credentials.ApiKey, config.Value.Url);
-            });
-        }
-
-    }
-    public static class Extensions
-    {
-
-        public static SmartbillsBuilder AddSmartbillsClient(this IServiceCollection services, Action<SBClientConfiguration> options = null)
-        {
-            var builder = new SmartbillsBuilder(services, options);
             return builder;
         }
     }

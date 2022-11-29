@@ -41,6 +41,6 @@ namespace Smartbills.NET.Services.ReceiptItems
 
 
         [JsonPropertyName("taxable")]
-        public bool Taxable { get; set; }
+        public bool Taxable { get; set; } = true;
     }
 }

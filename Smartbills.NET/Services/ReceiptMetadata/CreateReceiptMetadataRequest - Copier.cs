@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Services.ReceiptMetadata
 {
-    public class CreateReceiptMetadataRequest
+    public class UpdateReceiptMetadataRequest
     {
         [JsonPropertyName("landing_site")]
         public string LandingSite { get; set; }
@@ -23,6 +23,6 @@ namespace Smartbills.NET.Services.ReceiptMetadata
         [JsonPropertyName("url")]
         public string Url { get; set; }
         [JsonPropertyName("browser_metadata")]
-        public CreateBrowserMetadataRequest BrowserMetadata { get; set; }
+        public CreateBrowserMetadataRequest BrowserMetadata { get; set; } = new();
     }
 }

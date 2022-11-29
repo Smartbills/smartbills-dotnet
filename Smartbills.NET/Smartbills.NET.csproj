@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
 	  <LangVersion>latest</LangVersion>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.9</Version>
+    <Version>1.0.32</Version>
     <Description>Smartbills Client for .NET Core</Description>
     <PackageId>$(AssemblyName)</PackageId>
     <Authors>Sébastien Labine</Authors>
@@ -27,6 +27,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\ReceiptItemTaxes\" />
   </ItemGroup>
 
 </Project>

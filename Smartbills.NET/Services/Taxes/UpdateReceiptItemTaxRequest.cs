@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Taxes
 {
     public record UpdateReceiptItemTaxRequest : BaseRequest
     {
+        [JsonPropertyName("tax_id")]
+        public long? TaxId { get; set; }
+
         [JsonPropertyName("name")]
         public string Name { get; set; }
-        [JsonPropertyName("rate")]
-        public decimal Rate { get; set; }
-        [JsonPropertyName("price")]
-        public decimal Price { get; set; }
+
+        [JsonPropertyName("amount")]
+        public decimal Amount { get; set; }
+
+        [JsonPropertyName("percentage")]
+        public decimal? Percentage { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Customers
 {
     public interface ICustomerClient : IMerchantClientBase,
-        
+
         ICreatable<CreateCustomerRequest, SBCustomer>,
     IRetrievable<SBCustomer>,
     IUpdatable<UpdateCustomerRequest, SBCustomer>,
@@ -17,7 +17,7 @@ namespace Smartbills.NET.Services.Customers
     {
 
     }
-    public class CustomerClient: MerchantClientBase<SBCustomer>, ICustomerClient
+    public class CustomerClient : MerchantClientBase<SBCustomer>, ICustomerClient
     {
         public CustomerClient(ISmartbillsClient client) : base(client)
         {
@@ -38,7 +38,7 @@ namespace Smartbills.NET.Services.Customers
 
         public async Task<SBCustomer> CreateAsync(CreateCustomerRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<CreateCustomerRequest,SBCustomer>($"/v1/customers", request, cancellationToken);
+            return await base.CreateEntityAsync<CreateCustomerRequest, SBCustomer>($"/v1/customers", request, cancellationToken);
         }
 
         public async Task<SBCustomer> DeleteAsync(long id, CancellationToken cancellationToken = default)
@@ -53,7 +53,7 @@ namespace Smartbills.NET.Services.Customers
 
         public async Task<SBCustomer> UpdateAsync(long id, UpdateCustomerRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync($"/v1/customers/{id}",request, cancellationToken);
+            return await base.UpdateEntityAsync($"/v1/customers/{id}", request, cancellationToken);
         }
 
         public async Task<PaginatedResponse<SBCustomer>> ListAsync(ListCustomersRequest request, CancellationToken cancellationToken = default)

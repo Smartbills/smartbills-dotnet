@@ -1,9 +1,10 @@
+using Smartbills.NET.Abstractions;
 using System;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.BankTransactions
 {
-    public record CreateBankTransactionRequest : BaseRequest
+    public record UpdateBankTransactionRequest : BaseRequest, IPlaidEntity
     {
         [JsonPropertyName("amount")]
         public decimal Amount { get; set; }
@@ -34,5 +35,9 @@ namespace Smartbills.NET.Services.BankTransactions
         public long BankAccountId { get; set; }
         [JsonPropertyName("receipt_id")]
         public long? ReceiptId { get; set; }
+
+        [JsonPropertyName("plaid_id")]
+        public string PlaidId { get; set; }
+
     }
 }

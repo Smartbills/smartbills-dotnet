@@ -8,7 +8,7 @@ namespace Smartbills.NET.Services.BankInstitutions
 {
     public interface IBankInstitutionClient :
         IRetrievable<SBBankInstitution>,
-        ICreatable<CreateBankInstitutionRequest,SBBankInstitution>,
+        ICreatable<CreateBankInstitutionRequest, SBBankInstitution>,
         IUpdatable<UpdateBankInstitutionRequest, SBBankInstitution>
     {
     }

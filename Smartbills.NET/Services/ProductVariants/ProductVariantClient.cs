@@ -31,9 +31,9 @@ namespace Smartbills.NET.Services.ProductVariants
         {
         }
 
-        public async Task<SBProductVariant> CreateAsync(long parentId,CreateProductVariantRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> CreateAsync(long parentId, CreateProductVariantRequest request, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/products/{parentId}", request, cancellationToken);
+            return await base.CreateEntityAsync($"/v1/products/{parentId}/variants", request, cancellationToken);
         }
 
         public async Task<SBProductVariant> DeleteAsync(long parentId, long id, CancellationToken cancellationToken = default)
@@ -41,12 +41,12 @@ namespace Smartbills.NET.Services.ProductVariants
             return await base.DeleteEntityAsync($"/v1/products/{parentId}/variants/{id}", cancellationToken);
         }
 
-        public async Task<SBProductVariant> GetByIdAsync(long parentId,long id, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> GetByIdAsync(long parentId, long id, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityByIdAsync($"/v1/products/{parentId}/variants/{id}", cancellationToken);
         }
 
-        public async Task<SBProductVariant> UpdateAsync(long parentId,long id, UpdateProductVariantRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> UpdateAsync(long parentId, long id, UpdateProductVariantRequest request, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync($"/v1/products/{parentId}/variants/{id}", request, cancellationToken);
         }

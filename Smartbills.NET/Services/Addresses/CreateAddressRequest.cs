@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Smartbills.NET.Entities.Address;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Addresses
 {
@@ -22,5 +23,8 @@ namespace Smartbills.NET.Services.Addresses
 
         [JsonPropertyName("zip_code")]
         public string ZipCode { get; set; }
+
+        [JsonPropertyName("coordinates")]
+        public SBCoordinate Coordinates { get; set; }
     }
 }

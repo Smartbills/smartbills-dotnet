@@ -20,7 +20,7 @@ namespace Smartbills.NET.Services.Receipts
         public CreateCustomerRequest Customer { get; set; }
 
         [JsonPropertyName("customer_id")]
-        public CreateCustomerRequest CustomerId { get; set; }
+        public long? CustomerId { get; set; }
 
         [JsonPropertyName("billing_address")]
         public CreateBillingAddressRequest BillingAddress { get; set; }
@@ -42,13 +42,10 @@ namespace Smartbills.NET.Services.Receipts
         public string CancelReason { get; set; }
         [JsonPropertyName("payment_status")]
         public string PaymentStatus { get; set; }
-        [JsonPropertyName("discount_codes")]
-        public List<CreateReceiptDiscountRequest> DiscountCodes { get; set; }
-
+        [JsonPropertyName("discounts")]
+        public List<CreateReceiptDiscountRequest> Discounts { get; set; } = new List<CreateReceiptDiscountRequest>();
         [JsonPropertyName("fees")]
         public List<CreateReceiptFeeRequest> Fees { get; set; } = new List<CreateReceiptFeeRequest>();
-
-
 
         [JsonPropertyName("total_discounts")]
         public decimal TotalDiscounts { get; set; }
@@ -75,9 +72,6 @@ namespace Smartbills.NET.Services.Receipts
         [JsonPropertyName("total_taxes")]
 
 
-
-
-
         public decimal TotalTaxes { get; set; }
 
         [JsonPropertyName("total_fees")]
@@ -87,14 +81,14 @@ namespace Smartbills.NET.Services.Receipts
 
         public decimal Total { get; set; }
 
-        [JsonPropertyName("subtotal")]
+        [JsonPropertyName("sub_total")]
 
         public decimal SubTotal { get; set; }
 
         [JsonPropertyName("receipt_metadata")]
 
         public CreateReceiptMetadataRequest ReceiptMetadata { get; set; }
-        [JsonPropertyName("store_id")]
+        [JsonPropertyName("location_id")]
 
         public long? LocationId { get; set; }
 

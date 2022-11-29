@@ -1,5 +1,5 @@
 ﻿using Smartbills.NET.Abstractions;
-using Smartbills.NET.Entities.Discount;
+using Smartbills.NET.Entities.Discounts;
 using Smartbills.NET.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Discounts
 {
 
-    public interface IDiscountClient: IMerchantClientBase, ICreatable<CreateDiscountRequest, SBDiscount>, IUpdatable<UpdateDiscountRequest, SBDiscount>, IDeletable<SBDiscount>, IRetrievable<SBDiscount>
+    public interface IDiscountClient : IMerchantClientBase, ICreatable<CreateDiscountRequest, SBDiscount>, IUpdatable<UpdateDiscountRequest, SBDiscount>, IDeletable<SBDiscount>, IRetrievable<SBDiscount>
     {
 
     }
@@ -31,7 +31,7 @@ namespace Smartbills.NET.Services.Discounts
 
         public async Task<SBDiscount> CreateAsync(CreateDiscountRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync($"/v1/discounts",request, cancellationToken);
+            return await CreateEntityAsync($"/v1/discounts", request, cancellationToken);
         }
 
         public async Task<SBDiscount> DeleteAsync(long id, CancellationToken cancellationToken = default)

@@ -18,7 +18,7 @@ namespace Smartbills.NET.Services.Receipts
         IListable<ListReceiptsRequest, PaginatedResponse<SBReceipt>>
     {
         Task<SBReceiptItem> CreateReceiptItemAsync(long parentId, CreateReceiptItemRequest request, CancellationToken cancellationToken = default);
-        Task<SBReceiptItem>DeleteReceiptItemAsync(long parentId, long id, CancellationToken cancellationToken = default);
+        Task<SBReceiptItem> DeleteReceiptItemAsync(long parentId, long id, CancellationToken cancellationToken = default);
         Task<SBReceiptItem> UpdateReceiptItemAsync(long parentId, long id, UpdateReceiptItemRequest request, CancellationToken cancellationToken = default);
         Task<SBReceiptItem> GetReceiptItemAsync(long parentId, long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default);
 
@@ -44,7 +44,7 @@ namespace Smartbills.NET.Services.Receipts
 
         public async Task<SBReceipt> CreateAsync(CreateReceiptRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync("/v1/receipts",request, cancellationToken);
+            return await CreateEntityAsync("/v1/receipts", request, cancellationToken);
         }
         public async Task<SBReceipt> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
@@ -67,7 +67,7 @@ namespace Smartbills.NET.Services.Receipts
 
         public async Task<SBReceiptItem> CreateReceiptItemAsync(long parentId, CreateReceiptItemRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync<CreateReceiptItemRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items",  request, cancellationToken);
+            return await CreateEntityAsync<CreateReceiptItemRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items", request, cancellationToken);
         }
 
         public async Task<SBReceiptItem> DeleteReceiptItemAsync(long parentId, long id, CancellationToken cancellationToken = default)
@@ -77,7 +77,7 @@ namespace Smartbills.NET.Services.Receipts
 
         public async Task<SBReceiptItem> GetReceiptItemAsync(long parentId, long id, GetReceiptItemRequest request = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync<GetReceiptItemRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", request, cancellationToken);
+            return await GetEntityAsync<GetReceiptItemRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", request, cancellationToken);
         }
 
         public async Task<SBReceiptItem> UpdateReceiptItemAsync(long parentId, long id, UpdateReceiptItemRequest request, CancellationToken cancellationToken = default)

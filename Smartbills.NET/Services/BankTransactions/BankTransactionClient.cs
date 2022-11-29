@@ -23,7 +23,7 @@ namespace Smartbills.NET.Services.BankTransactions
 
         public async Task<SBBankTransaction> CreateAsync(CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync("/v1/bank/transactions",request, cancellationToken);
+            return await CreateEntityAsync("/v1/bank/transactions", request, cancellationToken);
         }
 
 
