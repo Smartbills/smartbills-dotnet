@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Smartbills.NET.AspNetCore.Extensions;
 using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services.BankAccounts;
 using Smartbills.NET.Services.BankInstitutions;
@@ -11,44 +12,44 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace Smartbills.NET.UnitTests.Extensions
+namespace Smartbills.NET.AspNetCore.UnitTests.Extensions
 {
     public class StartupExtensionsUnitTests
     {
 
         [Fact]
-        public void SHOULD_REGISTER_DEFAULT_CONFIGURATION()
+        public void AddSmartbillsClient_ShouldReturnDefaultConfiguration()
         {
             var serviceCollection = new ServiceCollection();
-            //serviceCollection.AddSmartbillsClient();
+            serviceCollection.AddSmartbillsClient();
             var provider = serviceCollection.BuildServiceProvider();
             var configuration = provider.GetService<IOptions<SBClientConfiguration>>();
             Assert.Equal("https://api.smartbills.io/", configuration?.Value.Url);
         }
 
         [Fact]
-        public void SHOULD_REGISTER_AUTHENTICAITON()
+        public void AddSmartbillsClient_WhenClientCredentials_ShouldReturnCustomConfiguration()
         {
             string clientId = "smartbills-test";
             var serviceCollection = new ServiceCollection();
-            //serviceCollection.AddSmartbillsClient(options => options.Url = "test").AddCredentials(options => options.ClientId = clientId);
+            serviceCollection.AddSmartbillsClient(options => options.Url = "test").AddCredentials(options => options.ClientId = clientId);
             var provider = serviceCollection.BuildServiceProvider();
             var configuration = provider.GetService<IOptions<SBClientCredentials>>();
             Assert.Equal(clientId, configuration?.Value.ClientId);
         }
 
         [Fact]
-        public void SHOULD_REGISTER_API_KEY_AUTHENTICAITON()
+        public void AddSmartbillsClient_WhenApiKey_ShouldReturnCustomConfiguration()
         {
             string apiKey = "smartbills-test";
             string apiSecret = "smartbills-secret";
 
             var serviceCollection = new ServiceCollection();
-            //serviceCollection.AddSmartbillsClient(options => options.Url = "test").AddAPIKey(options =>
-            //{
-            //    options.ApiKey = apiKey;
-            //    options.ApiSecret = apiSecret;
-            //});
+            serviceCollection.AddSmartbillsClient(options => options.Url = "test").AddAPIKey(options =>
+            {
+                options.ApiKey = apiKey;
+                options.ApiSecret = apiSecret;
+            });
             var provider = serviceCollection.BuildServiceProvider();
             var configuration = provider.GetService<IOptions<SBApiKeyCredentials>>();
             Assert.Equal(apiKey, configuration?.Value.ApiKey);
@@ -58,24 +59,25 @@ namespace Smartbills.NET.UnitTests.Extensions
         }
 
         [Fact]
-        public void SHOULD_REGISTER_CUSTOM_CONFIGURATION()
+        public void AddSmartbillsClient_ShouldReturnCustomConfiguration()
         {
             string url = "https://api.staging.smartbills.io/";
             var serviceCollection = new ServiceCollection();
-            //serviceCollection.AddSmartbillsClient(options => options.Url = url);
+            serviceCollection.AddSmartbillsClient(options => options.Url = url);
             var provider = serviceCollection.BuildServiceProvider();
             var configuration = provider.GetService<IOptions<SBClientConfiguration>>();
             Assert.Equal(url, configuration?.Value.Url);
         }
 
         [Fact]
-        public void SHOULD_INJECT_SERVICES()
+        public void AddSmartbillsClient_ShouldInjectServices()
         {
             var serviceCollection = new ServiceCollection();
-            //serviceCollection.AddSmartbillsClient(options => options.Url = "https://test.com").AddAPIKey((options) => {
-            //    options.ApiKey = "test";
-            //    options.ApiSecret = "test";
-            //});
+            serviceCollection.AddSmartbillsClient(options => options.Url = "https://test.com").AddAPIKey((options) =>
+            {
+                options.ApiKey = "test";
+                options.ApiSecret = "test";
+            });
             List<Type> services = new()
             {
                 typeof(IBankAccountClient),

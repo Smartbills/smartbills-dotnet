@@ -26,6 +26,9 @@ namespace Smartbills.NET.Infrastructure
         public string AccessToken { get; set; }
 
 
+
+
+
         public SmartbillsClient(string url = "https://api.smartbills.io/") : base()
         {
             Client = CreateClient(url);

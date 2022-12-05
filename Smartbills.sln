@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartbills.NET.UnitTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartbills.NET.IntegrationTests", "Smartbills.NET.IntegrationTests\Smartbills.NET.IntegrationTests.csproj", "{E903C2EB-59B0-43A9-B9E6-A0B6A90FBF78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartbills.NET.AspNetCore", "Smartbills.NET.AspNetCore\Smartbills.NET.AspNetCore.csproj", "{8334A983-B885-402E-B300-2A77183EBDB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smartbills.NET.AspNetCore", "Smartbills.NET.AspNetCore\Smartbills.NET.AspNetCore.csproj", "{8334A983-B885-402E-B300-2A77183EBDB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smartbills.NET.AspNetCore.UnitTests", "Smartbills.NET.AspNetCore.UnitTests\Smartbills.NET.AspNetCore.UnitTests.csproj", "{81A08D1C-2259-47AE-A823-C3567F3221BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8334A983-B885-402E-B300-2A77183EBDB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8334A983-B885-402E-B300-2A77183EBDB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8334A983-B885-402E-B300-2A77183EBDB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A08D1C-2259-47AE-A823-C3567F3221BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A08D1C-2259-47AE-A823-C3567F3221BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A08D1C-2259-47AE-A823-C3567F3221BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A08D1C-2259-47AE-A823-C3567F3221BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

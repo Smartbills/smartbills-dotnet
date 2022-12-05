@@ -15,6 +15,9 @@ using Smartbills.NET.Services.Products;
 using Smartbills.NET.Services.ProductVariants;
 using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Taxes;
+using System;
+using System.Net;
+
 namespace Smartbills.NET.AspNetCore.Extensions
 {
 
@@ -72,8 +75,15 @@ namespace Smartbills.NET.AspNetCore.Extensions
             }
             else
             {
-                services.Configure(options);
+                services.Configure<SBClientConfiguration>(options);
             }
+
+            services.AddSingleton<ISmartbillsClient>(serviceProvider =>
+            {
+                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
+                return new SmartbillsClient(config.Value.Url);
+            }
+        );
 
             return new SmartbillsBuilder(services);
         }
@@ -83,9 +93,9 @@ namespace Smartbills.NET.AspNetCore.Extensions
             SBApiKeyCredentials credentials = new();
             builder.Services.Configure(options);
             options.Invoke(credentials);
-            builder.Services.AddSingleton<ISmartbillsClient>(sp =>
+            builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
             {
-                var config = sp.GetRequiredService<IOptions<SBClientConfiguration>>();
+                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
                 return new SmartbillsClient(credentials.ApiSecret, credentials.ApiKey, config.Value.Url);
             });
             return builder;
@@ -96,9 +106,9 @@ namespace Smartbills.NET.AspNetCore.Extensions
             SBClientCredentials credentials = new();
             builder.Services.Configure(options);
             options.Invoke(credentials);
-            builder.Services.AddSingleton<ISmartbillsClient>(sp =>
+            builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
             {
-                var config = sp.GetRequiredService<IOptions<SBClientConfiguration>>();
+                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
                 return new SmartbillsClient(credentials, config.Value.Url);
             }
             );
