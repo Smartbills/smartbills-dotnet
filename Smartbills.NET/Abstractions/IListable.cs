@@ -1,11 +1,12 @@
-﻿using Smartbills.NET.Services;
+﻿using Smartbills.NET.Infrastructure;
+using Smartbills.NET.Services;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Abstractions
 {
-    public interface IListable<TRequest, TEntity> where TRequest : ListRequest
+    public interface IListable<TRequest, TResponse> where TRequest : ListRequest
     {
-        Task<TEntity> ListAsync(TRequest request, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TResponse>> ListAsync(TRequest request, CancellationToken cancellationToken = default);
     }
 }

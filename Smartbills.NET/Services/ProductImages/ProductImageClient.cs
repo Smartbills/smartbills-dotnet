@@ -32,21 +32,21 @@ namespace Smartbills.NET.Services.ProductImages
         {
         }
 
-        public async Task<SBProductImage> CreateAsync(long id, CreateProductImageRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBProductImage>> CreateAsync(long id, CreateProductImageRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/products/{id}/images", request, cancellationToken);
         }
-        public async Task<SBProductImage> GetByIdAsync(long id, long imageId, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBProductImage>> GetByIdAsync(long id, long imageId, CancellationToken cancellationToken = default)
         {
 
             return await GetEntityByIdAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
         }
-        public async Task<SBProductImage> DeleteAsync(long id, long imageId, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBProductImage>> DeleteAsync(long id, long imageId, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/products/{id}/images/{imageId}", cancellationToken);
         }
 
-        public async Task<SBProductImage> UpdateAsync(long id, long imageId, UpdateProductImageRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBProductImage>> UpdateAsync(long id, long imageId, UpdateProductImageRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/products/{id}/images/{imageId}", request, cancellationToken);
         }

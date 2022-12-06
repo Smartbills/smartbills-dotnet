@@ -34,22 +34,22 @@ namespace Smartbills.NET.Services.Merchants
         {
         }
 
-        public async Task<SBMerchant> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBMerchant>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/merchants/{id}", cancellationToken);
         }
 
-        public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBMerchant>> CreateAsync(CreateMerchantRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/merchants", request, cancellationToken);
         }
 
-        public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBMerchant>> UpdateAsync(long id, UpdateMerchantRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/merchants/{id}", request, cancellationToken);
         }
 
-        public async Task<SBMerchant> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBMerchant>> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/merchants/{id}", cancellationToken);
         }

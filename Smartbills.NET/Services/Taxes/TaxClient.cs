@@ -25,22 +25,22 @@ namespace Smartbills.NET.Services.Taxes
         {
         }
 
-        public async Task<SBTax> CreateAsync(CreateTaxRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBTax>> CreateAsync(CreateTaxRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/taxes", request, cancellationToken);
         }
 
-        public async Task<SBTax> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBTax>> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/taxes/{id}", cancellationToken);
         }
 
-        public async Task<SBTax> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBTax>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/taxes/{id}", cancellationToken);
         }
 
-        public async Task<SBTax> UpdateAsync(long id, UpdateTaxRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBTax>> UpdateAsync(long id, UpdateTaxRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/taxes/{id}", request, cancellationToken);
         }

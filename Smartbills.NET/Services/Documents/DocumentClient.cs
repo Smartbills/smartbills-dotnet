@@ -12,7 +12,7 @@ namespace Smartbills.NET.Services.Documents
         IDeletable<SBDocument>
 
     {
-        Task<SBDocument> RenameAsyncAsync(long id, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<SBDocument>> RenameAsyncAsync(long id, CancellationToken cancellationToken = default);
     }
     public class DocumentClient :
         ClientBase<SBDocument>,
@@ -22,21 +22,21 @@ namespace Smartbills.NET.Services.Documents
         public DocumentClient(ISmartbillsClient client) : base(client) { }
 
 
-        public async Task<SBDocument> CreateAsync(CreateDocumentRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> CreateAsync(CreateDocumentRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync("/v1/documents", request, cancellationToken);
         }
-        public async Task<SBDocument> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/documents/{id}", cancellationToken);
         }
 
-        public async Task<SBDocument> RenameAsyncAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> RenameAsyncAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/documents/{id}/rename", cancellationToken);
         }
 
-        public async Task<SBDocument> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBDocument>> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/documents/{id}", cancellationToken);
         }

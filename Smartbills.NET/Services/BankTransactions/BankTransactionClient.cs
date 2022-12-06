@@ -21,26 +21,26 @@ namespace Smartbills.NET.Services.BankTransactions
         {
         }
 
-        public async Task<SBBankTransaction> CreateAsync(CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> CreateAsync(CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync("/v1/bank/transactions", request, cancellationToken);
         }
 
 
-        public async Task<SBBankTransaction> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/bank/transactions/{id}", cancellationToken);
         }
 
 
-        public async Task<SBBankTransaction> UpdateAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> UpdateAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/bank/transactions/{id}", request, cancellationToken);
         }
 
 
 
-        public async Task<SBBankTransaction> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SmartbillsResponse<SBBankTransaction>> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/bank/transactions/{id}", cancellationToken);
         }

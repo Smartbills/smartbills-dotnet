@@ -1,10 +1,11 @@
+using Smartbills.NET.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Abstractions
 {
-    public interface ICreatable<TRequest, TEntity>
+    public interface ICreatable<TRequest, TResponse>
     {
-        Task<TEntity> CreateAsync(TRequest request, CancellationToken cancellationToken = default);
+        Task<SmartbillsResponse<TResponse>> CreateAsync(TRequest request, CancellationToken cancellationToken = default);
     }
 }
