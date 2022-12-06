@@ -159,7 +159,7 @@ namespace Smartbills.NET.Services
         }
 
 
-        internal async Task<SmartbillsResponse<TResponse>> ExecuteRequestAsync<TResponse>(Func<Task<RestResponse<TResponse>>> function)
+        protected async Task<SmartbillsResponse<TResponse>> ExecuteRequestAsync<TResponse>(Func<Task<RestResponse<TResponse>>> function)
         {
 
             var response = await function();
