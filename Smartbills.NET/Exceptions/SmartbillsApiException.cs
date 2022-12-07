@@ -8,15 +8,20 @@ namespace Smartbills.NET.Exceptions
 {
     public  class SmartbillsApiException :Exception
     {
-        public SmartbillsApiException(HttpStatusCode statusCode, List<SmartbillsError> errors)
+        public SmartbillsApiException(HttpStatusCode statusCode, List<SmartbillsError> errors) : base($"Smartbills API request failed status code: {(int)statusCode}")
         {
             StatusCode = statusCode;
             Errors = errors;
         }
 
+        public SmartbillsApiException(HttpStatusCode statusCode) : base($"Smartbills API request failed status code: {(int)statusCode}")
+        {
+            StatusCode = statusCode;
+        }
+
         [JsonPropertyName("status_code")]
-        public HttpStatusCode StatusCode { get; set; }  
+        public HttpStatusCode StatusCode { get; set; }
         [JsonPropertyName("errors")]
-        public List<SmartbillsError> Errors { get; set; }
+        public  List<SmartbillsError> Errors { get; set; } = new();
     }
 }

@@ -1,5 +1,6 @@
 using RestSharp;
 using Smartbills.NET.Entities;
+using Smartbills.NET.Exceptions;
 using Smartbills.NET.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -175,11 +176,11 @@ namespace Smartbills.NET.Services
                 try
                 {
                     var errorResponse = JsonSerializer.Deserialize<SmartbillsErrorResponse>(response.Content);
-                    throw new SmartbillsException(HttpStatusCode.NotFound, errorResponse.Errors);
+                    throw new SmartbillsApiException(HttpStatusCode.NotFound, errorResponse.Errors);
                 }
                 catch
                 {
-                    throw new SmartbillsException(response.StatusCode);
+                    throw new SmartbillsApiException(response.StatusCode);
                 }
             }
         }
