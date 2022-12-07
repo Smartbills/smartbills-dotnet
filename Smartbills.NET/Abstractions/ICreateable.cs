@@ -6,6 +6,6 @@ namespace Smartbills.NET.Abstractions
 {
     public interface ICreatable<TRequest, TResponse>
     {
-        Task<SmartbillsResponse<TResponse>> CreateAsync(TRequest request, CancellationToken cancellationToken = default);
+        Task<TResponse> CreateAsync(TRequest request, CancellationToken cancellationToken = default);
     }
 }

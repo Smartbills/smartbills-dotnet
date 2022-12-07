@@ -29,22 +29,22 @@ namespace Smartbills.NET.Services.Discounts
         {
         }
 
-        public async Task<SmartbillsResponse<SBDiscount>> CreateAsync(CreateDiscountRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> CreateAsync(CreateDiscountRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/discounts", request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBDiscount>> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/discounts/{id}", cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBDiscount>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/discounts/{id}", cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBDiscount>> UpdateAsync(long id, UpdateDiscountRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> UpdateAsync(long id, UpdateDiscountRequest request, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/discounts/{id}", request, cancellationToken);
         }

@@ -7,6 +7,6 @@ namespace Smartbills.NET.Abstractions
     public interface INestedRetrievable<TResponse>
 
     {
-        Task<SmartbillsResponse<TResponse>> GetByIdAsync(long parentId, long id, CancellationToken cancellationToken = default);
+        Task<TResponse> GetByIdAsync(long parentId, long id, CancellationToken cancellationToken = default);
     }
 }

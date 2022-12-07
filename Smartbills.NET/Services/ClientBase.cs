@@ -3,6 +3,7 @@ using Smartbills.NET.Entities;
 using Smartbills.NET.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
@@ -34,7 +35,7 @@ namespace Smartbills.NET.Services
         }
 
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> CreateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TEntityReturned> CreateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path, Method.Post).AddJsonBody(data);
             PrepareRequest(request);
@@ -42,42 +43,42 @@ namespace Smartbills.NET.Services
 
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> GetEntityByIdAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TEntityReturned>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> GetEntityByIdAsync(string path, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> GetEntityByIdAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TEntityReturned>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<List<TEntityReturned>>> ListEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<List<TEntityReturned>> ListEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<List<TEntityReturned>>(request, cancellationToken));
 
         }
-        protected async Task<SmartbillsResponse<PaginatedResponse<TEntityReturned>>> PaginateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<PaginatedResponse<TEntityReturned>> PaginateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<PaginatedResponse<TEntityReturned>>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> GetEntityAsync(string path, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> GetEntityAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TEntityReturned>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> UpdateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> UpdateEntityAsync<TRequest>(string path, TRequest data, CancellationToken cancellationToken = default)
          where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
@@ -85,7 +86,7 @@ namespace Smartbills.NET.Services
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecutePutAsync<TEntityReturned>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TEntityReturned>> DeleteEntityAsync(string path, CancellationToken cancellationToken = default)
+        protected async Task<TEntityReturned> DeleteEntityAsync(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
@@ -93,7 +94,7 @@ namespace Smartbills.NET.Services
         }
 
 
-        protected async Task<SmartbillsResponse<TResponse>> CreateEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TResponse> CreateEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
             PrepareRequest(request);
@@ -101,28 +102,28 @@ namespace Smartbills.NET.Services
         }
 
 
-        protected async Task<SmartbillsResponse<TResponse>> GetEntityByIdAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
+        protected async Task<TResponse> GetEntityByIdAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TResponse>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TResponse>> GetEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TResponse> GetEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TResponse>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TResponse>> GetEntityAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
+        protected async Task<TResponse> GetEntityAsync<TRequest, TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteGetAsync<TResponse>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TResponse>> UpdateEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default)
+        protected async Task<TResponse> UpdateEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default)
          where TRequest : class
         {
             var request = new RestRequest(path).AddJsonBody(data);
@@ -130,14 +131,14 @@ namespace Smartbills.NET.Services
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecutePutAsync<TResponse>(request, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TResponse>> DeleteEntityAsync<TResponse>(string path, CancellationToken cancellationToken = default)
+        protected async Task<TResponse> DeleteEntityAsync<TResponse>(string path, CancellationToken cancellationToken = default)
         {
             var request = new RestRequest(path);
             PrepareRequest(request);
             return await ExecuteRequestAsync(async () => await _smartbillsClient.Client.ExecuteAsync<TResponse>(request, Method.Delete, cancellationToken));
         }
 
-        protected async Task<SmartbillsResponse<TResponse>> DeleteEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<TResponse> DeleteEntityAsync<TRequest, TResponse>(string path, TRequest data, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request);
@@ -159,26 +160,27 @@ namespace Smartbills.NET.Services
         }
 
 
-        protected async Task<SmartbillsResponse<TResponse>> ExecuteRequestAsync<TResponse>(Func<Task<RestResponse<TResponse>>> function)
+        protected async Task<TResponse> ExecuteRequestAsync<TResponse>(Func<Task<RestResponse<TResponse>>> executeAPI)
         {
 
-            var response = await function();
+            var response = await executeAPI();
 
             if (response.IsSuccessStatusCode)
             {
-                return new SmartbillsResponse<TResponse>(response.StatusCode, response.Data);
+                return response.Data;
             }
             else
             {
 
-                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                try
                 {
-                    return new SmartbillsResponse<TResponse>(response.StatusCode);
-
+                    var errorResponse = JsonSerializer.Deserialize<SmartbillsErrorResponse>(response.Content);
+                    throw new SmartbillsException(HttpStatusCode.NotFound, errorResponse.Errors);
                 }
-                var errorResponse = JsonSerializer.Deserialize<SmartbillsErrorResponse>(response.Content);
-                return new SmartbillsResponse<TResponse>(response.StatusCode, errorResponse.Errors);
-
+                catch
+                {
+                    throw new SmartbillsException(response.StatusCode);
+                }
             }
         }
     }

@@ -6,6 +6,6 @@ namespace Smartbills.NET.Abstractions
 {
     public interface INestedListable<TRequest, TResponse>
     {
-        Task<SmartbillsResponse<TResponse>> ListAsync(long parentId, TRequest request, CancellationToken cancellationToken);
+        Task<TResponse> ListAsync(long parentId, TRequest request, CancellationToken cancellationToken);
     }
 }

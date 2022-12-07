@@ -31,17 +31,17 @@ namespace Smartbills.NET.Services.BankInstitutions
         {
         }
 
-        public virtual async Task<SmartbillsResponse<SBBankInstitution>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/bank-institutions/{id}", cancellationToken);
         }
 
-        public virtual async Task<SmartbillsResponse<SBBankInstitution>> CreateAsync(CreateBankInstitutionRequest request, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest request, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/bank-institutions", request, cancellationToken);
         }
 
-        public virtual async Task<SmartbillsResponse<SBBankInstitution>> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/bank-institutions/{id}", updateRequest, cancellationToken);
         }

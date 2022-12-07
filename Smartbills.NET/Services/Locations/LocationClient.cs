@@ -39,27 +39,27 @@ namespace Smartbills.NET.Services.Locations
         {
         }
 
-        public async Task<SmartbillsResponse<SBLocation>> CreateAsync(CreateLocationRequest createRequest, CancellationToken cancellationToken)
+        public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, CancellationToken cancellationToken)
         {
             return await CreateEntityAsync($"/v1/locations/", createRequest, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBLocation>> DeleteAsync(long id, CancellationToken cancellationToken)
+        public async Task<SBLocation> DeleteAsync(long id, CancellationToken cancellationToken)
         {
             return await DeleteEntityAsync($"/v1/locations/{id}", cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBLocation>> GetByIdAsync(long id, CancellationToken cancellationToken)
+        public async Task<SBLocation> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             return await GetEntityByIdAsync($"/v1/locations/{id}", cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<List<SBLocation>>> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
+        public async Task<List<SBLocation>> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
         {
             return await GetEntityAsync<ListRequest, List<SBLocation>>($"/v1/locations/", request, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBLocation>> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
+        public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
         {
             return await UpdateEntityAsync($"/v1/locations/{id}", request, cancellationToken);
         }

@@ -18,23 +18,23 @@ namespace Smartbills.NET.Services.ReceiptItems
         {
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> CreateAsync(CreateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync("/v1/receipts-items", createRequest, cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> DeleteAsync(long id, CancellationToken cancellationToken = default)
         {
             return await DeleteEntityAsync($"/v1/receipts-items/{id}", cancellationToken);
 
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> GetByIdAsync(long id, CancellationToken cancellationToken = default)
         {
             return await GetEntityByIdAsync($"/v1/receipts-items/{id}", cancellationToken);
         }
 
-        public async Task<SmartbillsResponse<SBReceiptItem>> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptItem> UpdateAsync(long id, UpdateReceiptItemRequest createRequest, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/receipts-items/{id}", createRequest, cancellationToken);
         }

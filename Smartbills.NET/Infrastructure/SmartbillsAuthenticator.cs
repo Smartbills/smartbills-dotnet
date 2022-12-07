@@ -25,11 +25,9 @@ namespace Smartbills.NET.Infrastructure
 
                 return new HeaderParameter(KnownHeaders.Authorization, "Bearer " + token);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-
-                throw new SmartbillsAuthenticationException();
-
+                throw new SmartbillsAuthenticationException($"An error occured while authenticating API client to {_credentials.Authority}",exception);
             }
         }
 

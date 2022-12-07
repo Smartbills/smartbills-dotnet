@@ -7,6 +7,6 @@ namespace Smartbills.NET.Abstractions
     public interface IDeletable<TResponse>
 
     {
-        Task<SmartbillsResponse<TResponse>> DeleteAsync(long id, CancellationToken cancellationToken = default);
+        Task<TResponse> DeleteAsync(long id, CancellationToken cancellationToken = default);
     }
 }
