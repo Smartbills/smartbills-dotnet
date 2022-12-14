@@ -19,6 +19,11 @@ namespace Smartbills.NET.Services.Banks
     }
     public class BankClient : UserClientBase<SBBank>, IBankClient
     {
+
+        public BankClient(ISmartbillsClient client) : base(client)
+        {
+        }
+
         public BankClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
         {
         }
