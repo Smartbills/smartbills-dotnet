@@ -9,6 +9,9 @@ namespace Smartbills.NET.Services
     }
     public class UserClientBase<T> : ClientBase<T>, IUserClientBase
     {
+        public UserClientBase(ISmartbillsClient smartbillsClient) : base(smartbillsClient)
+        {
+        }
         public UserClientBase(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
         {
         }
