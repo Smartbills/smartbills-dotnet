@@ -19,7 +19,10 @@ steps:
   displayName: 'Download nuget signing certificate'
   inputs:
     secureFile: 'nuget-org.pfx'
-
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '18'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
