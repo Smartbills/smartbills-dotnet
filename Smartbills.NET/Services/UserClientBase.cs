@@ -15,7 +15,6 @@ namespace Smartbills.NET.Services
         public UserClientBase(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
         {
         }
-
         public void SetAccessToken(string accessToken)
         {
             _smartbillsClient.SetAccessToken(accessToken);

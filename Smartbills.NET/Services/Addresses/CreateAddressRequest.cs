@@ -26,5 +26,6 @@ namespace Smartbills.NET.Services.Addresses
 
         [JsonPropertyName("coordinates")]
         public SBCoordinate Coordinates { get; set; }
+
     }
 }

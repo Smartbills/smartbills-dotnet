@@ -1,5 +1,4 @@
 pool:
-  name: Self-Hosted
   vmImage: windows-2022
 trigger:
   branches:
@@ -14,6 +13,14 @@ steps:
       targetType: "inline"
       script: |
         npm install -g semantic-release @semantic-release/git semantic-release-ado @semantic-release/release-notes-generator
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '7.x'
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '18'
   - task: PowerShell@2
     displayName: "Upgrade version"
     inputs:

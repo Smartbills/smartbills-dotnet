@@ -16,6 +16,5 @@ namespace Smartbills.NET.Services.Discounts
 
         [JsonPropertyName("type")]
         public SBDiscountType Type { get; set; }
-
     }
 }
