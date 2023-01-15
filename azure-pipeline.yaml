@@ -6,6 +6,9 @@ trigger:
     - '*'
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    version: '7.x'
 - task: gitversion/setup@0
   inputs:
     versionSpec: '5.x'
