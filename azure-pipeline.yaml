@@ -7,6 +7,10 @@ trigger:
 variables:
   GH_TOKEN: $(GITHUB_TOKEN)
 steps:
+  - task: NodeTool@0
+    inputs:
+      versionSource: 'spec'
+      versionSpec: '18'
   - task: PowerShell@2
     displayName: "Install semantic-release"
     inputs:
@@ -17,10 +21,7 @@ steps:
     inputs:
       packageType: 'sdk'
       version: '7.x'
-  - task: NodeTool@0
-    inputs:
-      versionSource: 'spec'
-      versionSpec: '18'
+
   - task: PowerShell@2
     displayName: "Upgrade version"
     inputs:
