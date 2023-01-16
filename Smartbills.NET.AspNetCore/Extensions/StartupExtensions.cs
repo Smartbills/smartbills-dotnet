@@ -36,7 +36,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
             {
                 throw new ArgumentNullException(nameof(services));
             }
-
+            
             Services = services;
         }
     }
