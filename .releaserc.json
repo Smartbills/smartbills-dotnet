@@ -6,6 +6,17 @@
             "channel": "beta",
             "prerelease": true
         },
+		{
+            "name": "net6.0",
+            "channel": "6.x",
+			"range": "6.x" 
+        },
+		{
+            "name": "net6.0-dev",
+            "channel": "6.x",
+			"range": "6.x" ,
+			"prerelease":true
+        },
         {
             "name": "next",
             "channel": "next"
