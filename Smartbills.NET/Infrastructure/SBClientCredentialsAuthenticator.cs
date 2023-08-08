@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Infrastructure
 {
-    public class SmartbillsAuthenticator : AuthenticatorBase
+    public class SBClientCredentialsAuthenticator : AuthenticatorBase
     {
         private readonly SBClientCredentials _credentials;
 
         private DateTimeOffset ExpirationDate { get; set; } = DateTimeOffset.Now;
-        public SmartbillsAuthenticator(SBClientCredentials credential) : base("")
+        public SBClientCredentialsAuthenticator(SBClientCredentials credential) : base("")
         {
             _credentials = credential;
         }
@@ -33,11 +33,10 @@ namespace Smartbills.NET.Infrastructure
 
         public async Task<string> GetToken()
         {
-            var options = new RestClientOptions(_credentials.Authority);
-            using var client = new RestClient(options)
-            {
+            var options = new RestClientOptions(_credentials.Authority) {
                 Authenticator = new HttpBasicAuthenticator(_credentials.ClientId, _credentials.ClientSecret),
             };
+            using var client = new RestClient(options);
 
             var request = new RestRequest("connect/token").AddParameter("scope", string.Join(" ", _credentials.Scopes)).AddParameter("grant_type", "client_credentials");
             var response = await client.PostAsync<SBToken>(request);

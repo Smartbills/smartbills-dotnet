@@ -13,18 +13,18 @@ namespace Smartbills.NET.UnitTests.Services
         {
         }
 
-        [Fact]
-        public async Task CreateProduct()
-        {
+        //[Fact]
+        //public async Task CreateProduct()
+        //{
 
-            var productClient = new ProductClient(123, new SBClientCredentials()
-            {
-                Authority = "http://192.168.0.198:5002",
-                ClientId = "smartbills-square",
-                Scopes = new List<string> { "locations:create", "locations:update", "receipts:update", "receipts:create", "merchants:create", "merchants:update", "customers:update", "customers:create" },
-            }, "https://localhost:44305");
-            await productClient.CreateAsync(new CreateProductRequest() { });
+        //    var productClient = new ProductClient(123, new SBClientCredentials()
+        //    {
+        //        Authority = "http://192.168.0.198:5002",
+        //        ClientId = "smartbills-square",
+        //        Scopes = new List<string> { "locations:create", "locations:update", "receipts:update", "receipts:create", "merchants:create", "merchants:update", "customers:update", "customers:create" },
+        //    }, "https://localhost:44305");
+        //    await productClient.CreateAsync(new CreateProductRequest() { });
 
-        }
+        //}
     }
 }

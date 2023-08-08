@@ -6,6 +6,6 @@ namespace Smartbills.NET.Abstractions
 {
     public interface INestedCreatable<TRequest, TResponse> where TRequest : class
     {
-        Task<TResponse> CreateAsync(long parentId, TRequest data = null, CancellationToken cancellationToken = default);
+        Task<TResponse> CreateAsync(long parentId, TRequest data = null, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }
 }

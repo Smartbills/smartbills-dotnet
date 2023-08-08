@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using Smartbills.NET.Abstractions;
+using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Infrastructure
 {
@@ -6,6 +7,8 @@ namespace Smartbills.NET.Infrastructure
     {
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
+        [JsonPropertyName("refresh_token")]
+        public string RefreshToken { get; set; }
         [JsonPropertyName("expires_in")]
         public int ExpiresIn { get; set; } = 0;
         [JsonPropertyName("token_type")]

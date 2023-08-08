@@ -1,3 +1,4 @@
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.ProductImages;
 using Smartbills.NET.Entities.ProductVariants;
 using System;
@@ -6,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Products
 {
-    public record SBProduct
+    public record SBProduct: ISmartbillsEntity
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

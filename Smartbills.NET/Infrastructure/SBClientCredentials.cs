@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Infrastructure
 {
-    public class SBClientCredentials
+    public class SBClientCredentials: SBCredentials
     {
         public const string Path = "Smartbills";
         public string Authority { get; set; } = "https://api.smartbills.io/auth";

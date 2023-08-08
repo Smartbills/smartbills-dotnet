@@ -1,3 +1,4 @@
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Products;
 using Smartbills.NET.Entities.ProductVariants;
 using Smartbills.NET.Entities.ReceiptItemTaxes;
@@ -6,7 +7,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.ReceiptItems
 {
-    public record SBReceiptItem
+    public record SBReceiptItem: ISmartbillsEntity
     {
         [JsonPropertyName("id")]
         public long Id { get; set; }

@@ -15,34 +15,34 @@ namespace Smartbills.NET.Services.BankTransactions
     IDeletable<SBBankTransaction>
 
     { }
-    public class BankTransactionClient : ClientBase<SBBankTransaction>, IBankTransactionClient
+    public class BankTransactionClient : Service<SBBankTransaction>, IBankTransactionClient
     {
         public BankTransactionClient(ISmartbillsClient client) : base(client)
         {
         }
 
-        public async Task<SBBankTransaction> CreateAsync(CreateBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> CreateAsync(CreateBankTransactionRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync("/v1/bank/transactions", request, cancellationToken);
+            return await CreateEntityAsync("/v1/bank/transactions", request, options, cancellationToken);
         }
 
 
-        public async Task<SBBankTransaction> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync($"/v1/bank/transactions/{id}", cancellationToken);
+            return await GetEntityByIdAsync($"/v1/bank/transactions/{id}", options, cancellationToken);
         }
 
 
-        public async Task<SBBankTransaction> UpdateAsync(long id, UpdateBankTransactionRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> UpdateAsync(long id, UpdateBankTransactionRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync($"/v1/bank/transactions/{id}", request, cancellationToken);
+            return await UpdateEntityAsync($"/v1/bank/transactions/{id}", request, options, cancellationToken);
         }
 
 
 
-        public async Task<SBBankTransaction> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBBankTransaction> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync($"/v1/bank/transactions/{id}", cancellationToken);
+            return await DeleteEntityAsync($"/v1/bank/transactions/{id}", options, cancellationToken);
         }
     }
 }

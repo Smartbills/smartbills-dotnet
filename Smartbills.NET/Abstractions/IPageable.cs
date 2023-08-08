@@ -7,7 +7,7 @@ namespace Smartbills.NET.Abstractions
 {
     public interface IPageable<TRequest, TResponse> where TRequest : PaginationRequestBase
     {
-        Task<TResponse> PaginateAsync(long id, TRequest request, CancellationToken cancellationToken = default);
+        Task<TResponse> PaginateAsync(long id, TRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
 
     }
 }

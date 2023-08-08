@@ -42,7 +42,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
     }
     public static class Extensions
     {
-        public static ISmartbillsBuilder AddSmartbillsClient(this IServiceCollection services, Action<SBClientConfiguration> options = null)
+        public static ISmartbillsBuilder AddSmartbillsClient(this IServiceCollection services, Action<SmartbillsClientOption> options = null)
         {
 
             if (services == null)
@@ -71,48 +71,48 @@ namespace Smartbills.NET.AspNetCore.Extensions
 
             if (options == null)
             {
-                services.Configure<SBClientConfiguration>(config => config = new SBClientConfiguration());
+                services.Configure<SmartbillsClientOption>(config => config = new SmartbillsClientOption());
             }
             else
             {
-                services.Configure<SBClientConfiguration>(options);
+                services.Configure<SmartbillsClientOption>(options);
             }
 
             services.AddSingleton<ISmartbillsClient>(serviceProvider =>
             {
-                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
-                return new SmartbillsClient(config.Value.Url);
+                var config = serviceProvider.GetRequiredService<IOptions<SmartbillsClientOption>>();
+                return new SmartbillsClient(config.Value);
             }
         );
 
             return new SmartbillsBuilder(services);
         }
 
-        public static ISmartbillsBuilder AddAPIKey(this ISmartbillsBuilder builder, Action<SBApiKeyCredentials> options)
-        {
-            SBApiKeyCredentials credentials = new();
-            builder.Services.Configure(options);
-            options.Invoke(credentials);
-            builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
-            {
-                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
-                return new SmartbillsClient(credentials.ApiSecret, credentials.ApiKey, config.Value.Url);
-            });
-            return builder;
-        }
+        //public static ISmartbillsBuilder AddAPIKey(this ISmartbillsBuilder builder, Action<SBApiKeyCredentials> options)
+        //{
+        //    SBApiKeyCredentials credentials = new();
+        //    builder.Services.Configure(options);
+        //    options.Invoke(credentials);
+        //    builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
+        //    {
+        //        var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
+        //        return new SmartbillsClient();
+        //    });
+        //    return builder;
+        //}
 
-        public static ISmartbillsBuilder AddCredentials(this ISmartbillsBuilder builder, Action<SBClientCredentials> options)
-        {
-            SBClientCredentials credentials = new();
-            builder.Services.Configure(options);
-            options.Invoke(credentials);
-            builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
-            {
-                var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
-                return new SmartbillsClient(credentials, config.Value.Url);
-            }
-            );
-            return builder;
-        }
+        //public static ISmartbillsBuilder AddCredentials(this ISmartbillsBuilder builder, Action<SBClientCredentials> options)
+        //{
+        //    SBClientCredentials credentials = new();
+        //    builder.Services.Configure(options);
+        //    options.Invoke(credentials);
+        //    builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
+        //    {
+        //        var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
+        //        return new SmartbillsClient();
+        //    }
+        //    );
+        //    return builder;
+        //}
     }
 }

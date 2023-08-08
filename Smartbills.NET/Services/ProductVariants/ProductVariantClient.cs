@@ -6,49 +6,37 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.ProductVariants
 {
-    public interface IProductVariantClient : IMerchantClientBase,
+    public interface IProductVariantClient : 
         INestedCreatable<CreateProductVariantRequest, SBProductVariant>,
         INestedUpdatable<UpdateProductVariantRequest, SBProductVariant>,
         INestedDeletable<SBProductVariant>,
         INestedRetrievable<SBProductVariant>
     { }
 
-    public class ProductVariantClient : MerchantClientBase<SBProductVariant>, IProductVariantClient
+    public class ProductVariantClient : Service<SBProductVariant>, IProductVariantClient
     {
         public ProductVariantClient(ISmartbillsClient client) : base(client)
         {
         }
 
-        public ProductVariantClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        public async Task<SBProductVariant> CreateAsync(long parentId, CreateProductVariantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.CreateEntityAsync($"/v1/products/{parentId}/variants", request, options, cancellationToken);
         }
 
-        public ProductVariantClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
+        public async Task<SBProductVariant> DeleteAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.DeleteEntityAsync($"/v1/products/{parentId}/variants/{id}", options, cancellationToken);
         }
 
-        public ProductVariantClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
+        public async Task<SBProductVariant> GetByIdAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.GetEntityByIdAsync($"/v1/products/{parentId}/variants/{id}", options, cancellationToken);
         }
 
-        public async Task<SBProductVariant> CreateAsync(long parentId, CreateProductVariantRequest request, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> UpdateAsync(long parentId, long id, UpdateProductVariantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/products/{parentId}/variants", request, cancellationToken);
-        }
-
-        public async Task<SBProductVariant> DeleteAsync(long parentId, long id, CancellationToken cancellationToken = default)
-        {
-            return await base.DeleteEntityAsync($"/v1/products/{parentId}/variants/{id}", cancellationToken);
-        }
-
-        public async Task<SBProductVariant> GetByIdAsync(long parentId, long id, CancellationToken cancellationToken = default)
-        {
-            return await base.GetEntityByIdAsync($"/v1/products/{parentId}/variants/{id}", cancellationToken);
-        }
-
-        public async Task<SBProductVariant> UpdateAsync(long parentId, long id, UpdateProductVariantRequest request, CancellationToken cancellationToken = default)
-        {
-            return await base.UpdateEntityAsync($"/v1/products/{parentId}/variants/{id}", request, cancellationToken);
+            return await base.UpdateEntityAsync($"/v1/products/{parentId}/variants/{id}", request, options, cancellationToken);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Locations
 {
-    public interface ILocationClient : IMerchantClientBase,
+    public interface ILocationClient : 
         ICreatable<CreateLocationRequest, SBLocation>,
         IUpdatable<UpdateLocationRequest, SBLocation>,
         IDeletable<SBLocation>,
@@ -16,7 +16,7 @@ namespace Smartbills.NET.Services.Locations
     {
 
     }
-    public class LocationClient : MerchantClientBase<SBLocation>, ILocationClient
+    public class LocationClient : Service<SBLocation>, ILocationClient
     {
 
         public LocationClient(ISmartbillsClient client) : base(client)
@@ -24,44 +24,29 @@ namespace Smartbills.NET.Services.Locations
 
         }
 
-
-
-
-        public LocationClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.CreateEntityAsync($"/v1/locations/", createRequest, options, cancellationToken);
         }
 
-        public LocationClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
+        public async Task<SBLocation> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await DeleteEntityAsync($"/v1/locations/{id}", options, cancellationToken);
         }
 
-        public LocationClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
+        public async Task<SBLocation> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await GetEntityByIdAsync($"/v1/locations/{id}", options, cancellationToken);
         }
 
-        public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, CancellationToken cancellationToken)
+        public async Task<List<SBLocation>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync($"/v1/locations/", createRequest, cancellationToken);
+            return await GetEntityAsync<ListRequest, List<SBLocation>>($"/v1/locations/", request, options, cancellationToken);
         }
 
-        public async Task<SBLocation> DeleteAsync(long id, CancellationToken cancellationToken)
+        public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync($"/v1/locations/{id}", cancellationToken);
-        }
-
-        public async Task<SBLocation> GetByIdAsync(long id, CancellationToken cancellationToken)
-        {
-            return await GetEntityByIdAsync($"/v1/locations/{id}", cancellationToken);
-        }
-
-        public async Task<List<SBLocation>> ListAsync(ListRequest request, CancellationToken cancellationToken = default)
-        {
-            return await GetEntityAsync<ListRequest, List<SBLocation>>($"/v1/locations/", request, cancellationToken);
-        }
-
-        public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, CancellationToken cancellationToken)
-        {
-            return await UpdateEntityAsync($"/v1/locations/{id}", request, cancellationToken);
+            return await UpdateEntityAsync($"/v1/locations/{id}", request, options, cancellationToken);
         }
     }
 }

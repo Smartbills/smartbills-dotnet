@@ -1,8 +1,9 @@
+using Smartbills.NET.Abstractions;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities
 {
-    public interface ISmartbillsEntityWithId
+    public interface ISmartbillsEntityWithId: ISmartbillsEntity
     {
         long Id { get; set; }
     }

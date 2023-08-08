@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Products
 {
-    public interface IProductClient : IMerchantClientBase, ICreatable<CreateProductRequest, SBProduct>,
+    public interface IProductClient :  ICreatable<CreateProductRequest, SBProduct>,
         IUpdatable<UpdateProductRequest, SBProduct>,
         IDeletable<SBProduct>,
         IRetrievable<SBProduct>,
@@ -15,47 +15,35 @@ namespace Smartbills.NET.Services.Products
 
     { }
 
-    public class ProductClient : MerchantClientBase<SBProduct>, IProductClient
+    public class ProductClient : Service<SBProduct>, IProductClient
     {
         public ProductClient(ISmartbillsClient client) : base(client)
         {
         }
 
-        public ProductClient(long merchantId, string accessToken, string url = "https://api.smartbills.io") : base(merchantId, accessToken, url)
+        public async Task<SBProduct> CreateAsync(CreateProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.CreateEntityAsync("/v1/products", request, options, cancellationToken);
         }
 
-        public ProductClient(long merchantId, string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(merchantId, apiKey, apiSecret, url)
+        public async Task<SBProduct> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.DeleteEntityAsync($"/v1/products/{id}", options, cancellationToken);
         }
 
-        public ProductClient(long merchantId, SBClientCredentials credentials, string url = "https://api.smartbills.io") : base(merchantId, credentials, url)
+        public async Task<SBProduct> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await base.GetEntityByIdAsync($"/v1/products/{id}", options, cancellationToken);
         }
 
-        public async Task<SBProduct> CreateAsync(CreateProductRequest request, CancellationToken cancellationToken = default)
+        public async Task<PaginatedResponse<SBProduct>> PaginateAsync(long id, GetProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync("/v1/products", request, cancellationToken);
+            return await base.PaginateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBProduct> DeleteAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> UpdateAsync(long id, UpdateProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.DeleteEntityAsync($"/v1/products/{id}", cancellationToken);
-        }
-
-        public async Task<SBProduct> GetByIdAsync(long id, CancellationToken cancellationToken = default)
-        {
-            return await base.GetEntityByIdAsync($"/v1/products/{id}", cancellationToken);
-        }
-
-        public async Task<PaginatedResponse<SBProduct>> PaginateAsync(long id, GetProductRequest request, CancellationToken cancellationToken = default)
-        {
-            return await base.PaginateEntityAsync($"/v1/products/{id}", request, cancellationToken);
-        }
-
-        public async Task<SBProduct> UpdateAsync(long id, UpdateProductRequest request, CancellationToken cancellationToken = default)
-        {
-            return await base.UpdateEntityAsync($"/v1/products/{id}", request, cancellationToken);
+            return await base.UpdateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
         }
     }
 }

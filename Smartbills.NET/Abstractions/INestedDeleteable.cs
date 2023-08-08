@@ -6,6 +6,6 @@ namespace Smartbills.NET.Abstractions
 {
     public interface INestedDeletable<TResponse>
     {
-        Task<TResponse> DeleteAsync(long parentId, long id, CancellationToken cancellationToken = default);
+        Task<TResponse> DeleteAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }
 }

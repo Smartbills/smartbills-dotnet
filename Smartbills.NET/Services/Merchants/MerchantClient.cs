@@ -14,7 +14,7 @@ namespace Smartbills.NET.Services.Merchants
     {
     }
     public class MerchantClient :
-    ClientBase<SBMerchant>,
+    Service<SBMerchant>,
         IMerchantClient
 
     {
@@ -22,36 +22,24 @@ namespace Smartbills.NET.Services.Merchants
         {
         }
 
-        public MerchantClient(SBClientCredentials credentials) : base(credentials)
+        public async Task<SBMerchant> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await GetEntityByIdAsync($"/v1/merchants/{id}", options, cancellationToken);
         }
 
-        public MerchantClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await CreateEntityAsync($"/v1/merchants", request, options, cancellationToken);
         }
 
-        public MerchantClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await UpdateEntityAsync($"/v1/merchants/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBMerchant> GetByIdAsync(long id, CancellationToken cancellationToken = default)
+        public async Task<SBMerchant> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync($"/v1/merchants/{id}", cancellationToken);
-        }
-
-        public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, CancellationToken cancellationToken = default)
-        {
-            return await CreateEntityAsync($"/v1/merchants", request, cancellationToken);
-        }
-
-        public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, CancellationToken cancellationToken = default)
-        {
-            return await UpdateEntityAsync($"/v1/merchants/{id}", request, cancellationToken);
-        }
-
-        public async Task<SBMerchant> DeleteAsync(long id, CancellationToken cancellationToken = default)
-        {
-            return await DeleteEntityAsync($"/v1/merchants/{id}", cancellationToken);
+            return await DeleteEntityAsync($"/v1/merchants/{id}", options, cancellationToken);
         }
     }
 }

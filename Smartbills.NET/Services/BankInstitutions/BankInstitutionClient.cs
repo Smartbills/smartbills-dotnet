@@ -12,38 +12,26 @@ namespace Smartbills.NET.Services.BankInstitutions
         IUpdatable<UpdateBankInstitutionRequest, SBBankInstitution>
     {
     }
-    public class BankInstitutionClient : ClientBase<SBBankInstitution>, IBankInstitutionClient
+    public class BankInstitutionClient : Service<SBBankInstitution>, IBankInstitutionClient
     {
         public BankInstitutionClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
 
 
-        public BankInstitutionClient(SBClientCredentials credentials) : base(credentials)
+        public virtual async Task<SBBankInstitution> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await GetEntityByIdAsync($"/v1/bank-institutions/{id}", options, cancellationToken);
         }
 
-        public BankInstitutionClient(string accessToken, string url = "https://api.smartbills.io") : base(accessToken, url)
+        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
+            return await CreateEntityAsync($"/v1/bank-institutions", request, options, cancellationToken);
         }
 
-        public BankInstitutionClient(string apiKey, string apiSecret, string url = "https://api.smartbills.io") : base(apiKey, apiSecret, url)
+        public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, SBRequestOptions options= null, CancellationToken cancellationToken = default)
         {
-        }
-
-        public virtual async Task<SBBankInstitution> GetByIdAsync(long id, CancellationToken cancellationToken = default)
-        {
-            return await GetEntityByIdAsync($"/v1/bank-institutions/{id}", cancellationToken);
-        }
-
-        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest request, CancellationToken cancellationToken = default)
-        {
-            return await CreateEntityAsync($"/v1/bank-institutions", request, cancellationToken);
-        }
-
-        public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, CancellationToken cancellationToken = default)
-        {
-            return await UpdateEntityAsync($"/v1/bank-institutions/{id}", updateRequest, cancellationToken);
+            return await UpdateEntityAsync($"/v1/bank-institutions/{id}", updateRequest, options, cancellationToken);
         }
     }
 }

@@ -1,9 +1,10 @@
+using Smartbills.NET.Abstractions;
 using System;
 using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Entities.Documents
 {
-    public record SBDocument
+    public record SBDocument: ISmartbillsEntity
     {
 
         [JsonPropertyName("id")]

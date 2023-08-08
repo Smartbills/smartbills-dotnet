@@ -7,19 +7,17 @@ namespace Smartbills.NET.Infrastructure
     public class ApiKeyAuthenticator : IAuthenticator
     {
 
-        private readonly string _apiKey;
-        private readonly string _apiSecret;
-        public ApiKeyAuthenticator(string apiKey, string apiSecret)
+        private readonly SBApiKeyCredentials _credentials;
+        public ApiKeyAuthenticator(SBApiKeyCredentials credentials)
         {
-            _apiKey = apiKey;
-            _apiSecret = apiSecret;
+            _credentials = credentials;
         }
 
 
-        public ValueTask Authenticate(RestClient client, RestRequest request)
+        public ValueTask Authenticate(IRestClient client, RestRequest request)
         {
-            request.AddHeader("X-API-KEY", _apiKey);
-            request.AddHeader("X-API-SECRET", _apiSecret);
+            request.AddHeader("X-API-KEY", _credentials.ApiKey);
+            request.AddHeader("X-API-SECRET", _credentials.ApiSecret);
             return new ValueTask();
         }
     }
