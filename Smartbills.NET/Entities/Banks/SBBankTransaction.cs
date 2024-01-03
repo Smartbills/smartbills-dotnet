@@ -21,7 +21,6 @@ namespace Smartbills.NET.Entities.Banks
 
         public DateTime AuthorizedDate { get; set; }
         //public SBAddress Address { get; set; }
-        
 
         public string Name { get; set; }
         
