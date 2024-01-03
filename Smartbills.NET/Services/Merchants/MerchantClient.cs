@@ -8,8 +8,8 @@ namespace Smartbills.NET.Services.Merchants
 {
     public interface IMerchantClient :
     IRetrievable<SBMerchant>,
-    ICreatable<CreateMerchantRequest, SBMerchant>,
-    IUpdatable<UpdateMerchantRequest, SBMerchant>,
+    ICreatable<MerchantCreateRequest, SBMerchant>,
+    IUpdatable<MerchantUpdateRequest, SBMerchant>,
     IDeletable<SBMerchant>
     {
     }
@@ -27,12 +27,12 @@ namespace Smartbills.NET.Services.Merchants
             return await GetEntityByIdAsync($"/v1/merchants/{id}", options, cancellationToken);
         }
 
-        public async Task<SBMerchant> CreateAsync(CreateMerchantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBMerchant> CreateAsync(MerchantCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/merchants", request, options, cancellationToken);
         }
 
-        public async Task<SBMerchant> UpdateAsync(long id, UpdateMerchantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBMerchant> UpdateAsync(long id, MerchantUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/merchants/{id}", request, options, cancellationToken);
         }

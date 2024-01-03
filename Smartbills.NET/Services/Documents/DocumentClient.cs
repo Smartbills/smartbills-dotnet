@@ -8,7 +8,7 @@ namespace Smartbills.NET.Services.Documents
 {
     public interface IDocumentClient :
        IRetrievable<SBDocument>,
-        ICreatable<CreateDocumentRequest, SBDocument>,
+        ICreatable<DocumentCreateRequest, SBDocument>,
         IDeletable<SBDocument>
 
     {
@@ -22,7 +22,7 @@ namespace Smartbills.NET.Services.Documents
         public DocumentClient(ISmartbillsClient client) : base(client) { }
 
 
-        public async Task<SBDocument> CreateAsync(CreateDocumentRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBDocument> CreateAsync(DocumentCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync("/v1/documents", request, options, cancellationToken);
         }

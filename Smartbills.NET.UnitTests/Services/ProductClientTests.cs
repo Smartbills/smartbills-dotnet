@@ -23,7 +23,7 @@ namespace Smartbills.NET.UnitTests.Services
         //        ClientId = "smartbills-square",
         //        Scopes = new List<string> { "locations:create", "locations:update", "receipts:update", "receipts:create", "merchants:create", "merchants:update", "customers:update", "customers:create" },
         //    }, "https://localhost:44305");
-        //    await productClient.CreateAsync(new CreateProductRequest() { });
+        //    await productClient.CreateAsync(new ProductCreateRequest() { });
 
         //}
     }

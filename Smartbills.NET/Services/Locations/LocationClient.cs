@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Locations
 {
     public interface ILocationClient : 
-        ICreatable<CreateLocationRequest, SBLocation>,
-        IUpdatable<UpdateLocationRequest, SBLocation>,
+        ICreatable<LocationCreateRequest, SBLocation>,
+        IUpdatable<LocationUpdateRequest, SBLocation>,
         IDeletable<SBLocation>,
         IRetrievable<SBLocation>,
         IListable<ListRequest, List<SBLocation>>
@@ -24,9 +24,9 @@ namespace Smartbills.NET.Services.Locations
 
         }
 
-        public async Task<SBLocation> CreateAsync(CreateLocationRequest createRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBLocation> CreateAsync(LocationCreateRequest ListRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/locations/", createRequest, options, cancellationToken);
+            return await base.CreateEntityAsync($"/v1/locations/", ListRequest, options, cancellationToken);
         }
 
         public async Task<SBLocation> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -44,7 +44,7 @@ namespace Smartbills.NET.Services.Locations
             return await GetEntityAsync<ListRequest, List<SBLocation>>($"/v1/locations/", request, options, cancellationToken);
         }
 
-        public async Task<SBLocation> UpdateAsync(long id, UpdateLocationRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBLocation> UpdateAsync(long id, LocationUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/locations/{id}", request, options, cancellationToken);
         }

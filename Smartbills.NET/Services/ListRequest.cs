@@ -8,10 +8,10 @@ namespace Smartbills.NET.Services
         {
         }
 
-        [JsonPropertyName("page_size")]
+        
         public long PageSize { get; set; } = 25;
 
-        [JsonPropertyName("page")]
+        
         public long Page { get; set; } = 1;
     }
 }

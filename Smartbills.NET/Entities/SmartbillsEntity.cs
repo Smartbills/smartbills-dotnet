@@ -12,7 +12,7 @@ namespace Smartbills.NET.Entities
     }
     public record SmartbillsEntityWithId : SmartbillsEntity, ISmartbillsEntityWithId
     {
-        [JsonPropertyName("id")]
+        
         public long Id { get; set; }
     }
 }

@@ -4,16 +4,15 @@ namespace Smartbills.NET.Entities.Taxes
 {
     public record SBTax : SmartbillsEntityWithId
     {
-        [JsonPropertyName("tax_identification_number")]
-        public string TaxIdentificationNumber { get; set; }
-        [JsonPropertyName("Name")]
+        public bool? Active { get; set; }
+        public string Country { get; set; }
+        public string Description { get; set; }
         public string Name { get; set; }
-
-        [JsonPropertyName("rate")]
-        public decimal Rate { get; set; }
-
-        [JsonPropertyName("merchant_id")]
-        public long MerchantId { get; set; }
-
+        public SBTaxType? TaxType { get; set; }
+        public decimal Percentage { get; set; }
+        public string State { get; set; }
+        public bool? Inclusive { get; set; }
+        public string Jurisdiction { get; set; }
+        public string TaxIdentificationNumber { get; set; }
     }
 }

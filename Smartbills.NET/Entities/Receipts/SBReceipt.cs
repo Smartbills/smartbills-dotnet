@@ -1,9 +1,10 @@
+using Smartbills.Core.DTO;
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Entities.Barcode;
-using Smartbills.NET.Entities.Documents;
+using Smartbills.NET.Entities.Customers;
+using Smartbills.NET.Entities.Locations;
 using Smartbills.NET.Entities.Merchants;
-using Smartbills.NET.Entities.ReceiptItems;
-using Smartbills.NET.Entities.ReceiptMetadata;
-using Smartbills.NET.Entities.Taxes;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -12,83 +13,68 @@ namespace Smartbills.NET.Entities.Receipts
 {
     public record SBReceipt : SmartbillsEntityWithId
     {
-        [JsonPropertyName("company")]
-        public SBMerchant Company { get; set; }
 
-        [JsonPropertyName("items")]
+        public SBBillingAddress BillingAddress { get; set; }
+        public SBBillingAddress ShippingAddress { get; set; }
 
-        public List<SBReceiptItem> Items { get; set; }
 
-        [JsonPropertyName("total_items")]
+        public SBMerchant Merchant { get; set; }
+
+        public List<SBReceiptItem> Items { get; set; } = new List<SBReceiptItem>();
 
         public decimal TotalItems { get; set; }
-        [JsonPropertyName("sub_total")]
 
         public decimal SubTotal { get; set; }
-        [JsonPropertyName("taxes")]
 
-        public List<SBReceiptTax> Taxes { get; set; }
-        [JsonPropertyName("total_taxes")]
-        public decimal TotalTaxes { get; set; }
-        [JsonPropertyName("total_discount")]
-        public decimal TotalDiscount { get; set; }
-        [JsonPropertyName("total_duties")]
-        public decimal TotalDuties { get; set; }
-        [JsonPropertyName("total_shipping")]
-        public decimal TotalShipping { get; set; }
-        [JsonPropertyName("total_tip")]
-        public decimal TotalTip { get; set; }
-
-        [JsonPropertyName("total")]
-
-        public decimal Total { get; set; }
+        public List<SBReceiptTax> Taxes { get; set; } = new List<SBReceiptTax>();
+        public List<SBReceiptFee> Fees { get; set; } = new List<SBReceiptFee>();
 
 
-        [JsonPropertyName("currency")]
         public string Currency { get; set; }
 
-        [JsonPropertyName("taxes_included")]
         public bool TaxesIncluded { get; set; }
-        //public List<SBReceiptTransactionVM> Transactions { get; set; }
+        public List<SBReceiptTransaction> Transactions { get; set; } = new List<SBReceiptTransaction>();
 
-        [JsonPropertyName("location_id")]
-        public long? LocationId { get; set; }
+        public SBLocation Location { get; set; }
 
-        [JsonPropertyName("receipt_metadata")]
-        public SBReceiptMetadata ReceiptMetadata { get; set; }
-
-        [JsonPropertyName("total_weight")]
+        public Dictionary<string,string> Metadata { get; set; }
         public decimal TotalWeight { get; set; }
 
-        // public List<SBReceiptDiscount> DiscountCodes { get; set; }
-        //public GetCompanyCustomerVM Customer { get; set; }
-        //public GetBillingAddressVM BillingAddress { get; set; }
-        //public GetBillingAddressVM ShippingAddress { get; set; }
+        public SBCustomer Customer { get; set; }
 
-        [JsonPropertyName("order_number")]
         public string OrderNumber { get; set; }
 
-        [JsonPropertyName("cancel_reason")]
         public string CancelReason { get; set; }
-
-        [JsonPropertyName("payment_status")]
 
         public string PaymentStatus { get; set; }
 
-        [JsonPropertyName("uploaded_at")]
         public DateTimeOffset UploadedAt { get; set; }
 
-        [JsonPropertyName("cancelled_at")]
         public DateTimeOffset? CancelledAt { get; set; }
 
-        [JsonPropertyName("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
 
-        [JsonPropertyName("documents")]
-        public List<SBDocument> Documents { get; set; } = new List<SBDocument>();
-        //[JsonPropertyName("bank_transaction")]
-        //public BankTransactionListItemDTO BankTransaction { get; set; }
-        [JsonPropertyName("barcode")]
+        //public List<DocumentResponse> Documents { get; set; } = new List<DocumentResponse>();
+        public SBBankTransaction BankTransaction { get; set; }
+
+
         public SBBarcode Barcode { get; set; }
+        public string Source { get; set; }
+
+        public string OriginalReceiptUrl { get; set; }
+
+        public string SignedUrl { get; set; }
+        public SBReceiptReview Review { get; set; }
+
+        public decimal TotalTaxes { get; set; }
+        public decimal TotalDiscount { get; set; }
+        public decimal TotalDuties { get; set; }
+        public decimal TotalShipping { get; set; }
+        public decimal TotalTip { get; set; }
+        public decimal TotalFees { get; set; }
+        public decimal Total { get; set; }
+        public SBReceiptType Type { get; set; }
+
+
     }
 }

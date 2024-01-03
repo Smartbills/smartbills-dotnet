@@ -9,11 +9,11 @@ namespace Smartbills.NET.Services.Customers
 {
     public interface ICustomerClient :
 
-        ICreatable<CreateCustomerRequest, SBCustomer>,
+        ICreatable<CustomerCreateRequest, SBCustomer>,
     IRetrievable<SBCustomer>,
-    IUpdatable<UpdateCustomerRequest, SBCustomer>,
+    IUpdatable<CustomerUpdateRequest, SBCustomer>,
     IDeletable<SBCustomer>,
-        IListable<ListCustomersRequest, PaginatedResponse<SBCustomer>>
+        IListable<CustomersListRequest, PaginatedResponse<SBCustomer>>
     {
 
     }
@@ -23,9 +23,9 @@ namespace Smartbills.NET.Services.Customers
         {
         }
 
-        public async Task<SBCustomer> CreateAsync(CreateCustomerRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> CreateAsync(CustomerCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<CreateCustomerRequest, SBCustomer>($"/v1/customers", request, options, cancellationToken);
+            return await base.CreateEntityAsync<CustomerCreateRequest, SBCustomer>($"/v1/customers", request, options, cancellationToken);
         }
 
         public async Task<SBCustomer> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -38,14 +38,14 @@ namespace Smartbills.NET.Services.Customers
             return await base.GetEntityByIdAsync($"/v1/customers/{id}", options, cancellationToken);
         }
 
-        public async Task<SBCustomer> UpdateAsync(long id, UpdateCustomerRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> UpdateAsync(long id, CustomerUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync($"/v1/customers/{id}", request, options, cancellationToken);
         }
 
-        public async Task<PaginatedResponse<SBCustomer>> ListAsync(ListCustomersRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<PaginatedResponse<SBCustomer>> ListAsync(CustomersListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.GetEntityAsync<ListCustomersRequest, PaginatedResponse<SBCustomer>>("/v1/customers", request, options, cancellationToken);
+            return await base.GetEntityAsync<CustomersListRequest, PaginatedResponse<SBCustomer>>("/v1/customers", request, options, cancellationToken);
         }
     }
 }

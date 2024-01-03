@@ -7,7 +7,7 @@ namespace Smartbills.NET.Services.Documents
     public class UploadDocumentDTO
     {
 
-        [JsonPropertyName("files")]
+        
         public List<IFormFile> Files { get; set; }
     }
 }

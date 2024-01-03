@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Discounts
 {
 
-    public interface IDiscountClient :  ICreatable<CreateDiscountRequest, SBDiscount>, IUpdatable<UpdateDiscountRequest, SBDiscount>, IDeletable<SBDiscount>, IRetrievable<SBDiscount>
+    public interface IDiscountClient :  ICreatable<DiscountCreateRequest, SBDiscount>, IUpdatable<DiscountUpdateRequest, SBDiscount>, IDeletable<SBDiscount>, IRetrievable<SBDiscount>
     {
 
     }
@@ -17,7 +17,7 @@ namespace Smartbills.NET.Services.Discounts
         {
         }
 
-        public async Task<SBDiscount> CreateAsync(CreateDiscountRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> CreateAsync(DiscountCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/discounts", request, options, cancellationToken);
         }
@@ -32,7 +32,7 @@ namespace Smartbills.NET.Services.Discounts
             return await GetEntityByIdAsync($"/v1/discounts/{id}", options, cancellationToken);
         }
 
-        public async Task<SBDiscount> UpdateAsync(long id, UpdateDiscountRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBDiscount> UpdateAsync(long id, DiscountUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/discounts/{id}", request, options, cancellationToken);
         }

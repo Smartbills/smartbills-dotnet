@@ -9,9 +9,9 @@ namespace Smartbills.NET.Infrastructure
     public class SmartbillsErrorResponse
     {
 
-        [JsonPropertyName("status_code")]
+        
         public string StatusCode { get; set; }
-        [JsonPropertyName("errors")]
+        
         public List<SmartbillsError> Errors{ get; set; } = new List<SmartbillsError>();
     }
 }

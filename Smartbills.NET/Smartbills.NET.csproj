@@ -29,4 +29,11 @@
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\ReceiptItems\" />
+    <Folder Include="Entities\ReceiptItemTaxes\" />
+    <Folder Include="Entities\ReceiptReviews\" />
+    <Folder Include="Entities\ReceiptTaxes\" />
+  </ItemGroup>
 </Project>

@@ -8,9 +8,9 @@ namespace Smartbills.NET.Services.ProductImages
 {
 
     public interface IProductImageClient : 
-        INestedCreatable<CreateProductImageRequest, SBProductImage>,
+        INestedCreatable<ProductImageCreateRequest, SBProductImage>,
         INestedRetrievable<SBProductImage>,
-        INestedUpdatable<UpdateProductImageRequest, SBProductImage>,
+        INestedUpdatable<ProductImageUpdateRequest, SBProductImage>,
         INestedDeletable<SBProductImage>
     {
 
@@ -24,7 +24,7 @@ namespace Smartbills.NET.Services.ProductImages
         }
 
 
-        public async Task<SBProductImage> CreateAsync(long id, CreateProductImageRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProductImage> CreateAsync(long id, ProductImageCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/products/{id}/images", request, options, cancellationToken);
         }
@@ -38,7 +38,7 @@ namespace Smartbills.NET.Services.ProductImages
             return await DeleteEntityAsync($"/v1/products/{id}/images/{imageId}", options, cancellationToken);
         }
 
-        public async Task<SBProductImage> UpdateAsync(long id, long imageId, UpdateProductImageRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProductImage> UpdateAsync(long id, long imageId, ProductImageUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync($"/v1/products/{id}/images/{imageId}", request, options, cancellationToken);
         }

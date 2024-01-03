@@ -19,9 +19,9 @@ namespace Smartbills.NET.Exceptions
             StatusCode = statusCode;
         }
 
-        [JsonPropertyName("status_code")]
+        
         public HttpStatusCode StatusCode { get; set; }
-        [JsonPropertyName("errors")]
+        
         public  List<SmartbillsError> Errors { get; set; } = new();
     }
 }

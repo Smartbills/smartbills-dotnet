@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.ProductVariants
 {
     public interface IProductVariantClient : 
-        INestedCreatable<CreateProductVariantRequest, SBProductVariant>,
-        INestedUpdatable<UpdateProductVariantRequest, SBProductVariant>,
+        INestedCreatable<ProductVariantCreateRequest, SBProductVariant>,
+        INestedUpdatable<ProductVariantUpdateRequest, SBProductVariant>,
         INestedDeletable<SBProductVariant>,
         INestedRetrievable<SBProductVariant>
     { }
@@ -19,7 +19,7 @@ namespace Smartbills.NET.Services.ProductVariants
         {
         }
 
-        public async Task<SBProductVariant> CreateAsync(long parentId, CreateProductVariantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> CreateAsync(long parentId, ProductVariantCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.CreateEntityAsync($"/v1/products/{parentId}/variants", request, options, cancellationToken);
         }
@@ -34,7 +34,7 @@ namespace Smartbills.NET.Services.ProductVariants
             return await base.GetEntityByIdAsync($"/v1/products/{parentId}/variants/{id}", options, cancellationToken);
         }
 
-        public async Task<SBProductVariant> UpdateAsync(long parentId, long id, UpdateProductVariantRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProductVariant> UpdateAsync(long parentId, long id, ProductVariantUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync($"/v1/products/{parentId}/variants/{id}", request, options, cancellationToken);
         }

@@ -8,8 +8,8 @@ namespace Smartbills.NET.Services.BankInstitutions
 {
     public interface IBankInstitutionClient :
         IRetrievable<SBBankInstitution>,
-        ICreatable<CreateBankInstitutionRequest, SBBankInstitution>,
-        IUpdatable<UpdateBankInstitutionRequest, SBBankInstitution>
+        ICreatable<BankInstitutionCreateRequest, SBBankInstitution>,
+        IUpdatable<BankInstitutionUpdateRequest, SBBankInstitution>
     {
     }
     public class BankInstitutionClient : Service<SBBankInstitution>, IBankInstitutionClient
@@ -24,14 +24,14 @@ namespace Smartbills.NET.Services.BankInstitutions
             return await GetEntityByIdAsync($"/v1/bank-institutions/{id}", options, cancellationToken);
         }
 
-        public virtual async Task<SBBankInstitution> CreateAsync(CreateBankInstitutionRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> CreateAsync(BankInstitutionCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await CreateEntityAsync($"/v1/bank-institutions", request, options, cancellationToken);
         }
 
-        public virtual async Task<SBBankInstitution> UpdateAsync(long id, UpdateBankInstitutionRequest updateRequest, SBRequestOptions options= null, CancellationToken cancellationToken = default)
+        public virtual async Task<SBBankInstitution> UpdateAsync(long id, BankInstitutionUpdateRequest UpdateRequest, SBRequestOptions options= null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync($"/v1/bank-institutions/{id}", updateRequest, options, cancellationToken);
+            return await UpdateEntityAsync($"/v1/bank-institutions/{id}", UpdateRequest, options, cancellationToken);
         }
     }
 }

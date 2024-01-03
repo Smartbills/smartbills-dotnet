@@ -42,16 +42,16 @@
 //        public async Task CreateAsync_ShouldReturnBank_WhenCreateSucceed()
 //        {
 //            var bank = new SBBank();
-//            _bankClient.Setup(x => x.CreateAsync(It.IsAny<CreateBankRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
-//            var response = await _bankClient.Object.CreateAsync(new CreateBankRequest(), default);
+//            _bankClient.Setup(x => x.CreateAsync(It.IsAny<BankCreateRequest>(), It.IsAny<CancellationToken>())).ReturnsAsync(bank);
+//            var response = await _bankClient.Object.CreateAsync(new BankCreateRequest(), default);
 //            Assert.Equal(bank, response);
 //        }
 //        [Fact]
 //        public async Task CreateAsync_ShouldThrow_WhenCreateFails()
 //        {
 //            var bank = new SBBank();
-//            _bankClient.Setup(x => x.CreateAsync(It.IsAny<CreateBankRequest>(), It.IsAny<CancellationToken>())).ThrowsAsync(new HttpRequestException());
-//            await Assert.ThrowsAsync<HttpRequestException>(() => _bankClient.Object.CreateAsync(new CreateBankRequest(), default));
+//            _bankClient.Setup(x => x.CreateAsync(It.IsAny<BankCreateRequest>(), It.IsAny<CancellationToken>())).ThrowsAsync(new HttpRequestException());
+//            await Assert.ThrowsAsync<HttpRequestException>(() => _bankClient.Object.CreateAsync(new BankCreateRequest(), default));
 //        }
 //    }
 //}

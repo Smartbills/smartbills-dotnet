@@ -25,7 +25,7 @@
 //            {
 //                Name = "Smartbills Technologies Inc.",
 //            };
-//            await Assert.ThrowsAnyAsync<Exception>(() => _merchantClient.CreateAsync(new CreateMerchantRequest(), default));
+//            await Assert.ThrowsAnyAsync<Exception>(() => _merchantClient.CreateAsync(new MerchantCreateRequest(), default));
 //        }
 
 //        [Fact]

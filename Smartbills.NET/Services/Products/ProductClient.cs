@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Products
 {
-    public interface IProductClient :  ICreatable<CreateProductRequest, SBProduct>,
-        IUpdatable<UpdateProductRequest, SBProduct>,
+    public interface IProductClient :  ICreatable<ProductCreateRequest, SBProduct>,
+        IUpdatable<ProductUpdateRequest, SBProduct>,
         IDeletable<SBProduct>,
         IRetrievable<SBProduct>,
-        IPageable<GetProductRequest, PaginatedResponse<SBProduct>>
+        IPageable<ProductListRequest, PaginatedResponse<SBProduct>>
 
     { }
 
@@ -21,7 +21,7 @@ namespace Smartbills.NET.Services.Products
         {
         }
 
-        public async Task<SBProduct> CreateAsync(CreateProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> CreateAsync(ProductCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.CreateEntityAsync("/v1/products", request, options, cancellationToken);
         }
@@ -36,12 +36,12 @@ namespace Smartbills.NET.Services.Products
             return await base.GetEntityByIdAsync($"/v1/products/{id}", options, cancellationToken);
         }
 
-        public async Task<PaginatedResponse<SBProduct>> PaginateAsync(long id, GetProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<PaginatedResponse<SBProduct>> PaginateAsync(long id, ProductListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.PaginateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBProduct> UpdateAsync(long id, UpdateProductRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBProduct> UpdateAsync(long id, ProductUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
         }
