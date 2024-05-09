@@ -1,8 +1,12 @@
-﻿using Smartbills.NET.Abstractions;
+﻿using Org.BouncyCastle.Asn1.Ocsp;
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Batch;
 using Smartbills.NET.Entities.Receipts;
 using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services.ReceiptItems;
+using System;
+using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -68,6 +72,21 @@ namespace Smartbills.NET.Services.Receipts
         public async Task<SBReceiptItem> UpdateReceiptItemAsync(long parentId, long id, ReceiptItemUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await UpdateEntityAsync<ReceiptItemUpdateRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", request, options, cancellationToken);
+        }
+
+        public async Task<SBBatch<SBReceipt>> CreateBulkJob(ReceiptBulkJobCreateRequest request, SBRequestOptions options) {
+		return await CreateEntityAsync<ReceiptBulkJobCreateRequest, SBBatch<SBReceipt>>("/v1/receipts/bulk", request, options);
+    }
+
+    public async Task<SBReceipt> UploadToBulkJob(long id, ReceiptBatchUpsertRequest request, SBRequestOptions options) {
+		return await CreateEntityAsync($"/v1/receipts/bulk/{id}", request, options);
+	}
+
+        //public async Task<SBReceipt> CompleteBulkJob(long id, SBRequestOptions options) {
+        //    return await UpdateEntityAsync<>($"/v1/receipts/bulk/{id}/complete", null, options);
+        //}
+        public async Task<SBBatch<SBReceipt>> Batch(ReceiptBatchUpsertRequest request, SBRequestOptions options) {
+            return await CreateEntityAsync<ReceiptBatchUpsertRequest, SBBatch<SBReceipt>>("/v1/receipts/batch", request, options);
         }
 
     }

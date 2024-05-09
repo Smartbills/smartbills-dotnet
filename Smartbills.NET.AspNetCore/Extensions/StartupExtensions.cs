@@ -8,6 +8,7 @@ using Smartbills.NET.Services.BankTransactions;
 using Smartbills.NET.Services.Customers;
 using Smartbills.NET.Services.Discounts;
 using Smartbills.NET.Services.Documents;
+using Smartbills.NET.Services.Employees;
 using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
 using Smartbills.NET.Services.ProductImages;
@@ -60,6 +61,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<ILocationClient, LocationClient>();
             services.AddTransient<ICustomerClient, CustomerClient>();
             services.AddTransient<IReceiptClient, ReceiptClient>();
+            services.AddTransient<IEmployeeClient, EmployeeClient>();
             services.AddTransient<IProductClient, ProductClient>();
             services.AddTransient<IProductImageClient, ProductImageClient>();
             services.AddTransient<IProductVariantClient, ProductVariantClient>();

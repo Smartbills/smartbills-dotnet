@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Customers
 {
-    public class CustomerUpdateRequest
+    public record CustomerUpdateRequest
     {
 
         public string FirstName { get; set; }

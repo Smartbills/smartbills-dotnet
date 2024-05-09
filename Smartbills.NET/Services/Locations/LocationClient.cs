@@ -1,4 +1,5 @@
 using Smartbills.NET.Abstractions;
+using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Locations;
 using Smartbills.NET.Infrastructure;
 using System.Collections.Generic;
@@ -12,7 +13,9 @@ namespace Smartbills.NET.Services.Locations
         IUpdatable<LocationUpdateRequest, SBLocation>,
         IDeletable<SBLocation>,
         IRetrievable<SBLocation>,
-        IListable<ListRequest, List<SBLocation>>
+        IListable<ListRequest, List<SBLocation>>,
+        IBatchCreate<LocationBatchCreateRequest, SBLocation>,
+        IBatchUpdate<LocationBatchUpdateRequest, SBLocation>
     {
 
     }
@@ -48,5 +51,15 @@ namespace Smartbills.NET.Services.Locations
         {
             return await UpdateEntityAsync($"/v1/locations/{id}", request, options, cancellationToken);
         }
+        public async Task<List<BatchResponse<SBLocation>>> BatchCreateAsync(LocationBatchCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync<LocationBatchCreateRequest, List<BatchResponse<SBLocation>>>("/v1/locations/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<BatchResponse<SBLocation>>> BatchUpdateAsync(LocationBatchUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync<LocationBatchUpdateRequest, List<BatchResponse<SBLocation>>>("/v1/locations/batch", request, options, cancellationToken);
+        }
+
     }
 }

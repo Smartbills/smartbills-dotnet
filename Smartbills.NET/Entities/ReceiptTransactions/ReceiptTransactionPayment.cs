@@ -6,5 +6,6 @@ namespace Smartbills.NET.Entities.ReceiptTransactions
     {
         public string StatementDescriptor { get; set; }
         public ReceiptTransactionPaymentCard Card { get; set; }
+        public ReceiptTransactionPaymentCard Cash { get; set; }
     }
 }

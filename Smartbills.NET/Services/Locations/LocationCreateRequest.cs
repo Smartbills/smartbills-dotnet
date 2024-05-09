@@ -8,17 +8,15 @@ namespace Smartbills.NET.Services.Locations
         
         public string Name { get; set; }
 
-        
         public AddressCreateRequest Address { get; set; }
 
         
-        public AddressCreateRequest Description { get; set; }
+        public string Description { get; set; }
 
         
         public bool Active { get; set; } = true;
         
         public string PhoneNumber { get; set; }
-
 
         
         public string FacebookUrl { get; set; }
@@ -34,7 +32,8 @@ namespace Smartbills.NET.Services.Locations
 
 
         
-        public string MCC { get; set; }
+        public string MerchantCategoryCode { get; set; }
+        public string Timezone { get; set; }
 
         
         public string Locale { get; set; }

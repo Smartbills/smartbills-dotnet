@@ -2,6 +2,7 @@
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Customers;
 using Smartbills.NET.Infrastructure;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,10 +11,12 @@ namespace Smartbills.NET.Services.Customers
     public interface ICustomerClient :
 
         ICreatable<CustomerCreateRequest, SBCustomer>,
-    IRetrievable<SBCustomer>,
-    IUpdatable<CustomerUpdateRequest, SBCustomer>,
-    IDeletable<SBCustomer>,
-        IListable<CustomersListRequest, PaginatedResponse<SBCustomer>>
+        IRetrievable<SBCustomer>,
+        IUpdatable<CustomerUpdateRequest, SBCustomer>,
+        IDeletable<SBCustomer>,
+        IListable<CustomersListRequest, PaginatedResponse<SBCustomer>>,
+        IBatchCreate<CustomerBatchCreateRequest, SBCustomer>,
+        IBatchUpdate<CustomerBatchUpdateRequest, SBCustomer>
     {
 
     }
@@ -46,6 +49,16 @@ namespace Smartbills.NET.Services.Customers
         public async Task<PaginatedResponse<SBCustomer>> ListAsync(CustomersListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.GetEntityAsync<CustomersListRequest, PaginatedResponse<SBCustomer>>("/v1/customers", request, options, cancellationToken);
+        }
+
+        public async Task<List<BatchResponse<SBCustomer>>> BatchCreateAsync(CustomerBatchCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync<CustomerBatchCreateRequest, List<BatchResponse<SBCustomer>>>("/v1/customers/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<BatchResponse<SBCustomer>>> BatchUpdateAsync(CustomerBatchUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync<CustomerBatchUpdateRequest, List<BatchResponse<SBCustomer>>>("/v1/customers/batch", request, options, cancellationToken);
         }
     }
 }
