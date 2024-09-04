@@ -1,12 +1,12 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.ProductImages;
 using Smartbills.NET.Infrastructure;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.ProductImages
 {
-
     public interface IProductImageClient : 
         INestedCreatable<ProductImageCreateRequest, SBProductImage>,
         INestedRetrievable<SBProductImage>,
@@ -22,7 +22,6 @@ namespace Smartbills.NET.Services.ProductImages
         public ProductImageClient(ISmartbillsClient smartbills) : base(smartbills)
         {
         }
-
 
         public async Task<SBProductImage> CreateAsync(long id, ProductImageCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
@@ -43,5 +42,14 @@ namespace Smartbills.NET.Services.ProductImages
             return await UpdateEntityAsync($"/v1/products/{id}/images/{imageId}", request, options, cancellationToken);
         }
 
+        public async Task<List<SBProductImage>> BatchCreateAsync(long parentId, List<ProductImageCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync<List<ProductImageCreateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBProductImage>> BatchUpdateAsync(long parentId, List<ProductImageBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync<List<ProductImageBatchItemUpdateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
+        }
     }
 }

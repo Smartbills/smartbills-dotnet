@@ -17,17 +17,18 @@ namespace Smartbills.NET.Services.Receipts
         public long? MerchantId { get; set; }
 
         
-        public CustomerCreateRequest Customer { get; set; }
+        public CustomerUpdateRequest Customer { get; set; }
 
         
         public long? CustomerId { get; set; }
+        public long? EmployeeId { get; set; }
 
+
+        public BillingAddressUpdateRequest BillingAddress { get; set; }
         
-        public BillingAddressCreateRequest BillingAddress { get; set; }
+        public BillingAddressUpdateRequest ShippingAddress { get; set; }
         
-        public BillingAddressCreateRequest ShippingAddress { get; set; }
-        
-        public List<ReceiptItemCreateRequest> Items { get; set; } = new List<ReceiptItemCreateRequest>();
+        public List<ReceiptItemUpdateRequest> Items { get; set; } = new List<ReceiptItemUpdateRequest>();
 
         
         public string Currency { get; set; }
@@ -43,10 +44,10 @@ namespace Smartbills.NET.Services.Receipts
         
         public string PaymentStatus { get; set; }
         
-        public List<ReceiptDiscountCreateRequest> Discounts { get; set; } = new List<ReceiptDiscountCreateRequest>();
+        public List<ReceiptDiscountRequest> Discounts { get; set; } = new List<ReceiptDiscountRequest>();
 
         
-        public List<ReceiptFeeCreateRequest> Fees { get; set; } = new List<ReceiptFeeCreateRequest>();
+        //public List<ReceiptFeeUpdateRequest> Fees { get; set; } = new List<ReceiptFeeUpdateRequest>();
 
 
 
@@ -55,7 +56,7 @@ namespace Smartbills.NET.Services.Receipts
 
         
 
-        public List<ReceiptTaxCreateRequest> Taxes { get; set; } = new List<ReceiptTaxCreateRequest>() { };
+        public List<ReceiptTaxUpdateRequest> Taxes { get; set; } = new List<ReceiptTaxUpdateRequest>() { };
 
         
 
@@ -93,17 +94,17 @@ namespace Smartbills.NET.Services.Receipts
 
         
 
-        public ReceiptMetadataCreateRequest ReceiptMetadata { get; set; }
+        public ReceiptMetadataUpdateRequest ReceiptMetadata { get; set; }
         
 
         public long? LocationId { get; set; }
 
         //
 
-        //public List<ReceiptTransactionCreateRequest> Transactions { get; set; }
+        //public List<ReceiptTransactionUpdateRequest> Transactions { get; set; }
 
         //
-        //public BarcodeCreateRequest Barcode{ get; set; }
+        //public BarcodeUpdateRequest Barcode{ get; set; }
 
     }
 }

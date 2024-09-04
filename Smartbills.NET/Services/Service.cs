@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Text.Json;
+using RestSharp.Authenticators;
 
 namespace Smartbills.NET.Services
 {
@@ -166,8 +167,9 @@ namespace Smartbills.NET.Services
 
             if (options?.AccessToken is not null)
             {
-                request.AddOrUpdateHeader("Authorization", "Bearer " + options?.AccessToken);
+                request.Authenticator = new JwtAuthenticator(options.AccessToken);
             }
+
         }
 
 
@@ -178,6 +180,9 @@ namespace Smartbills.NET.Services
 
             if (response.IsSuccessStatusCode)
             {
+                var content = JsonSerializer.Deserialize<TResponse>(response.Content);
+                
+                
                 return response.Data;
             }
             else

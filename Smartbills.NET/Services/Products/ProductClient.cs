@@ -2,6 +2,7 @@ using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Products;
 using Smartbills.NET.Infrastructure;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,7 +12,9 @@ namespace Smartbills.NET.Services.Products
         IUpdatable<ProductUpdateRequest, SBProduct>,
         IDeletable<SBProduct>,
         IRetrievable<SBProduct>,
-        IPageable<ProductListRequest, PaginatedResponse<SBProduct>>
+        IPageable<ProductListRequest, PaginatedResponse<SBProduct>>,
+        IBatchCreate<ProductCreateRequest, SBProduct>,
+        IBatchUpdate<ProductBatchItemUpdateRequest, SBProduct>
 
     { }
 
@@ -44,6 +47,16 @@ namespace Smartbills.NET.Services.Products
         public async Task<SBProduct> UpdateAsync(long id, ProductUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.UpdateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBProduct>> BatchCreateAsync(List<ProductCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync<List<ProductCreateRequest>, List<SBProduct>>("/v1/products/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBProduct>> BatchUpdateAsync(List<ProductBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync<List<ProductBatchItemUpdateRequest>, List<SBProduct>>("/v1/products/batch", request, options, cancellationToken);
         }
     }
 }

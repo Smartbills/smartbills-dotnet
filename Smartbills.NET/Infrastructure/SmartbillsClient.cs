@@ -23,6 +23,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Xml.Linq;
+using System.Text.Json.Serialization;
+using System.Globalization;
 
 namespace Smartbills.NET.Infrastructure
 {
@@ -44,6 +46,7 @@ namespace Smartbills.NET.Infrastructure
         public SBCredentials Credentials { get; set; }
         public SBEndpoints Endpoints { get; set; } = new SBEndpoints();
         public string SessionId { get; set; } = Guid.NewGuid().ToString();
+        public string Locale { get; set; } = "en-CA";
     }
 
 
@@ -77,10 +80,19 @@ namespace Smartbills.NET.Infrastructure
             };
 
 
-            var client = new RestClient(restClientOptions, configureSerialization: s => s.UseSystemTextJson(new JsonSerializerOptions {})
+            var client = new RestClient(restClientOptions, configureSerialization: s =>
+            {
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                };
+                options.Converters.Add(new JsonStringEnumConverter());
+
+                s.UseSystemTextJson(options);
+                }
 );
             client.AddDefaultHeader("X-Session-Id", Options.SessionId);
-
+            client.AddDefaultHeader("Accept-Language", Options.Locale);
 
             return client;
         }

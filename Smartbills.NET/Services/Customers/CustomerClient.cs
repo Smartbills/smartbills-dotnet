@@ -15,8 +15,8 @@ namespace Smartbills.NET.Services.Customers
         IUpdatable<CustomerUpdateRequest, SBCustomer>,
         IDeletable<SBCustomer>,
         IListable<CustomersListRequest, PaginatedResponse<SBCustomer>>,
-        IBatchCreate<CustomerBatchCreateRequest, SBCustomer>,
-        IBatchUpdate<CustomerBatchUpdateRequest, SBCustomer>
+        IBatchCreate<CustomerCreateRequest, SBCustomer>,
+        IBatchUpdate<CustomerBatchItemUpdateRequest, SBCustomer>
     {
 
     }
@@ -51,14 +51,14 @@ namespace Smartbills.NET.Services.Customers
             return await base.GetEntityAsync<CustomersListRequest, PaginatedResponse<SBCustomer>>("/v1/customers", request, options, cancellationToken);
         }
 
-        public async Task<List<BatchResponse<SBCustomer>>> BatchCreateAsync(CustomerBatchCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBCustomer>> BatchCreateAsync(List<CustomerCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<CustomerBatchCreateRequest, List<BatchResponse<SBCustomer>>>("/v1/customers/batch", request, options, cancellationToken);
+            return await base.CreateEntityAsync<List<CustomerCreateRequest>, List<SBCustomer>>("/v1/customers/batch", request, options, cancellationToken);
         }
 
-        public async Task<List<BatchResponse<SBCustomer>>> BatchUpdateAsync(CustomerBatchUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBCustomer>> BatchUpdateAsync(List<CustomerBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync<CustomerBatchUpdateRequest, List<BatchResponse<SBCustomer>>>("/v1/customers/batch", request, options, cancellationToken);
+            return await base.UpdateEntityAsync<List<CustomerBatchItemUpdateRequest>, List<SBCustomer>>("/v1/customers/batch", request, options, cancellationToken);
         }
     }
 }

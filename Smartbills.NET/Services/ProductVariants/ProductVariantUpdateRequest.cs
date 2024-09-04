@@ -3,10 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.ProductVariants
 {
-    public class ProductVariantUpdateRequest
+    public record ProductVariantUpdateRequest
     {
-
-        
         public decimal? InitialPrice { get; set; }
         
         public decimal Price { get; set; }

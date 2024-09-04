@@ -1,4 +1,5 @@
-﻿using Smartbills.NET.Entities.PromoCodes;
+﻿using Smartbills.NET.Entities.Money;
+using Smartbills.NET.Entities.PromoCodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,10 @@ namespace Smartbills.NET.Services.PromoCodes
 {
     public record PromoCodeCreateRequest
     {
-        public Dictionary<string, string> Name { get; set; }
-
-        public decimal? Value { get; set; }
-
+        public string Name { get; set; }
+        public SBMoney Amount { get; set; }
+        public decimal Percentage { get; set; }
         public SBPromoCodeType Type { get; set; } = SBPromoCodeType.Amount;
-
         public bool Active { get; set; } = true;
-
     }
 }

@@ -14,8 +14,8 @@ namespace Smartbills.NET.Services.Locations
         IDeletable<SBLocation>,
         IRetrievable<SBLocation>,
         IListable<ListRequest, List<SBLocation>>,
-        IBatchCreate<LocationBatchCreateRequest, SBLocation>,
-        IBatchUpdate<LocationBatchUpdateRequest, SBLocation>
+        IBatchCreate<LocationCreateRequest, SBLocation>,
+        IBatchUpdate<LocationBatchItemUpdateRequest, SBLocation>
     {
 
     }
@@ -51,14 +51,14 @@ namespace Smartbills.NET.Services.Locations
         {
             return await UpdateEntityAsync($"/v1/locations/{id}", request, options, cancellationToken);
         }
-        public async Task<List<BatchResponse<SBLocation>>> BatchCreateAsync(LocationBatchCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBLocation>> BatchCreateAsync(List<LocationCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<LocationBatchCreateRequest, List<BatchResponse<SBLocation>>>("/v1/locations/batch", request, options, cancellationToken);
+            return await base.CreateEntityAsync<List<LocationCreateRequest>, List<SBLocation>>("/v1/locations/batch", request, options, cancellationToken);
         }
 
-        public async Task<List<BatchResponse<SBLocation>>> BatchUpdateAsync(LocationBatchUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBLocation>> BatchUpdateAsync(List<LocationBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync<LocationBatchUpdateRequest, List<BatchResponse<SBLocation>>>("/v1/locations/batch", request, options, cancellationToken);
+            return await base.UpdateEntityAsync<List<LocationBatchItemUpdateRequest>, List<SBLocation>>("/v1/locations/batch", request, options, cancellationToken);
         }
 
     }

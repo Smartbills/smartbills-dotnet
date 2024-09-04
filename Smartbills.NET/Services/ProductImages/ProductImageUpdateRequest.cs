@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.ProductImages
 {
-    public class ProductImageUpdateRequest
+    public record ProductImageUpdateRequest
     {
         
         public List<long> ProductVariantIds { get; set; } = new List<long>();

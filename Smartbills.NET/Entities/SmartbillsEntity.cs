@@ -5,7 +5,6 @@ namespace Smartbills.NET.Entities
 {
     public interface ISmartbillsEntityWithId: ISmartbillsEntity
     {
-        long Id { get; set; }
     }
     public record SmartbillsEntity
     {

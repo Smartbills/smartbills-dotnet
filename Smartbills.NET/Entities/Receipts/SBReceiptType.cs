@@ -7,6 +7,6 @@ namespace Smartbills.NET.Entities.Receipts
     public enum SBReceiptType
     {
         Ocr,
-        Smartbills,
+        Official,
     }
 }

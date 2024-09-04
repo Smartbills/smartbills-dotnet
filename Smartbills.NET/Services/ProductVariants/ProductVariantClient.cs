@@ -1,16 +1,19 @@
 ﻿using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.ProductVariants;
 using Smartbills.NET.Infrastructure;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.ProductVariants
 {
-    public interface IProductVariantClient : 
+    public interface IProductVariantClient :
         INestedCreatable<ProductVariantCreateRequest, SBProductVariant>,
         INestedUpdatable<ProductVariantUpdateRequest, SBProductVariant>,
         INestedDeletable<SBProductVariant>,
-        INestedRetrievable<SBProductVariant>
+        INestedRetrievable<SBProductVariant>,
+        INestedBatchCreate<ProductVariantCreateRequest, SBProductVariant>,
+        INestedBatchUpdate<ProductVariantBatchItemUpdateRequest, SBProductVariant>
     { }
 
     public class ProductVariantClient : Service<SBProductVariant>, IProductVariantClient
@@ -38,5 +41,17 @@ namespace Smartbills.NET.Services.ProductVariants
         {
             return await base.UpdateEntityAsync($"/v1/products/{parentId}/variants/{id}", request, options, cancellationToken);
         }
+
+
+        public async Task<List<SBProductVariant>> BatchCreateAsync(long parentId, List<ProductVariantCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.CreateEntityAsync<List<ProductVariantCreateRequest>, List<SBProductVariant>>($"/v1/products/{parentId}/variants/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBProductVariant>> BatchUpdateAsync(long parentId, List<ProductVariantBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await base.UpdateEntityAsync<List<ProductVariantBatchItemUpdateRequest>, List<SBProductVariant>>($"/v1/products/{parentId}/variants/batch", request, options, cancellationToken);
+        }
+
     }
 }

@@ -1,4 +1,3 @@
-using Smartbills.NET.Services.Discounts;
 using Smartbills.NET.Services.Taxes;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
@@ -15,6 +14,8 @@ namespace Smartbills.NET.Services.ReceiptItems
         public long? VariantId { get; set; }
 
         public decimal Quantity { get; set; }
+        public decimal SubTotal { get; set; }
+
 
         public decimal TotalDiscount { get; set; }
 
@@ -24,10 +25,11 @@ namespace Smartbills.NET.Services.ReceiptItems
 
         public decimal TotalTaxes { get; set; }
 
-        public decimal SubTotal { get; set; }
-        public List<ReceiptItemTaxCreateRequest> Taxes { get; set; } = new List<ReceiptItemTaxCreateRequest> { };
-
         public bool Taxable { get; set; }
+
+        public List<ReceiptItemTaxCreateRequest> Taxes { get; set; } = new List<ReceiptItemTaxCreateRequest> { };
+        public List<ReceiptItemDiscountRequest> Discounts { get; set; } = new List<ReceiptItemDiscountRequest> { };
+
 
     }
 }
