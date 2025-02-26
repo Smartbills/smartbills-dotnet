@@ -1,15 +1,10 @@
 {
   "branches": [
-    "master",
+    "main",
     {
       "name": "dev",
-      "channel": "beta",
+      "channel": "dev",
       "prerelease": true
-    },
-    {
-      "name": "net6.0",
-      "channel": "6.x",
-      "range": "6.x"
     },
     {
       "name": "next",
