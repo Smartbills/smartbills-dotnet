@@ -68,8 +68,8 @@ jobs:
       - name: Pack NuGet packages
         run: |
           echo "Package version: ${{ env.VERSION }}"
-          dotnet pack Smartbills.SDK/Smartbills.SDK.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
-          dotnet pack Smartbills.SDK.AspNetCore/Smartbills.SDK.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET/Smartbills.NET.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
 
       - name: Setup GitHub Packages Authentication
         run: |
