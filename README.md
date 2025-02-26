@@ -1,40 +1,71 @@
-# Smartbills.net
+<p align="center">
+  <a href="https://smartbills.io/?utm_source=github&utm_medium=logo" target="_blank">
+    <!-- <img src="https://smartbills-brand.storage.googleapis.com/smartbills-wordmark-dark-280x84.png" alt="smartbills" width="280" height="84"> -->
+  </a>
+</p>
 
-The official [Smartbills][smartbills] .NET library.
+Smartbills is on a mission to help developers build the best financial tools. If you want to join us
+[<kbd>**Check out our open positions**</kbd>](https://smartbills.io/careers/)
 
-## Installation
+[![Build Status](https://img.shields.io/github/actions/workflow/status/smartbills/smartbills-dotnet/build.yml)](https://github.com/smartbills/smartbills-dotnet/actions)
 
-Using the [.NET Core command-line interface (CLI) tools][dotnet-core-cli-tools]:
+# Smartbills .NET SDK
+This is the .NET SDK for Smartbills. It allows you to interact with the Smartbills API from your .NET application.
+
+## Links
+
+- [![Documentation](https://img.shields.io/badge/documentation-smartbills.io-green.svg)](https://docs.smartbills.io/)
+- [![Stack Overflow](https://img.shields.io/badge/stack%20overflow-smartbills-green.svg)](http://stackoverflow.com/questions/tagged/smartbills)
+- [![Twitter Follow](https://img.shields.io/twitter/follow/SmartbillsApp?label=SmartbillsApp&style=social)](https://twitter.com/intent/follow?screen_name=SmartbillsApp)
+
+## Contents
+
+- [Contributing](https://github.com/smartbills/smartbills-dotnet/blob/main/CONTRIBUTING.md)
+- [Supported Platforms](#supported-platforms)
+- [Installation and Usage](#installation-and-usage)
+- [Other Packages](#other-packages)
+
+## Supported Platforms
+
+This SDK project is built using .NET Standard and .NET Core and supports the following platforms:
+- .NET Standard 2.1+
+- .NET Core 8.0+
+
+## Installation and Usage
+To build and run the project, follow these steps:
 
 ```sh
-dotnet add package Smartbills.NET
+dotnet build
+dotnet run --project Smartbills.SDK
 ```
 
-Using the [NuGet Command Line Interface (CLI)][nuget-cli]:
+## Example Usage
 
-```sh
-nuget install Smartbills.NET
+Here is an example of how to use the SDK:
+
+```csharp
+using Smartbills.SDK;
+
+var client = new SBClient("client_id", "client_secret");
+
+var receipt = await client.Receipts.GetByIdAsync(1326);
 ```
 
-Using the [Package Manager Console][package-manager-console]:
+## Contributors
 
-```powershell
-Install-Package Smartbills.NET
-```
+Thanks to everyone who contributed to the Smartbills .NET Core SDK!
 
-From within Visual Studio:
+<a href="https://github.com/smartbills/smartbills-dotnet/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=smartbills/smartbills-dotnet" />
+</a>
 
-1. Open the Solution Explorer.
-2. Right-click on a project within your solution.
-3. Click on *Manage NuGet Packages...*
-4. Click on the *Browse* tab and search for "Smartbills.NET".
-5. Click on the Smartbills.NET package, select the appropriate version in the
-   right-tab and click *Install*.
+---
 
-## Documentation
-
-For a comprehensive list of examples, check out the [API
-documentation][api-docs].
-
-[api-docs]: https://smartbills.io/docs/api
-[smartbills]: https://smartbills.io
+## 🔗 **Get in Touch**  
+🌐 **Website** - [smartbills.io](https://smartbills.io)<br/>
+📧 **Email** - [Contact Us](mailto:info@smartbills.io)<br/>
+🔗 **LinkedIn** - [Smartbills](https://www.linkedin.com/company/smartbills)<br/>
+🔵 **Facebook** - [Smartbills](https://www.facebook.com/smartbillsapp/)<br/>
+📸 **Instagram** - [@smartbills](https://www.instagram.com/smartbills)<br/>
+▶️ **YouTube** - [Smartbills Channel](https://www.youtube.com/@SmartbillsApp)
+---

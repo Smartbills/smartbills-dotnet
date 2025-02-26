@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>8.0.43</Version>
+    <Description>Smartbills Client for .NET Core</Description>
+    <PackageId>$(AssemblyName)</PackageId>
+    <Authors>Sébastien Labine</Authors>
+    <Company>Smartbills Technologies Inc.</Company>
+    <Copyright>Smartbills Technologies Inc.</Copyright>
+    <PackageProjectUrl>https://docs.smartbills.io</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/smartbills/smartbills-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Title>Smartbills .NET</Title>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="MimeKit" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\ReceiptItems\" />
+    <Folder Include="Entities\ReceiptItemTaxes\" />
+    <Folder Include="Entities\ReceiptReviews\" />
+    <Folder Include="Entities\ReceiptTaxes\" />
+  </ItemGroup>
+</Project>

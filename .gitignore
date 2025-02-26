@@ -33,4 +33,5 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 nuget.config
-.vs/
+.vs
+/Smartbills.NET.AspNetCore/Smartbills - Backup.NET.AspNetCore.csproj
