@@ -27,9 +27,21 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+<<<<<<< HEAD
           persist-credentials: false
           ref: ${{ github.event.workflow_run.head_commit.id }}
 
+=======
+          persist-credentials: true
+          ref: ${{ github.event.workflow_run.head_commit.id }}
+
+      - name: Setup Git authentication
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+
+>>>>>>> origin/main
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
@@ -56,7 +68,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+<<<<<<< HEAD
           npx semantic-release --dry-run > dry-run-output.txt
+=======
+          npx semantic-release --debug --dry-run > dry-run-output.txt 
+>>>>>>> origin/main
           version=$(grep -oP '(?<=The next release version is ).*' dry-run-output.txt)
           echo "VERSION=$version" >> $GITHUB_ENV
 
