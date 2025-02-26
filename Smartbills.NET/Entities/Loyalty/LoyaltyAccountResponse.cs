@@ -2,7 +2,7 @@ using System;
 
 namespace Smartbills.NET.Entities.Loyalty
 {
-    public class LoyaltyAccountResponse : EntityBase
+    public record LoyaltyAccountResponse : SmartbillsEntityWithId
     {
         public long UserId { get; set; }
         public string ProgramId { get; set; }
