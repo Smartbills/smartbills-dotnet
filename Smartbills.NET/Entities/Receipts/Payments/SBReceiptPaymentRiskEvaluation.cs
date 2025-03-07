@@ -1,5 +1,5 @@
 ﻿
-using Smartbills.NET.Entities.ReceiptPayments;
+using Smartbills.NET.Entities.Receipts.Payments;
 
 namespace Smartbills.NET.Entities.Receipts.Payments
 {

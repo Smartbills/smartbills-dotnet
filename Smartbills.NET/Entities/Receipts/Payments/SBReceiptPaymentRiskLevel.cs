@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Entities.ReceiptPayments
+﻿namespace Smartbills.NET.Entities.Receipts.Payments
 {
     public enum SBReceiptPaymentRiskLevel
     {

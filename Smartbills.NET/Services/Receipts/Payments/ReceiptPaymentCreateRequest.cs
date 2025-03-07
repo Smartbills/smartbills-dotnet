@@ -1,5 +1,8 @@
 ﻿
 using System.Collections.Generic;
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Entities.Money;
+using Smartbills.NET.Entities.Receipts.Payments;
 
 namespace Smartbills.NET.Services.Receipts.Payments
 {

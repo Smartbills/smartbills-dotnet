@@ -17,9 +17,9 @@ namespace Smartbills.NET.Services.EmailAccounts
     {
     }
 
-    public class EmailClient : Service<SBEmailAccount>, IEmailAccountClient
+    public class EmailAccountClient : Service<SBEmailAccount>, IEmailAccountClient
     {
-        public EmailClient(ISmartbillsClient client) : base(client) { }
+        public EmailAccountClient(ISmartbillsClient client) : base(client) { }
 
         public async Task<SBEmailAccount> CreateAsync(EmailAccountImapCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {

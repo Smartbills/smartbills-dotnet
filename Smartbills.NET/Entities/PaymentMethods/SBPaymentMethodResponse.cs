@@ -1,8 +1,11 @@
 ﻿
 
-namespace Smartbills.NET.Services.PaymentMethods
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Services.PaymentMethods;
+
+namespace Smartbills.NET.Entities.PaymentMethods
 {
-    public record SBPaymentMethodResponse : SBEntity
+    public record SBPaymentMethod : SBEntity
     {
         public string StripeId { get; set; }
         public SBBillingAddress BillingAddress { get; set; }

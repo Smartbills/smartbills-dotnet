@@ -2,7 +2,6 @@ using Smartbills.NET.Entities.Money;
 using Smartbills.NET.Entities.Products;
 using Smartbills.NET.Entities.ReceiptLineItems;
 using Smartbills.NET.Services.Receipts;
-using Smartbills.NET.Services.ReceiptLineItemTaxes;
 using System.Collections.Generic;
 
 namespace Smartbills.NET.Entities.Receipts.LineItems

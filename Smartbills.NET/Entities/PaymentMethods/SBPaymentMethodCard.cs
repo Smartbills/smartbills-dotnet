@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Smartbills.NET.Entities.Cards
+namespace Smartbills.NET.Entities.PaymentMethods
 {
     public record SBPaymentMethodCard : SBEntity
     {

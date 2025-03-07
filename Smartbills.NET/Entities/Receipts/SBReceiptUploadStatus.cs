@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public enum SBReceiptJobStatus
+    public enum SBReceiptUploadStatus
     {
 
     }

@@ -1,4 +1,5 @@
 using Smartbills.NET.Abstractions;
+using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Fees;
 using Smartbills.NET.Infrastructure;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Smartbills.NET.Services.Fees
         IUpdatable<FeeUpdateRequest, SBFee>,
         IDeletable<SBFee>,
         IRetrievableById<SBFee>,
-        IListable<ListRequest, List<SBFee>>
+        IListable<ListRequest, SBFee>
     {
 
     }
@@ -39,9 +40,9 @@ namespace Smartbills.NET.Services.Fees
             return await GetEntityByIdAsync($"/v1/fees/{id}", options, cancellationToken);
         }
 
-        public async Task<List<SBFee>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBFee>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityAsync<ListRequest, List<SBFee>>($"/v1/fees/", request, options, cancellationToken);
+            return await PaginateEntityAsync($"/v1/fees", request, options, cancellationToken);
         }
 
         public async Task<SBFee> UpdateAsync(long id, FeeUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)

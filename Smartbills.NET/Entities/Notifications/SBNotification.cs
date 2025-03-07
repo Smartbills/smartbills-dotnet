@@ -3,7 +3,7 @@ using Smartbills.NET.Entities;
 
 namespace Smartbills.NET.Services
 {
-    public record SBNotificationResponse : SBEntity
+    public record SBNotification : SBEntity
     {
         public string Title { get; set; }
         public string Subtitle { get; set; }

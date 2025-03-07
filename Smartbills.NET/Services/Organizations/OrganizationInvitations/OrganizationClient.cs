@@ -14,7 +14,7 @@ namespace Smartbills.NET.Services.Organizations
         INestedDeletable<SBOrganizationInvitation>,
         INestedListable<OrganizationInvitationListRequest, SBList<SBOrganizationInvitation>>
     {
-        Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        // Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }
 
     public class OrganizationInvitationClient : Service<SBOrganizationInvitation>, IOrganizationInvitationClient
@@ -41,9 +41,9 @@ namespace Smartbills.NET.Services.Organizations
             return await PaginateEntityAsync($"/v1/organizations/{organizationId}/invitations", request, options, cancellationToken);
         }
 
-        public async Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default)
-        {
-            return await UpdateEntityAsync($"/v1/organizations/{organizationId}/invitations/{invitationId}/accept", null, options, cancellationToken);
-        }
+        // public async Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        // {
+        //     return await UpdateEntityAsync($"/v1/organizations/{organizationId}/invitations/{invitationId}/accept", null, options, cancellationToken);
+        // }
     }
 }

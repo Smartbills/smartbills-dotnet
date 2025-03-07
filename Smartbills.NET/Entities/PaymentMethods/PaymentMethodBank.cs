@@ -1,6 +1,8 @@
-﻿namespace Smartbills.NET.Services.PaymentMethods
+﻿using Smartbills.NET.Entities.PaymentMethods;
+
+namespace Smartbills.NET.Services.PaymentMethods
 {
-    public record PaymentMethodBank : SBPaymentMethodResponse
+    public record PaymentMethodBank : SBPaymentMethod
     {
 
         public string BankName { get; set; }

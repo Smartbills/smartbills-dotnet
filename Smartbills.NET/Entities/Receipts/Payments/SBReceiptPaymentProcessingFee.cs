@@ -1,4 +1,5 @@
 ﻿
+using Smartbills.Core.Models.ReceiptPayments;
 using Smartbills.NET.Entities.Money;
 
 namespace Smartbills.NET.Entities.Receipts.Payments

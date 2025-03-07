@@ -12,7 +12,7 @@ namespace Smartbills.NET.Services.Products
         IUpdatable<ProductUpdateRequest, SBProduct>,
         IDeletable<SBProduct>,
         IRetrievableById<SBProduct>,
-        IPageable<ProductListRequest, SBList<SBProduct>>,
+        IPageable<ProductListRequest, SBProduct>,
         IBatchCreate<ProductCreateRequest, SBProduct>,
         IBatchUpdate<ProductBatchItemUpdateRequest, SBProduct>
 
@@ -39,7 +39,7 @@ namespace Smartbills.NET.Services.Products
             return await base.GetEntityByIdAsync($"/v1/products/{id}", options, cancellationToken);
         }
 
-        public async Task<SBList<SBProduct>> PaginateAsync(long id, ProductListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBProduct>> ListAsync(long id, ProductListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await base.PaginateEntityAsync($"/v1/products/{id}", request, options, cancellationToken);
         }

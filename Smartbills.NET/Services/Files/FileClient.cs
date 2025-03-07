@@ -1,40 +1,32 @@
 using RestSharp;
+using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Files;
 using Smartbills.NET.Infrastructure;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Files
 {
-    public interface IFileClient
+    public interface IFileClient : IRetrievableById<SBFile>
     {
-        Task<SBFile> UploadFileAsync(UploadFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
-        Task<SBFile> DownloadFileAsync(DownloadFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
-        Task<SBFile> DeleteFileAsync(DeleteFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<Stream> DownloadFileAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }
 
     public class FileClient : Service<SBFile>, IFileClient
     {
-        public FileClient(ISmartbillsClient client) : base(client, client.FileClient)
+        public FileClient(ISmartbillsClient client) : base(client, client.ApiClient)
         {
         }
 
-        public async Task<SBFile> UploadFileAsync(UploadFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<Stream> DownloadFileAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            var restRequest = new RestRequest("files/upload") { Method = Method.Post }.AddObject(request).AddHeader("content-type", "multipart/form-data");
-            return await ExecuteCustomRequestAsync<SBFile>(restRequest, options, cancellationToken);
+            return await DownloadAsync($"/v1/files/{id}/download", options, cancellationToken);
         }
 
-        public async Task<SBFile> DownloadFileAsync(DownloadFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBFile> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            var restRequest = new RestRequest("files/download").AddObject(request).AddHeader("content-type", "application/json");
-            return await ExecuteCustomRequestAsync<SBFile>(restRequest, options, cancellationToken);
-        }
-
-        public async Task<SBFile> DeleteFileAsync(DeleteFileRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
-        {
-            var restRequest = new RestRequest("files/delete") { Method = Method.Delete }.AddObject(request).AddHeader("content-type", "application/json");
-            return await ExecuteCustomRequestAsync<SBFile>(restRequest, options, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/files/{id}", options, cancellationToken);
         }
     }
 }

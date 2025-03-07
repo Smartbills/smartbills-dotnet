@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Text.Json;
 using RestSharp.Authenticators;
+using System.IO;
 
 namespace Smartbills.NET.Services
 {
@@ -156,7 +157,12 @@ namespace Smartbills.NET.Services
             return await ExecuteRequestAsync(async () => await _client.ExecuteAsync<string>(request, cancellationToken));
         }
 
-
+        protected async Task<Stream> DownloadAsync(string url, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            var request = new RestRequest(url);
+            PrepareRequest(request, options);
+            return await _client.DownloadStreamAsync(request, cancellationToken);
+        }
 
         private void PrepareRequest(RestRequest request, SBRequestOptions options)
         {

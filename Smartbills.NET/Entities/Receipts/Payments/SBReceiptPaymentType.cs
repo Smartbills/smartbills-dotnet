@@ -1,8 +1,8 @@
-﻿namespace Smartbills.NET.Entities.ReceiptPayments
+﻿namespace Smartbills.NET.Entities.Receipts.Payments
 {
     public enum SBReceiptPaymentType
     {
-        Card =0,
+        Card = 0,
         Cash = 1,
         BankAccount = 2,
         External = 3,

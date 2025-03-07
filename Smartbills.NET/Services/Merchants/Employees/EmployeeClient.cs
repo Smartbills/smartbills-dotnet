@@ -13,7 +13,7 @@ namespace Smartbills.NET.Services.Employees
         IUpdatable<EmployeeUpdateRequest, SBEmployee>,
         IDeletable<SBEmployee>,
         IRetrievableById<SBEmployee>,
-        IListable<ListRequest, List<SBEmployee>>,
+        IListable<ListRequest, SBEmployee>,
         IBatchCreate<EmployeeCreateRequest, SBEmployee>,
         IBatchUpdate<EmployeeBatchItemUpdateRequest, SBEmployee>
     {
@@ -42,9 +42,9 @@ namespace Smartbills.NET.Services.Employees
             return await GetEntityByIdAsync($"/v1/employees/{id}", options, cancellationToken);
         }
 
-        public async Task<List<SBEmployee>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBEmployee>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityAsync<ListRequest, List<SBEmployee>>($"/v1/employees/", request, options, cancellationToken);
+            return await PaginateEntityAsync($"/v1/employees/", request, options, cancellationToken);
         }
 
         public async Task<SBEmployee> UpdateAsync(long id, EmployeeUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)

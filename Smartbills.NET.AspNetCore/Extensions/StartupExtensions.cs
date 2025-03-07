@@ -6,7 +6,7 @@ using Smartbills.NET.Services.BankInstitutions;
 using Smartbills.NET.Services.Banks;
 using Smartbills.NET.Services.BankTransactions;
 using Smartbills.NET.Services.Customers;
-using Smartbills.NET.Services.Documents;
+using Smartbills.NET.Services.Attachments;
 using Smartbills.NET.Services.Employees;
 using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
@@ -19,6 +19,23 @@ using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Taxes;
 using Smartbills.NET.Services.Vendors;
 using Smartbills.NET.Services.Webhooks;
+using Smartbills.NET.Services.Billing;
+using Smartbills.NET.Services.EmailAccounts;
+using Smartbills.NET.Services.Loyalty;
+using Smartbills.NET.Services.Payments;
+using Smartbills.NET.Services.Translations;
+using Smartbills.NET.Services.Suppliers;
+using Smartbills.NET.Services.Applications;
+using Smartbills.NET.Services.Subscriptions;
+using Smartbills.NET.Services.Reviews;
+using Smartbills.NET.Services.Organizations;
+using Smartbills.NET.Services.Friends;
+using Smartbills.NET.Services.Logs;
+using Smartbills.NET.Services.Search;
+using Smartbills.NET.Services.Prices;
+using Smartbills.NET.Services.Explore;
+using Smartbills.NET.Services.BulkJobs;
+using Smartbills.NET.Services.Files;
 
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -55,7 +72,6 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
-            services.AddTransient<IDocumentClient, DocumentClient>();
 
 
             services.AddTransient<IMerchantClient, MerchantClient>();
@@ -74,8 +90,23 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IWebhookClient, WebhookClient>();
             services.AddTransient<IVendorClient, VendorClient>();
 
-
-
+            services.AddTransient<IEmailAccountClient, EmailAccountClient>();
+            services.AddTransient<IAttachmentClient, AttachmentClient>();
+            // services.AddTransient<IBillingClient, BillingClient>();
+            // services.AddTransient<ILoyaltyClient, LoyaltyClient>();
+            // services.AddTransient<IPaymentClient, PaymentClient>();
+            services.AddTransient<ISupplierClient, SupplierClient>();
+            // services.AddTransient<IApplicationClient, ApplicationClient>();
+            services.AddTransient<ISubscriptionClient, SubscriptionClient>();
+            services.AddTransient<IReviewClient, ReviewClient>();
+            services.AddTransient<IOrganizationClient, OrganizationClient>();
+            services.AddTransient<IFriendClient, FriendClient>();
+            services.AddTransient<ILogClient, LogClient>();
+            // services.AddTransient<ISearchClient, SearchClient>();
+            // services.AddTransient<IPriceClient, PriceClient>();
+            // services.AddTransient<IExploreClient, ExploreClient>();
+            // services.AddTransient<IBulkJobClient, BulkJobClient>();
+            services.AddTransient<IFileClient, FileClient>();
 
             if (options == null)
             {

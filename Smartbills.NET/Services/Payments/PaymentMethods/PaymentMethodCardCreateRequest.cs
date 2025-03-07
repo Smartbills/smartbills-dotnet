@@ -1,4 +1,6 @@
-﻿namespace Smartbills.NET.Services.PaymentMethods
+﻿using Smartbills.NET.Entities.PaymentMethods;
+
+namespace Smartbills.NET.Services.PaymentMethods
 {
     public record PaymentMethodCardCreateRequest
     {

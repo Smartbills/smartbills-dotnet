@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace Smartbills.NET.Entities.ReceiptUpload
+namespace Smartbills.NET.Entities.Receipts
 {
     public record SBReceiptUpload : SBEntity, ITimestamp
     {

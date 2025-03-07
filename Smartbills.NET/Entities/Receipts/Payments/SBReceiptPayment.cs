@@ -1,6 +1,6 @@
 ﻿using Smartbills.NET.Entities.Address;
 using Smartbills.NET.Entities.Money;
-using Smartbills.NET.Entities.ReceiptPayments;
+using Smartbills.NET.Entities.Receipts.Payments;
 using System.Collections.Generic;
 
 namespace Smartbills.NET.Entities.Receipts.Payments

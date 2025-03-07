@@ -1,6 +1,6 @@
 ﻿
 
-namespace Smartbills.NET.Services.PaymentMethods
+namespace Smartbills.NET.Entities.PaymentMethods
 {
     public record PaymentMethodCardFingerprint
     {
