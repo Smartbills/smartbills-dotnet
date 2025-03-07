@@ -79,8 +79,8 @@ jobs:
       - name: Pack NuGet packages
         run: |
           echo "Package version: ${{ env.VERSION }}"
-          dotnet pack Smartbills.SDK/Smartbills.SDK.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
-          dotnet pack Smartbills.SDK.AspNetCore/Smartbills.SDK.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET/Smartbills.NET.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
 
       - name: Setup GitHub Packages Authentication
         run: |
@@ -94,5 +94,5 @@ jobs:
         run: |
           for package in ./nupkg/*.nupkg; do
             echo "Publishing package: $package"
-            dotnet nuget push $package --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+            dotnet nuget push $package --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
           done

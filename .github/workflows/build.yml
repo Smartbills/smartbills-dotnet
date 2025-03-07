@@ -52,14 +52,11 @@ jobs:
       - name: Restore dependencies
         run: |
           dotnet restore Smartbills.NET/Smartbills.NET.csproj --locked-mode
-
+          dotnet restore Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj --locked-mode
       - name: Build
         run: |
           dotnet build Smartbills.NET/Smartbills.NET.csproj --configuration Release --no-restore
-
-      - name: Package the project
-        run: |
-          dotnet pack Smartbills.NET/Smartbills.NET.csproj --configuration Release --no-build
+          dotnet build Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj --configuration Release --no-restore
 
       - name: Upload build artifacts
         if: github.event_name == 'push'
@@ -68,5 +65,6 @@ jobs:
           name: build-artifacts
           path: |
             Smartbills.NET/bin/Release/
+            Smartbills.NET.AspNetCore/bin/Release/
           retention-days: 1
           compression-level: 6
