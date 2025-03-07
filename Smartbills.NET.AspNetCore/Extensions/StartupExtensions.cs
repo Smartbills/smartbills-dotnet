@@ -10,12 +10,15 @@ using Smartbills.NET.Services.Documents;
 using Smartbills.NET.Services.Employees;
 using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
+using Smartbills.NET.Services.OAuth;
 using Smartbills.NET.Services.ProductImages;
 using Smartbills.NET.Services.Products;
 using Smartbills.NET.Services.ProductVariants;
 using Smartbills.NET.Services.PromoCodes;
 using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Taxes;
+using Smartbills.NET.Services.Vendors;
+using Smartbills.NET.Services.Webhooks;
 
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -35,7 +38,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
             {
                 throw new ArgumentNullException(nameof(services));
             }
-            
+
             Services = services;
         }
     }
@@ -65,6 +68,12 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IProductVariantClient, ProductVariantClient>();
             services.AddTransient<IPromoCodeClient, PromoCodeClient>();
             services.AddTransient<ITaxClient, TaxClient>();
+
+
+            services.AddTransient<IOAuthClient, OAuthClient>();
+            services.AddTransient<IWebhookClient, WebhookClient>();
+            services.AddTransient<IVendorClient, VendorClient>();
+
 
 
 
