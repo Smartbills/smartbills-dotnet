@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Merchants
 {
     public interface IMerchantClient :
-    IRetrievable<SBMerchant>,
+    IRetrievableById<SBMerchant>,
     ICreatable<MerchantCreateRequest, SBMerchant>,
     IUpdatable<MerchantUpdateRequest, SBMerchant>,
     IDeletable<SBMerchant>

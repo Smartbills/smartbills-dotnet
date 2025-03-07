@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Smartbills.NET.Entities.Money
+﻿namespace Smartbills.NET.Entities.Money
 {
-    public  record SBMoney
+    public record SBMoney
     {
-        public string Currency { get; set; }
-        public decimal Amount { get; set; }
+        public SBMoney() { }
+        public SBMoney(decimal amount, string currency)
+        {
+            Amount = amount;
+            Currency = currency;
+        }
+        public string Currency { get; set; } = "CAD";
+        public decimal Amount { get; set; } = 0m;
     }
 }

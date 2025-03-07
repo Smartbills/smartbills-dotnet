@@ -1,17 +1,18 @@
-using Smartbills.NET.Services.Addresses;
-using System.Text.Json.Serialization;
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Services.Images;
 
 namespace Smartbills.NET.Services.Merchants
 {
-    public class MerchantCreateRequest
+    public record MerchantCreateRequest
     {
-
-        public string Slug { get; set; }
-        public string Logo { get; set; }
-        public string CustomerEmail { get; set; }
-        public string PhoneNumber { get; set; }
-        public AddressCreateRequest Address { get; set; }
         public string Name { get; set; }
-        public string Locale { get; set; }
+
+        public SBAddress Address { get; set; }
+        public ImageUploadRequest Logo { get; set; }
+        public string Timezone { get; set; }
+        public string Currency { get; set; }
+        public string Website { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Locale { get; set; } = "en";
     }
 }

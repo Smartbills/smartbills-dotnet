@@ -1,6 +1,6 @@
 namespace Smartbills.NET.Entities.Banks
 {
-    public record SBBankAccountBalance : SmartbillsEntityWithId
+    public record SBBankAccountBalance : SBEntity
     {
         public decimal Current { get; set; }
         public string CurrencyCode { get; set; }

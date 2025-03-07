@@ -1,40 +1,63 @@
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Entities.Money;
 using Smartbills.NET.Entities.Receipts;
-using Smartbills.NET.Services.Addresses;
-using Smartbills.NET.Services.Barcodes;
-using Smartbills.NET.Services.Customers;
-using Smartbills.NET.Services.ReceiptDiscounts;
-using Smartbills.NET.Services.ReceiptFees;
-using Smartbills.NET.Services.ReceiptItems;
-using Smartbills.NET.Services.ReceiptMetadata;
-using Smartbills.NET.Services.ReceiptPayments;
-using Smartbills.NET.Services.ReceiptReviews;
-using Smartbills.NET.Services.ReceiptTaxes;
-using Smartbills.NET.Services.Taxes;
+using Smartbills.NET.Services.Images;
+using Smartbills.NET.Services.Locations;
+using Smartbills.NET.Services.Receipts.Fees;
+using Smartbills.NET.Services.Receipts.Payments;
+using Smartbills.NET.Services.Receipts;
+using Smartbills.NET.Services.Receipts.LineItems;
+using Smartbills.NET.Services.Receipts.Taxes;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Smartbills.NET.Entities.Barcode;
 
-namespace Smartbills.NET.Services.Receipts
+namespace Smartbills.NET.Services
 {
-    public record ReceiptCreateRequest : BaseRequest
+    public record ReceiptCreateRequest : IOptionalLocationIdDTO
     {
+        public ReceiptCreateRequest()
+        {
+        }
+        public ReceiptCreateRequest(string currency)
+        {
+            Currency = currency;
+            TotalDiscounts = new SBMoney(0, Currency);
+            TotalFees = new SBMoney(0, Currency);
+
+            SubTotal = new SBMoney(0, Currency);
+
+            TotalTip = new SBMoney(0, Currency);
+
+            TotalDuties = new SBMoney(0, Currency);
+
+            TotalShipping = new SBMoney(0, Currency);
+
+
+            TotalTaxes = new SBMoney(0, Currency);
+
+            Total = new SBMoney(0, Currency);
+
+        }
 
         public long? MerchantId { get; set; }
         public long? LocationId { get; set; }
-        public long? EmployeeId { get; set; }
+        public LocationCreateRequest Location { get; set; }
 
         public CustomerCreateRequest Customer { get; set; }
         public long? CustomerId { get; set; }
         public string ReceiptId { get; set; }
+        public long? EmployeeId { get; set; }
 
-        public BillingAddressCreateRequest BillingAddress { get; set; }
-        public BillingAddressCreateRequest ShippingAddress { get; set; }
-        public List<ReceiptItemCreateRequest> Items { get; set; } = new List<ReceiptItemCreateRequest>();
+        public SBBillingAddress BillingAddress { get; set; }
+        public SBBillingAddress ShippingAddress { get; set; }
+        public List<ReceiptLineItemCreateRequest> Items { get; set; } = new List<ReceiptLineItemCreateRequest>();
         public List<ReceiptFeeCreateRequest> Fees { get; set; } = new List<ReceiptFeeCreateRequest>();
 
-        public string Currency { get; set; }
+        public string Currency { get; set; } = "CAD";
 
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset? Date { get; set; }
+
         public DateTimeOffset? DueDate { get; set; }
 
         public DateTimeOffset? CancelledAt { get; set; }
@@ -42,43 +65,52 @@ namespace Smartbills.NET.Services.Receipts
         public string CancelReason { get; set; }
         public string OrderNumber { get; set; }
         public string PaymentStatus { get; set; }
-        public List<ReceiptDiscountRequest> Discounts { get; set; }
+        public List<ReceiptDiscountCreateRequest> Discounts { get; set; }
 
-        public decimal TotalDiscounts { get; set; }
 
         public List<ReceiptTaxCreateRequest> Taxes { get; set; } = new List<ReceiptTaxCreateRequest>();
 
 
         public bool TaxesIncluded { get; set; }
 
-        public decimal TotalTip { get; set; }
+        public SBMoney TotalDiscounts { get; set; } = new SBMoney(0, "CAD");
+        public SBMoney TotalFees { get; set; } = new SBMoney(0, "CAD");
 
-        public decimal TotalDuties { get; set; }
+        public SBMoney SubTotal { get; set; } = new SBMoney(0, "CAD");
 
-        public decimal TotalShipping { get; set; }
+        public SBMoney TotalTip { get; set; } = new SBMoney(0, "CAD");
 
-        public decimal TotalFees { get; set; }
+        public SBMoney TotalDuties { get; set; } = new SBMoney(0, "CAD");
+
+        public SBMoney TotalShipping { get; set; } = new SBMoney(0, "CAD");
+
+
+        public SBMoney TotalTaxes { get; set; } = new SBMoney(0, "CAD");
+
+        public SBMoney Total { get; set; } = new SBMoney(0, "CAD");
 
         public decimal TotalWeight { get; set; }
 
-        public decimal TotalTaxes { get; set; }
-
-        public decimal Total { get; set; }
-
-
-        public decimal SubTotal { get; set; }
-
-
         public string Source { get; set; }
-        //public SBReceiptType Type { get; set; } = SBReceiptType.Official;
+        public SBReceiptType Type { get; set; }
+
         public ReceiptMetadataCreateRequest ReceiptMetadata { get; set; }
+
+
         public List<ReceiptPaymentCreateRequest> Payments { get; set; } = new List<ReceiptPaymentCreateRequest>();
 
-        public BarcodeCreateRequest Barcode { get; set; }
+        public SBReceiptBarcode Barcode { get; set; }
 
         public string OriginalReceiptUrl { get; set; }
 
         public ReceiptReviewCreateRequest Review { get; set; }
 
+        public ImageUploadRequest Signature { get; set; }
+
+        public DateTimeOffset? BillingPeriodStartDate { get; set; }
+        public DateTimeOffset? BillingPeriodEndDate { get; set; }
+        public SBMoney TotalPayments { get; set; }
+
+        public long? OrganizationId { get; set; }
     }
 }

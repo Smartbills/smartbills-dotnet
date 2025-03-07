@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smartbills.NET.Services.Taxes
 {
-    public interface ITaxClient : ICreatable<TaxCreateRequest, SBTax>, IUpdatable<TaxUpdateRequest, SBTax>, IDeletable<SBTax>, IRetrievable<SBTax> { }
+    public interface ITaxClient : ICreatable<TaxCreateRequest, SBTax>, IUpdatable<TaxUpdateRequest, SBTax>, IDeletable<SBTax>, IRetrievableById<SBTax> { }
     public class TaxClient : Service<SBTax>, ITaxClient
     {
         public TaxClient(ISmartbillsClient smartbills) : base(smartbills)

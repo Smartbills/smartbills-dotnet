@@ -2,9 +2,9 @@
 
 namespace Smartbills.NET.Entities.Taxes
 {
-    public record SBTax : SmartbillsEntityWithId
+    public record SBTax : SBEntity
     {
-        public bool? Active { get; set; }
+        public bool? IsActive { get; set; }
         public string Country { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
