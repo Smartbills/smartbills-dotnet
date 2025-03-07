@@ -21,14 +21,13 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.event == 'push'
+      (github.event.workflow_run.event == 'push' || github.event_name == 'workflow_dispatch')
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
-          ref: ${{ github.event.workflow_run.head_commit.id }}
+          ref: ${{ github.event.workflow_run.head_branch}}
 
       - name: Setup Git authentication
         run: |
@@ -49,21 +48,32 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          cache: "yarn"
+          node-version: "20"
+          cache-dependency-path: yarn.lock
 
       - name: Install semantic-release dependencies
         run: |
-          npm install -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/github
+          yarn install --immutable
 
-      - name: Semantic Release (Dry Run)
+      - name: Semantic Release dry-run version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx semantic-release --debug --dry-run > dry-run-output.txt
-          version=$(grep -oP '(?<=The next release version is ).*' dry-run-output.txt)
+          yarn get-next-version
+          version=$(grep -oP '(?<=The next release version is ).*' semantic-release-output.txt)
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+      - name: Semantic Release dry-run version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          yarn get-next-version
+          version=$(grep -oP '(?<=The next release version is ).*' semantic-release-output.txt)
           echo "VERSION=$version" >> $GITHUB_ENV
 
       - name: Pack NuGet packages
