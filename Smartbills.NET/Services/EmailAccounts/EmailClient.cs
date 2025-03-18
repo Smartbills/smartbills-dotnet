@@ -1,6 +1,6 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
-using Smartbills.NET.Entities.EmailAccounts;
+using Smartbills.NET.Entities.Emails;
 using Smartbills.NET.Infrastructure;
 
 using System.Threading;

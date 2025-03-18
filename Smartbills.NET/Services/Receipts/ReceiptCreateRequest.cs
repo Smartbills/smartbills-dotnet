@@ -2,17 +2,19 @@ using Smartbills.NET.Entities.Address;
 using Smartbills.NET.Entities.Money;
 using Smartbills.NET.Entities.Receipts;
 using Smartbills.NET.Services.Images;
-using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Receipts.Fees;
 using Smartbills.NET.Services.Receipts.Payments;
-using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Receipts.LineItems;
-using Smartbills.NET.Services.Receipts.Taxes;
 using System;
 using System.Collections.Generic;
 using Smartbills.NET.Entities.Barcode;
+using Smartbills.NET.Services.Receipts.ReceiptTaxes;
+using Smartbills.NET.Services.Merchants.Locations;
+using Smartbills.NET.Services.Receipts.ReceiptMetadata;
+using Smartbills.NET.Services.Merchants.Customers;
+using Smartbills.NET.Services.Receipts.Discounts;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Receipts
 {
     public record ReceiptCreateRequest : IOptionalLocationIdDTO
     {

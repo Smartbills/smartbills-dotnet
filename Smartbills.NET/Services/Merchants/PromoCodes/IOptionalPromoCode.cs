@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.PromoCodes
+﻿namespace Smartbills.NET.Services.Merchants.PromoCodes
 {
     public interface IOptionalPromoCodeId
     {

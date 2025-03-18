@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Fees
+namespace Smartbills.NET.Services.Merchants.Fees
 {
     public interface IFeeClient :
         ICreatable<FeeCreateRequest, SBFee>,
@@ -27,7 +27,7 @@ namespace Smartbills.NET.Services.Fees
 
         public async Task<SBFee> CreateAsync(FeeCreateRequest ListRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/fees/", ListRequest, options, cancellationToken);
+            return await CreateEntityAsync($"/v1/fees/", ListRequest, options, cancellationToken);
         }
 
         public async Task<SBFee> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)

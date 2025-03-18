@@ -1,4 +1,4 @@
-using Smartbills.NET.Services.Translations;
+using Smartbills.NET.Entities.Translations;
 
 namespace Smartbills.NET.Entities.Fees
 {

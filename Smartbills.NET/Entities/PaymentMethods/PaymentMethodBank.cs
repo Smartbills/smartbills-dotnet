@@ -1,6 +1,4 @@
-﻿using Smartbills.NET.Entities.PaymentMethods;
-
-namespace Smartbills.NET.Services.PaymentMethods
+﻿namespace Smartbills.NET.Entities.PaymentMethods
 {
     public record PaymentMethodBank : SBPaymentMethod
     {

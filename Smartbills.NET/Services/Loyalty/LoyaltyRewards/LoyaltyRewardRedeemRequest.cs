@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.LoyaltyRewards
+namespace Smartbills.NET.Services.Loyalty.LoyaltyRewards
 {
     public record LoyaltyRewardRedeemRequest
     {

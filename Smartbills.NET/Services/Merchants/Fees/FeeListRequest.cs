@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Fees
+namespace Smartbills.NET.Services.Merchants.Fees
 {
     public record FeeListRequest : ListRequest
     {

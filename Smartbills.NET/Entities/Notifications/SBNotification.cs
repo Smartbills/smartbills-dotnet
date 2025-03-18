@@ -1,7 +1,7 @@
 using System;
 using Smartbills.NET.Entities;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Entities.Notifications
 {
     public record SBNotification : SBEntity
     {

@@ -1,5 +1,4 @@
-﻿
-namespace Smartbills.NET.Services
+﻿namespace Smartbills.NET.Services.Banks.BankTransactions
 {
     public record ListBankTransactionRequest : ListRequest
     {

@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Fees
+﻿namespace Smartbills.NET.Services.Merchants.Fees
 {
     public record FeeUpsertRequest : FeeCreateRequest, IUpsertRequest
     {

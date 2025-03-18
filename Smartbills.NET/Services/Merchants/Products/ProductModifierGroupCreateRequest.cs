@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.Products
+namespace Smartbills.NET.Services.Merchants.Products
 {
     public record ProductModifierGroupCreateRequest
     {

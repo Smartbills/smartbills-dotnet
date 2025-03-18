@@ -3,7 +3,7 @@ using System;
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Address;
 
-namespace Smartbills.Entities.Locations
+namespace Smartbills.NET.Entities.Locations
 {
     public record SBLocation : SBEntity, ITimestamp
     {

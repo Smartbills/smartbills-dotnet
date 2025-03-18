@@ -4,7 +4,7 @@ using Smartbills.NET.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.BankTransactions
+namespace Smartbills.NET.Services.Banks.BankTransactions
 {
     public interface IBankTransactionClient :
     ICreatable<BankTransactionCreateRequest, SBBankTransaction>,

@@ -1,6 +1,6 @@
-using Smartbills.NET.Services.PromoCodes;
+using Smartbills.NET.Services.Merchants.PromoCodes;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Receipts.Discounts
 {
     public record ReceiptDiscountCreateRequest : IOptionalPromoCodeId
     {

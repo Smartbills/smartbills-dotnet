@@ -1,12 +1,11 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
-using Smartbills.NET.Entities.Organizations;
+using Smartbills.NET.Entities.Organizations.Members;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.OrganizationMembers;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Organizations
+namespace Smartbills.NET.Services.Organizations.OrganizationMembers
 {
     public interface IOrganizationMemberClient :
         INestedCreatable<OrganizationMemberCreateRequest, SBOrganizationMember>,

@@ -1,7 +1,7 @@
 ﻿using System;
 using Smartbills.NET.Entities;
 
-namespace Smartbills.NET.Services.Payments
+namespace Smartbills.NET.Entities.PaymentMethods
 {
     public record Payment : SBEntity
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Employees
+namespace Smartbills.NET.Services.Merchants.Employees
 {
     public interface IEmployeeClient :
         ICreatable<EmployeeCreateRequest, SBEmployee>,
@@ -29,7 +29,7 @@ namespace Smartbills.NET.Services.Employees
 
         public async Task<SBEmployee> CreateAsync(EmployeeCreateRequest ListRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/employees/", ListRequest, options, cancellationToken);
+            return await CreateEntityAsync($"/v1/employees/", ListRequest, options, cancellationToken);
         }
 
         public async Task<SBEmployee> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -53,12 +53,12 @@ namespace Smartbills.NET.Services.Employees
         }
         public async Task<List<SBEmployee>> BatchCreateAsync(List<EmployeeCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<List<EmployeeCreateRequest>, List<SBEmployee>>("/v1/employees/batch", request, options, cancellationToken);
+            return await CreateEntityAsync<List<EmployeeCreateRequest>, List<SBEmployee>>("/v1/employees/batch", request, options, cancellationToken);
         }
 
         public async Task<List<SBEmployee>> BatchUpdateAsync(List<EmployeeBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync<List<EmployeeBatchItemUpdateRequest>, List<SBEmployee>>("/v1/employees/batch", request, options, cancellationToken);
+            return await UpdateEntityAsync<List<EmployeeBatchItemUpdateRequest>, List<SBEmployee>>("/v1/employees/batch", request, options, cancellationToken);
         }
     }
 }

@@ -2,7 +2,7 @@
 using System;
 using Smartbills.NET.Entities;
 
-namespace Smartbills.NET.Services.Translations
+namespace Smartbills.NET.Entities.Translations
 {
     public record SBTranslatedEntity : SBEntity, ITimestamp
     {

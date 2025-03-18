@@ -1,6 +1,6 @@
 using Smartbills.NET.Entities.Images;
-using Smartbills.NET.Entities.ProductOptions;
-
+using Smartbills.NET.Entities.Products.Options;
+using Smartbills.NET.Entities.Products.Variants;
 using System;
 using System.Collections.Generic;
 

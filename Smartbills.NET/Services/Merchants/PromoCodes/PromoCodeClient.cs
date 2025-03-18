@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.PromoCodes
+namespace Smartbills.NET.Services.Merchants.PromoCodes
 {
     public interface IPromoCodeClient :
         ICreatable<PromoCodeCreateRequest, SBPromoCode>,
@@ -45,12 +45,12 @@ namespace Smartbills.NET.Services.PromoCodes
 
         public async Task<List<SBPromoCode>> BatchCreateAsync(List<PromoCodeCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<List<PromoCodeCreateRequest>, List<SBPromoCode>>("/v1/promo-codes/batch", request, options, cancellationToken);
+            return await CreateEntityAsync<List<PromoCodeCreateRequest>, List<SBPromoCode>>("/v1/promo-codes/batch", request, options, cancellationToken);
         }
 
         public async Task<List<SBPromoCode>> BatchUpdateAsync(List<PromoCodeBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync<List<PromoCodeBatchItemUpdateRequest>, List<SBPromoCode>>("/v1/promo-codes/batch", request, options, cancellationToken);
+            return await UpdateEntityAsync<List<PromoCodeBatchItemUpdateRequest>, List<SBPromoCode>>("/v1/promo-codes/batch", request, options, cancellationToken);
         }
     }
 }

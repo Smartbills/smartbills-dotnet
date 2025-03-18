@@ -29,11 +29,6 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.workflow_run.head_branch}}
 
-      - name: Setup Git authentication
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -46,7 +41,10 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-
+      
+      - name: Corepack enable
+        run: |
+            corepack enable
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

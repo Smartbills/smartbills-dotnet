@@ -1,4 +1,6 @@
-﻿namespace Smartbills.NET.Services
+﻿using Smartbills.NET.Services.Banks.BankBalance;
+
+namespace Smartbills.NET.Services.Banks.BankAccounts
 {
     public record BankAccountCreateRequest
     {

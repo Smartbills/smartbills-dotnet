@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Files
 {
     public record FileUpdateRequest
     {

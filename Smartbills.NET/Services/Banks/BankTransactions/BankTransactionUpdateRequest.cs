@@ -1,7 +1,7 @@
 ﻿using Smartbills.NET.Abstractions;
 using System;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Banks.BankTransactions
 {
     public record BankTransactionUpdateRequest : IPlaidEntity
     {

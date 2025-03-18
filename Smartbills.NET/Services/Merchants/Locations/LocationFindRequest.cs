@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Locations
+namespace Smartbills.NET.Services.Merchants.Locations
 {
     public record LocationFindRequest
     {

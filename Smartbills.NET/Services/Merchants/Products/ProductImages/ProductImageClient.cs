@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.ProductImages
+namespace Smartbills.NET.Services.Merchants.Products.ProductImages
 {
     public interface IProductImageClient :
         INestedCreatable<ProductImageCreateRequest, SBProductImage>,
@@ -44,12 +44,12 @@ namespace Smartbills.NET.Services.ProductImages
 
         public async Task<List<SBProductImage>> BatchCreateAsync(long parentId, List<ProductImageCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync<List<ProductImageCreateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
+            return await CreateEntityAsync<List<ProductImageCreateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
         }
 
         public async Task<List<SBProductImage>> BatchUpdateAsync(long parentId, List<ProductImageBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.UpdateEntityAsync<List<ProductImageBatchItemUpdateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
+            return await UpdateEntityAsync<List<ProductImageBatchItemUpdateRequest>, List<SBProductImage>>($"/v1/products/{parentId}/image/batch", request, options, cancellationToken);
         }
     }
 }

@@ -1,11 +1,11 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.BankTransactions;
+using Smartbills.NET.Services.Banks.BankTransactions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.BankAccounts
+namespace Smartbills.NET.Services.Banks.BankAccounts
 {
     public interface IBankAccountClient :
     IRetrievableById<SBBankAccount>,

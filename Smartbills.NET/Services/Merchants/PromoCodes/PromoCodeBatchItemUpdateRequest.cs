@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Smartbills.NET.Services.PromoCodes
+namespace Smartbills.NET.Services.Merchants.PromoCodes
 {
 
     public record PromoCodeBatchItemUpdateRequest : PromoCodeUpdateRequest, ISmartbillsEntity

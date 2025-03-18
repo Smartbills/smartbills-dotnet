@@ -1,6 +1,6 @@
 ﻿using Smartbills.NET.Entities.Money;
 
-namespace Smartbills.NET.Services.Receipts.Taxes
+namespace Smartbills.NET.Services.Receipts.ReceiptTaxes
 {
     public record ReceiptTaxCreateRequest
     {

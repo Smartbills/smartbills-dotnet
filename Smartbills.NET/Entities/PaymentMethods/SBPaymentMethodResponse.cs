@@ -1,7 +1,7 @@
 ﻿
 
 using Smartbills.NET.Entities.Address;
-using Smartbills.NET.Services.PaymentMethods;
+using Smartbills.NET.Services.Payments.PaymentMethods;
 
 namespace Smartbills.NET.Entities.PaymentMethods
 {

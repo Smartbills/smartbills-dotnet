@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Entities.Organization.Invitations
+﻿namespace Smartbills.NET.Entities.Organizations.Invitations
 {
     public enum SBOrganizationInvitationStatus
     {

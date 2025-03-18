@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.BankInstitutions
+namespace Smartbills.NET.Services.Banks.BankInstitutions
 {
     public interface IBankInstitutionClient :
         IRetrievableById<SBBankInstitution>,

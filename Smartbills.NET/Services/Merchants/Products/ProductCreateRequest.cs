@@ -1,8 +1,10 @@
-﻿
+﻿using Smartbills.NET.Services.Merchants.Products.ProductImages;
+using Smartbills.NET.Services.Merchants.Products.ProductOptions;
+using Smartbills.NET.Services.Merchants.Products.ProductVariants;
 using System;
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants.Products
 {
     public record ProductCreateRequest
     {

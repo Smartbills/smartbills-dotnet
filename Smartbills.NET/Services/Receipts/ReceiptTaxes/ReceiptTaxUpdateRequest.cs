@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Receipts.Taxes
+﻿namespace Smartbills.NET.Services.Receipts.ReceiptTaxes
 {
     public record ReceiptTaxUpdateRequest
     {

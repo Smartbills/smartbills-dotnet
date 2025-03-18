@@ -2,7 +2,7 @@
 using Smartbills.NET.Entities.Fees;
 using Smartbills.NET.Entities.Money;
 
-namespace Smartbills.NET.Services.Fees
+namespace Smartbills.NET.Services.Merchants.Fees
 {
     public record FeeCreateRequest
     {

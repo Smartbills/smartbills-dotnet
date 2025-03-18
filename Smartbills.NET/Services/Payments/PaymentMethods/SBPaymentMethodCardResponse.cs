@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.PaymentMethods
+﻿namespace Smartbills.NET.Services.Payments.PaymentMethods
 {
     public record SBPaymentMethodCardResponse
     {

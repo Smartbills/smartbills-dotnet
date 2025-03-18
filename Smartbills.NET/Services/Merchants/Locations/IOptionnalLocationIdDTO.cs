@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Locations
+﻿namespace Smartbills.NET.Services.Merchants.Locations
 {
     public interface IOptionalLocationIdDTO
     {

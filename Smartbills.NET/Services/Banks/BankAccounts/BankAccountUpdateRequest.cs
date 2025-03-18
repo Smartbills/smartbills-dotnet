@@ -1,6 +1,7 @@
 ﻿using Smartbills.NET.Abstractions;
+using Smartbills.NET.Services.Banks.BankBalance;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Banks.BankAccounts
 {
     public record BankAccountUpdateRequest : IPlaidEntity
     {

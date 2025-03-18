@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Entities.Addresses
+﻿namespace Smartbills.NET.Entities.Address
 {
     public class Coordinates
     {

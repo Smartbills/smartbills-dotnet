@@ -1,8 +1,8 @@
 ﻿using System;
-using Smartbills.Core.Models.Organizations;
+using Smartbills.NET.Entities.Organizations.Members;
 using Smartbills.NET.Entities.Users;
 
-namespace Smartbills.NET.Entities.Organization.Invitations
+namespace Smartbills.NET.Entities.Organizations.Invitations
 {
     public record SBOrganizationInvitation : SBEntity
     {

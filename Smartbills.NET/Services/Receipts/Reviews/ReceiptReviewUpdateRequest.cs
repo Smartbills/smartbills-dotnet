@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Smartbills.NET.Services.ReceiptReviews
+namespace Smartbills.NET.Services.Receipts.Reviews
 {
     public record ReceiptReviewUpdateRequest
     {

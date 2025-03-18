@@ -1,6 +1,6 @@
 ﻿using Smartbills.NET.Entities.Translations;
 
-namespace Smartbills.NET.Services.Products
+namespace Smartbills.NET.Services.Merchants.Products
 {
     public record ProductTranslationRequest : ITranslation
     {

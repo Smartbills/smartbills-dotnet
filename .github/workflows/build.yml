@@ -25,30 +25,7 @@ jobs:
           cache: true
           cache-dependency-path: Smartbills.NET/packages.lock.json
 
-      - name: Corepack enable
-        run: |
-          corepack enable
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          cache: "yarn"
-          node-version: "20"
-          cache-dependency-path: yarn.lock
-
-      - name: Install semantic-release dependencies
-        run: |
-          yarn install --immutable
-
-      - name: Semantic Release dry-run version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          yarn get-next-version
-          version=$(grep -oP '(?<=The next release version is ).*' semantic-release-output.txt)
-          echo "VERSION=$version" >> $GITHUB_ENV
-
+    
       - name: Restore dependencies
         run: |
           dotnet restore Smartbills.NET/Smartbills.NET.csproj --locked-mode
@@ -56,8 +33,8 @@ jobs:
 
       - name: Build
         run: |
-          dotnet build Smartbills.NET/Smartbills.NET.csproj --configuration Release --no-restore --property:Version=$VERSION
-          dotnet build Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj --configuration Release --no-restore --property:Version=$VERSION
+          dotnet build Smartbills.NET/Smartbills.NET.csproj --configuration Release --no-restore
+          dotnet build Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj --configuration Release --no-restore
 
       - name: Upload build artifacts
         if: github.event_name == 'push'

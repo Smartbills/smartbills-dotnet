@@ -1,8 +1,6 @@
-﻿
+﻿using Smartbills.NET.Entities;
 
-using Smartbills.NET.Entities;
-
-namespace Smartbills.NET.Services.Customers
+namespace Smartbills.NET.Services.Merchants.Customers
 {
     public record CustomerBatchUpdateRequest : CustomerUpdateRequest, ISBEntity
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Smartbills.NET.Entities.Address;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants.Customers
 {
     public record CustomerCreateRequest
     {
