@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Text.Json;
 using RestSharp.Authenticators;
+using System.IO;
 
 namespace Smartbills.NET.Services
 {
@@ -39,14 +40,14 @@ namespace Smartbills.NET.Services
         {
             var request = new RestRequest(path, Method.Post).AddJsonBody(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecutePostAsync<TEntityReturned>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecutePostAsync<TEntityReturned>(request, cancellationToken));
         }
 
         protected async Task<TEntityReturned> GetEntityByIdAsync<TRequest>(string path, TRequest data, SBRequestOptions options = null, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<TEntityReturned>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<TEntityReturned>(request, cancellationToken));
         }
 
         protected async Task<TEntityReturned> GetEntityByIdAsync(string path, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -60,14 +61,14 @@ namespace Smartbills.NET.Services
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<List<TEntityReturned>>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<List<TEntityReturned>>(request, cancellationToken));
 
         }
-        protected async Task<PaginatedResponse<TEntityReturned>> PaginateEntityAsync<TRequest>(string path, TRequest data, SBRequestOptions options = null, CancellationToken cancellationToken = default) where TRequest : class
+        protected async Task<SBList<TEntityReturned>> PaginateEntityAsync<TRequest>(string path, TRequest data, SBRequestOptions options = null, CancellationToken cancellationToken = default) where TRequest : class
         {
             var request = new RestRequest(path).AddObject(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<PaginatedResponse<TEntityReturned>>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecuteGetAsync<SBList<TEntityReturned>>(request, cancellationToken));
         }
 
         protected async Task<TEntityReturned> GetEntityAsync(string path, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -82,7 +83,7 @@ namespace Smartbills.NET.Services
         {
             var request = new RestRequest(path).AddJsonBody(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecutePutAsync<TEntityReturned>(request,cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecutePutAsync<TEntityReturned>(request, cancellationToken));
         }
 
         protected async Task<TEntityReturned> DeleteEntityAsync(string path, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -97,7 +98,7 @@ namespace Smartbills.NET.Services
         {
             var request = new RestRequest(path).AddJsonBody(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecutePostAsync<TResponse>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecutePostAsync<TResponse>(request, cancellationToken));
         }
 
 
@@ -127,7 +128,7 @@ namespace Smartbills.NET.Services
         {
             var request = new RestRequest(path).AddJsonBody(data);
             PrepareRequest(request, options);
-            return await ExecuteRequestAsync(async () => await _client.ExecutePutAsync<TResponse>(request,  cancellationToken));
+            return await ExecuteRequestAsync(async () => await _client.ExecutePutAsync<TResponse>(request, cancellationToken));
         }
 
         protected async Task<TResponse> DeleteEntityAsync<TResponse>(string path, SBRequestOptions options = null, CancellationToken cancellationToken = default)
@@ -156,7 +157,12 @@ namespace Smartbills.NET.Services
             return await ExecuteRequestAsync(async () => await _client.ExecuteAsync<string>(request, cancellationToken));
         }
 
-
+        protected async Task<Stream> DownloadAsync(string url, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            var request = new RestRequest(url);
+            PrepareRequest(request, options);
+            return await _client.DownloadStreamAsync(request, cancellationToken);
+        }
 
         private void PrepareRequest(RestRequest request, SBRequestOptions options)
         {
@@ -181,8 +187,8 @@ namespace Smartbills.NET.Services
             if (response.IsSuccessStatusCode)
             {
                 var content = JsonSerializer.Deserialize<TResponse>(response.Content);
-                
-                
+
+
                 return response.Data;
             }
             else

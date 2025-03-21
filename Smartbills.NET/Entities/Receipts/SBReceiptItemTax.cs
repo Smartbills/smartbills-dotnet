@@ -2,14 +2,10 @@
 
 namespace Smartbills.NET.Entities.Receipts
 {
-    public record SBReceiptItemTax : ISmartbillsEntityWithId
+    public record SBReceiptLineItemTax : SBEntity
     {
 
-        public long Id { get; set; }
-
-
         public long? TaxId { get; set; }
-
 
         public string Name { get; set; }
 

@@ -21,20 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.event == 'push'
+      (github.event.workflow_run.event == 'push' || github.event_name == 'workflow_dispatch')
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true
-          ref: ${{ github.event.workflow_run.head_commit.id }}
+          ref: ${{ github.event.workflow_run.head_branch}}
 
-      - name: Setup Git authentication
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -47,30 +41,35 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-
+      
+      - name: Corepack enable
+        run: |
+            corepack enable
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          cache: "yarn"
+          node-version: "20"
+          cache-dependency-path: yarn.lock
 
       - name: Install semantic-release dependencies
         run: |
-          npm install -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/github
+          yarn install --immutable
 
-      - name: Semantic Release (Dry Run)
+      - name: Semantic Release dry-run version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx semantic-release --debug --dry-run > dry-run-output.txt 
-          version=$(grep -oP '(?<=The next release version is ).*' dry-run-output.txt)
+          yarn get-next-version
+          version=$(grep -oP '(?<=The next release version is ).*' semantic-release-output.txt)
           echo "VERSION=$version" >> $GITHUB_ENV
 
       - name: Pack NuGet packages
         run: |
           echo "Package version: ${{ env.VERSION }}"
-          dotnet pack Smartbills.SDK/Smartbills.SDK.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
-          dotnet pack Smartbills.SDK.AspNetCore/Smartbills.SDK.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET/Smartbills.NET.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
 
       - name: Setup GitHub Packages Authentication
         run: |
@@ -84,5 +83,12 @@ jobs:
         run: |
           for package in ./nupkg/*.nupkg; do
             echo "Publishing package: $package"
-            dotnet nuget push $package --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+            dotnet nuget push $package --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
           done
+
+      - name: Semantic Release dry-run version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          yarn release

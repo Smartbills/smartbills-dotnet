@@ -1,14 +1,16 @@
-﻿using Smartbills.NET.Abstractions;
+﻿using Smartbills.NET.Entities.Money;
 
 namespace Smartbills.NET.Entities.Fees
 {
-    public record SBFee : ISmartbillsEntity
+    public record SBFee : SBEntity
     {
-        public long Id { get; set; }
         public string Name { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Rate { get; set; }
-        public decimal Total { get; set; }
-        public string Type { get; set; }
+
+        public SBMoney Amount { get; set; }
+
+        public decimal? Percentage { get; set; }
+
+        public SBFeeType Type { get; set; }
+        public SBFeeCategory Category { get; set; }
     }
 }

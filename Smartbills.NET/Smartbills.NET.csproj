@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-	  <LangVersion>latest</LangVersion>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Version>8.0.43</Version>
     <Description>Smartbills Client for .NET Core</Description>
     <PackageId>$(AssemblyName)</PackageId>
@@ -15,6 +15,14 @@
     <RepositoryType>git</RepositoryType>
     <Title>Smartbills .NET</Title>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE.md" Pack="true"
+      PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
@@ -31,8 +39,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\ReceiptItems\" />
-    <Folder Include="Entities\ReceiptItemTaxes\" />
+    <Folder Include="Entities\ReceiptLineItems\" />
+    <Folder Include="Entities\ReceiptLineItemTaxes\" />
     <Folder Include="Entities\ReceiptReviews\" />
     <Folder Include="Entities\ReceiptTaxes\" />
   </ItemGroup>

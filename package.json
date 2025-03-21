@@ -1,7 +1,19 @@
 {
-  "dependencies": {
-    "global": "^4.4.0",
-    "semantic-release": "24.2.3"
+  "repository": {
+    "url": "https://github.com/smartbills/smartbills-dotnet"
   },
-  "packageManager": "yarn@4.6.0"
+  "scripts": {
+    "release": "semantic-release --debug",
+    "get-next-version": "semantic-release --debug --dry-run > semantic-release-output.txt"
+  },
+  "dependencies": {
+    "global": "^4.4.0"
+  },
+  "packageManager": "yarn@4.7.0",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "semantic-release": "^24.2.3"
+  }
 }

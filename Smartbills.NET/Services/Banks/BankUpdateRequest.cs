@@ -1,23 +1,15 @@
 using Smartbills.NET.Abstractions;
-using Smartbills.NET.Services.BankAccounts;
+using Smartbills.NET.Services.Banks.BankAccounts;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Smartbills.NET.Services.Banks
 {
-    public record BankUpdateRequest : BaseRequest, IPlaidEntity
+    public record BankUpdateRequest : IPlaidEntity
     {
-        
-        public long InstitutionId { get; set; }
-
-        
-        public DateTimeOffset? ConsentExpiration { get; set; }
-
-        
-        public List<BankAccountUpdateRequest> BankAccounts = new();
-
-        
+        public DateTimeOffset ConsentExpiration { get; set; }
+        //public BankState State { get; set; } = BankState.NOT_STARTED;
+        public List<BankAccountUpdateRequest> BankAccounts { get; set; } = new();
         public string PlaidId { get; set; }
     }
 }
