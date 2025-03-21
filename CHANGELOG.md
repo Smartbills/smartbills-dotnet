@@ -1,3 +1,10 @@
+## [8.1.2](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.1...v8.1.2) (2025-03-21)
+
+
+### Bug Fixes
+
+* Customer Client now scoped for merchant + extensions methods fixed ([745486f](https://github.com/smartbills/smartbills-dotnet/commit/745486f89c7c36e149f1373b9d7c598e451c4633))
+
 ## [8.1.1](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0...v8.1.1) (2025-03-21)
 
 
