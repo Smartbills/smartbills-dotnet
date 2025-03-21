@@ -13,7 +13,7 @@ namespace Smartbills.NET.Entities.Address
         /// The longitude of the location.
         /// </value>
         /// </summary>
-        
+
         public double Longitude { get; set; } = 0;
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace Smartbills.NET.Entities.Address
         /// The latitude of the location.
         /// </value>
         /// </summary>
-        
+
         public double Latitude { get; set; } = 0;
 
     }

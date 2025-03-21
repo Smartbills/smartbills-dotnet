@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Smartbills.NET.Services.BulkJobs;
 
 namespace Smartbills.NET.Services.Receipts
 {
-    public record ReceiptBulkJobCreateRequest
+    public record ReceiptBulkJobCreateRequest : BulkJobCreateRequest
     {
+
+        public bool SendReceipts { get; set; }
     }
 }

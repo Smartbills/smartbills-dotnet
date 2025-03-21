@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Smartbills.NET.Entities.Receipts
 {
 
-    public record SBReceiptReview : SmartbillsEntityWithId
+    public record SBReceiptReview : SBEntity
     {
         public int Rating { get; set; }
         public string Review { get; set; }

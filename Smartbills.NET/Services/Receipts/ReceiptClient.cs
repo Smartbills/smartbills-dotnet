@@ -1,39 +1,39 @@
-﻿using Org.BouncyCastle.Asn1.Ocsp;
-using Smartbills.NET.Abstractions;
+﻿using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
 using Smartbills.NET.Entities.Receipts;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.Receipts;
-using Smartbills.NET.Services.ReceiptItems;
-using System;
-using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
-using Smartbills.NET.Services.Customers;
 using System.Collections.Generic;
+using Smartbills.NET.Entities.Receipts.LineItems;
+using Smartbills.NET.Services.Receipts.LineItems;
 
 namespace Smartbills.NET.Services.Receipts
 {
 
     public interface IReceiptClient :
         ICreatable<ReceiptCreateRequest, SBReceipt>,
-        IRetrievable<SBReceipt>,
+        IRetrievableById<SBReceipt>,
         IUpdatable<ReceiptUpdateRequest, SBReceipt>,
         IDeletable<SBReceipt>,
-        IListable<ListReceiptsRequest, PaginatedResponse<SBReceipt>>,
+        IListable<ReceiptListRequest, SBReceipt>,
         IBatchCreate<ReceiptCreateRequest, SBReceipt>,
         IBatchUpdate<ReceiptBatchItemUpdateRequest, SBReceipt>
     {
-        Task<SBReceiptItem> CreateReceiptItemAsync(long parentId, ReceiptItemCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
-        Task<SBReceiptItem> DeleteReceiptItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default);
-        Task<SBReceiptItem> UpdateReceiptItemAsync(long parentId, long id, ReceiptItemUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
-        Task<SBReceiptItem> GetReceiptItemAsync(long parentId, long id, GetReceiptItemRequest request = null, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<SBReceiptLineItem> CreateReceiptLineItemAsync(long parentId, ReceiptLineItemCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<SBReceiptLineItem> DeleteReceiptLineItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        Task<SBReceiptLineItem> UpdateReceiptLineItemAsync(long parentId, long id, ReceiptLineItemUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
+        // Task<SBReceiptLineItem> GetReceiptLineItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default);
 
     }
     public class ReceiptClient : Service<SBReceipt>, IReceiptClient
 
     {
-        public ReceiptClient(ISmartbillsClient client) : base(client) { }
+        private readonly IReceiptLineItemClient _receiptLineItemClient;
+        public ReceiptClient(ISmartbillsClient client, IReceiptLineItemClient receiptLineItemClient) : base(client)
+        {
+            _receiptLineItemClient = receiptLineItemClient;
+        }
 
         public async Task<SBReceipt> CreateAsync(ReceiptCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
@@ -48,7 +48,7 @@ namespace Smartbills.NET.Services.Receipts
             return await DeleteEntityAsync($"/v1/receipts/{id}", options, cancellationToken);
         }
 
-        public async Task<PaginatedResponse<SBReceipt>> ListAsync(ListReceiptsRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBReceipt>> ListAsync(ReceiptListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await PaginateEntityAsync($"/v1/receipts", request, options, cancellationToken);
         }
@@ -58,24 +58,24 @@ namespace Smartbills.NET.Services.Receipts
             return await UpdateEntityAsync($"/v1/receipts/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBReceiptItem> CreateReceiptItemAsync(long parentId, ReceiptItemCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptLineItem> CreateReceiptLineItemAsync(long parentId, ReceiptLineItemCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync<ReceiptItemCreateRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items", request, options, cancellationToken);
+            return await CreateEntityAsync<ReceiptLineItemCreateRequest, SBReceiptLineItem>($"/v1/receipts/{parentId}/items", request, options, cancellationToken);
         }
 
-        public async Task<SBReceiptItem> DeleteReceiptItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptLineItem> DeleteReceiptLineItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync<SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", options, cancellationToken);
+            return await DeleteEntityAsync<SBReceiptLineItem>($"/v1/receipts/{parentId}/items/{id}", options, cancellationToken);
         }
 
-        public async Task<SBReceiptItem> GetReceiptItemAsync(long parentId, long id, GetReceiptItemRequest request = null, SBRequestOptions options = null, CancellationToken cancellationToken = default)
-        {
-            return await GetEntityAsync<GetReceiptItemRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", request, options, cancellationToken);
-        }
+        // public async Task<SBReceiptLineItem> GetReceiptLineItemAsync(long parentId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        // {
+        //     return await _receiptLineItemClient.GetByIdAsync(parentId, id, options, cancellationToken);
+        // }
 
-        public async Task<SBReceiptItem> UpdateReceiptItemAsync(long parentId, long id, ReceiptItemUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBReceiptLineItem> UpdateReceiptLineItemAsync(long parentId, long id, ReceiptLineItemUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync<ReceiptItemUpdateRequest, SBReceiptItem>($"/v1/receipts/{parentId}/items/{id}", request, options, cancellationToken);
+            return await UpdateEntityAsync<ReceiptLineItemUpdateRequest, SBReceiptLineItem>($"/v1/receipts/{parentId}/items/{id}", request, options, cancellationToken);
         }
 
         public async Task<List<SBReceipt>> CreateBulkJob(ReceiptBulkJobCreateRequest request, SBRequestOptions options)
@@ -115,7 +115,7 @@ namespace Smartbills.NET.Services.Receipts
             return await DeleteEntityAsync($"/v1/receipts/{receiptId}/payments/{paymentId}", options, cancellationToken);
         }
 
-        public async Task<PaginatedResponse<SBReceipt>> ListAsync(long receiptId, ListReceiptsRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBReceipt>> ListAsync(long receiptId, ListReceiptsRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
             return await PaginateEntityAsync($"/v1/receipts/{receiptId}/payments", request, options, cancellationToken);
         }

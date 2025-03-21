@@ -1,110 +1,66 @@
-using Smartbills.NET.Services.Addresses;
-using Smartbills.NET.Services.Customers;
-using Smartbills.NET.Services.ReceiptDiscounts;
-using Smartbills.NET.Services.ReceiptFees;
-using Smartbills.NET.Services.ReceiptItems;
-using Smartbills.NET.Services.ReceiptMetadata;
-using Smartbills.NET.Services.ReceiptTaxes;
+using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Entities.Barcode;
+using Smartbills.NET.Services.Receipts.Payments;
+using Smartbills.NET.Services.Receipts.LineItems;
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
+using Smartbills.NET.Services.Receipts.ReceiptTaxes;
+using Smartbills.NET.Services.Merchants.Customers;
 
 namespace Smartbills.NET.Services.Receipts
 {
-    public record ReceiptUpdateRequest : BaseRequest
+    public record ReceiptUpdateRequest
     {
-        
         public long? MerchantId { get; set; }
+        public long? LocationId { get; set; }
 
-        
-        public CustomerUpdateRequest Customer { get; set; }
-
-        
-        public long? CustomerId { get; set; }
         public long? EmployeeId { get; set; }
 
+        public CustomerUpdateRequest Customer { get; set; }
+        public SBBillingAddress BillingAddress { get; set; }
+        public SBBillingAddress ShippingAddress { get; set; }
+        public List<ReceiptLineItemUpdateRequest> Items { get; set; } = new List<ReceiptLineItemUpdateRequest>();
 
-        public BillingAddressUpdateRequest BillingAddress { get; set; }
-        
-        public BillingAddressUpdateRequest ShippingAddress { get; set; }
-        
-        public List<ReceiptItemUpdateRequest> Items { get; set; } = new List<ReceiptItemUpdateRequest>();
-
-        
         public string Currency { get; set; }
 
-        
-        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
 
-        
         public DateTimeOffset? CancelledAt { get; set; }
 
-        
         public string CancelReason { get; set; }
-        
         public string PaymentStatus { get; set; }
-        
-        public List<ReceiptDiscountRequest> Discounts { get; set; } = new List<ReceiptDiscountRequest>();
-
-        
-        //public List<ReceiptFeeUpdateRequest> Fees { get; set; } = new List<ReceiptFeeUpdateRequest>();
 
 
-
-        
         public decimal TotalDiscounts { get; set; }
 
-        
 
         public List<ReceiptTaxUpdateRequest> Taxes { get; set; } = new List<ReceiptTaxUpdateRequest>() { };
 
-        
 
         public bool TaxesIncluded { get; set; }
-        
 
         public decimal TotalTip { get; set; }
-        
 
         public decimal TotalDuties { get; set; }
-        
 
         public decimal TotalShipping { get; set; }
-        
 
         public decimal TotalWeight { get; set; }
-        
-
-
-
-
 
         public decimal TotalTaxes { get; set; }
 
-        
-        public decimal TotalFees { get; set; }
-
-        
-
         public decimal Total { get; set; }
 
-        
 
         public decimal SubTotal { get; set; }
 
-        
 
-        public ReceiptMetadataUpdateRequest ReceiptMetadata { get; set; }
-        
+        // public UpdateReceiptMetadataRequest ReceiptMetadata { get; set; }
 
-        public long? LocationId { get; set; }
 
-        //
 
-        //public List<ReceiptTransactionUpdateRequest> Transactions { get; set; }
+        public List<ReceiptPaymentUpdateRequest> Transactions { get; set; }
 
-        //
-        //public BarcodeUpdateRequest Barcode{ get; set; }
-
+        public SBReceiptBarcode Barcode { get; set; }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Smartbills.NET.Entities.Receipts
+﻿namespace Smartbills.NET.Entities.Receipts
 {
     public enum SBReceiptType
     {
-        Ocr,
-        Official,
+        Official = 0,
+        OCR = 1,
+        Email = 2
     }
 }
