@@ -113,9 +113,11 @@ jobs:
             done
   
 
-      - name: Semantic Release dry-run version
+
+      - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+              GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+              
         run: |
-          yarn release
+            yarn release
