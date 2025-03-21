@@ -1,7 +1,7 @@
 using Smartbills.NET.Services.Files;
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Attachments
 {
     public record AttachmentUploadRequest : FileUploadRequest
     {

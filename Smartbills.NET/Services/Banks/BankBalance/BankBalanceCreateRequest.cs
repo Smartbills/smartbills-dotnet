@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services
+﻿namespace Smartbills.NET.Services.Banks.BankBalance
 {
     public record BankBalanceCreateRequest
     {

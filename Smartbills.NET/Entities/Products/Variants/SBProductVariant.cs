@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Generic;
 using Smartbills.NET.Entities.Images;
-using Smartbills.NET.Entities.ProductOptions;
+using Smartbills.NET.Entities.Products.Options;
 
-namespace Smartbills.NET.Entities.Products
+namespace Smartbills.NET.Entities.Products.Variants
 {
     public record SBProductVariant : SBEntity, ITimestamp
     {

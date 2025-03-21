@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.Employees
+namespace Smartbills.NET.Services.Merchants.Employees
 {
     public record EmployeeCreateRequest
     {

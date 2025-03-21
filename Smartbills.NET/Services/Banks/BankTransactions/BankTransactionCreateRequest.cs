@@ -3,7 +3,7 @@ using Smartbills.NET.Entities.Address;
 using System;
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Banks.BankTransactions
 {
     public record BankTransactionCreateRequest : IPlaidEntity
     {

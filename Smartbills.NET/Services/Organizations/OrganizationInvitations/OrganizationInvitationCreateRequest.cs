@@ -1,7 +1,6 @@
-﻿
-using Smartbills.Core.Models.Organizations;
+﻿using Smartbills.NET.Entities.Organizations.Members;
 
-namespace Smartbills.NET.Services.OrganizationInvitations
+namespace Smartbills.NET.Services.Organizations.OrganizationInvitations
 {
     public record OrganizationInvitationCreateRequest
     {

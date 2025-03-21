@@ -1,5 +1,6 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
+using Smartbills.NET.Entities.Translations;
 using Smartbills.NET.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;

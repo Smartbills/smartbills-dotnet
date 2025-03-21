@@ -6,48 +6,57 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Fees
+namespace Smartbills.NET.Services.Merchants.Fees
 {
     public interface IFeeClient :
-        ICreatable<FeeCreateRequest, SBFee>,
-        IUpdatable<FeeUpdateRequest, SBFee>,
-        IDeletable<SBFee>,
-        IRetrievableById<SBFee>,
-        IListable<ListRequest, SBFee>
-    {
+        INestedCreatable<FeeCreateRequest, SBFee>,
+        INestedRetrievable<SBFee>,
+        INestedUpdatable<FeeUpdateRequest, SBFee>,
+        INestedDeletable<SBFee>,
+        INestedListable<FeeListRequest, SBFee>,
+        INestedBatchCreate<FeeCreateRequest, SBFee>,
+        INestedBatchUpdate<FeeBatchItemUpdateRequest, SBFee>
+    { }
 
-    }
     public class FeeClient : Service<SBFee>, IFeeClient
     {
-
         public FeeClient(ISmartbillsClient client) : base(client)
         {
-
         }
 
-        public async Task<SBFee> CreateAsync(FeeCreateRequest ListRequest, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBFee> CreateAsync(long merchantId, FeeCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await base.CreateEntityAsync($"/v1/fees/", ListRequest, options, cancellationToken);
+            return await CreateEntityAsync($"/v1/merchants/{merchantId}/fees", request, options, cancellationToken);
         }
 
-        public async Task<SBFee> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBFee> DeleteAsync(long merchantId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync($"/v1/fees/{id}", options, cancellationToken);
+            return await DeleteEntityAsync($"/v1/merchants/{merchantId}/fees/{id}", options, cancellationToken);
         }
 
-        public async Task<SBFee> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBFee> GetByIdAsync(long merchantId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync($"/v1/fees/{id}", options, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/merchants/{merchantId}/fees/{id}", options, cancellationToken);
         }
 
-        public async Task<SBList<SBFee>> ListAsync(ListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBFee> UpdateAsync(long merchantId, long id, FeeUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await PaginateEntityAsync($"/v1/fees", request, options, cancellationToken);
+            return await UpdateEntityAsync($"/v1/merchants/{merchantId}/fees/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBFee> UpdateAsync(long id, FeeUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBFee>> ListAsync(long merchantId, FeeListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync($"/v1/fees/{id}", request, options, cancellationToken);
+            return await PaginateEntityAsync($"/v1/merchants/{merchantId}/fees", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBFee>> BatchCreateAsync(long merchantId, List<FeeCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await CreateEntityAsync<List<FeeCreateRequest>, List<SBFee>>($"/v1/merchants/{merchantId}/fees/batch", request, options, cancellationToken);
+        }
+
+        public async Task<List<SBFee>> BatchUpdateAsync(long merchantId, List<FeeBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        {
+            return await UpdateEntityAsync<List<FeeBatchItemUpdateRequest>, List<SBFee>>($"/v1/merchants/{merchantId}/fees/batch", request, options, cancellationToken);
         }
     }
 }

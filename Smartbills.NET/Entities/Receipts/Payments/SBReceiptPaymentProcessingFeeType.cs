@@ -1,4 +1,4 @@
-namespace Smartbills.Core.Models.ReceiptPayments
+namespace Smartbills.NET.Entities.Receipts.Payments
 {
     public enum SBReceiptPaymentProcessingFeeType
     {

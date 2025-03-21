@@ -1,7 +1,7 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities.Banks;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.BankAccounts;
+using Smartbills.NET.Services.Banks.BankAccounts;
 using System.Threading;
 using System.Threading.Tasks;
 

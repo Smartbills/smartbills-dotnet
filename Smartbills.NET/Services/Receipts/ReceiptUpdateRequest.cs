@@ -2,11 +2,12 @@ using Smartbills.NET.Entities.Address;
 using Smartbills.NET.Entities.Barcode;
 using Smartbills.NET.Services.Receipts.Payments;
 using Smartbills.NET.Services.Receipts.LineItems;
-using Smartbills.NET.Services.Receipts.Taxes;
 using System;
 using System.Collections.Generic;
+using Smartbills.NET.Services.Receipts.ReceiptTaxes;
+using Smartbills.NET.Services.Merchants.Customers;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Receipts
 {
     public record ReceiptUpdateRequest
     {

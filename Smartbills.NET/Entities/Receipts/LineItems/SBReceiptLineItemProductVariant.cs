@@ -1,4 +1,4 @@
-namespace Smartbills.NET.Entities.ReceiptLineItems
+namespace Smartbills.NET.Entities.Receipts.LineItems
 {
     public record SBReceiptLineItemProductVariant : SBEntity
     {

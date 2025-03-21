@@ -1,4 +1,4 @@
-namespace Smartbills.Core.Models.Organizations
+namespace Smartbills.NET.Entities.Organizations.Members
 {
     public enum SBOrganizationMemberRole
     {

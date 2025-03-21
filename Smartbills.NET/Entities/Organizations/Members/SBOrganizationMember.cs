@@ -1,9 +1,8 @@
 ﻿
 using System;
-using Smartbills.Core.Models.Organizations;
 using Smartbills.NET.Entities.Users;
 
-namespace Smartbills.NET.Entities.Organizations
+namespace Smartbills.NET.Entities.Organizations.Members
 {
     public record SBOrganizationMember : SBEntity, ITimestamp
     {

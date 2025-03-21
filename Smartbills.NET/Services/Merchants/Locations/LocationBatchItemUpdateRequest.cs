@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Smartbills.NET.Services.Locations
+namespace Smartbills.NET.Services.Merchants.Locations
 {
 
     public record LocationBatchItemUpdateRequest : LocationUpdateRequest, ISmartbillsEntity

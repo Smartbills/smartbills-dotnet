@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants.Customers
 {
     public record CustomerUpdateRequest
     {

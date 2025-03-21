@@ -1,5 +1,4 @@
-﻿
-namespace Smartbills.NET.Entities.Organizations
+﻿namespace Smartbills.NET.Entities.Organizations.Members
 {
     public enum SBOrganizationMemberStatus
     {

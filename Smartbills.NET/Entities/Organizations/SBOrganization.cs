@@ -1,6 +1,4 @@
-﻿using Smartbills.Core.Models.Organizations;
-using Smartbills.NET.Entities;
-using Smartbills.NET.Entities.Users;
+﻿using Smartbills.NET.Entities.Users;
 using System;
 
 namespace Smartbills.NET.Entities.Organizations

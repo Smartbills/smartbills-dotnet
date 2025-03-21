@@ -1,20 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.BankAccounts;
-using Smartbills.NET.Services.BankInstitutions;
 using Smartbills.NET.Services.Banks;
-using Smartbills.NET.Services.BankTransactions;
-using Smartbills.NET.Services.Customers;
 using Smartbills.NET.Services.Attachments;
-using Smartbills.NET.Services.Employees;
-using Smartbills.NET.Services.Locations;
 using Smartbills.NET.Services.Merchants;
 using Smartbills.NET.Services.OAuth;
-using Smartbills.NET.Services.ProductImages;
-using Smartbills.NET.Services.Products;
-using Smartbills.NET.Services.ProductVariants;
-using Smartbills.NET.Services.PromoCodes;
 using Smartbills.NET.Services.Receipts;
 using Smartbills.NET.Services.Taxes;
 using Smartbills.NET.Services.Vendors;
@@ -36,6 +26,17 @@ using Smartbills.NET.Services.Prices;
 using Smartbills.NET.Services.Explore;
 using Smartbills.NET.Services.BulkJobs;
 using Smartbills.NET.Services.Files;
+using Smartbills.NET.Services.Banks.BankTransactions;
+using Smartbills.NET.Services.Merchants.Products.ProductImages;
+using Smartbills.NET.Services.Merchants.Customers;
+using Smartbills.NET.Services.Merchants.PromoCodes;
+using Smartbills.NET.Services.Merchants.Products;
+using Smartbills.NET.Services.Merchants.Locations;
+using Smartbills.NET.Services.Banks.BankInstitutions;
+using Smartbills.NET.Services.Merchants.Products.ProductVariants;
+using Smartbills.NET.Services.Merchants.Employees;
+using Smartbills.NET.Services.Banks.BankAccounts;
+using Smartbills.NET.Services.Merchants.Taxes;
 
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -82,6 +83,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IProductClient, ProductClient>();
             services.AddTransient<IProductImageClient, ProductImageClient>();
             services.AddTransient<IProductVariantClient, ProductVariantClient>();
+            //services.AddTransient<IProductModifierClient, ProductModifierClient>();
             services.AddTransient<IPromoCodeClient, PromoCodeClient>();
             services.AddTransient<ITaxClient, TaxClient>();
 

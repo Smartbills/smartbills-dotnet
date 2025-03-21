@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Smartbills.NET.Services.Customers
+namespace Smartbills.NET.Services.Merchants.Customers
 {
 
     public record CustomerBatchItemUpdateRequest : CustomerUpdateRequest, ISmartbillsEntity

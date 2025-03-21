@@ -1,4 +1,4 @@
-namespace Smartbills.NET.Entities.EmailAccounts
+namespace Smartbills.NET.Entities.Emails
 {
     public record SBEmailAccount : SBEntity
     {

@@ -2,7 +2,7 @@
 using Smartbills.NET.Services.Images;
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.Locations
+namespace Smartbills.NET.Services.Merchants.Locations
 {
     public record LocationUpdateRequest
     {

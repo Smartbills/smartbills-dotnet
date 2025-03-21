@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.Products
+namespace Smartbills.NET.Services.Merchants.Products.ProductModifiers
 {
-    public record ProductModifierGroupCreateRequest
+    public record ProductModifierGroupUpdateRequest
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -12,6 +12,5 @@ namespace Smartbills.NET.Services.Products
         public bool Active { get; set; } = true;
         public int DisplayOrder { get; set; }
         public string Locale { get; set; }
-        public List<ProductModifierCreateRequest> Modifiers { get; set; } = new();
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Smartbills.NET.Services.Images;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Merchants.Products.ProductImages
 {
     public record ProductImageCreateRequest : ImageUploadRequest
     {

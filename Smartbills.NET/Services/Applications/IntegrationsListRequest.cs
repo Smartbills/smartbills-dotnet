@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Integrations
+﻿namespace Smartbills.NET.Services.Applications
 {
     public record ListIntegrationsRequest
     {

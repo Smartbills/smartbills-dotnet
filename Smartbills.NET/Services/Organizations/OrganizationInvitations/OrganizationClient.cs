@@ -1,18 +1,17 @@
 using Smartbills.NET.Abstractions;
 using Smartbills.NET.Entities;
-using Smartbills.NET.Entities.Organization.Invitations;
+using Smartbills.NET.Entities.Organizations.Invitations;
 using Smartbills.NET.Infrastructure;
-using Smartbills.NET.Services.OrganizationInvitations;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Smartbills.NET.Services.Organizations
+namespace Smartbills.NET.Services.Organizations.OrganizationInvitations
 {
     public interface IOrganizationInvitationClient :
         INestedCreatable<OrganizationInvitationCreateRequest, SBOrganizationInvitation>,
         INestedRetrievable<SBOrganizationInvitation>,
         INestedDeletable<SBOrganizationInvitation>,
-        INestedListable<OrganizationInvitationListRequest, SBList<SBOrganizationInvitation>>
+        INestedListable<OrganizationInvitationListRequest, SBOrganizationInvitation>
     {
         // Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }

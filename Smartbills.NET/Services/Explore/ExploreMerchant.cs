@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Smartbills.Entities.Locations;
 using Smartbills.NET.Entities.Address;
+using Smartbills.NET.Entities.Locations;
 
 namespace Smartbills.NET.Services.Explore
 {

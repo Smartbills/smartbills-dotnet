@@ -1,5 +1,4 @@
-﻿using Smartbills.NET.Services.LoyaltyRewards;
-
+﻿using Smartbills.NET.Services.Loyalty.LoyaltyRewards;
 using System;
 using System.Collections.Generic;
 using System.Linq;

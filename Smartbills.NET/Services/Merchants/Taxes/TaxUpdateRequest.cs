@@ -1,8 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Smartbills.NET.Entities.Taxes;
 
-namespace Smartbills.NET.Services.Taxes
+namespace Smartbills.NET.Services.Merchants.Taxes
 {
     public record TaxUpdateRequest
     {

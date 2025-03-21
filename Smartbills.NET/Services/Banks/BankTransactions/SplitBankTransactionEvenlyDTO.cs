@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.BankTransactions
+namespace Smartbills.NET.Services.Banks.BankTransactions
 {
     public class SplitBankTransactionEvenlyDTO
     {

@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services
+﻿namespace Smartbills.NET.Services.Receipts.ReceiptMetadata
 {
     public record CreateBrowserMetadataDTO
     {

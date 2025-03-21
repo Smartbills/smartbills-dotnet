@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Employees
+﻿namespace Smartbills.NET.Services.Merchants.Employees
 {
     public record EmployeeListRequest : ListRequest
     {

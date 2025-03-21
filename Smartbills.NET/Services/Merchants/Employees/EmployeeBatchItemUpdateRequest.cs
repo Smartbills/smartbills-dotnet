@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Smartbills.NET.Services.Employees
+namespace Smartbills.NET.Services.Merchants.Employees
 {
 
     public record EmployeeBatchItemUpdateRequest : EmployeeUpdateRequest, ISmartbillsEntity

@@ -1,4 +1,4 @@
-﻿namespace Smartbills.NET.Services.Customers
+﻿namespace Smartbills.NET.Services.Merchants.Customers
 {
     public record CustomerUpsertRequest : CustomerCreateRequest, IUpsertRequest
     {

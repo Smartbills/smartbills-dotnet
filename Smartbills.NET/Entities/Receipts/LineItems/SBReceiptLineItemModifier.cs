@@ -1,7 +1,6 @@
-
 using Smartbills.NET.Entities.Money;
 
-namespace Smartbills.NET.Entities.ReceiptLineItems
+namespace Smartbills.NET.Entities.Receipts.LineItems
 {
     public record SBReceiptLineItemModifier : SBEntity
     {

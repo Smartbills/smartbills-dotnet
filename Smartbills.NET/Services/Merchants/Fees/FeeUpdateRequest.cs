@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Smartbills.NET.Services.Fees
+namespace Smartbills.NET.Services.Merchants.Fees
 {
     public record FeeUpdateRequest
     {

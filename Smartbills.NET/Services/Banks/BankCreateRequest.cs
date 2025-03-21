@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Smartbills.NET.Services.Banks.BankAccounts;
+using System;
 using System.Collections.Generic;
 
-namespace Smartbills.NET.Services
+namespace Smartbills.NET.Services.Banks
 {
     public record BankCreateRequest
     {

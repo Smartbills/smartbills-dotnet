@@ -1,6 +1,4 @@
-﻿
-
-namespace Smartbills.NET.Services.Receipts
+﻿namespace Smartbills.NET.Services.Receipts
 {
     public record ReceiptBatchUpdateRequest : ReceiptUpdateRequest
     {

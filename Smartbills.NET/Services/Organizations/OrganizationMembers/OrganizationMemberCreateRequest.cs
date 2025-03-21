@@ -1,6 +1,6 @@
-﻿using Smartbills.Core.Models.Organizations;
+﻿using Smartbills.NET.Entities.Organizations.Members;
 
-namespace Smartbills.NET.Services.OrganizationMembers
+namespace Smartbills.NET.Services.Organizations.OrganizationMembers
 {
     public record OrganizationMemberCreateRequest
     {

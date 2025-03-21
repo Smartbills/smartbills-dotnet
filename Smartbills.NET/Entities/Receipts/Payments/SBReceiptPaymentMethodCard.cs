@@ -1,6 +1,4 @@
-﻿using Smartbills.NET.Entities.PaymentMethods;
-using Smartbills.NET.Services.PaymentMethods;
-
+﻿
 namespace Smartbills.NET.Entities.Receipts.Payments
 {
     public record SBReceiptPaymentMethodCard

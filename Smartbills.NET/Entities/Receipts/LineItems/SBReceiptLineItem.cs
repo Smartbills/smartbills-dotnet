@@ -1,6 +1,5 @@
 using Smartbills.NET.Entities.Money;
-using Smartbills.NET.Entities.Products;
-using Smartbills.NET.Entities.ReceiptLineItems;
+using Smartbills.NET.Entities.Products.Variants;
 using Smartbills.NET.Services.Receipts;
 using System.Collections.Generic;
 
