@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0...v8.1.1) (2025-03-21)
+
+
+### Bug Fixes
+
+* v8.1.1 ([62741f1](https://github.com/smartbills/smartbills-dotnet/commit/62741f15dddbf55ab74fb4b43a89f4614137485d))
+
 # [8.1.0](https://github.com/smartbills/smartbills-dotnet/compare/v8.0.0...v8.1.0) (2025-03-21)
 
 
