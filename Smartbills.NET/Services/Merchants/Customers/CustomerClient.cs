@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Merchants.Customers
 {
     public interface ICustomerClient :
-        ICreatable<CustomerCreateRequest, SBCustomer>,
-        IRetrievableById<SBCustomer>,
-        IUpdatable<CustomerUpdateRequest, SBCustomer>,
-        IDeletable<SBCustomer>,
-        IListable<CustomerListRequest, SBCustomer>,
-        IBatchCreate<CustomerCreateRequest, SBCustomer>,
-        IBatchUpdate<CustomerBatchItemUpdateRequest, SBCustomer>
+        INestedCreatable<CustomerCreateRequest, SBCustomer>,
+        INestedRetrievable<SBCustomer>,
+        INestedUpdatable<CustomerUpdateRequest, SBCustomer>,
+        INestedDeletable<SBCustomer>,
+        INestedListable<CustomerListRequest, SBCustomer>,
+        INestedBatchCreate<CustomerCreateRequest, SBCustomer>,
+        INestedBatchUpdate<CustomerBatchItemUpdateRequest, SBCustomer>
     { }
 
     public class CustomerClient : Service<SBCustomer>, ICustomerClient
@@ -24,39 +24,39 @@ namespace Smartbills.NET.Services.Merchants.Customers
         {
         }
 
-        public async Task<SBCustomer> CreateAsync(CustomerCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> CreateAsync(long merchantId, CustomerCreateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync<CustomerCreateRequest, SBCustomer>($"/v1/customers", request, options, cancellationToken);
+            return await CreateEntityAsync($"/v1/merchants/{merchantId}/customers", request, options, cancellationToken);
         }
 
-        public async Task<SBCustomer> DeleteAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> DeleteAsync(long merchantId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await DeleteEntityAsync($"/v1/customers/{id}", options, cancellationToken);
+            return await DeleteEntityAsync($"/v1/merchants/{merchantId}/customers/{id}", options, cancellationToken);
         }
 
-        public async Task<SBCustomer> GetByIdAsync(long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> GetByIdAsync(long merchantId, long id, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityByIdAsync($"/v1/customers/{id}", options, cancellationToken);
+            return await GetEntityByIdAsync($"/v1/merchants/{merchantId}/customers/{id}", options, cancellationToken);
         }
 
-        public async Task<SBCustomer> UpdateAsync(long id, CustomerUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBCustomer> UpdateAsync(long merchantId, long id, CustomerUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync($"/v1/customers/{id}", request, options, cancellationToken);
+            return await UpdateEntityAsync($"/v1/merchants/{merchantId}/customers/{id}", request, options, cancellationToken);
         }
 
-        public async Task<SBList<SBCustomer>> ListAsync(CustomerListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<SBList<SBCustomer>> ListAsync(long merchantId, CustomerListRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await GetEntityAsync<CustomerListRequest, SBList<SBCustomer>>("/v1/customers", request, options, cancellationToken);
+            return await PaginateEntityAsync($"/v1/merchants/{merchantId}/customers", request, options, cancellationToken);
         }
 
-        public async Task<List<SBCustomer>> BatchCreateAsync(List<CustomerCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBCustomer>> BatchCreateAsync(long merchantId, List<CustomerCreateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await CreateEntityAsync<List<CustomerCreateRequest>, List<SBCustomer>>("/v1/customers/batch", request, options, cancellationToken);
+            return await CreateEntityAsync<List<CustomerCreateRequest>, List<SBCustomer>>($"/v1/merchants/{merchantId}/customers/batch", request, options, cancellationToken);
         }
 
-        public async Task<List<SBCustomer>> BatchUpdateAsync(List<CustomerBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
+        public async Task<List<SBCustomer>> BatchUpdateAsync(long merchantId, List<CustomerBatchItemUpdateRequest> request, SBRequestOptions options = null, CancellationToken cancellationToken = default)
         {
-            return await UpdateEntityAsync<List<CustomerBatchItemUpdateRequest>, List<SBCustomer>>("/v1/customers/batch", request, options, cancellationToken);
+            return await UpdateEntityAsync<List<CustomerBatchItemUpdateRequest>, List<SBCustomer>>($"/v1/merchants/{merchantId}/customers/batch", request, options, cancellationToken);
         }
     }
 }
