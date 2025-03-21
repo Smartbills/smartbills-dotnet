@@ -1,6 +1,6 @@
-namespace Smartbills.NET.Services.Merchants.Products
+namespace Smartbills.NET.Services.Merchants.Products.ProductModifiers
 {
-    public record ProductModifierUpdateRequest
+    public record ProductModifierCreateRequest
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -10,6 +10,5 @@ namespace Smartbills.NET.Services.Merchants.Products
         public string Sku { get; set; }
         public string UPC { get; set; }
         public string Locale { get; set; }
-        public long ModifierGroupId { get; set; }
     }
 }

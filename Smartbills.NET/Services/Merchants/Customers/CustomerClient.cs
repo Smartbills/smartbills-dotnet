@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Smartbills.NET.Services.Merchants.Customers
 {
     public interface ICustomerClient :
-
         ICreatable<CustomerCreateRequest, SBCustomer>,
         IRetrievableById<SBCustomer>,
         IUpdatable<CustomerUpdateRequest, SBCustomer>,
@@ -17,9 +16,8 @@ namespace Smartbills.NET.Services.Merchants.Customers
         IListable<CustomerListRequest, SBCustomer>,
         IBatchCreate<CustomerCreateRequest, SBCustomer>,
         IBatchUpdate<CustomerBatchItemUpdateRequest, SBCustomer>
-    {
+    { }
 
-    }
     public class CustomerClient : Service<SBCustomer>, ICustomerClient
     {
         public CustomerClient(ISmartbillsClient client) : base(client)

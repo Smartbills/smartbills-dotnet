@@ -36,6 +36,7 @@ using Smartbills.NET.Services.Banks.BankInstitutions;
 using Smartbills.NET.Services.Merchants.Products.ProductVariants;
 using Smartbills.NET.Services.Merchants.Employees;
 using Smartbills.NET.Services.Banks.BankAccounts;
+using Smartbills.NET.Services.Merchants.Taxes;
 
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -82,6 +83,7 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IProductClient, ProductClient>();
             services.AddTransient<IProductImageClient, ProductImageClient>();
             services.AddTransient<IProductVariantClient, ProductVariantClient>();
+            //services.AddTransient<IProductModifierClient, ProductModifierClient>();
             services.AddTransient<IPromoCodeClient, PromoCodeClient>();
             services.AddTransient<ITaxClient, TaxClient>();
 

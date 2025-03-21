@@ -11,7 +11,7 @@ namespace Smartbills.NET.Services.Organizations.OrganizationInvitations
         INestedCreatable<OrganizationInvitationCreateRequest, SBOrganizationInvitation>,
         INestedRetrievable<SBOrganizationInvitation>,
         INestedDeletable<SBOrganizationInvitation>,
-        INestedListable<OrganizationInvitationListRequest, SBList<SBOrganizationInvitation>>
+        INestedListable<OrganizationInvitationListRequest, SBOrganizationInvitation>
     {
         // Task<SBOrganizationInvitation> AcceptInvitationAsync(long organizationId, long invitationId, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }

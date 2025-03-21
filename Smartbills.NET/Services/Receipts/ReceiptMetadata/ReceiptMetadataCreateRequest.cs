@@ -2,7 +2,7 @@
 
 namespace Smartbills.NET.Services.Receipts.ReceiptMetadata
 {
-    public class ReceiptMetadataCreateRequest
+    public record ReceiptMetadataCreateRequest
     {
 
         public string LandingSite { get; set; }

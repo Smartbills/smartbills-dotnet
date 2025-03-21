@@ -1,4 +1,5 @@
 ﻿using Smartbills.NET.Entities.Taxes;
+using Smartbills.NET.Services.Merchants.Taxes;
 using Smartbills.NET.Services.Translations;
 
 

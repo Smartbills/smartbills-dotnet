@@ -11,7 +11,7 @@ namespace Smartbills.NET.Services.Organizations.OrganizationMembers
         INestedCreatable<OrganizationMemberCreateRequest, SBOrganizationMember>,
         INestedRetrievable<SBOrganizationMember>,
         INestedDeletable<SBOrganizationMember>,
-        INestedListable<OrganizationMemberListRequest, SBList<SBOrganizationMember>>
+        INestedListable<OrganizationMemberListRequest, SBOrganizationMember>
     {
         Task<SBOrganizationMember> UpdateRoleAsync(long organizationId, long memberId, OrganizationMemberRoleUpdateRequest request, SBRequestOptions options = null, CancellationToken cancellationToken = default);
     }
