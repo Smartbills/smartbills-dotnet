@@ -3,28 +3,19 @@ using Microsoft.Extensions.Options;
 using Smartbills.NET.Infrastructure;
 using Smartbills.NET.Services.Banks;
 using Smartbills.NET.Services.Attachments;
-using Smartbills.NET.Services.Merchants;
 using Smartbills.NET.Services.OAuth;
 using Smartbills.NET.Services.Receipts;
-using Smartbills.NET.Services.Taxes;
 using Smartbills.NET.Services.Vendors;
 using Smartbills.NET.Services.Webhooks;
-using Smartbills.NET.Services.Billing;
 using Smartbills.NET.Services.EmailAccounts;
 using Smartbills.NET.Services.Loyalty;
-using Smartbills.NET.Services.Payments;
-using Smartbills.NET.Services.Translations;
 using Smartbills.NET.Services.Suppliers;
-using Smartbills.NET.Services.Applications;
 using Smartbills.NET.Services.Subscriptions;
 using Smartbills.NET.Services.Reviews;
 using Smartbills.NET.Services.Organizations;
 using Smartbills.NET.Services.Friends;
 using Smartbills.NET.Services.Logs;
-using Smartbills.NET.Services.Search;
-using Smartbills.NET.Services.Prices;
-using Smartbills.NET.Services.Explore;
-using Smartbills.NET.Services.BulkJobs;
+
 using Smartbills.NET.Services.Files;
 using Smartbills.NET.Services.Banks.BankTransactions;
 using Smartbills.NET.Services.Merchants.Products.ProductImages;
@@ -34,9 +25,15 @@ using Smartbills.NET.Services.Merchants.Products;
 using Smartbills.NET.Services.Merchants.Locations;
 using Smartbills.NET.Services.Banks.BankInstitutions;
 using Smartbills.NET.Services.Merchants.Products.ProductVariants;
-using Smartbills.NET.Services.Merchants.Employees;
 using Smartbills.NET.Services.Banks.BankAccounts;
 using Smartbills.NET.Services.Merchants.Taxes;
+using Smartbills.NET.Services.Receipts.LineItems;
+using Smartbills.NET.Services.Merchants.Products.ProductOptions;
+using Smartbills.NET.Services.Organizations.OrganizationMembers;
+using Smartbills.NET.Services.Organizations.OrganizationInvitations;
+using Smartbills.NET.Services.Merchants.Fees;
+using Smartbills.NET.Services.Businesses;
+using Smartbills.NET.Services.Businesses.Team;
 
 namespace Smartbills.NET.AspNetCore.Extensions
 {
@@ -74,12 +71,15 @@ namespace Smartbills.NET.AspNetCore.Extensions
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
 
-
-            services.AddTransient<IMerchantClient, MerchantClient>();
+            // Merchant services
+            services.AddTransient<IBusinessClient, BusinessClient>();
             services.AddTransient<ILocationClient, LocationClient>();
             services.AddTransient<ICustomerClient, CustomerClient>();
-            services.AddTransient<IReceiptClient, ReceiptClient>();
-            services.AddTransient<IEmployeeClient, EmployeeClient>();
+            services.AddTransient<ITeamMemberClient, TeamMemberClient>();
+            services.AddTransient<IFeeClient, FeeClient>();
+            services.AddTransient<ITaxClient, TaxClient>();
+
+            // Product services
             services.AddTransient<IProductClient, ProductClient>();
             services.AddTransient<IProductImageClient, ProductImageClient>();
             services.AddTransient<IProductVariantClient, ProductVariantClient>();

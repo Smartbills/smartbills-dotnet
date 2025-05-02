@@ -2,6 +2,7 @@ using Smartbills.NET.Entities.Address;
 using Smartbills.NET.Entities.Barcode;
 using Smartbills.NET.Entities.Customers;
 using Smartbills.NET.Entities.Money;
+using Smartbills.NET.Entities.Receipts.LineItems;
 using Smartbills.NET.Entities.Receipts.Payments;
 using Smartbills.NET.Entities.Users;
 
@@ -24,7 +25,7 @@ namespace Smartbills.NET.Entities.Receipts
         public SBBillingAddress BillingAddress { get; set; }
         public SBBillingAddress ShippingAddress { get; set; }
 
-        public List<LineItems.SBReceiptLineItem> Items { get; set; } = [];
+        public List<SBReceiptLineItem> LineItems { get; set; } = [];
 
         public SBMoney TotalItems { get; set; } = new SBMoney();
         public SBMoney TotalPayments { get; set; } = new SBMoney();
