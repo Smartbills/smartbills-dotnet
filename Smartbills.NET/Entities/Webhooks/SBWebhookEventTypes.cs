@@ -3,77 +3,76 @@ namespace Smartbills.NET.Entities.Webhooks
     public static class SBWebhookEventTypes
     {
 
-        public const string MerchantCreated = "merchant.created";
-        public const string MerchantUpdated = "merchant.updated";
-        public const string MerchantDeleted = "merchant.deleted";
+        public const string BusinessCreated = "business.created";
+        public const string BusinessUpdated = "business.updated";
+        public const string BusinessDeleted = "business.deleted";
 
-        public const string MerchantCustomerCreated = "merchant.customer.created";
-        public const string MerchantCustomerUpdated = "merchant.customer.updated";
-        public const string MerchantCustomerDeleted = "merchant.customer.deleted";
+        public const string BusinessCustomerCreated = "business.customer.created";
+        public const string BusinessCustomerUpdated = "business.customer.updated";
+        public const string BusinessCustomerDeleted = "business.customer.deleted";
 
-        public const string MerchantReceiptCreated = "merchant.receipt.created";
-        public const string MerchantReceiptUpdated = "merchant.receipt.updated";
-        public const string MerchantReceiptDeleted = "merchant.receipt.deleted";
-
-
-
-        public const string MerchantProductCreated = "merchant.product.created";
-        public const string MerchantProductUpdated = "merchant.product.updated";
-        public const string MerchantProductDeleted = "merchant.product.deleted";
+        public const string BusinessReceiptCreated = "business.receipt.created";
+        public const string BusinessReceiptUpdated = "business.receipt.updated";
+        public const string BusinessReceiptDeleted = "business.receipt.deleted";
 
 
-        public const string MerchantProductVariantCreated = "merchant.product.variant.created";
-        public const string MerchantProductVariantUpdated = "merchant.product.variant.updated";
-        public const string MerchantProductVariantDeleted = "merchant.product.variant.deleted";
+
+        public const string BusinessProductCreated = "business.product.created";
+        public const string BusinessProductUpdated = "business.product.updated";
+        public const string BusinessProductDeleted = "business.product.deleted";
 
 
-        public const string MerchantProductImageCreated = "merchant.product.image.created";
-        public const string MerchantProductImageUpdated = "merchant.product.image.updated";
-        public const string MerchantProductImageDeleted = "merchant.product.image.deleted";
-
-        public const string MerchantProductModifierCreated = "merchant.product.modifier.created";
-        public const string MerchantProductModifierUpdated = "merchant.product.modifier.updated";
-        public const string MerchantProductModifierDeleted = "merchant.product.modifier.deleted";
+        public const string BusinessProductVariantCreated = "business.product.variant.created";
+        public const string BusinessProductVariantUpdated = "business.product.variant.updated";
+        public const string BusinessProductVariantDeleted = "business.product.variant.deleted";
 
 
-        public const string MerchantPromoCodeCreated = "merchant.promocode.created";
-        public const string MerchantPromoCodeUpdated = "merchant.promocode.updated";
-        public const string MerchantPromoCodeDeleted = "merchant.promocode.deleted";
+        public const string BusinessProductImageCreated = "business.product.image.created";
+        public const string BusinessProductImageUpdated = "business.product.image.updated";
+        public const string BusinessProductImageDeleted = "business.product.image.deleted";
+
+        public const string BusinessProductModifierCreated = "business.product.modifier.created";
+        public const string BusinessProductModifierUpdated = "business.product.modifier.updated";
+        public const string BusinessProductModifierDeleted = "business.product.modifier.deleted";
 
 
-        public const string MerchantTaxCreated = "merchant.tax.created";
-        public const string MerchantTaxUpdated = "merchant.tax.updated";
-        public const string MerchantTaxDeleted = "merchant.tax.deleted";
+        public const string BusinessPromoCodeCreated = "business.promocode.created";
+        public const string BusinessPromoCodeUpdated = "business.promocode.updated";
+        public const string BusinessPromoCodeDeleted = "business.promocode.deleted";
 
-        public const string MerchantVendorCreated = "merchant.vendor.created";
-        public const string MerchantVendorUpdated = "merchant.vendor.updated";
-        public const string MerchantVendorDeleted = "merchant.vendor.deleted";
+
+        public const string BusinessTaxCreated = "business.tax.created";
+        public const string BusinessTaxUpdated = "business.tax.updated";
+        public const string BusinessTaxDeleted = "business.tax.deleted";
+
+        public const string BusinessVendorCreated = "business.vendor.created";
+        public const string BusinessVendorUpdated = "business.vendor.updated";
+        public const string BusinessVendorDeleted = "business.vendor.deleted";
 
 
         public const string LocationTableCreated = "location.table.created";
         public const string LocationTableUpdated = "location.table.updated";
         public const string LocationTableDeleted = "location.table.deleted";
-        public const string MerchantTableCreated = "merchant.table.created";
-        public const string MerchantTableUpdated = "merchant.table.updated";
-        public const string MerchantTableDeleted = "merchant.table.deleted";
+        public const string BusinessTableCreated = "business.table.created";
+        public const string BusinessTableUpdated = "business.table.updated";
+        public const string BusinessTableDeleted = "business.table.deleted";
 
-        public const string MerchantLocationCreated = "merchant.location.created";
-        public const string MerchantLocationUpdated = "merchant.location.updated";
-        public const string MerchantLocationDeleted = "merchant.location.deleted";
+        public const string BusinessLocationCreated = "business.location.created";
+        public const string BusinessLocationUpdated = "business.location.updated";
+        public const string BusinessLocationDeleted = "business.location.deleted";
 
 
-        public const string MerchantFeeCreated = "merchant.fee.created";
-        public const string MerchantFeeUpdated = "merchant.fee.updated";
-        public const string MerchantFeeDeleted = "merchant.fee.deleted";
+        public const string BusinessFeeCreated = "business.fee.created";
+        public const string BusinessFeeUpdated = "business.fee.updated";
+        public const string BusinessFeeDeleted = "business.fee.deleted";
 
-        public const string MerchantEmployeeCreated = "merchant.employee.created";
-        public const string MerchantEmployeeUpdated = "merchant.employee.updated";
-        public const string MerchantEmployeeDeleted = "merchant.employee.deleted";
+        public const string BusinessEmployeeCreated = "business.employee.created";
+        public const string BusinessEmployeeUpdated = "business.employee.updated";
+        public const string BusinessEmployeeDeleted = "business.employee.deleted";
         public const string LocationEmployeeCreated = "location.employee.created";
         public const string LocationEmployeeUpdated = "location.employee.updated";
         public const string LocationEmployeeDeleted = "location.employee.deleted";
 
-        // Loyalty events
         public const string LoyaltyProgramCreated = "loyalty.program.created";
         public const string LoyaltyProgramUpdated = "loyalty.program.updated";
         public const string LoyaltyProgramDeleted = "loyalty.program.deleted";
@@ -82,18 +81,13 @@ namespace Smartbills.NET.Entities.Webhooks
         public const string LoyaltyAccountDeleted = "loyalty.account.deleted";
         public const string LoyaltyTransactionCreated = "loyalty.transaction.created";
 
-        // Organization events
-        public const string OrganizationCreated = "organization.created";
-        public const string OrganizationUpdated = "organization.updated";
-        public const string OrganizationDeleted = "organization.deleted";
-        public const string OrganizationMemberCreated = "organization.member.created";
-        public const string OrganizationMemberUpdated = "organization.member.updated";
-        public const string OrganizationMemberDeleted = "organization.member.deleted";
-        public const string OrganizationInvitationCreated = "organization.invitation.created";
-        public const string OrganizationInvitationAccepted = "organization.invitation.accepted";
-        public const string OrganizationInvitationRejected = "organization.invitation.rejected";
+        public const string BusinessTeamMemberMemberCreated = "business.teamMember.created";
+        public const string BusinessTeamMemberMemberUpdated = "business.teamMember.updated";
+        public const string BusinessTeamMemberMemberDeleted = "business.teamMember.deleted";
+        public const string BusinessTeamMemberInvitationCreated = "business.teamMemberInvitation.created";
+        public const string BusinessTeamMemberInvitationAccepted = "business.teamMemberInvitation.accepted";
+        public const string BusinessTeamMemberInvitationRejected = "business.teamMemberInvitation.rejected";
 
-        // Expense events
         public const string ExpenseCreated = "expense.created";
         public const string ExpenseUpdated = "expense.updated";
         public const string ExpenseDeleted = "expense.deleted";
@@ -101,7 +95,6 @@ namespace Smartbills.NET.Entities.Webhooks
         public const string ExpenseCategoryUpdated = "expense.category.updated";
         public const string ExpenseCategoryDeleted = "expense.category.deleted";
 
-        // Invoice events
         public const string InvoiceCreated = "invoice.created";
         public const string InvoiceUpdated = "invoice.updated";
         public const string InvoiceDeleted = "invoice.deleted";
@@ -109,26 +102,30 @@ namespace Smartbills.NET.Entities.Webhooks
         public const string InvoicePaymentCreated = "invoice.payment.created";
         public const string InvoiceOverdue = "invoice.overdue";
 
-        // Merchant invoice events
-        public const string MerchantInvoiceCreated = "merchant.invoice.created";
-        public const string MerchantInvoiceUpdated = "merchant.invoice.updated";
-        public const string MerchantInvoiceDeleted = "merchant.invoice.deleted";
-        public const string MerchantInvoicePaid = "merchant.invoice.paid";
-        public const string MerchantInvoicePaymentCreated = "merchant.invoice.payment.created";
-        public const string MerchantInvoiceOverdue = "merchant.invoice.overdue";
+        public const string BusinessInvoiceCreated = "business.invoice.created";
+        public const string BusinessInvoiceUpdated = "business.invoice.updated";
+        public const string BusinessInvoiceDeleted = "business.invoice.deleted";
+        public const string BusinessInvoicePaid = "business.invoice.paid";
+        public const string BusinessInvoicePaymentCreated = "business.invoice.payment.created";
+        public const string BusinessInvoiceOverdue = "business.invoice.overdue";
 
 
-        public const string OrganizationExpenseCreated = "organization.expense.created";
-        public const string OrganizationExpenseUpdated = "organization.expense.updated";
-        public const string OrganizationExpenseDeleted = "organization.expense.deleted";
+        public const string BusinessExpenseCreated = "business.expense.created";
+        public const string BusinessExpenseUpdated = "business.expense.updated";
+        public const string BusinessExpenseDeleted = "business.expense.deleted";
 
 
-        public const string OrganizationExpenseCategoryCreated = "organization.expense.category.created";
-        public const string OrganizationExpenseCategoryUpdated = "organization.expense.category.updated";
-        public const string OrganizationExpenseCategoryDeleted = "organization.expense.category.deleted";
+        public const string BusinessExpenseCategoryCreated = "business.expense.category.created";
+        public const string BusinessExpenseCategoryUpdated = "business.expense.category.updated";
+        public const string BusinessExpenseCategoryDeleted = "business.expense.category.deleted";
 
         public const string UserCreated = "user.created";
         public const string UserUpdated = "user.updated";
         public const string UserDeleted = "user.deleted";
+
+
+        public const string VendorCreated = "vendor.created";
+        public const string VendorUpdated = "vendor.updated";
+        public const string VendorDeleted = "vendor.deleted";
     }
 }
