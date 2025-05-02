@@ -1,3 +1,10 @@
+# [8.1.0-dev.2](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0-dev.1...v8.1.0-dev.2) (2025-05-02)
+
+
+### Features
+
+* BusinessRequestID ([35d1f31](https://github.com/smartbills/smartbills-dotnet/commit/35d1f3144451ae6d44cc8e9717ccb4d9cbe579d6))
+
 # [8.1.0-dev.1](https://github.com/smartbills/smartbills-dotnet/compare/v8.0.0...v8.1.0-dev.1) (2025-05-02)
 
 
