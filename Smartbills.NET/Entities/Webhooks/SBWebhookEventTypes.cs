@@ -81,9 +81,9 @@ namespace Smartbills.NET.Entities.Webhooks
         public const string LoyaltyAccountDeleted = "loyalty.account.deleted";
         public const string LoyaltyTransactionCreated = "loyalty.transaction.created";
 
-        public const string BusinessTeamMemberMemberCreated = "business.teamMember.created";
-        public const string BusinessTeamMemberMemberUpdated = "business.teamMember.updated";
-        public const string BusinessTeamMemberMemberDeleted = "business.teamMember.deleted";
+        public const string BusinessTeamMemberCreated = "business.teamMember.created";
+        public const string BusinessTeamMemberUpdated = "business.teamMember.updated";
+        public const string BusinessTeamMemberDeleted = "business.teamMember.deleted";
         public const string BusinessTeamMemberInvitationCreated = "business.teamMemberInvitation.created";
         public const string BusinessTeamMemberInvitationAccepted = "business.teamMemberInvitation.accepted";
         public const string BusinessTeamMemberInvitationRejected = "business.teamMemberInvitation.rejected";
