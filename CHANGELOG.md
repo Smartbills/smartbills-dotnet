@@ -1,3 +1,16 @@
+# [8.2.0](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.2...v8.2.0) (2025-06-03)
+
+
+### Bug Fixes
+
+* Migrated to Merchant to Business ([e3ad0e1](https://github.com/smartbills/smartbills-dotnet/commit/e3ad0e10a76e2a14f2c67e6d8b3a12383b174cd5))
+* Upgraded RestSharp to 112.0.1 ([ada5c91](https://github.com/smartbills/smartbills-dotnet/commit/ada5c9129f767c5af05c4ffd80ac60c38b3ee028))
+
+
+### Features
+
+* BusinessRequestID ([35d1f31](https://github.com/smartbills/smartbills-dotnet/commit/35d1f3144451ae6d44cc8e9717ccb4d9cbe579d6))
+
 # [8.1.0-dev.2](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0-dev.1...v8.1.0-dev.2) (2025-05-02)
 
 
