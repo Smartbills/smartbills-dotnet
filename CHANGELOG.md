@@ -1,18 +1,11 @@
-## [8.1.2](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.1...v8.1.2) (2025-03-21)
+# [8.1.0-dev.2](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0-dev.1...v8.1.0-dev.2) (2025-05-02)
 
 
-### Bug Fixes
+### Features
 
-* Customer Client now scoped for merchant + extensions methods fixed ([745486f](https://github.com/smartbills/smartbills-dotnet/commit/745486f89c7c36e149f1373b9d7c598e451c4633))
+* BusinessRequestID ([35d1f31](https://github.com/smartbills/smartbills-dotnet/commit/35d1f3144451ae6d44cc8e9717ccb4d9cbe579d6))
 
-## [8.1.1](https://github.com/smartbills/smartbills-dotnet/compare/v8.1.0...v8.1.1) (2025-03-21)
-
-
-### Bug Fixes
-
-* v8.1.1 ([62741f1](https://github.com/smartbills/smartbills-dotnet/commit/62741f15dddbf55ab74fb4b43a89f4614137485d))
-
-# [8.1.0](https://github.com/smartbills/smartbills-dotnet/compare/v8.0.0...v8.1.0) (2025-03-21)
+# [8.1.0-dev.1](https://github.com/smartbills/smartbills-dotnet/compare/v8.0.0...v8.1.0-dev.1) (2025-05-02)
 
 
 ### Bug Fixes

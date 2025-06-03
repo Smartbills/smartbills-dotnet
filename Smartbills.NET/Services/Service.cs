@@ -166,9 +166,9 @@ namespace Smartbills.NET.Services
 
         private void PrepareRequest(RestRequest request, SBRequestOptions options)
         {
-            if (options?.MerchantId is not null)
+            if (options?.BusinessId is not null)
             {
-                request.AddOrUpdateHeader("x-tenant-id", options?.MerchantId.ToString());
+                request.AddOrUpdateHeader("x-tenant-id", options?.BusinessId.ToString());
             }
 
             if (options?.AccessToken is not null)
