@@ -48,7 +48,6 @@
 * merchant_locale ([9498bec](https://github.com/smartbills/smartbills-dotnet/commit/9498bec2c6d8793b602b0b7e356c03cce066c545))
 * merchantId ([77e8283](https://github.com/smartbills/smartbills-dotnet/commit/77e8283b59668fad930fd47642cc761c05bc685c))
 * Migrated to .NET Standard 2.1 ([59e078f](https://github.com/smartbills/smartbills-dotnet/commit/59e078f4099074a34533012bc787306c3dca7173))
-* Migrated to Merchant to Business ([e3ad0e1](https://github.com/smartbills/smartbills-dotnet/commit/e3ad0e10a76e2a14f2c67e6d8b3a12383b174cd5))
 * Migrated to SBMoney ([0b83879](https://github.com/smartbills/smartbills-dotnet/commit/0b83879e286fd4916cd4917ab5c1211937c7c4f6))
 * migrated to smartbills response ([38d18a3](https://github.com/smartbills/smartbills-dotnet/commit/38d18a39907d7ed29123696c67ef00597bd4e7a0))
 * migrated to SmartbillsResponse Enveloppe class ([61974e2](https://github.com/smartbills/smartbills-dotnet/commit/61974e246e3007ee78f3655bcd1d46c938ee594c))
@@ -60,6 +59,7 @@
 * realease ([78765e1](https://github.com/smartbills/smartbills-dotnet/commit/78765e16f51b2a332c9bb30207ac366bb3cd009a))
 * release all packages ([4ec6d08](https://github.com/smartbills/smartbills-dotnet/commit/4ec6d08820e4e76f5896251b9f1bec66d4b4ec71))
 * Release on NuGet ([3cfc654](https://github.com/smartbills/smartbills-dotnet/commit/3cfc654550a9b9f736aedbce74004ede114c0ec8))
+* Released with new PAT ([b094e64](https://github.com/smartbills/smartbills-dotnet/commit/b094e647700845f47ccb71602e479fa1e529024d))
 * removed old receipt model ([f1feae6](https://github.com/smartbills/smartbills-dotnet/commit/f1feae6acf64b870b92dc58d5b5baf85ee843b11))
 * renamed namespaces ([fc30057](https://github.com/smartbills/smartbills-dotnet/commit/fc30057725bab3f345fda6bcc8c837aefd201de1))
 * request add header ([296c20b](https://github.com/smartbills/smartbills-dotnet/commit/296c20bc7532cbc7273bd2cf1fc95f2af2398186))
@@ -80,6 +80,7 @@
 * V1.0.0 - Migrated to RestSharp  ([#10](https://github.com/smartbills/smartbills-dotnet/issues/10)) ([ae8b936](https://github.com/smartbills/smartbills-dotnet/commit/ae8b936991e8e84bddd4a1631d8e676177d23e12))
 * v1.0.0 build ([#11](https://github.com/smartbills/smartbills-dotnet/issues/11)) ([01d0fac](https://github.com/smartbills/smartbills-dotnet/commit/01d0fac6b292efb7b9467c42376056ace8d15900))
 * V1.0.4 ([3ba1780](https://github.com/smartbills/smartbills-dotnet/commit/3ba17802991933d3b54fc5203c90cc29515fd639))
+* v8.05 ([9a63bf4](https://github.com/smartbills/smartbills-dotnet/commit/9a63bf4f9159aadd7f291f1549acdb92f4681765))
 * version ([1f588dc](https://github.com/smartbills/smartbills-dotnet/commit/1f588dc03a49ae1b54dc5156422a51f652eb9034))
 * x-tenant-id ([8ff4c37](https://github.com/smartbills/smartbills-dotnet/commit/8ff4c372b5433b4e289c9f44f286fd939f950bfd))
 

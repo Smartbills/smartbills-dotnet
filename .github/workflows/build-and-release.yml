@@ -63,6 +63,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Download artifacts
         uses: actions/download-artifact@v4
@@ -92,8 +93,8 @@ jobs:
 
       - name: Semantic Release dry-run version
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
         run: |
           yarn get-next-version
           version=$(grep -oP '(?<=The next release version is ).*' semantic-release-output.txt)
@@ -101,23 +102,21 @@ jobs:
 
       - name: Pack NuGet packages
         run: |
-            echo "Package version: ${{ env.VERSION }}"
-            dotnet pack Smartbills.NET/Smartbills.NET.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
-            dotnet pack Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          echo "Package version: ${{ env.VERSION }}"
+          dotnet pack Smartbills.NET/Smartbills.NET.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
+          dotnet pack Smartbills.NET.AspNetCore/Smartbills.NET.AspNetCore.csproj -c Release -p:PackageVersion=${{ env.VERSION }} -p:RepositoryUrl=https://github.com/${{ github.repository }} -o nupkg
 
       - name: Publish to GitHub Packages
         run: |
-            for package in ./nupkg/*.nupkg; do
-              echo "Publishing package: $package"
-              dotnet nuget push $package --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
-            done
-  
-
+          for package in ./nupkg/*.nupkg; do
+            echo "Publishing package: $package"
+            dotnet nuget push $package --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+          done
 
       - name: Semantic Release
         env:
-              GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
-              GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
-              
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+
         run: |
-            yarn release
+          yarn release

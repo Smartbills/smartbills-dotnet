@@ -61,54 +61,60 @@ namespace Smartbills.NET.AspNetCore.Extensions
     {
         public static ISmartbillsBuilder AddSmartbillsClient(this IServiceCollection services, Action<SmartbillsClientOption> options = null)
         {
-
             if (services == null)
             {
                 throw new ArgumentNullException(nameof(services));
             }
+
             services.AddTransient<IBankClient, BankClient>();
             services.AddTransient<IBankAccountClient, BankAccountClient>();
             services.AddTransient<IBankTransactionClient, BankTransactionClient>();
             services.AddTransient<IBankInstitutionClient, BankInstitutionClient>();
 
-            // Merchant services
             services.AddTransient<IBusinessClient, BusinessClient>();
             services.AddTransient<ILocationClient, LocationClient>();
             services.AddTransient<ICustomerClient, CustomerClient>();
             services.AddTransient<ITeamMemberClient, TeamMemberClient>();
+            services.AddTransient<ILocationClient, LocationClient>();
+            services.AddTransient<ICustomerClient, CustomerClient>();
             services.AddTransient<IFeeClient, FeeClient>();
             services.AddTransient<ITaxClient, TaxClient>();
 
-            // Product services
             services.AddTransient<IProductClient, ProductClient>();
             services.AddTransient<IProductImageClient, ProductImageClient>();
             services.AddTransient<IProductVariantClient, ProductVariantClient>();
-            //services.AddTransient<IProductModifierClient, ProductModifierClient>();
+            services.AddTransient<IProductOptionClient, ProductOptionClient>();
             services.AddTransient<IPromoCodeClient, PromoCodeClient>();
-            services.AddTransient<ITaxClient, TaxClient>();
 
+            services.AddTransient<IReceiptClient, ReceiptClient>();
+            services.AddTransient<IReceiptLineItemClient, ReceiptLineItemClient>();
+
+            services.AddTransient<IOrganizationClient, OrganizationClient>();
+            services.AddTransient<IOrganizationMemberClient, OrganizationMemberClient>();
+            services.AddTransient<IOrganizationInvitationClient, OrganizationInvitationClient>();
 
             services.AddTransient<IOAuthClient, OAuthClient>();
             services.AddTransient<IWebhookClient, WebhookClient>();
             services.AddTransient<IVendorClient, VendorClient>();
-
             services.AddTransient<IEmailAccountClient, EmailAccountClient>();
             services.AddTransient<IAttachmentClient, AttachmentClient>();
-            // services.AddTransient<IBillingClient, BillingClient>();
-            // services.AddTransient<ILoyaltyClient, LoyaltyClient>();
-            // services.AddTransient<IPaymentClient, PaymentClient>();
             services.AddTransient<ISupplierClient, SupplierClient>();
-            // services.AddTransient<IApplicationClient, ApplicationClient>();
             services.AddTransient<ISubscriptionClient, SubscriptionClient>();
             services.AddTransient<IReviewClient, ReviewClient>();
-            services.AddTransient<IOrganizationClient, OrganizationClient>();
             services.AddTransient<IFriendClient, FriendClient>();
             services.AddTransient<ILogClient, LogClient>();
+            services.AddTransient<IFileClient, FileClient>();
+            services.AddTransient<ILoyaltyProgramClient, LoyaltyProgramClient>();
+
+            // Uncomment as needed when these services are fully implemented
+            // services.AddTransient<IBillingClient, BillingClient>();
+            // services.AddTransient<IPaymentClient, PaymentClient>();
+            // services.AddTransient<IApplicationClient, ApplicationClient>();
             // services.AddTransient<ISearchClient, SearchClient>();
             // services.AddTransient<IPriceClient, PriceClient>();
             // services.AddTransient<IExploreClient, ExploreClient>();
             // services.AddTransient<IBulkJobClient, BulkJobClient>();
-            services.AddTransient<IFileClient, FileClient>();
+            // services.AddTransient<ITranslationClient<T>, TranslationClient<T>>();
 
             if (options == null)
             {
@@ -123,37 +129,9 @@ namespace Smartbills.NET.AspNetCore.Extensions
             {
                 var config = serviceProvider.GetRequiredService<IOptions<SmartbillsClientOption>>();
                 return new SmartbillsClient(config.Value);
-            }
-        );
+            });
 
             return new SmartbillsBuilder(services);
         }
-
-        //public static ISmartbillsBuilder AddAPIKey(this ISmartbillsBuilder builder, Action<SBApiKeyCredentials> options)
-        //{
-        //    SBApiKeyCredentials credentials = new();
-        //    builder.Services.Configure(options);
-        //    options.Invoke(credentials);
-        //    builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
-        //    {
-        //        var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
-        //        return new SmartbillsClient();
-        //    });
-        //    return builder;
-        //}
-
-        //public static ISmartbillsBuilder AddCredentials(this ISmartbillsBuilder builder, Action<SBClientCredentials> options)
-        //{
-        //    SBClientCredentials credentials = new();
-        //    builder.Services.Configure(options);
-        //    options.Invoke(credentials);
-        //    builder.Services.AddSingleton<ISmartbillsClient>(serviceProvider =>
-        //    {
-        //        var config = serviceProvider.GetRequiredService<IOptions<SBClientConfiguration>>();
-        //        return new SmartbillsClient();
-        //    }
-        //    );
-        //    return builder;
-        //}
     }
 }
